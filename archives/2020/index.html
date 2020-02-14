@@ -10,7 +10,7 @@
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/fav.jpg" />
   
   
 <link rel="stylesheet" href="/css/style.css">
@@ -82,7 +82,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2015-2020
+        2020
         John Doe
       </li>
       <li>
@@ -124,37 +124,29 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+    <a href="/"><img src="/me.jpg" alt="Hexo"></a>
   </div>
   
   <ul class="nav nav-main">
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
+      <a class="nav-item-link" href="/">Home</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
+      <a class="nav-item-link" href="/archives">Archives</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
+      <a class="nav-item-link" href="/categories">Categories</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
+      <a class="nav-item-link" href="/tags">Tags</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="http://shenyu-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" href="/2019/about">Me</a>
     </li>
     
   </ul>
@@ -167,10 +159,6 @@
         <i class="ri-search-line"></i>
       </a>
       
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
       
     </li>
   </ul>
@@ -187,7 +175,7 @@
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <p class="reward-p"><i class="ri-cup-line"></i>帮我筹钱种头发</p>
   <div class="reward-box">
     
     <div class="reward-item">
@@ -220,10 +208,6 @@
 
 
 
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
 
 <script>
   try {
@@ -245,7 +229,7 @@
 
 <script>
   var ayerConfig = {
-    mathjax: false
+    mathjax: true
   }
 </script>
 
@@ -365,6 +349,25 @@
 </script>
 
 
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
