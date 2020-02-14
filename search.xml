@@ -6,8 +6,7 @@
     <content><![CDATA[<p>震惊，女大学生深夜竟干出这种事</p>
 <a id="more"></a>
 
-<p>哈哈，没了</p>
-]]></content>
+<h3 id="别看了，要开学了"><a href="#别看了，要开学了" class="headerlink" title="别看了，要开学了"></a>别看了，要开学了</h3><h3 id="还看？"><a href="#还看？" class="headerlink" title="还看？"></a>还看？</h3><h3 id="打钱！-👇-👇-👇-👇-👇-👇"><a href="#打钱！-👇-👇-👇-👇-👇-👇" class="headerlink" title="打钱！   👇 👇 👇 👇 👇 👇"></a>打钱！   👇 👇 👇 👇 👇 👇</h3>]]></content>
       <categories>
         <category>cat-testing</category>
       </categories>
@@ -19,6 +18,8 @@
     <title>Hello World</title>
     <url>/2020/02/14/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<a id="more"></a>
+
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
