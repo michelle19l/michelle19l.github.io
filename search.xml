@@ -1,12 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>漏洞测试作业一</title>
+    <url>/2020/03/15/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
+    <content><![CDATA[<ul>
+<li>VMWARE安装</li>
+<li>KALI安装</li>
+<li>Windows XP虚拟机安装</li>
+<li>windows下ida和ollydbg的安装</li>
+</ul>
+<a id="more"></a>
+
+<hr>
+<h3 id="一、VMWARE安装"><a href="#一、VMWARE安装" class="headerlink" title="一、VMWARE安装"></a>一、VMWARE安装</h3><ul>
+<li>解压文件，点击exe文件</li>
+</ul>
+<img src="/images/漏洞测试作业一/20190410232135636.png" alt="20190410232135636.png" style="zoom:50%;">
+
+<p><img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/20190410232135636.png" alt="img"></p>
+<ul>
+<li>接受许可协议，点击下一步<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/2019041023215559.png" alt="img"></li>
+<li>选择安装路径，一直点击下一步</li>
+<li>输入密钥</li>
+<li>安装完成<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220213910950.png" alt="image-20200220213910950"></li>
+</ul>
+<hr>
+<h3 id="二、KALI安装"><a href="#二、KALI安装" class="headerlink" title="二、KALI安装"></a>二、KALI安装</h3><ul>
+<li>在官网找到安装文件，我使用的是kali2020.1 installer</li>
+<li>点击“创建新的虚拟机”“下一步”<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220214047451.png" alt="image-20200220214047451"></li>
+<li>选择安装程序光盘影响文件<img src="/images/漏洞测试作业一/image-20200220214131959.png" alt="image-20200220214131959" style="zoom:67%;"></li>
+<li>根据安装包，这里选择了Debian 最新版的64位系统进行配置<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220214230823.png" alt="image-20200220214230823"></li>
+</ul>
+<ul>
+<li><p><img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220214320093.png" alt="image-20200220214320093"></p>
+</li>
+<li><p><img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220214328940.png" alt="image-20200220214328940"></p>
+</li>
+<li><p>检查配置，注意需要将内存修改至KALI的最低需求1024MB，否则安装时会进入Low Memory模式<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220214542674.png" alt="image-20200220214542674">)<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220214817618.png" alt="image-20200220214817618"></p>
+</li>
+<li><p>开启虚拟机，进行安装<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220214931476.png" alt="image-20200220214931476"></p>
+</li>
+<li><p>选择Graphical install</p>
+<ul>
+<li><img src="/images/漏洞测试作业一/image-20200220215135460.png" alt="image-20200220215135460" style="zoom:67%;">
+</li>
+</ul>
+</li>
+<li><p>选择语言和地区</p>
+<ul>
+<li><img src="/images/漏洞测试作业一/image-20200220220051843.png" alt="image-20200220220051843" style="zoom:67%;"></li>
+</ul>
+</li>
+<li><p>依次选择</p>
+<ul>
+<li><img src="/images/漏洞测试作业一/image-20200220220104106.png" alt="image-20200220220104106" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220109962.png" alt="image-20200220220109962" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220114107.png" alt="image-20200220220114107" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220118530.png" alt="image-20200220220118530" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220312088.png" alt="image-20200220220312088" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220408955.png" alt="image-20200220220408955" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220503510.png" alt="image-20200220220503510" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220628681.png" alt="image-20200220220628681" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220635825.png" alt="image-20200220220635825" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220640097.png" alt="image-20200220220640097" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220220828861.png" alt="image-20200220220828861" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220221124651.png" alt="image-20200220221124651" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/image-20200220221404231.png" alt="image-20200220221404231" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/1071345-20200202182723846-865559710.png" alt="img" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/1071345-20200202182750789-1248673346.png" alt="img" style="zoom:67%;"></li>
+<li><img src="/images/漏洞测试作业一/1071345-20200202182809128-203455729.png" alt="img" style="zoom:67%;"></li>
+<li>安装完成</li>
+<li>配置中文字符集<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200221162820529.png" alt="image-20200221162820529"></li>
+<li>配置完成<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200221162852877.png" alt="image-20200221162852877"></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="三、Windows-XP虚拟机安装"><a href="#三、Windows-XP虚拟机安装" class="headerlink" title="三、Windows XP虚拟机安装"></a>三、Windows XP虚拟机安装</h3><ul>
+<li>打开VMware，点击新建虚拟机，选择“下一步”<img src="/images/漏洞测试作业一/image-20200220212319353.png" alt="image-20200220212319353" style="zoom:50%;"></li>
+<li>选择windows光盘映像文件<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220212410033.png" alt="image-20200220212410033"></li>
+<li>输入产品密钥</li>
+<li>使用默认配置即可</li>
+<li>系统安装完成，重启该虚拟机</li>
+<li>自动安装VMTools</li>
+<li>完成<img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220212054898.png" alt="image-20200220212054898"></li>
+</ul>
+<hr>
+<h3 id="四、windows下ida和ollydbg的安装"><a href="#四、windows下ida和ollydbg的安装" class="headerlink" title="四、windows下ida和ollydbg的安装"></a>四、windows下ida和ollydbg的安装</h3><ul>
+<li>将压缩文件解压后复制到虚拟机内（VMTools已安装，可以实现虚拟机和主机之间的文件传输）</li>
+</ul>
+<img src="/images/漏洞测试作业一/image-20200220222431357.png" alt="image-20200220222431357" style="zoom:67%;">
+
+<ul>
+<li>软件均可正常打开<ul>
+<li><img src="/images/漏洞测试作业一/image-20200220222546032.png" alt="image-20200220222546032" style="zoom:67%;"><img src="/images/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/image-20200220222554626.png" alt></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="实验心得"><a href="#实验心得" class="headerlink" title="实验心得"></a>实验心得</h3><ul>
+<li>学习利用网络资源解决安装中遇到的各种问题</li>
+<li>初步学习使用命令行进行环境配置</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>漏洞测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>高中回忆30条</title>
     <url>/2020/02/24/%E4%B8%AD%E5%AD%A6%E5%9B%9E%E5%BF%86/</url>
     <content><![CDATA[<p>海棠花瓣会随风吹散，但记忆不会🌸</p>
 <img src="/images/image-20200224230227884.png" alt="image-20200224230227884" style="zoom:50%;">
 
-<a id="more"></a>images/
+<a id="more"></a>
 
 <h4 id="1-你为什么选择这个高中"><a href="#1-你为什么选择这个高中" class="headerlink" title="1.你为什么选择这个高中"></a>1.你为什么选择这个高中</h4><p>因为一些原因在nkzx带了六年，没有其它的选择，百年学府、文化底蕴、人文气息，初中三年给我留下了很多美好的回忆，没有过离开的想法。很幸运能在这里度过自己的12岁到18岁，其实不只是和伙伴一起成长，老师见证了我们的青春，我们也是老师人生历程的一部分吧，从第一年教学生，到结婚，再到生子；或者看着某位老师从头发旺盛到emmm，时间真的是个很奇妙的东西</p>
 <h4 id="2-它的地理位置，周围建筑"><a href="#2-它的地理位置，周围建筑" class="headerlink" title="2.它的地理位置，周围建筑"></a>2.它的地理位置，周围建筑</h4><p>南开洼，真的洼，雨下大了水没过膝盖</p>
@@ -61,7 +168,9 @@
 
 <p>说起来真的挺可惜的，nk在”追求高考成绩“的大环境下失去了太多</p>
 <p>吹一波书画社</p>
-<p><img src="/images/image-20200224231307416.png" alt="image-20200224231307416" style="zoom:25%;"><img src="/images/image-20200224231320919.png" alt="image-20200224231320919" style="zoom: 33%;"><img src="/images/image-20200224231338792.png" alt="image-20200224231338792" style="zoom:33%;"><img src="/images/mage-20200224231646699.png" alt="image-20200224231646699" style="zoom:25%;"></p>
+<p><img src="/images/image-20200224231307416.png" alt="image-20200224231307416" style="zoom:25%;"><img src="/images/image-20200224231320919.png" alt="image-20200224231320919" style="zoom: 33%;"><img src="/images/image-20200224231338792.png" alt="image-20200224231338792" style="zoom:33%;"></p>
+<img src="/images/image-20200225095719714.png" alt="image-20200225095719714" style="zoom:25%;">
+
 <h4 id="22-同学们的奇怪的昵称-绰号"><a href="#22-同学们的奇怪的昵称-绰号" class="headerlink" title="22.同学们的奇怪的昵称/绰号"></a>22.同学们的奇怪的昵称/绰号</h4><p>八卦相关🙂</p>
 <h4 id="23-军训"><a href="#23-军训" class="headerlink" title="23.军训"></a>23.军训</h4><p>坐在第一排看小姐姐们跳舞</p>
 <h4 id="24-一个很有趣的同学"><a href="#24-一个很有趣的同学" class="headerlink" title="24.一个很有趣的同学"></a>24.一个很有趣的同学</h4><p>黄教官哈哈哈哈哈</p>
@@ -87,9 +196,9 @@
 <img src="/images/image-20200224232014063.png" alt="image-20200224232014063" style="zoom: 33%;">
 
 ]]></content>
-      <tags>
-        <tag>diary</tag>
-      </tags>
+      <categories>
+        <category>my life :)</category>
+      </categories>
   </entry>
   <entry>
     <title>APL的安装与使用</title>
@@ -115,27 +224,10 @@
 </li>
 </ul>
 ]]></content>
-      <categories>
-        <category>study</category>
-      </categories>
       <tags>
         <tag>漏洞挖掘</tag>
         <tag>linux</tag>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>try</title>
-    <url>/2020/02/14/try/</url>
-    <content><![CDATA[<p>震惊，女大学生深夜竟干出这种事</p>
-<a id="more"></a>
-
-<h3 id="别看了，要开学了"><a href="#别看了，要开学了" class="headerlink" title="别看了，要开学了"></a>别看了，要开学了</h3><h3 id="还看？"><a href="#还看？" class="headerlink" title="还看？"></a>还看？</h3><h3 id="打钱！-👇-👇-👇-👇-👇-👇"><a href="#打钱！-👇-👇-👇-👇-👇-👇" class="headerlink" title="打钱！   👇 👇 👇 👇 👇 👇"></a>打钱！   👇 👇 👇 👇 👇 👇</h3>]]></content>
-      <categories>
-        <category>cat-testing</category>
-      </categories>
-      <tags>
-        <tag>tag—testing</tag>
       </tags>
   </entry>
   <entry>
