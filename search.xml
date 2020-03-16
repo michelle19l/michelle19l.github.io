@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据库上机L2：创建数据库&amp;插入数据存储过程代码</title>
+    <url>/2020/03/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL2%EF%BC%9A%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<p>创建work1.sql文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 创建表</span><br><span class="line">CREATE TABLE &#96;innodb&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;InnoDB;</span><br><span class="line"></span><br><span class="line">CREATE TABLE &#96;myisam&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;myisam;</span><br><span class="line"></span><br><span class="line">create procedure myinsert(a int)</span><br><span class="line">	begin</span><br><span class="line">		declare i int default 1;</span><br><span class="line">		repeat</span><br><span class="line">			insert into &#96;innodb&#96;  VALUES(i,i);</span><br><span class="line">			set i&#x3D;i+1;</span><br><span class="line">		until i&gt;a end repeat;</span><br><span class="line">	end;</span><br><span class="line"></span><br><span class="line">-- 执行存储过程</span><br><span class="line">call myinsert(10000);</span><br><span class="line">-- 删除myinsert函数</span><br><span class="line">drop procedure if exists myinsert;</span><br></pre></td></tr></table></figure>
+<p>可以编写sql文件，也可在命令列界面中分步运行</p>
+<p>运行之后需要刷新</p>
+<p><img src="/images/image-20200316214043980.png" alt="image-20200316214043980" style="zoom:50%;"><img src="/images/1584365805(1).png" alt="1584365805(1).png" style="zoom:35%;"></p>
+]]></content>
+      <tags>
+        <tag>数据库上机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>漏洞测试作业一</title>
     <url>/2020/03/15/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
     <content><![CDATA[<ul>
