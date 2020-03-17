@@ -16,10 +16,10 @@ def replace_1():
 	#output_str='/images'+input("现图片路径") # eg. /漏洞测试作业一/,若在根目录下则输入/
 
 	input_str="E:\\blog\hexo\source\_posts\\ E:\study\大二下\漏洞测试\作业\作业一\\".split(" ")
-	output_str="/images/漏洞测试作业一/"
+	output_str="/images/计算方法：第五章-解方程组-总结/"
 
 	style="zoom：50%;"
-	input_file='E:\\blog\hexo\source\_posts\漏洞测试作业一.md'
+	input_file='E:\\blog\hexo\source\_posts\计算方法：第五章-解方程组-总结.md'
 	output_file="E:\\blog\hexo\source\_posts\output.txt"
 
 	file_data = ""

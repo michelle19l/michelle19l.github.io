@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    数据库上机L2：创建数据库&amp;插入数据存储过程代码 |  Lxm&#39;s Blog
+    数据库上机L2 |  Lxm&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -39,7 +39,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  数据库上机L2：创建数据库&amp;插入数据存储过程代码
+  数据库上机L2
 </h1>
   
 
@@ -59,7 +59,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">136字</span>
+            <span class="post-count">151字</span>
         </span>
     </span>
 
@@ -93,7 +93,13 @@
       
 
       
-      <p>创建work1.sql文件</p>
+      <ul>
+<li>创建数据库</li>
+<li>插入数据存储过程代码</li>
+</ul>
+<a id="more"></a>
+
+<p>创建work1.sql文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-- 创建表</span><br><span class="line">CREATE TABLE &#96;innodb&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;InnoDB;</span><br><span class="line"></span><br><span class="line">CREATE TABLE &#96;myisam&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;myisam;</span><br><span class="line"></span><br><span class="line">create procedure myinsert(a int)</span><br><span class="line">	begin</span><br><span class="line">		declare i int default 1;</span><br><span class="line">		repeat</span><br><span class="line">			insert into &#96;innodb&#96;  VALUES(i,i);</span><br><span class="line">			set i&#x3D;i+1;</span><br><span class="line">		until i&gt;a end repeat;</span><br><span class="line">	end;</span><br><span class="line"></span><br><span class="line">-- 执行存储过程</span><br><span class="line">call myinsert(10000);</span><br><span class="line">-- 删除myinsert函数</span><br><span class="line">drop procedure if exists myinsert;</span><br></pre></td></tr></table></figure>
 <p>可以编写sql文件，也可在命令列界面中分步运行</p>
 <p>运行之后需要刷新</p>
@@ -173,6 +179,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2020/03/17/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%EF%BC%9A%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%A7%A3%E6%96%B9%E7%A8%8B%E7%BB%84-%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            第五章 解线性方程组的直接方法
+          
+        </div>
+      </a>
     
     
       <a href="/2020/03/15/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/" class="article-nav-link">
