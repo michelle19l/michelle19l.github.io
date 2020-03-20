@@ -1,6 +1,287 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>漏测作业二</title>
+    <url>/2020/03/20/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%8C/</url>
+    <content><![CDATA[<ul>
+<li>IDE反汇编函数调用实验</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>请在XP VC6下调试课本的示例程序并将call语句执行过程中的EIP变化、ESP、EBP变化等状态进行记录，解释变化的主要原因</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int add(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">	int z &#x3D; 0;</span><br><span class="line">	z &#x3D; x + y;</span><br><span class="line">	return z;</span><br><span class="line">&#125;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	int n &#x3D; 0;</span><br><span class="line">	n &#x3D; add(1, 3);</span><br><span class="line">	printf(&quot;%d\n&quot;, n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(加粗表示寄存器数据发生变化，表格中数据表示该行指令执行前的数据)</p>
+<table>
+<thead>
+<tr>
+<th>汇编步骤</th>
+<th>EIP</th>
+<th>ESP</th>
+<th>EBP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>11:       n = add(1, 3);</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040108F   push        3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401091   push        1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401093   call        @ILT+0(add) (00401005)</td>
+<td><strong>00401093</strong></td>
+<td><strong>0012FF28</strong></td>
+<td>0012FF80</td>
+</tr>
+<tr>
+<td>00401098   add         esp,8</td>
+<td><strong>00401098</strong></td>
+<td><strong>0012FF28</strong></td>
+<td>0012FF80</td>
+</tr>
+<tr>
+<td>0040109B   mov         dword ptr [ebp-4],eax</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401005   jmp         add(00401030)</td>
+<td><strong>00401005</strong></td>
+<td><strong>0012FF24</strong></td>
+<td>0012FF80</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2:    int add(int x, int y)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3:    {</td>
+<td>(省略未变化部分)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401030   push        ebp</td>
+<td><strong>00401030</strong></td>
+<td><strong>0012FF24</strong></td>
+<td>0012FF80</td>
+</tr>
+<tr>
+<td>00401031   mov         ebp,esp</td>
+<td><strong>00401031</strong></td>
+<td><strong>0012FF20</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>00401033   sub         esp,44h</td>
+<td><strong>00401033</strong></td>
+<td></td>
+<td><strong>0012FF20</strong></td>
+</tr>
+<tr>
+<td>00401036   push        ebx</td>
+<td><strong>00401036</strong></td>
+<td><strong>0012FEDC</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>00401037   push        esi</td>
+<td><strong>00401037</strong></td>
+<td><strong>0012FED8</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>00401038   push        edi</td>
+<td><strong>00401038</strong></td>
+<td><strong>0012FED4</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>00401039   lea         edi,[ebp-44h]</td>
+<td><strong>00401039</strong></td>
+<td><strong>0012FED0</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>0040103C   mov         ecx,11h</td>
+<td><strong>0040103C</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401041   mov         eax,0CCCCCCCCh</td>
+<td><strong>00401041</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401046   rep stos    dword ptr [edi]</td>
+<td><strong>00401046</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4:        int z = 0;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401048   mov         dword ptr [ebp-4],0</td>
+<td><strong>00401048</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5:        z = x + y;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040104F   mov         eax,dword ptr [ebp+8]</td>
+<td><strong>0040104F</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401052   add         eax,dword ptr [ebp+0Ch]</td>
+<td><strong>00401052</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401055   mov         dword ptr [ebp-4],eax</td>
+<td><strong>00401055</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6:        return z;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401058   mov         eax,dword ptr [ebp-4]</td>
+<td><strong>00401058</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7:    }</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040105B   pop         edi</td>
+<td><strong>0040105B</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040105C   pop         esi</td>
+<td><strong>0040105C</strong></td>
+<td><strong>0012FED4</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>0040105D   pop         ebx</td>
+<td><strong>0040105D</strong></td>
+<td><strong>0012FED8</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>0040105E   mov         esp,ebp</td>
+<td><strong>0040105E</strong></td>
+<td><strong>0012FEDC</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>00401060   pop         ebp</td>
+<td><strong>00401060</strong></td>
+<td><strong>0012FF20</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>00401061   ret</td>
+<td><strong>00401061</strong></td>
+<td><strong>0012FF24</strong></td>
+<td><strong>0012FF80</strong></td>
+</tr>
+</tbody></table>
+<p>寄存器变化原因</p>
+<ul>
+<li><p>EIP：</p>
+<ul>
+<li>指向下一步要进行的指令位置，随汇编代码执行过程改变</li>
+</ul>
+</li>
+<li><p>ESP：</p>
+<ul>
+<li>PUSH，POP操作导致栈顶变化</li>
+<li>函数调用过程中的栈帧变化</li>
+<li>直接对ESP的值进行修改</li>
+</ul>
+</li>
+<li><p>EBP:</p>
+<ul>
+<li><p>函数调用过程中的栈帧变化</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">调用函数  mov ebp,esp</span><br><span class="line">函数返回 pop ebp</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>相同的程序，请在非XP的当前windows操作系统的vs2003以上版本中运行，绘制add函数执行时的栈状态，并与XP下同时刻的状态进行比较</p>
+<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><p><img src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%8C/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200320235550.jpg" alt="微信图片_20200320235550"></p>
+<p><img src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%8C/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202003202355501.jpg" alt="微信图片_202003202355501"></p>
+<p><img src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%8C/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202003202355502.jpg" alt="微信图片_202003202355502"></p>
+<ul>
+<li>与xp系统下的vc6栈状态不同：<ul>
+<li>vc6栈帧预留空间为044h <code>sub esp,044h</code></li>
+<li>vs2019为0CCh<code>sub esp,0CCh</code></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>漏洞测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据库上机参考资料总结</title>
     <url>/2020/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BA%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p>课堂参考资料</p>
@@ -110,10 +391,34 @@
 </tr>
 <tr>
 <td>independently owned</td>
-<td>个体独立经营</td>
+<td>个体独立经营的</td>
+</tr>
+<tr>
+<td><strong>un</strong>like</td>
+<td></td>
+</tr>
+<tr>
+<td>ceramic</td>
+<td>陶器</td>
+</tr>
+<tr>
+<td>vendor</td>
+<td>卖主，小贩</td>
+</tr>
+<tr>
+<td>nominal</td>
+<td>名义上的，象征性的</td>
+</tr>
+<tr>
+<td>line up</td>
+<td>排列</td>
+</tr>
+<tr>
+<td>haul</td>
+<td>拖</td>
 </tr>
 </tbody></table>
-<p>But they would’nt <strong>pay you up front</strong>.</p>
+<p>But they would’nt <strong>pay you up front</strong>.     ——他们不会预支<br>The vendor fee is nominal.    ——摆摊费只是象征性地收取<br>I don’t have a car to <strong>haul everything down there</strong>.</p>
 <h2 id="2020-3-18"><a href="#2020-3-18" class="headerlink" title="2020-3-18"></a>2020-3-18</h2><table>
 <thead>
 <tr>
