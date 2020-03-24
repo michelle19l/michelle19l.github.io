@@ -1,7 +1,513 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>漏测作业二</title>
+    <title>网站导航</title>
+    <url>/2020/03/24/%E7%BD%91%E7%AB%99%E5%AF%BC%E8%88%AA/</url>
+    <content><![CDATA[<p>各种网站收集，欢迎推荐</p>
+<a id="more"></a>
+
+
+
+<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><h3 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h3><ul>
+<li>bilibili大学：<a href="https://www.bilibili.com/" target="_blank" rel="noopener">https://www.bilibili.com/</a></li>
+<li>雨课堂网页版：<a href="https://changjiang.yuketang.cn/web" target="_blank" rel="noopener">https://changjiang.yuketang.cn/web</a></li>
+<li>莫凡PYTHON：<a href="https://morvanzhou.github.io/" target="_blank" rel="noopener">https://morvanzhou.github.io/</a></li>
+<li>coursera：<a href="https://www.coursera.org/" target="_blank" rel="noopener">https://www.coursera.org/</a><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3></li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
+<li><p>洛谷：<a href="https://www.luogu.com.cn/" target="_blank" rel="noopener">https://www.luogu.com.cn/</a></p>
+</li>
+<li><p>codeforces：<a href="http://codeforces.com/contests" target="_blank" rel="noopener">http://codeforces.com/contests</a></p>
+<h4 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h4></li>
+<li><p>小站托福：<a href="https://top.zhan.com/toefl/" target="_blank" rel="noopener">https://top.zhan.com/toefl/</a></p>
+<h2 id="办公"><a href="#办公" class="headerlink" title="办公"></a>办公</h2></li>
+<li><p>学生邮箱：<a href="https://mailhz.qiye.163.com/js6/main.jsp?sid=o0uA9A10S7AFM7qBf6Q-S10Qirfg9Tes&amp;hl=zh_CN#module=welcome.CorpWelcomeModule%7C%7B%7D" target="_blank" rel="noopener">https://mailhz.qiye.163.com/js6/main.jsp?sid=o0uA9A10S7AFM7qBf6Q-S10Qirfg9Tes&amp;hl=zh_CN#module=welcome.CorpWelcomeModule%7C%7B%7D</a></p>
+</li>
+<li><p>webvpn：<a href="https://webvpn.nankai.edu.cn/" target="_blank" rel="noopener">https://webvpn.nankai.edu.cn/</a></p>
+</li>
+</ul>
+<h2 id="功能（博主自己使用）"><a href="#功能（博主自己使用）" class="headerlink" title="功能（博主自己使用）"></a>功能（博主自己使用）</h2><ul>
+<li>网站内容更新：<a href="https://gitee.com/michelle19l/michelle19l/pages">https://gitee.com/michelle19l/michelle19l/pages</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Guide</category>
+      </categories>
+      <tags>
+        <tag>资料收集整理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业三</title>
+    <url>/2020/03/23/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%89/</url>
+    <content><![CDATA[<ul>
+<li>ollydbg使用入门</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h3><img src="/images/漏测作业三/image-20200317210716065.png" alt="image-20200317210716065" style="zoom:50%;">
+
+
+
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"># define password &quot;12345678&quot;</span><br><span class="line">bool verifyPwd(char* pwd)</span><br><span class="line">&#123;</span><br><span class="line">	int flag;</span><br><span class="line">	flag &#x3D; strcmp(password,pwd);</span><br><span class="line">	return flag&#x3D;&#x3D;0;</span><br><span class="line">&#125;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	bool bFlag;</span><br><span class="line">	char pwd[1024];</span><br><span class="line">	printf(&quot;please input password:&quot;);</span><br><span class="line">	while(1)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%s&quot;,pwd);</span><br><span class="line">		bFlag&#x3D;verifyPwd(pwd);</span><br><span class="line">		if(bFlag)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;passed\n&quot;);</span><br><span class="line">			break;</span><br><span class="line">		&#125;else</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;wrong password, please input again:\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用debug模式运行，拿到exe文件</p>
+<img src="/images/漏测作业三/image-20200317211748248.png" alt="image-20200317211748248" style="zoom:50%;">
+
+<p>用ollydbg打开，单步执行</p>
+<img src="/images/漏测作业三/image-20200317212052362.png" alt="image-20200317212052362" style="zoom:67%;">
+
+<p>单步调试，找到主函数</p>
+<img src="/images/漏测作业三/image-20200317213521238.png" alt="image-20200317213521238" style="zoom:67%;">
+
+<p>F7步入</p>
+<img src="/images/漏测作业三/image-20200317213828732.png" alt="image-20200317213828732" style="zoom:67%;">
+
+<p>跳转至主函数</p>
+<img src="/images/漏测作业三/image-20200317213922692.png" alt="image-20200317213922692" style="zoom:67%;">
+
+<p>输入</p>
+<img src="/images/漏测作业三/image-20200317214105272.png" alt="image-20200317214105272" style="zoom:67%;">
+
+<p>找到verifyPwd函数</p>
+<img src="/images/漏测作业三/image-20200317214352472.png" alt="image-20200317214352472" style="zoom:67%;">
+
+<p><img src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%89/image-20200317214414725.png" alt="image-20200317214414725"></p>
+<p>跳转到verifyPwd函数</p>
+<img src="/images/漏测作业三/image-20200320171345288.png" alt="image-20200320171345288" style="zoom:67%;">
+
+<p>在学习的过程中，使用vc6查看已经划分好的反汇编代码</p>
+<p><img src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%89/image-20200320173026497.png" alt></p>
+<p>其中框出的部分为调用verifyPwd函数并将返回值赋给bFlag的代码</p>
+<img src="/images/漏测作业三/image-20200323090432718.png" alt="image-20200323090432718" style="zoom:67%;">
+
+<table>
+<thead>
+<tr>
+<th>反汇编代码</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lea         edx,[ebp-404h]</td>
+<td>[enp-404]中存储的是输入的字符串</td>
+</tr>
+<tr>
+<td>push        edx</td>
+<td>字符串地址入栈</td>
+</tr>
+<tr>
+<td>call        @ILT+15(verifyPwd) (00401014)</td>
+<td>函数跳转</td>
+</tr>
+<tr>
+<td>add         esp,4</td>
+<td>将函数调用前push的edx值弹出</td>
+</tr>
+<tr>
+<td>mov         byte ptr [ebp-4],al</td>
+<td>将函数返回值赋给bFlag</td>
+</tr>
+</tbody></table>
+<h3 id="题目二"><a href="#题目二" class="headerlink" title="题目二"></a>题目二</h3><img src="/images/漏测作业三/image-20200323092641646.png" alt="image-20200323092641646" style="zoom:50%;">
+
+<ul>
+<li><p>flag==0，即输入字符串为“12345678”</p>
+</li>
+<li><p>跳转进入函数</p>
+<img src="/images/漏测作业三/image-20200323093632694.png" alt="image-20200323093632694" style="zoom:50%;">
+</li>
+<li><p>进入strcmp</p>
+<p> <img src="/images/漏测作业三/image-20200323093749719.png" alt="image-20200323093749719" style="zoom: 80%;">![image-20200323105229337](/images/漏测作业三/image-20200323105229337.png&gt; <img src="/images/漏测作业三/image-20200323105229337.png" alt="image-20200323105229337" style="zoom:80%;"> </p>
+</li>
+</ul>
+<ul>
+<li>verifyPwd函数：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>汇编代码</th>
+<th>注释</th>
+<th>寄存器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00401030</td>
+<td>push ebp</td>
+<td>; 2_1_1.verifyPwd(void)</td>
+<td></td>
+</tr>
+<tr>
+<td>00401031</td>
+<td>mov ebp,esp</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401033</td>
+<td>sub esp,44</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401036</td>
+<td>push ebx</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401037</td>
+<td>push esi</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401038</td>
+<td>push edi</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401039</td>
+<td>lea edi,[ebp-44]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040103C</td>
+<td>mov ecx,11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401041</td>
+<td>mov eax,CCCCCCCC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401046</td>
+<td>rep stos dword ptr [edi]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401048</td>
+<td>mov eax,dword ptr [ebp+8]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040104B</td>
+<td>push eax</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040104C</td>
+<td>push offset 0043101C</td>
+<td>; ASCII “12345678”</td>
+<td></td>
+</tr>
+<tr>
+<td>00401051</td>
+<td><strong>call strcmp</strong></td>
+<td>; [strcmp</td>
+<td>调用函数</td>
+</tr>
+<tr>
+<td>00401056</td>
+<td>add esp,8</td>
+<td></td>
+<td>eax=0（strcmp函数返回值）</td>
+</tr>
+<tr>
+<td>00401059</td>
+<td>mov dword ptr [ebp-4],eax</td>
+<td></td>
+<td>将寄存器eax的值写入内存</td>
+</tr>
+<tr>
+<td>0040105C</td>
+<td>xor eax,eax</td>
+<td></td>
+<td>eax清零</td>
+</tr>
+<tr>
+<td>0040105E</td>
+<td>cmp dword ptr [ebp-4],0</td>
+<td>flag==0</td>
+<td>返回值与0进行比较</td>
+</tr>
+<tr>
+<td>00401062</td>
+<td>sete al</td>
+<td></td>
+<td>设置al，如果相等则设置</td>
+</tr>
+<tr>
+<td>00401065</td>
+<td>pop edi</td>
+<td></td>
+<td>eax=1，即verifyPwd返回值为1</td>
+</tr>
+<tr>
+<td>00401066</td>
+<td>pop esi</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401067</td>
+<td>pop ebx</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401068</td>
+<td>add esp,44</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040106B</td>
+<td>cmp ebp,esp</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040106D</td>
+<td>call _chkesp</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401072</td>
+<td>mov esp,ebp</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401074</td>
+<td>pop ebp</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00401075</td>
+<td>retn</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>strcmp函数<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>汇编代码</th>
+<th>注释</th>
+<th>寄存器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00408220</td>
+<td>mov edx,dword ptr [esp+4]</td>
+<td>; ASCII “12345678”（原密码）</td>
+<td></td>
+</tr>
+<tr>
+<td>00408224</td>
+<td>mov ecx,dword ptr [esp+8]</td>
+<td>; ASCII “12345678”（用户输入部分）</td>
+<td></td>
+</tr>
+<tr>
+<td>00408228</td>
+<td>test edx,00000003</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040822E</td>
+<td>jnz short 0040826C</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00408230</td>
+<td>mov eax,dword ptr [edx]</td>
+<td></td>
+<td>eax=34333231（对应密码前四位，小端存储）<img src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%89/image-20200323113424926.png" alt="image-20200323113424926"></td>
+</tr>
+<tr>
+<td>00408232</td>
+<td>cmp al,byte ptr [ecx]</td>
+<td>al与[ecx]第一位比较，相等</td>
+<td>al=31</td>
+</tr>
+<tr>
+<td>00408234</td>
+<td>jne short 00408264</td>
+<td>不跳转</td>
+<td></td>
+</tr>
+<tr>
+<td>00408236</td>
+<td>or al,al</td>
+<td>al不为0</td>
+<td></td>
+</tr>
+<tr>
+<td>00408238</td>
+<td>jz short 00408260</td>
+<td>不跳转</td>
+<td></td>
+</tr>
+<tr>
+<td>0040823A</td>
+<td>cmp ah,byte ptr [ecx+1]</td>
+<td></td>
+<td>ah=32</td>
+</tr>
+<tr>
+<td>0040823D</td>
+<td>jne short 00408264</td>
+<td>不跳转</td>
+<td></td>
+</tr>
+<tr>
+<td>0040823F</td>
+<td>or ah,ah</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00408241</td>
+<td>jz short 00408260</td>
+<td>不跳转</td>
+<td></td>
+</tr>
+<tr>
+<td>00408243</td>
+<td>shr eax,10</td>
+<td>eax右移16位</td>
+<td>eax=00003433</td>
+</tr>
+<tr>
+<td>00408246</td>
+<td>cmp al,byte ptr [ecx+2]</td>
+<td></td>
+<td>al=33</td>
+</tr>
+<tr>
+<td>00408249</td>
+<td>jne short 00408264</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040824B</td>
+<td>or al,al</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040824D</td>
+<td>jz short 00408260</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0040824F</td>
+<td>cmp ah,byte ptr [ecx+3]</td>
+<td></td>
+<td>ah=34</td>
+</tr>
+<tr>
+<td>00408252</td>
+<td>jne short 00408264</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00408254</td>
+<td>add ecx,4</td>
+<td>访问后四位数据</td>
+<td>ecx=38373635</td>
+</tr>
+<tr>
+<td>00408257</td>
+<td>add edx,4</td>
+<td></td>
+<td>edx=38373635</td>
+</tr>
+<tr>
+<td>0040825A</td>
+<td>or ah,ah</td>
+<td></td>
+<td>ah=34</td>
+</tr>
+<tr>
+<td>0040825C</td>
+<td>jnz short 00408230</td>
+<td>or结果不为0，跳转至该表第五行，eax被赋值为38373635</td>
+<td></td>
+</tr>
+<tr>
+<td>0040825E</td>
+<td>mov edi,edi</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00408260</td>
+<td>xor eax,eax</td>
+<td>所有判断均相等</td>
+<td>eax=0</td>
+</tr>
+<tr>
+<td>00408262</td>
+<td>retn</td>
+<td></td>
+<td>f返回</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="题目三"><a href="#题目三" class="headerlink" title="题目三"></a>题目三</h3><img src="/images/漏测作业三/image-20200323120545862.png" alt="image-20200323120545862" style="zoom:50%;">
+
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>找到跳转语句</p>
+<img src="/images/漏测作业三/image-20200323121253239.png" alt="image-20200323121253239" style="zoom:80%;">
+
+<p>修改</p>
+<img src="/images/漏测作业三/image-20200323121336341.png" alt="image-20200323121336341" style="zoom:80%;">
+
+<p>跳转成功</p>
+<img src="/images/漏测作业三/image-20200323121457054.png" alt="image-20200323121457054" style="zoom:80%;">
+
+
+
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>找到返回值设置代码</p>
+<p><img src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%89/image-20200323121849837.png" alt="image-20200323121849837"></p>
+<p>更改为“返回1”</p>
+<img src="/images/漏测作业三/image-20200323122009122.png" alt="image-20200323122009122" style="zoom:80%;">
+
+<p>继续运行，返回eax=1</p>
+<p>跳转成功并输出passed</p>
+<img src="/images/漏测作业三/image-20200323122711537.png" alt="image-20200323122711537" style="zoom:80%;">]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>漏洞测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业二</title>
     <url>/2020/03/20/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%8C/</url>
     <content><![CDATA[<ul>
 <li>IDE反汇编函数调用实验</li>
@@ -583,7 +1089,7 @@
   </entry>
   <entry>
     <title>漏洞测试作业一</title>
-    <url>/2020/03/15/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
+    <url>/2020/03/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
     <content><![CDATA[<ul>
 <li>VMWARE安装</li>
 <li>KALI安装</li>
@@ -684,6 +1190,9 @@
 <li>初步学习使用命令行进行环境配置</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
       <tags>
         <tag>漏洞测试</tag>
       </tags>
