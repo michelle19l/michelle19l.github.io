@@ -1,6 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据库上机L3</title>
+    <url>/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/</url>
+    <content><![CDATA[<ol>
+<li>数值类型：满足要求下，尽量使用“短”数据类型</li>
+<li>字符串类型：char、varchar，字符与字节数的关系</li>
+<li>日期类型：datetime、timestamp、（int unsigned）</li>
+<li>复合类型：enum、set</li>
+<li>二进制类型：blob、text</li>
+<li>选择原则<br>选择合适的数据类型，不仅可以节省储存空间，还可以有效地提升数据的计算性能。 </li>
+</ol>
+<a id="more"></a>
+
+
+
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/image-20200326203608551.png" alt="image-20200326203608551"></p>
+<ul>
+<li>tynint(2) 括号内数字表示显示宽度</li>
+</ul>
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/image-20200326204414344.png" alt="image-20200326204414344"></p>
+<p>（图片转载自<a href="https://blog.csdn.net/li295214001/article/details/51322018）" target="_blank" rel="noopener">https://blog.csdn.net/li295214001/article/details/51322018）</a></p>
+<ul>
+<li><img src="/images/数据库上机L3/image-20200326204621906.png" alt="image-20200326204621906" style="zoom:43%;">
+</li>
+<li><p><img src="/images/数据库上机L3/image-20200326204701918.png" alt="image-20200326204701918" style="zoom:50%;"><img src="/images/数据库上机L3/image-20200326204712462.png" alt="image-20200326204712462" style="zoom: 50%;"></p>
+</li>
+<li><img src="/images/数据库上机L3/image-20200326204952765.png" alt="image-20200326204952765" style="zoom: 50%;">
+</li>
+<li><img src="/images/数据库上机L3/image-20200326205133956.png" alt="image-20200326205133956" style="zoom:50%;">
+- 255代表字符长度而不是字节长度
+- 长度小于255用一个字节记录，大于用两个
+</li>
+<li><p>gbk 2字节、utf-8 3字节</p>
+</li>
+<li><img src="/images/数据库上机L3/image-20200326205726281.png" alt="image-20200326205726281" style="zoom:50%;">
+</li>
+<li><p>char存储时去掉字符串末尾空格，varchar不会</p>
+</li>
+<li><img src="/images/数据库上机L3/image-20200326210328463.png" alt="image-20200326210328463" style="zoom:67%;">
+</li>
+<li><img src="/images/数据库上机L3/image-20200326210856307.png" alt="image-20200326210856307" style="zoom:50%;">
+</li>
+<li><img src="/images/数据库上机L3/image-20200326211048828.png" alt="image-20200326211048828" style="zoom:50%;">
+</li>
+<li><img src="/images/数据库上机L3/image-20200326211321528.png" alt="image-20200326211321528" style="zoom:50%;"></li>
+<li><p>datetime 8字节，timestamp 4 字节</p>
+</li>
+<li><p>unix时间戳 1970到现在的时间</p>
+</li>
+<li><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/image-20200326211641095.png" alt="image-20200326211641095"></p>
+<ul>
+<li>数据很多，大量排序、查询-&gt;int存储时间</li>
+</ul>
+</li>
+<li><p>enum 单选，set复选</p>
+</li>
+<li><p>二进制类型-&gt;01构成的字符串，以字节为单位进行存储。字符串以字符为单位存储</p>
+</li>
+<li><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/image-20200326212101281.png" alt="image-20200326212101281"></p>
+</li>
+<li><img src="/images/数据库上机L3/image-20200326212140142.png" alt="image-20200326212140142" style="zoom:50%;">
+</li>
+<li><img src="/images/数据库上机L3/image-20200326212349563.png" alt="image-20200326212349563" style="zoom:50%;">
+
+</li>
+</ul>
+<img src="/images/数据库上机L3/image-20200326212602911.png" alt="image-20200326212602911" style="zoom:50%;">
+
+<ul>
+<li>IP地址最好选择整型进行存储，存储空间小，查询速度快</li>
+</ul>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业四</title>
+    <url>/2020/03/26/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E5%9B%9B/</url>
+    <content><![CDATA[<ul>
+<li>IDA查看伪代码</li>
+<li>利用OllyDBG进行准确字符串填充长度判断</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>对如下程序编译产生debug模式下的exe程序</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#define PASSWORD &quot;1234567&quot;</span><br><span class="line">int verify_password(char* password)</span><br><span class="line">&#123;</span><br><span class="line">	int authenticated;</span><br><span class="line">	char buffeer[12];&#x2F;&#x2F;add local buff to be overflowed</span><br><span class="line">	strcpy(buffer,password);</span><br><span class="line">	return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    int valid_flag&#x3D;0;</span><br><span class="line">    char password[1024];</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">    	printf(&quot;please input password: &quot;);</span><br><span class="line">    	scanf(&quot;%s&quot;,password);</span><br><span class="line">    	valid_flag&#x3D;verify_password(password);</span><br><span class="line">    	if(valid_flag)</span><br><span class="line">    		printf(&quot;incorrect password!\n\n&quot;);</span><br><span class="line">    	else</span><br><span class="line">    	&#123;</span><br><span class="line">    		printf(&quot;Congratulation! You have passed the verification!\n&quot;);</span><br><span class="line">    		break;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><ul>
+<li>对上述EXE程序，用IDA查看逆向分析的伪代码，利用OllyDBG进行准确字符串填充长度判断，并完成漏洞利用的实验，使得输入一定字符串后验证通过。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>漏洞测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>听力单词已背科目</title>
+    <url>/2020/03/25/%E5%90%AC%E5%8A%9B%E5%8D%95%E8%AF%8D%E5%B7%B2%E8%83%8C%E7%A7%91%E7%9B%AE/</url>
+    <content><![CDATA[<h3 id="生命科学"><a href="#生命科学" class="headerlink" title="生命科学"></a>生命科学</h3><ul>
+<li>生物学</li>
+<li>海洋生物学</li>
+<li>动物学</li>
+<li>植物学</li>
+</ul>
+]]></content>
+      <categories>
+        <category>TOEFL</category>
+      </categories>
+      <tags>
+        <tag>听力</tag>
+        <tag>英语</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算方法第五章错题总总结</title>
     <url>/2020/03/24/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E7%AC%AC%E4%BA%94%E7%AB%A0%E9%94%99%E9%A2%98%E6%80%BB%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<ul>
@@ -825,14 +945,109 @@
       </tags>
   </entry>
   <entry>
-    <title>听力错误总结</title>
-    <url>/2020/03/17/%E5%90%AC%E5%8A%9B%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
+    <title>2020-03 听力总结</title>
+    <url>/2020/03/17/2020-03%20%E5%90%AC%E5%8A%9B%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<ul>
 <li>单词</li>
 <li>语言表达</li>
 </ul>
 <a id="more"></a>
-
+<h2 id="2020-3-26"><a href="#2020-3-26" class="headerlink" title="2020-3-26"></a>2020-3-26</h2><table>
+<thead>
+<tr>
+<th>表达</th>
+<th>释义/注意点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cement</td>
+<td>巩固</td>
+</tr>
+<tr>
+<td>cement my interest in doing</td>
+<td></td>
+</tr>
+<tr>
+<td>the reason I came by is ……</td>
+<td></td>
+</tr>
+<tr>
+<td>straw poll</td>
+<td>选举前的非正式民意测验</td>
+</tr>
+<tr>
+<td>conduct a straw poll on campus</td>
+<td></td>
+</tr>
+<tr>
+<td>ballot</td>
+<td>投票</td>
+</tr>
+<tr>
+<td>hold an informal ballot</td>
+<td></td>
+</tr>
+<tr>
+<td>general election</td>
+<td>正式选举</td>
+</tr>
+<tr>
+<td>political leaning</td>
+<td>政治倾向</td>
+</tr>
+<tr>
+<td>identify with</td>
+<td>相同于、认同</td>
+</tr>
+<tr>
+<td>faculty advisor</td>
+<td>指导教师</td>
+</tr>
+<tr>
+<td>I’m flattered.</td>
+<td>我太荣幸了</td>
+</tr>
+<tr>
+<td>my schedule is so jammed</td>
+<td></td>
+</tr>
+<tr>
+<td>the paper is not <strong>due</strong> till after the election</td>
+<td>论文指导选举结束后才截止</td>
+</tr>
+<tr>
+<td>referenda</td>
+<td>全民公决</td>
+</tr>
+<tr>
+<td>sports arena</td>
+<td>体育竞技场</td>
+</tr>
+<tr>
+<td>referendum</td>
+<td>公民投票权</td>
+</tr>
+<tr>
+<td>referendum participation rates</td>
+<td>全民公投参与率</td>
+</tr>
+<tr>
+<td>proposal</td>
+<td>提议</td>
+</tr>
+<tr>
+<td>term page</td>
+<td>学期论文</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>The reason I came by is</strong> we are getting ready to conduct a straw poll on campus, you know, hold an informal ballot since the general election is just a couple of months away.</li>
+<li>We want to <strong>get a field from</strong> the students’ bodies <strong>political leanings</strong>, like who students are planning to <strong>vote for</strong>, which political party people <strong>identify with</strong>, that sort of thing.  ——我们想了解一下学生群体的政治倾向，比如学生们打算给哪些人投票，比较认同哪些政治团体，这样的事情。</li>
+<li>I was hoping you might be interested.</li>
+<li>There is one on whether to ban smoking in restaurants.</li>
+<li>whether to spend tax dollars for a new sports arena in the city.</li>
+<li>In regular elections, <strong>the vast majority of voters</strong> ignore referenda.  在普通的大选里，大多数的投票人会无视全民公决</li>
+</ul>
 <h2 id="2020-3-24"><a href="#2020-3-24" class="headerlink" title="2020-3-24"></a>2020-3-24</h2><table>
 <thead>
 <tr>
@@ -901,7 +1116,10 @@
 <td>和某人同时期</td>
 </tr>
 </tbody></table>
-<p>Well, part of what Mee’s trying to do is <strong>drive home the point that</strong>: One theater’s always a collaborative effort.<br>I’ll <strong>grant that</strong> he’s <strong>overstating things</strong> somewhat. ——我承认他这话有点夸张。<br>like most writers <strong>of his day</strong> </p>
+<ul>
+<li>Well, part of what Mee’s trying to do is <strong>drive home the point that</strong>: One theater’s always a collaborative effort.</li>
+<li>I’ll <strong>grant that</strong> he’s <strong>overstating things</strong> somewhat. ——我承认他这话有点夸张。<br>like most writers <strong>of his day</strong> </li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -954,7 +1172,11 @@
 <td>拖</td>
 </tr>
 </tbody></table>
-<p>But they would’nt <strong>pay you up front</strong>.     ——他们不会预支<br>The vendor fee is nominal.    ——摆摊费只是象征性地收取<br>I don’t have a car to <strong>haul everything down there</strong>.</p>
+<ul>
+<li>But they would’nt <strong>pay you up front</strong>.     ——他们不会预支</li>
+<li>The vendor fee is nominal.    ——摆摊费只是象征性地收取</li>
+<li>I don’t have a car to <strong>haul everything down there</strong>.</li>
+</ul>
 <h2 id="2020-3-18"><a href="#2020-3-18" class="headerlink" title="2020-3-18"></a>2020-3-18</h2><table>
 <thead>
 <tr>
@@ -1007,7 +1229,11 @@
 <td>那不一定。</td>
 </tr>
 </tbody></table>
-<p>These courses will <strong>give you a good overview of the field</strong> before <strong>commiting yourself</strong>.<br>Well, I <strong>endured</strong> accounting …….. and <strong>barely stay awake</strong>.<br>I have got two <strong>require courses</strong> and <strong>two electives</strong>.</p>
+<ul>
+<li>These courses will <strong>give you a good overview of the field</strong> before <strong>commiting yourself</strong>.</li>
+<li>Well, I <strong>endured</strong> accounting …….. and <strong>barely stay awake</strong>. </li>
+<li>I have got two <strong>require courses</strong> and <strong>two electives</strong>.</li>
+</ul>
 <h2 id="2020-3-16"><a href="#2020-3-16" class="headerlink" title="2020-3-16"></a>2020-3-16</h2><table>
 <thead>
 <tr>
@@ -1086,11 +1312,19 @@
 <li><img src="/images/计算方法：第五章-解方程组-总结/image-20200317155851749.png" alt="image-20200317155851749" style="zoom:50%;"><img src="/images/计算方法：第五章-解方程组-总结/image-20200317155900957.png" alt="image-20200317155900957" style="zoom:50%;"></li>
 </ul>
 <h2 id="5-4-向量与矩阵的范数"><a href="#5-4-向量与矩阵的范数" class="headerlink" title="5.4 向量与矩阵的范数"></a>5.4 向量与矩阵的范数</h2><p><img src="/images/计算方法：第五章-解方程组-总结/image-20200317160208381.png" alt="image-20200317160208381" style="zoom:67%;"><img src="/images/计算方法：第五章-解方程组-总结/image-20200317160217683.png" alt="image-20200317160217683" style="zoom:67%;"></p>
+<img src="/images/计算方法：第五章-解方程组-总结/1585128475(1).png" alt="image-20200317160217683" style="zoom:67%;">
+
+
+
 <img src="/images/计算方法：第五章-解方程组-总结/image-20200317160430488.png" alt="image-20200317160430488" style="zoom:33%;">
 
 <img src="/images/计算方法：第五章-解方程组-总结/image-20200317160453322.png" alt="image-20200317160453322" style="zoom: 50%;">
 
-<h2 id="5-5-误差分析"><a href="#5-5-误差分析" class="headerlink" title="5.5 误差分析"></a>5.5 误差分析</h2><h3 id="5-5-1-矩阵的条件数"><a href="#5-5-1-矩阵的条件数" class="headerlink" title="5.5.1 矩阵的条件数"></a>5.5.1 矩阵的条件数</h3><h3 id="5-5-2-迭代改善法"><a href="#5-5-2-迭代改善法" class="headerlink" title="5.5.2 迭代改善法"></a>5.5.2 迭代改善法</h3>]]></content>
+<h2 id="5-5-误差分析"><a href="#5-5-误差分析" class="headerlink" title="5.5 误差分析"></a>5.5 误差分析</h2><h3 id="5-5-1-矩阵的条件数"><a href="#5-5-1-矩阵的条件数" class="headerlink" title="5.5.1 矩阵的条件数"></a>5.5.1 矩阵的条件数</h3> <img src="/images/计算方法：第五章-解方程组-总结/image-20200325173917434.png" alt="image-20200325173917434" style="zoom:60%;">
+
+<img src="/images/计算方法：第五章-解方程组-总结/image-20200325173929566.png" alt="image-20200325173929566" style="zoom:60%;">
+
+<h3 id="5-5-2-迭代改善法"><a href="#5-5-2-迭代改善法" class="headerlink" title="5.5.2 迭代改善法"></a>5.5.2 迭代改善法</h3>]]></content>
       <categories>
         <category>study</category>
       </categories>
