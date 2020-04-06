@@ -63,7 +63,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">460字</span>
+            <span class="post-count">465字</span>
         </span>
     </span>
 
@@ -99,7 +99,12 @@
       
 
       
-      <h2 id="第二章-指令：计算机的语言"><a href="#第二章-指令：计算机的语言" class="headerlink" title="第二章 指令：计算机的语言"></a>第二章 指令：计算机的语言</h2><ul>
+      <ul>
+<li>陌生知识点</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="第二章-指令：计算机的语言"><a href="#第二章-指令：计算机的语言" class="headerlink" title="第二章 指令：计算机的语言"></a>第二章 指令：计算机的语言</h2><ul>
 <li><p>背指令</p>
 </li>
 <li><p>寄存器</p>
@@ -114,11 +119,11 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>$a0~$a3</td>
+<td>$a0~a3</td>
 <td>用于<strong>传递参数</strong>的四个寄存器</td>
 </tr>
 <tr>
-<td>$v0~$v1</td>
+<td>$v0~v1</td>
 <td>用于<strong>返回值</strong>的两个值寄存器</td>
 </tr>
 <tr>
@@ -126,11 +131,11 @@
 <td>用于<strong>返回起始点</strong>的返回地址寄存器</td>
 </tr>
 <tr>
-<td>$t0~$t9</td>
+<td>$t0~t9</td>
 <td>10个<strong>临时寄存器</strong>，在过程调用中不必被调用者（被调用的过程）保存</td>
 </tr>
 <tr>
-<td>$s0~$t7</td>
+<td>$s0~t7</td>
 <td>8个<strong>保留寄存器</strong>，在过程调用中必须被保存（一旦被使用，由被调用者保存和恢复）</td>
 </tr>
 </tbody></table>
@@ -142,24 +147,22 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>保存指针寄存器：$s0~$s7</td>
-<td>临时寄存器：$t0~$t7</td>
+<td>保存指针寄存器：$s0~s7</td>
+<td>临时寄存器：$t0~t7</td>
 </tr>
 <tr>
 <td>栈指针寄存器：$sp</td>
-<td>参数寄存器：$a0~$a3</td>
+<td>参数寄存器：$a0~a3</td>
 </tr>
 <tr>
 <td>返回地址寄存器：</td>
-<td>返回值寄存器：$v0~$v1</td>
+<td>返回值寄存器：$v0~v1</td>
 </tr>
 <tr>
 <td>栈指针以上的栈</td>
 <td>栈指针一下的栈</td>
 </tr>
 </tbody></table>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -176,31 +179,31 @@
 <td>不适用</td>
 </tr>
 <tr>
-<td>$v0~$v1</td>
+<td>$v0~v1</td>
 <td>2~3</td>
 <td>计算结果和表达式求值</td>
 <td>否</td>
 </tr>
 <tr>
-<td>$a0~$a3</td>
+<td>$a0~a3</td>
 <td>4~7</td>
 <td>参数</td>
 <td>否</td>
 </tr>
 <tr>
-<td>$t0~$t7</td>
+<td>$t0~t7</td>
 <td>8~15</td>
 <td>临时变量</td>
 <td>否</td>
 </tr>
 <tr>
-<td>$s0~$s7</td>
+<td>$s0~s7</td>
 <td>16~23</td>
 <td>保存的寄存器</td>
 <td><strong>是</strong></td>
 </tr>
 <tr>
-<td>$t8~$t9</td>
+<td>$t8~t9</td>
 <td>24~25</td>
 <td>更多的临时变量</td>
 <td>否</td>
@@ -230,6 +233,8 @@
 <td><strong>是</strong></td>
 </tr>
 </tbody></table>
+</li>
+</ul>
 <ul>
 <li><p>叶函数调用示例</p>
 <ul>
