@@ -1,6 +1,805 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>独立写作 2020-4</title>
+    <url>/2020/04/06/%E7%BB%BC%E5%90%88%E5%86%99%E4%BD%9C-2020-4/</url>
+    <content><![CDATA[<ul>
+<li>我的答案</li>
+<li>范文</li>
+<li>对比学习</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="TPO49-独立写作"><a href="#TPO49-独立写作" class="headerlink" title="TPO49 独立写作"></a>TPO49 独立写作</h3><p><strong>Do you agree or disagree with the following statement?The ability to maintain friendships with a small number of people over a long period of time is more important for happiness than the ability to make many new friends easily. Use specific reasons and examples to support your answer.</strong></p>
+<h3 id="我的答案"><a href="#我的答案" class="headerlink" title="我的答案"></a>我的答案</h3><p>Nowadays, with the development of society, men have to contact more people than before, so it is essential to be capable to make many new friends easily. But some people still think the ability to maintain friendships with a small number of people over a long period of time is more import for happiness. Personally, I agree on the latter one, that maintain friendships with a few people contribute to happiness more, and my reasons are elaborated as below.</p>
+<p>First, it’s a confirmation of my personality. Because the ones know me for a long period of time know more about my drawbacks, and they still choose to be a friend of mine even though they know my drawbacks. And they think my good points weigh more than shortcomings. Also one will not maintain friendships with those who are selfish and just think of themselves. It shows a trust of my quality to maintain friendship with me. Sure I will feel happier with this kind of confirmation.</p>
+<p>Second, that spend more time with specific old friends can be relaxing. As a result of knowing each other much more than new friends. We share a lot of memories and we can talk about that. And we know the past of each other, the good ones, and the bad ones. For example, when I’m upset, my old friends can avoid talking about the points which could make me sadder, because they know more about my stories. Also they are more likely to know which words could make me happier.</p>
+<p>Admittedly, I can learn a lot of good thing from my friends, thus having the ability to make many new friends easily means I can learn more. However, friendship should be pure and without just thinking about benefits and having a few ones whom I can talk with from the bottom of my heart is enough.</p>
+<p>To sum up, the ability to maintain friendships with a small group of people over a long period of time is more important to happiness. As this ability can contribute to a more reliable and relaxing friendship.</p>
+<h3 id="范文"><a href="#范文" class="headerlink" title="范文"></a>范文</h3><p>Friendship and kinship contribute a lot to one’s happiness. Then, the question goes, “does the ability to main long-term friendships with a small number of people matters more than the ability to make many new friends easily?” My answer is “yes”. First of all, old friends usually show stronger loyalty than those newly-acquainted fellows. That means, no matter what happens, these friends would always stand by your side and provide you with supports unconditionally. However, this merit is usually missing in short-term friendship. Last year when I was in hospital, 2 of my old friends took turns to take care of me, accompanying me to endure the very hard time. However, few of my “wide-range” new friends even came to visit me. It is clearly that long-term friendship is much more reliable and the ability to main such kind of relationship is more critical. In addition, old friends tend to show more understanding of you, being familiar with your hobbies, interests and some other peculiarities. So, it is usually more comfortable for me to be with my old friends. For instance, I am lactose intolerant and every time when I have dinner with my old friends, they would skip anything that contains milk or cheese, ordering food based on my favor. Contrary to my old friends’ consideration, those newly-acquainted fellows are inclined to show surprise about my intolerance and still pick the food of lactose they prefer. So, to me, old friends are much more considerate and contribute more to my happiness. Admittedly, the ability to make new friends easily are quite important for a person to get new ideas, broadening their views from different groups of people. However, compared with the ability to maintain long-term friendship, it still plays a less significant role for one’s happiness. To sum up, one’s happiness is consist of various parts, including self-achievement, security and etc. And I believe long-term friendship is of higher importance than other parts. As a result, the ability to maintain long-term friendship with a small group of people is much more important.</p>
+<h3 id="对比学习"><a href="#对比学习" class="headerlink" title="对比学习"></a>对比学习</h3>]]></content>
+      <tags>
+        <tag>英语</tag>
+        <tag>写作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计组笔记</title>
+    <url>/2020/04/06/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="第二章-指令：计算机的语言"><a href="#第二章-指令：计算机的语言" class="headerlink" title="第二章 指令：计算机的语言"></a>第二章 指令：计算机的语言</h2><ul>
+<li><p>背指令</p>
+</li>
+<li><p>寄存器</p>
+<ul>
+<li>函数调用过程中</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$a0~$a3</td>
+<td>用于<strong>传递参数</strong>的四个寄存器</td>
+</tr>
+<tr>
+<td>$v0~$v1</td>
+<td>用于<strong>返回值</strong>的两个值寄存器</td>
+</tr>
+<tr>
+<td>$ra</td>
+<td>用于<strong>返回起始点</strong>的返回地址寄存器</td>
+</tr>
+<tr>
+<td>$t0~$t9</td>
+<td>10个<strong>临时寄存器</strong>，在过程调用中不必被调用者（被调用的过程）保存</td>
+</tr>
+<tr>
+<td>$s0~$t7</td>
+<td>8个<strong>保留寄存器</strong>，在过程调用中必须被保存（一旦被使用，由被调用者保存和恢复）</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>保留</th>
+<th>不保留</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保存指针寄存器：$s0~$s7</td>
+<td>临时寄存器：$t0~$t7</td>
+</tr>
+<tr>
+<td>栈指针寄存器：$sp</td>
+<td>参数寄存器：$a0~$a3</td>
+</tr>
+<tr>
+<td>返回地址寄存器：</td>
+<td>返回值寄存器：$v0~$v1</td>
+</tr>
+<tr>
+<td>栈指针以上的栈</td>
+<td>栈指针一下的栈</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>寄存器号</th>
+<th>用途</th>
+<th>调用时是否保存</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$zero</td>
+<td>0</td>
+<td>常数0</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>$v0~$v1</td>
+<td>2~3</td>
+<td>计算结果和表达式求值</td>
+<td>否</td>
+</tr>
+<tr>
+<td>$a0~$a3</td>
+<td>4~7</td>
+<td>参数</td>
+<td>否</td>
+</tr>
+<tr>
+<td>$t0~$t7</td>
+<td>8~15</td>
+<td>临时变量</td>
+<td>否</td>
+</tr>
+<tr>
+<td>$s0~$s7</td>
+<td>16~23</td>
+<td>保存的寄存器</td>
+<td><strong>是</strong></td>
+</tr>
+<tr>
+<td>$t8~$t9</td>
+<td>24~25</td>
+<td>更多的临时变量</td>
+<td>否</td>
+</tr>
+<tr>
+<td>$gp</td>
+<td>28</td>
+<td>全局指针</td>
+<td><strong>是</strong></td>
+</tr>
+<tr>
+<td>$sp</td>
+<td>29</td>
+<td>栈指针</td>
+<td><strong>是</strong></td>
+</tr>
+<tr>
+<td>$fp</td>
+<td>30</td>
+<td>帧指针</td>
+<td><strong>是</strong></td>
+</tr>
+<tr>
+<td>$ra</td>
+<td>31</td>
+<td>返回地址</td>
+<td><strong>是</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>叶函数调用示例</p>
+<ul>
+<li><p>C:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int fact (int n)</span><br><span class="line">&#123;</span><br><span class="line">	 if (n&lt;1) return 1</span><br><span class="line">	 else return (n*fact(n-1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MIPS</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fact:</span><br><span class="line">	addi	$sp, $sp, -8;	# adjust stack for 2 items</span><br><span class="line">	sw		$ra, 4($sp);	# save the return address</span><br><span class="line">	sw		$a0, 0($sp);	# save the argument n</span><br><span class="line">	</span><br><span class="line">stli	$t0, $a0, 1		# test for n&lt;1</span><br><span class="line">beq		$t0, $zero, L1	# if n &gt;&#x3D; 1, go to L1</span><br><span class="line"></span><br><span class="line">addi	$v0, $zero, 1	# reurn 1</span><br><span class="line">addi	$sp, $sp, 8		# pop 2 items off stack</span><br><span class="line">jr 		$ra				# return to caller</span><br><span class="line"></span><br><span class="line">L1:	addi	$a0, $a0, -1	# n &gt;&#x3D; 1: argument gets (n-1)</span><br><span class="line">	jal		fact			# call fact with (n-1)</span><br><span class="line">	</span><br><span class="line"># fact 的返回位置</span><br><span class="line">lw		$a0, 0($sp)		# return from jal: restore argument n</span><br><span class="line">lw		$ra, 4($sp)		# restore the return address</span><br><span class="line">addi	$sp, $sp, 8		# adjust stack pointer to pop 2 items</span><br><span class="line"></span><br><span class="line">mul 	$v0, $a0, $v0	# return n*fact(n-1)</span><br><span class="line"></span><br><span class="line">jr		$ra				#return to the caller</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>阅读错误总结</title>
+    <url>/2020/04/06/%E9%98%85%E8%AF%BB%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="TPO46"><a href="#TPO46" class="headerlink" title="TPO46"></a>TPO46</h3><h4 id="The-Origins-of-Writing"><a href="#The-Origins-of-Writing" class="headerlink" title="The Origins of Writing"></a><strong>The Origins of Writing</strong></h4><ul>
+<li><p>radical 激进的；彻底的</p>
+<p>radically 彻底地</p>
+</li>
+</ul>
+<h4 id="The-Commercial-Revolution-in-Medieval-Europe"><a href="#The-Commercial-Revolution-in-Medieval-Europe" class="headerlink" title="The Commercial Revolution in Medieval Europe"></a><strong>The Commercial Revolution in Medieval Europe</strong></h4><ul>
+<li><p>At cities such as Bruges and London, Hanseatic merchants secured special trading concessions, exempting them from all tolls and allowing them to trade at local fairs. </p>
+<p>在布鲁日和伦敦等城市，汉萨商人获得特殊的贸易优惠，免除了所有的过路费，并且允许他们在当地的集市做买卖。</p>
+</li>
+<li><p>secure<br>  adj.  安心的; 有把握的; 可靠的; 牢靠的; 稳固的; 安全的; 稳妥的;<br>  v.     (尤指经过努力) <strong>获得，取得，实现</strong>; 拴牢; 扣紧; 关严; 保护; 保卫; 使安全; </p>
+</li>
+<li><p>finished product 成品</p>
+</li>
+<li><p>精读：<a href="https://top.zhan.com/toefl/read/practicereview-714-12-107586700-5.html?ingress=single" target="_blank" rel="noopener">https://top.zhan.com/toefl/read/practicereview-714-12-107586700-5.html?ingress=single</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>TOEFL</category>
+      </categories>
+      <tags>
+        <tag>英语</tag>
+        <tag>阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>千锋网安</title>
+    <url>/2020/04/03/%E5%8D%83%E9%94%8B%E7%BD%91%E5%AE%89/</url>
+    <content><![CDATA[<ul>
+<li>vmware<ul>
+<li>虚拟机克隆，链接方式依赖于原虚拟机，省空间</li>
+<li>快照</li>
+</ul>
+</li>
+<li>系统：<a href="http://msdn.itellyou.cn" target="_blank" rel="noopener">http://msdn.itellyou.cn</a>, U盘作为装系统的光盘，驱动精灵</li>
+<li>路由器 连接内网和外网，交换机组建局域网</li>
+<li>ip：32位二进制</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>网安</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql语句</title>
+    <url>/2020/04/01/sql%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<ul>
+<li><p>SHOW DATABASE –显示当前的数据库</p>
+</li>
+<li><p>CREATE DATABASE XXX –创建数据库</p>
+<p>DEFAULT CHARACTER SET utf8mb4<br>DEFAULT COLLATE utf8mb4_unicode_ci;</p>
+</li>
+<li><p>USE XXX;</p>
+</li>
+<li><p>CREATE TABLE IF NOT EXISTS airline( –创建数据表<br>code    char(3)    PRIMARY KEY,<br>airlinename    varchar(1024)<br>);</p>
+</li>
+<li><p>ALTER TABLE S</p>
+<pre><code>ADD FOREIGN KEY (a) REFERENCES E(a),
+ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020-4上半月学习计划</title>
+    <url>/2020/04/01/2020-4%E4%B8%8A%E5%8D%8A%E6%9C%88%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<h3 id="2020-4-2"><a href="#2020-4-2" class="headerlink" title="2020-4-2"></a>2020-4-2</h3><table>
+<thead>
+<tr>
+<th>计划</th>
+<th>预计时间</th>
+<th>完成情况</th>
+<th>实际时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据库作业</td>
+<td></td>
+<td>完成</td>
+<td></td>
+</tr>
+<tr>
+<td>数据库week5复习</td>
+<td></td>
+<td>完成</td>
+<td></td>
+</tr>
+<tr>
+<td>离散书</td>
+<td></td>
+<td>部分</td>
+<td></td>
+</tr>
+<tr>
+<td>离散错题</td>
+<td></td>
+<td>×</td>
+<td></td>
+</tr>
+<tr>
+<td>听力*1</td>
+<td></td>
+<td>完成</td>
+<td></td>
+</tr>
+<tr>
+<td>阅读*1</td>
+<td></td>
+<td>完成</td>
+<td></td>
+</tr>
+<tr>
+<td>口语*1</td>
+<td></td>
+<td>完成</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2020-4-1"><a href="#2020-4-1" class="headerlink" title="2020-4-1"></a>2020-4-1</h3><table>
+<thead>
+<tr>
+<th>计划</th>
+<th>预计时间</th>
+<th>完成情况</th>
+<th>实际时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整理离散错题</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>看离散书</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据库作业部分</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>复习数据库week 5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>听力*1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阅读*1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>口语*1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Plan</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>数据库上机L4</title>
+    <url>/2020/03/31/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL4/</url>
+    <content><![CDATA[<ul>
+<li>空值再检索操作存储等方面都有不好的影响</li>
+</ul>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信安数基第四章总结</title>
+    <url>/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="第四章-原根与指数"><a href="#第四章-原根与指数" class="headerlink" title="第四章 原根与指数"></a>第四章 原根与指数</h1><h2 id="4-1-次数"><a href="#4-1-次数" class="headerlink" title="4.1 次数"></a>4.1 次数</h2><p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160537835.png" alt="image-20200331160537835"></p>
+<p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155119753.png" alt="image-20200331155119753"></p>
+<p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155249593.png" alt="image-20200331155249593"></p>
+<p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160616625.png" alt="image-20200331160616625"></p>
+<p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160838992.png" alt="image-20200331160838992"></p>
+<p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160918308.png" alt="image-20200331160918308"></p>
+<p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161812692.png" alt="image-20200331161812692"></p>
+<p><img src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161856893.png" alt="image-20200331161856893"></p>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>信安数基</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>power designer入门</title>
+    <url>/2020/03/29/power-designer%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<ul>
+<li>PD的安装与配置</li>
+<li>画ER图</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="一、安装、破解和汉化"><a href="#一、安装、破解和汉化" class="headerlink" title="一、安装、破解和汉化"></a>一、安装、破解和汉化</h2><p>略</p>
+<h2 id="二、用power-designer画ER图"><a href="#二、用power-designer画ER图" class="headerlink" title="二、用power designer画ER图"></a>二、用power designer画ER图</h2><h3 id="新建模型"><a href="#新建模型" class="headerlink" title="新建模型"></a>新建模型</h3><ul>
+<li>create model</li>
+<li>conceptual<h3 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h3></li>
+<li>新建实体<img src="/images/power-designer%E5%85%A5%E9%97%A8/image-20200329163139504.png" alt="image-20200329163139504"></li>
+<li>右键，恢复光标</li>
+<li>双击实体，编辑<ul>
+<li><img src="/images/power-designer%E5%85%A5%E9%97%A8/image-20200329164711686.png" alt="image-20200329164711686"></li>
+</ul>
+</li>
+<li>子类<ul>
+<li><img src="/images/power-designer入门/image-20200329175300122.png" alt="image-20200329175300122" style="zoom:50%;">空值方法</li>
+<li><img src="/images/power-designer入门/image-20200329175327457.png" alt="image-20200329175327457" style="zoom:50%;">ER方法<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3></li>
+<li><img src="/images/power-designer入门/image-20200329173325658.png" alt="image-20200329173325658" style="zoom:67%;">
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><img src="/images/power-designer入门/image-20200329173429629.png" alt="image-20200329173429629" style="zoom:50%;">
+
+
+
+
+
+</li>
+</ul>
+<h3 id="建立表"><a href="#建立表" class="headerlink" title="建立表"></a>建立表</h3><p><img src="/images/power-designer%E5%85%A5%E9%97%A8/image-20200329180024334.png" alt="image-20200329180024334"></p>
+<h3 id="自动生成sql语句"><a href="#自动生成sql语句" class="headerlink" title="自动生成sql语句"></a>自动生成sql语句</h3><ul>
+<li>Database -&gt; Generate Database -&gt; Ok -&gt; Edit</li>
+</ul>
+<ul>
+<li>PowerDesigner中各种表关系的区别：<a href="https://wenku.baidu.com/view/e57c230d03020740be1e650e52ea551810a6c93a.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/e57c230d03020740be1e650e52ea551810a6c93a.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>Power Designer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020-3 学习计划</title>
+    <url>/2020/03/27/2020-3-%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<p>🙂全部完成</p>
+<p>😑完成一部分</p>
+<p>🐷根本没开始做</p>
+<p>😩没有在预计时间内完成</p>
+<a id="more"></a>
+
+<h3 id="2020-3-31"><a href="#2020-3-31" class="headerlink" title="2020-3-31"></a>2020-3-31</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>预计需要时间</th>
+<th>预计开始时间</th>
+<th>完成情况</th>
+<th>实际时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>看计组+写作业</td>
+<td>1h</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>听力*1</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>阅读*1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>口语*2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据库week4复习</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>数据库week5复习</td>
+<td></td>
+<td></td>
+<td>部分</td>
+<td></td>
+</tr>
+<tr>
+<td>信安数基第四章习题</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>信安数基第五章预习</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>复习计算方法+习题</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据库上机视频</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>算导视频上</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>一组单词</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>英语作业</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2020-3-30"><a href="#2020-3-30" class="headerlink" title="2020-3-30"></a>2020-3-30</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>预计需要时间</th>
+<th>预计开始时间</th>
+<th>完成情况</th>
+<th>实际时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>看计组+写作业（部分）</td>
+<td>1h</td>
+<td></td>
+<td>😑</td>
+<td></td>
+</tr>
+<tr>
+<td>漏测作业三</td>
+<td>1h</td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>复习数据库</td>
+<td>1h</td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>信安数基作业整理</td>
+<td>1h</td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>信安数基第四章复习</td>
+<td>30min</td>
+<td></td>
+<td>😑</td>
+<td></td>
+</tr>
+<tr>
+<td>信安数基第五章预习</td>
+<td>30min</td>
+<td></td>
+<td>🐷</td>
+<td></td>
+</tr>
+<tr>
+<td>听力*1</td>
+<td>20min</td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>口语*1</td>
+<td>5min</td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>阅读*1</td>
+<td>30min</td>
+<td></td>
+<td>🐷</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2020-3-28"><a href="#2020-3-28" class="headerlink" title="2020-3-28"></a>2020-3-28</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>预计需要时间</th>
+<th>预计开始时间</th>
+<th>完成情况</th>
+<th>实际时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>离散网课</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>离散作业</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>算导视频</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>学用powerdesigner</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>看计组书+作业（部分）</td>
+<td></td>
+<td></td>
+<td>🙂</td>
+<td></td>
+</tr>
+<tr>
+<td>听力*1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阅读*1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>口语*1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2020-3-27"><a href="#2020-3-27" class="headerlink" title="2020-3-27"></a>2020-3-27</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>预计需要时间</th>
+<th>预计开始时间</th>
+<th>完成情况</th>
+<th>实际时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>比赛划水</td>
+<td>120min</td>
+<td>12:45</td>
+<td>🐷真·划水</td>
+<td></td>
+</tr>
+<tr>
+<td>阅读+错题</td>
+<td>30min</td>
+<td>15:00</td>
+<td>😩（错题没整理）</td>
+<td>40min</td>
+</tr>
+<tr>
+<td>阅读+错题</td>
+<td>30min</td>
+<td>15:30</td>
+<td>🙂</td>
+<td>20min</td>
+</tr>
+<tr>
+<td>复习数据库</td>
+<td>60min</td>
+<td>16:20</td>
+<td>🙂</td>
+<td>60min</td>
+</tr>
+<tr>
+<td>对话+总结</td>
+<td>20min</td>
+<td>17:30</td>
+<td>🙂</td>
+<td>30min</td>
+</tr>
+<tr>
+<td>明确作业ER图</td>
+<td>20min</td>
+<td>19:30</td>
+<td>🙂</td>
+<td>30min</td>
+</tr>
+<tr>
+<td>对话+总结</td>
+<td>20min</td>
+<td>20:00</td>
+<td>🙂</td>
+<td>10min</td>
+</tr>
+<tr>
+<td>看计组书，写作业</td>
+<td>60min</td>
+<td>20:30</td>
+<td>🐷</td>
+<td></td>
+</tr>
+<tr>
+<td>算导视频上</td>
+<td>30min</td>
+<td>21:45</td>
+<td>🐷</td>
+<td></td>
+</tr>
+<tr>
+<td>听力讲座+总结</td>
+<td>15min</td>
+<td>22:15</td>
+<td>🙂</td>
+<td>18min</td>
+</tr>
+<tr>
+<td>一组听力单词</td>
+<td>20min</td>
+<td>22:30</td>
+<td>🙂</td>
+<td>20min</td>
+</tr>
+<tr>
+<td>离散习题</td>
+<td>30min</td>
+<td>23:00</td>
+<td>🙂</td>
+<td>25min</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Plans</category>
+      </categories>
+      <tags>
+        <tag>计划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据库上机L3</title>
     <url>/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/</url>
     <content><![CDATA[<ol>
@@ -952,7 +1751,56 @@
 <li>语言表达</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="2020-3-26"><a href="#2020-3-26" class="headerlink" title="2020-3-26"></a>2020-3-26</h2><table>
+<thead>
+<tr>
+<th>表达</th>
+<th>释义/注意点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gazette</td>
+<td>n.报纸/v.刊载</td>
+</tr>
+<tr>
+<td>budding</td>
+<td>发育期的</td>
+</tr>
+<tr>
+<td>a budding historian</td>
+<td>初学历史学的学生</td>
+</tr>
+<tr>
+<td>day-to-day life</td>
+<td>日常生活</td>
+</tr>
+<tr>
+<td>publication</td>
+<td>出版物</td>
+</tr>
+<tr>
+<td>deteriorated</td>
+<td>变质的</td>
+</tr>
+<tr>
+<td>French national constituent assembly</td>
+<td>法国国民议会大会的形成</td>
+</tr>
+<tr>
+<td>editorials</td>
+<td>社论</td>
+</tr>
+<tr>
+<td>present a paper on</td>
+<td></td>
+</tr>
+<tr>
+<td>press</td>
+<td>出版社</td>
+</tr>
+</tbody></table>
+<h2 id="2020-3-26-1"><a href="#2020-3-26-1" class="headerlink" title="2020-3-26"></a>2020-3-26</h2><table>
 <thead>
 <tr>
 <th>表达</th>
