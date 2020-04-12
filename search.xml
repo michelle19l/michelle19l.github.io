@@ -2559,10 +2559,14 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>AFL</category>
+      </categories>
       <tags>
         <tag>漏洞挖掘</tag>
         <tag>linux</tag>
         <tag>工具</tag>
+        <tag>模糊测试</tag>
       </tags>
   </entry>
   <entry>
