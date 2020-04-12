@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Hello World |  Lxm&#39;s Blog
+    AFL源码分析 |  Lxm&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -31,7 +31,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-hello-world" class="article article-type-post" itemscope
+  <article id="post-AFL源码分析" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -39,7 +39,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hello World
+  AFL源码分析
 </h1>
   
 
@@ -48,10 +48,14 @@
 
     
     <div class="article-meta">
-      <a href="/2020/02/14/hello-world/" class="article-date">
-  <time datetime="2020-02-13T16:08:27.603Z" itemprop="datePublished">2020-02-14</time>
+      <a href="/2020/04/06/AFL%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2020-04-06T07:09:09.000Z" itemprop="datePublished">2020-04-06</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AFL/">AFL</a>
+  </div>
+
       
       
 <div class="word_count">
@@ -59,7 +63,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">73字</span>
+            <span class="post-count">808字</span>
         </span>
     </span>
 
@@ -68,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -95,21 +99,73 @@
       
 
       
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
+      <p>[toc]</p>
+<h2 id="文件处理过程"><a href="#文件处理过程" class="headerlink" title="文件处理过程"></a>文件处理过程</h2><p><img src="/michelle19l/michelle19l/2020/04/06/AFL%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/E:%5Cblog%5Chexo%5Csource_posts%5CAFL%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.assets%5C20190330215605-8fcb26f2-52f3-1.png" alt="img"></p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="afl-gcc"><a href="#afl-gcc" class="headerlink" title="afl-gcc"></a>afl-gcc</h3><ul>
+<li><code>afl-gcc</code>是<code>gcc/g++</code>的wrapper,调用gcc/g++</li>
+<li><code>afl-gcc</code>设置<code>-B direcotry</code></li>
+<li>gcc/g++调用afl对应的cpp、cc1/cc1/plus、as、ld。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  afl-gcc.c:main()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">find_as(argv[<span class="number">0</span>]); <span class="comment">//查找argv[0]的目录(即afl-gcc的目录)供 edit_params()函数使用</span></span><br><span class="line"></span><br><span class="line">edit_params(argc, argv); <span class="comment">//设置 -B 选项和参数</span></span><br><span class="line"></span><br><span class="line">execvp(cc_params[<span class="number">0</span>], (<span class="keyword">char</span>**)cc_params); <span class="comment">//调用 gcc</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h3 id="afl-as"><a href="#afl-as" class="headerlink" title="afl-as"></a>afl-as</h3><ul>
+<li><p>AFL的代码插桩，是在将源文件编译为汇编代码后，通过<code>afl-as</code>完成的</p>
+</li>
+<li><p>afl-as是as的封装</p>
+</li>
+<li><p><code>afl-as</code>会在汇编代码的代码相应位置插入统计代码，然后调用真正的<code>as</code>进行汇编。统计代码是在<code>afl-as.h</code>文件中，<code>afl-as</code>负责找到每个 <em>basic block</em> 插入 <code>afl-as.h</code>中的统计代码。<code>afl-as.c:main()</code>主要调用了两个函数：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">afl-as.c:main()</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">edit_params(argc, argv); &#x2F;&#x2F;调整传递给真正的汇编器&#96;as&#96;的参数。</span><br><span class="line"></span><br><span class="line">add_instrumentation(); &#x2F;&#x2F;判断分支，插入统计代码</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="add-instrumentation"><a href="#add-instrumentation" class="headerlink" title="add_instrumentation()"></a>add_instrumentation()</h4><ul>
+<li><p>Process input file, generate modified_file. Insert instrumentation in all the appropriate places.</p>
+<h5 id="查找代码部分"><a href="#查找代码部分" class="headerlink" title="查找代码部分"></a>查找代码部分</h5></li>
+<li><p>只对代码部分插桩</p>
+</li>
+<li><p>利用代码文件的符号排列格式进行判断</p>
+</li>
+<li><p>如果是代码部分则会将instr_ok置1</p>
+</li>
+</ul>
+<h5 id="查找基本块"><a href="#查找基本块" class="headerlink" title="查找基本块"></a>查找基本块</h5><ul>
+<li>方法<ul>
+<li>标识符：以 “点号”(<code>.</code>)开始,以“冒号”(<code>:</code>)结束，中间是字母数字组合</li>
+<li>跳转指令：<ul>
+<li>一般是进行比较根据比较结果来决定是否跳转(如 jnz xxx)，条件跳转指令的下一条也是一个 <em>basic block</em> 的开始处。</li>
+<li>如果是跳转指令则在指令后插入统计代码</li>
+</ul>
+</li>
+<li>instrument_next置1</li>
+</ul>
+</li>
+</ul>
+<h4 id="插桩"><a href="#插桩" class="headerlink" title="插桩"></a>插桩</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fprintf(outf, use_64bit ? trampoline_fmt_64 : trampoline_fmt_32, R(MAP_SIZE));</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>这里通过<code>fprintf()</code>将格式化字符串添加到汇编文件的相应位置</p>
+<p><code>R(MAP_SIZE)</code>即为0到MAP_SIZE之间的一个随机数。</p>
+<p>eg.trampoline_fmt_32</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">static const u8* trampoline_fmt_32 &#x3D;</span><br><span class="line"></span><br><span class="line">  &quot;\n&quot;</span><br><span class="line">  &quot;&#x2F;* --- AFL TRAMPOLINE (32-BIT) --- *&#x2F;\n&quot;</span><br><span class="line">  &quot;\n&quot;</span><br><span class="line">  &quot;.align 4\n&quot;</span><br><span class="line">  &quot;\n&quot;</span><br><span class="line">  &quot;leal -16(%%esp), %%esp\n&quot;</span><br><span class="line">  &quot;movl %%edi, 0(%%esp)\n&quot;</span><br><span class="line">  &quot;movl %%edx, 4(%%esp)\n&quot;</span><br><span class="line">  &quot;movl %%ecx, 8(%%esp)\n&quot;</span><br><span class="line">  &quot;movl %%eax, 12(%%esp)\n&quot;</span><br><span class="line">  &quot;movl $0x%08x, %%ecx\n&quot;</span><br><span class="line">  &quot;call __afl_maybe_log\n&quot;</span><br><span class="line">  &quot;movl 12(%%esp), %%eax\n&quot;</span><br><span class="line">  &quot;movl 8(%%esp), %%ecx\n&quot;</span><br><span class="line">  &quot;movl 4(%%esp), %%edx\n&quot;</span><br><span class="line">  &quot;movl 0(%%esp), %%edi\n&quot;</span><br><span class="line">  &quot;leal 16(%%esp), %%esp\n&quot;</span><br><span class="line">  &quot;\n&quot;</span><br><span class="line">  &quot;&#x2F;* --- END --- *&#x2F;\n&quot;</span><br><span class="line">  &quot;\n&quot;;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>这一段汇编代码，主要的操作是：</p>
+<ul>
+<li>保存<code>edi</code>等寄存器</li>
+<li>将<code>ecx</code>的值设置为<code>fprintf()</code>所要打印的变量内容</li>
+<li>调用方法<code>__afl_maybe_log()</code></li>
+<li>恢复寄存器</li>
+</ul>
+<p><code>__afl_maybe_log</code>是插桩代码所执行的实际内容</p>
+<h3 id="fork-server"><a href="#fork-server" class="headerlink" title="fork server"></a>fork server</h3><p>确定性 -fork- 子进程随机性</p>
+<p>插桩</p>
+<h2 id="补充知识："><a href="#补充知识：" class="headerlink" title="补充知识："></a>补充知识：</h2><h3 id="gcc-cc1"><a href="#gcc-cc1" class="headerlink" title="gcc/cc1"></a>gcc/cc1</h3><p>The <code>g++</code> is a compiler driver. It knows how to invoke the actual compiler (<code>cc1plus</code>), assembler and linker. It does <em>not</em> know how to parse or compile the sources.</p>
+<h3 id="fork"><a href="#fork" class="headerlink" title="fork()"></a>fork()</h3><p>fork函数将运行着的程序分成2个（几乎）完全一样的进程，每个进程都启动一个从代码的同一位置开始执行的线程。这两个进程中的线程继续执行，就像是两个用户同时启动了该应用程序的两个副本。</p>
+<h2 id="参考网页"><a href="#参考网页" class="headerlink" title="参考网页"></a>参考网页</h2><ul>
+<li><a href="https://xz.aliyun.com/t/4628" target="_blank" rel="noopener">https://xz.aliyun.com/t/4628</a></li>
+<li><a href="https://www.dazhuanlan.com/2020/03/04/5e5f13ab06638/" target="_blank" rel="noopener">https://www.dazhuanlan.com/2020/03/04/5e5f13ab06638/</a></li>
+<li><a href="https://rk700.github.io/2017/12/28/afl-internals/" target="_blank" rel="noopener">https://rk700.github.io/2017/12/28/afl-internals/</a></li>
+<li><a href="https://stackoverflow.com/questions/19899750/what-is-the-difference-between-gcc-g-and-cc1-cc1plus" target="_blank" rel="noopener">https://stackoverflow.com/questions/19899750/what-is-the-difference-between-gcc-g-and-cc1-cc1plus</a></li>
+<li><a href="https://baike.baidu.com/item/fork/7143171?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/fork/7143171?fr=aladdin</a></li>
+</ul>
 
       
       <!-- reward -->
@@ -168,13 +224,15 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/michelle19l/michelle19l/2020/02/14/hello-world/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/michelle19l/michelle19l/2020/04/06/AFL%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AFL/" rel="tag">AFL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%98%E6%97%AD%E8%90%8C/" rel="tag">刘旭萌</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/" rel="tag">漏洞挖掘</a></li></ul>
+
 
     </footer>
 
@@ -184,15 +242,20 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/02/19/AFL%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="article-nav-link">
+      <a href="/2020/04/06/%E6%89%98%E7%A6%8F%E7%BB%BC%E5%90%88%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/" class="article-nav-link">
         <strong class="article-nav-caption">Newer posts</strong>
         <div class="article-nav-title">
           
-            AFL的安装与使用
+            托福综合写作模板
           
         </div>
       </a>
     
+    
+      <a href="/2020/04/06/%E7%8B%AC%E7%AB%8B%E5%86%99%E4%BD%9C-2020-4/" class="article-nav-link">
+        <strong class="article-nav-caption">Older posts</strong>
+        <div class="article-nav-title">独立写作 2020-4</div>
+      </a>
     
   </nav>
 
