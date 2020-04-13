@@ -16,10 +16,10 @@ def replace_1():
 	#output_str='/images'+input("现图片路径") # eg. /漏洞测试作业一/,若在根目录下则输入/
 
 	input_str="E:\blog\hexo\source\_posts\\".split(" ")
-	output_str="/images/数据库上机L3/"
+	output_str="/images/power-designer入门/"
 
 	style="zoom：50%;"
-	input_file='E:\\blog\hexo\source\_posts\数据库上机L3.md'
+	input_file='E:\\blog\hexo\source\_posts\power-designer入门.md'
 	output_file="E:\\blog\hexo\source\_posts\output.txt"
 
 	file_data = ""
