@@ -34,6 +34,11 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export CC&#x3D;afl-clang；export CXX&#x3D;afl-clang++；</span><br><span class="line"></span><br><span class="line">test.c为待测程序代码</span><br><span class="line">afl-gcc -g -o afl_test afl_test.c</span><br><span class="line"></span><br><span class="line">对那些可以直接从stdin读取输入的目标程序来说，语法如下：</span><br><span class="line">.&#x2F;afl-fuzz -i testcase_dir -o findings_dir &#x2F;path&#x2F;to&#x2F;program […params…]</span><br><span class="line">对从文件读取输入的目标程序来说，要用“@@”，语法如下：</span><br><span class="line">.&#x2F;afl-fuzz -i testcase_dir -o findings_dir &#x2F;path&#x2F;to&#x2F;program @@</span><br></pre></td></tr></table></figure>
 
 <h1 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h1><h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;               </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">(<span class="keyword">char</span> *buf)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(buf[<span class="number">0</span>] == <span class="string">'a'</span>) n++;</span><br><span class="line">    <span class="keyword">if</span>(buf[<span class="number">1</span>] == <span class="string">'f'</span>) n++;</span><br><span class="line">    <span class="keyword">if</span>(buf[<span class="number">2</span>] == <span class="string">'l'</span>) n++;</span><br><span class="line">    <span class="keyword">if</span>(buf[<span class="number">3</span>] == <span class="string">'!'</span>) n++;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"awesome!\n"</span>);</span><br><span class="line">        raise(SIGSEGV); <span class="comment">//异常退出</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"wrong!\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    FILE* fp;</span><br><span class="line">    fp = fopen(argv[<span class="number">1</span>],<span class="string">"r"</span>);</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">100</span>];</span><br><span class="line">    fgets(buf,<span class="number">1024</span>,fp); <span class="comment">//溢出？</span></span><br><span class="line">    test(buf);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在输入文件夹（这里是fuzz_in)建立testcase文件，内容位任一可以使程序正常运行的输入</p>
+<img src="/" class="lazyload" data-src="/images/AFL工作过程分析.assets/image-20200420151036755.png"  alt="image-20200420151036755" style="zoom:67%;">
+
+
+
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">afl-gcc -g -o .&#x2F;test .&#x2F;test.c</span><br><span class="line">afl-fuzz -i fuzz_in -o fuzz_out .&#x2F;test @@</span><br></pre></td></tr></table></figure>
 
@@ -67,8 +72,8 @@
         <category>AFL</category>
       </categories>
       <tags>
-        <tag>漏洞挖掘</tag>
         <tag>AFL</tag>
+        <tag>漏洞挖掘</tag>
       </tags>
   </entry>
   <entry>
@@ -190,7 +195,7 @@
 <blockquote>
 <p>#南开大学闭馆音乐</p>
 
-    <div id="aplayer-eGhqoYaB" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
+    <div id="aplayer-iIVYuRuc" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
 </blockquote>
 <blockquote>
 <p>参考：</p>
@@ -446,9 +451,8 @@
         <category>AFL</category>
       </categories>
       <tags>
-        <tag>漏洞挖掘</tag>
         <tag>AFL</tag>
-        <tag>刘旭萌</tag>
+        <tag>漏洞挖掘</tag>
       </tags>
   </entry>
   <entry>
@@ -2987,11 +2991,11 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
         <category>AFL</category>
       </categories>
       <tags>
+        <tag>AFL</tag>
         <tag>漏洞挖掘</tag>
         <tag>linux</tag>
         <tag>工具</tag>
         <tag>模糊测试</tag>
-        <tag>AFL</tag>
       </tags>
   </entry>
   <entry>
