@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>及时复习！！！</title>
+    <title>及时复习！！！不然脑子就像是一个点哪都是404的网站</title>
     <url>/2020/04/30/%E5%86%85%E5%AE%B9%E8%BF%81%E7%A7%BB/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>大一时在“作业部落”上记录学习内容，今天回去翻了一下，发现好多内容都没有印象了，现逐步迁移至本站点，以作复习。内容主要为作业报告和CTF学习，内容较为零散，不建议系统学习参考使用</p>
 <p>刚刚有人问我都会什么，我真的想不起来我大一学过这些，场面一度十分尴尬</p>
-<p>也希望各位可以时常复习，也好好反省一下自己大二这半年都在干什么</p>
+<p>好好反省一下自己大二这半年都在干什么</p>
+<p>也希望各位可以及时复习</p>
 <img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200430142936841.png"  alt="image-20200430142936841" style="zoom:23%;">]]></content>
       <tags>
         <tag>notice</tag>
@@ -180,6 +181,156 @@
         <tag>python</tag>
         <tag>机器学习</tag>
         <tag>Lightgbm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GET和POST的区别</title>
+    <url>/2020/04/30/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th align="center">GET</th>
+<th align="center">POST</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">书签</td>
+<td align="center">可收藏为书签</td>
+<td align="center">不可收藏为书签</td>
+</tr>
+<tr>
+<td align="center">缓存</td>
+<td align="center">能被缓存</td>
+<td align="center">不能缓存</td>
+</tr>
+<tr>
+<td align="center">编码类型</td>
+<td align="center">application/x-www-form-urlenconded</td>
+<td align="center">application/x-www-form-urlencoded或multipart/form-data,为二进制数据使用多重编码</td>
+</tr>
+<tr>
+<td align="center">历史</td>
+<td align="center">参数保留在浏览器历史中</td>
+<td align="center">参数不会保留在浏览器历史中</td>
+</tr>
+<tr>
+<td align="center">对数据长度的限制</td>
+<td align="center">是的，当发送数据时，GET方法向URL添加数据；URL的长度是受限制的（最大长度是2048个字符）</td>
+<td align="center">无限制</td>
+</tr>
+<tr>
+<td align="center">对数据类型的限制</td>
+<td align="center">只允许ASCII字符</td>
+<td align="center">没有限制，也允许二进制数据</td>
+</tr>
+<tr>
+<td align="center">安全性</td>
+<td align="center">与POST相比，GET的安全性较差，因为发送的数据是URL的一部分。在发送密码或其他敏感信息时绝对不要使用GET！</td>
+<td align="center">POST比GET更安全，因为参数不会保存在浏览器历史或web服务器日志中</td>
+</tr>
+<tr>
+<td align="center">可见性</td>
+<td align="center">数据在URL中对所有人都是可见的</td>
+<td align="center">数据不会显示在URL中</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt作业一：计算器</title>
+    <url>/2020/04/30/Qt%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="ui界面对应的ui-h文件的作用："><a href="#ui界面对应的ui-h文件的作用：" class="headerlink" title="ui界面对应的ui_*.h文件的作用："></a>ui界面对应的ui_*.h文件的作用：</h2><p>ui_.h是ui界面的代码化表达，<br>即用非Qt软件打开ui文件时会显示ui_*.h文件，用代码描述ui界面内容</p>
+<hr>
+<h2 id="计算器程序："><a href="#计算器程序：" class="headerlink" title="计算器程序："></a>计算器程序：</h2><h3 id="1-通过Qt-designer设计界面："><a href="#1-通过Qt-designer设计界面：" class="headerlink" title="1.通过Qt designer设计界面："></a>1.通过Qt designer设计界面：</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/exg4t6ijsh7pnvnj0rpwgmm8/image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png"  alt="image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png-236.7kB"></p>
+<h4 id="出现的问题和解决方法："><a href="#出现的问题和解决方法：" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>窗口对象名（QWidget类）要和对窗口进行操作的父类类名一致，否则会提示“引用了不完整的类型”</li>
+<li>注意修改按钮名称以便下一步</li>
+</ul>
+<h3 id="2-使用QSignalMapper："><a href="#2-使用QSignalMapper：" class="headerlink" title="2.使用QSignalMapper："></a>2.使用QSignalMapper：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">signalmapper&#x3D;new QSignalMapper (this);</span><br><span class="line">QObjectList list &#x3D;this-&gt;children();&#x2F;&#x2F;list为全部按钮</span><br><span class="line">foreach(QObject *oc,list)&#x2F;&#x2F;遍历list中的按钮</span><br><span class="line">&#123;</span><br><span class="line">    if(oc-&gt;objectName()!&#x3D;&quot;gridLayout&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;display&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;&quot;)&#x2F;&#x2F;排除不需要链接槽函数clicked()的多余按钮</span><br><span class="line">    &#123;</span><br><span class="line">        QPushButton *pushbutton&#x3D;qobject_cast&lt;QPushButton *&gt;(oc);&#x2F;&#x2F;利用qobject——cast进行类型转换</span><br><span class="line">        connect(pushbutton,SIGNAL(clicked()),signalmapper,SLOT(map()));&#x2F;&#x2F;将信号链接到signnalmapper上</span><br><span class="line">        signalmapper-&gt;setMapping(pushbutton,pushbutton-&gt;text());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">connect(signalmapper,SIGNAL(mapped(QString)),this,SLOT(clicked(QString)));&#x2F;&#x2F;将signalmapper连接至槽函数clicked（QString）上，即实现将所需按钮链接至一个槽函数</span><br></pre></td></tr></table></figure>
+
+<h4 id="出现的问题和解决方法：-1"><a href="#出现的问题和解决方法：-1" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>理解QSignalMapper的工作原理和方法：<br>  qsignalmapper:相当于一个信号转发器，将多个按钮信号连接到一个槽函数上（详见代码注释）<br>  引入QSignalMapper头文件<br>  还有一种获取按钮列表的方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QString buttontext &#x3D; &quot;btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10&quot;; </span><br><span class="line">QStringList texts &#x3D; buttontext.split(&quot;,&quot;);</span><br></pre></td></tr></table></figure>
+也可利用按钮名字的共性筛选出所需要的按钮：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(oc-&gt;nbjectName.starswith(&quot;***&quot;)</span><br></pre></td></tr></table></figure></li>
+<li>最初设计ui时将所有按钮放到了gridlayout下，结果到至按钮无法访问，将按钮挪出gridlayout，若需使按钮排列整齐，designer界面上方有辅助排列功能按键。</li>
+</ul>
+<p>###3.计算功能的实现：<br>头文件声明：</p>
+<ul>
+<li>node类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    class node</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    node();</span><br><span class="line">    double data;&#x2F;&#x2F;字符串转成double后存储在data中</span><br><span class="line">    QString sign;&#x2F;&#x2F;如果时运算符节点，用sign记录运算符</span><br><span class="line">    QString nums;&#x2F;&#x2F;以字符串形式存储double类型的数据</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>widget类：//计算器类</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/0rjzz44tj1tybvzvwublr5p9/image_1den8jsp2cvi120b1183p941e3tm.png"  alt="image_1den8jsp2cvi120b1183p941e3tm.png-194.6kB"></p>
+<ul>
+<li>将按钮上的内容输入到字符串中：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::clicked(QString ch)</span><br><span class="line">&#123;</span><br><span class="line">    if(ch&#x3D;&#x3D;&quot;sqrt&quot;)</span><br><span class="line">        opt.append(&quot;k&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;square&quot;)</span><br><span class="line">        opt.append(&quot;p&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;rev&quot;)</span><br><span class="line">        opt.append(&quot;d&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;neg&quot;)</span><br><span class="line">        opt.append(&quot;f&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;&#x3D;&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        opt.append(&quot;&#x3D;\0&quot;);</span><br><span class="line">        cal();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        opt.append(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    ui-&gt;display-&gt;setPlainText(opt);&#x2F;&#x2F;显示输入内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将字符串转成链表<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/3bzdgoa177er00batvrsitu8/image_1den9fkk8r1mvuu2cn130g14c21g.png"  alt="image_1den9fkk8r1mvuu2cn130g14c21g.png-198kB"><ul>
+<li>QString 转 double：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t-&gt;data&#x3D;t-&gt;nums.toDouble;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>实现节点与节点的计算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::calculate(node*a,node*b,node*c)</span><br><span class="line">&#123;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;+&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data + c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;-&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data - c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;*&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data * c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;&#x2F;&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data &#x2F; c-&gt;data;</span><br><span class="line">&#x2F;&#x2F;节点合并</span><br><span class="line">    if (tail !&#x3D; c)</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;c-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;nullptr;</span><br><span class="line">        tail&#x3D;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::  calculate(node*a,node*b)</span><br><span class="line">&#123;</span><br><span class="line">   if (b-&gt;sign &#x3D;&#x3D; &#39;k&#39;)</span><br><span class="line">        a-&gt;data &#x3D; sqrt(a-&gt;data);</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;p&#39;)</span><br><span class="line">        a-&gt;data *&#x3D; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;d&#39;)</span><br><span class="line">        a-&gt;data &#x3D; 1 &#x2F; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;f&#39;)</span><br><span class="line">        a-&gt;data &#x3D; -a-&gt;data;</span><br><span class="line">    if(b!&#x3D;tail)</span><br><span class="line">        a-&gt;next &#x3D; b-&gt;next;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next &#x3D; nullptr;</span><br><span class="line">        tail &#x3D; a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>计算样例<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/69dz89gzml1ewgor9s4az111/image_1deo6udbc13io132bduhi37lcs1c.png"  alt="image_1deo6udbc13io132bduhi37lcs1c.png-194.7kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/hzc5rc84go6osgaubhe4hpkk/image_1deo711q21576823lu110ue3l81p.png"  alt="image_1deo711q21576823lu110ue3l81p.png-198.2kB"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>作业</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt作业二：画图板</title>
+    <url>/2020/04/30/Qt%E4%BD%9C%E4%B8%9A%E4%BA%8C%E2%80%94%E2%80%94%E7%94%BB%E5%9B%BE%E6%9D%BF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、界面设计"><a href="#一、界面设计" class="headerlink" title="一、界面设计"></a>一、界面设计</h3><p>利用designer设计menubar和toolbar<br>遇到的问题和解决方法：<br>toolbar和menubar重叠，拖动toolbar部件至屏幕右侧即可。<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/d8i77lp27ad7u5mdfth4ivte/image_1df8880jt10m8g53v041efd6j29.png"  alt="image_1df8880jt10m8g53v041efd6j29.png-246.9kB"><br>menubar中可以添加子选项<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/mbukua86v9pv56obgta3og2o/image_1df88esf0le118bvdh91a0b130d9.png"  alt="image_1df88esf0le118bvdh91a0b130d9.png-256.2kB"></p>
+<hr>
+<h3 id="二、paint类属性"><a href="#二、paint类属性" class="headerlink" title="二、paint类属性"></a>二、paint类属性</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QPixmap *pix;&#x2F;&#x2F;设置画图背景</span><br><span class="line">QPoint start;&#x2F;&#x2F;鼠标按下时的坐标</span><br><span class="line">QPoint end;&#x2F;&#x2F;鼠标抬起时的坐标</span><br><span class="line">int status;&#x2F;&#x2F;画图状态，1：直线，2：矩形，3：椭圆，4：自由绘图</span><br><span class="line">QPen pen;&#x2F;&#x2F;设置线条的属性</span><br><span class="line">QBrush brush;&#x2F;&#x2F;设置填充属性</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="三、paint类protected成员"><a href="#三、paint类protected成员" class="headerlink" title="三、paint类protected成员"></a>三、paint类protected成员</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected:</span><br><span class="line">    void mousePressEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标按下事件</span><br><span class="line">    void mouseMoveEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标移动事件</span><br><span class="line">    void mouseReleaseEvent(QMouseEvent *);&#x2F;&#x2F;鼠标释放事件</span><br><span class="line">    void paintEvent(QPaintEvent*);&#x2F;&#x2F;绘画事件</span><br></pre></td></tr></table></figure>
+<p>函数定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::mousePressEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    start&#x3D;event-&gt;pos();&#x2F;&#x2F;获得鼠标点击坐标</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::mouseReleaseEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    end&#x3D;event-&gt;pos();</span><br><span class="line">    qDebug()&lt;&lt;start&lt;&lt;endl&lt;&lt;end&lt;&lt;endl;</span><br><span class="line">    QPainter *painter&#x3D;new QPainter(pix);</span><br><span class="line">    painter-&gt;setPen(pen);&#x2F;&#x2F;设置线条属性</span><br><span class="line">    painter-&gt;setBrush(brush);&#x2F;&#x2F;设置笔刷属性</span><br><span class="line">    switch (status) &#123;</span><br><span class="line">    case 1:&#x2F;&#x2F;画直线</span><br><span class="line">    &#123;</span><br><span class="line">        painter-&gt;drawLine(start,end);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    case 2:&#x2F;&#x2F;画矩形</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawRect(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    case 3:&#x2F;&#x2F;画椭圆</span><br><span class="line">    &#123;</span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawEllipse(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this-&gt;update();</span><br><span class="line">    delete painter;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::paintEvent(QPaintEvent *)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  QPainter painter(this);</span><br><span class="line">  painter.drawPixmap(QPoint(0, 0), *pix);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint:: mouseMoveEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    if(status&#x3D;&#x3D;4)&#x2F;&#x2F;绘制鼠标移动轨迹</span><br><span class="line">    &#123;</span><br><span class="line">        QPainter* painter&#x3D;new QPainter(pix);</span><br><span class="line">        end&#x3D;event-&gt;pos();</span><br><span class="line">        painter-&gt;setPen(pen);</span><br><span class="line">        painter-&gt;drawLine(start,end);&#x2F;&#x2F;每一次移动画直线</span><br><span class="line">        this-&gt;update();</span><br><span class="line">        start&#x3D;end;&#x2F;&#x2F;下一次绘制的开始点是这次的结束点</span><br><span class="line">        delete painter;&#x2F;&#x2F;若无delete则只可以绘制一次</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法："><a href="#遇到的问题和解决方法：" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><p>painter在完成每次绘制时需delete，否则无法进行下一次绘制</p>
+<hr>
+<h3 id="四、构造函数"><a href="#四、构造函数" class="headerlink" title="四、构造函数"></a>四、构造函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">paint::paint(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::paint)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置画布</span><br><span class="line">    pix&#x3D;new QPixmap(this-&gt;size()*5);</span><br><span class="line">    pix-&gt;fill(Qt::white);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置初使属性</span><br><span class="line">    brush.setColor(Qt::NoBrush);</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;连接信号和槽</span><br><span class="line">    connect(ui-&gt;line,SIGNAL(triggered(bool)),this,SLOT(status_line()));</span><br><span class="line">    connect(ui-&gt;rect,SIGNAL(triggered(bool)),this,SLOT(status_rect()));</span><br><span class="line">    connect(ui-&gt;ellipse,SIGNAL(triggered(bool)),this,SLOT(status_ellipse()));</span><br><span class="line">    connect(ui-&gt;actionfree,SIGNAL(triggered(bool)),this,SLOT(status_free()));</span><br><span class="line">    connect(ui-&gt;actionred,SIGNAL(triggered(bool)),this,SLOT(change_color_red()));</span><br><span class="line">    connect(ui-&gt;actionblue,SIGNAL(triggered(bool)),this,SLOT(change_color_blue()));</span><br><span class="line">    connect(ui-&gt;actiongreen,SIGNAL(triggered(bool)),this,SLOT(change_color_green()));</span><br><span class="line">    connect(ui-&gt;actionblack,SIGNAL(triggered(bool)),this,SLOT(change_color_black()));</span><br><span class="line">    connect(ui-&gt;action2,SIGNAL(triggered(bool)),this,SLOT(penwidth2()));</span><br><span class="line">    connect(ui-&gt;action5,SIGNAL(triggered(bool)),this,SLOT(penwidth5()));</span><br><span class="line">    connect(ui-&gt;action8,SIGNAL(triggered(bool)),this,SLOT(penwidth8()));</span><br><span class="line">    connect(ui-&gt;action10,SIGNAL(triggered(bool)),this,SLOT(penwidth10()));</span><br><span class="line">    connect(ui-&gt;solid_line,SIGNAL(triggered(bool)),this,SLOT(set_solid()));</span><br><span class="line">    connect(ui-&gt;dash_line,SIGNAL(triggered(bool)),this,SLOT(set_dash()));</span><br><span class="line">    connect(ui-&gt;dash_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdot()));</span><br><span class="line">    connect(ui-&gt;dash_dot_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdotdot()));</span><br><span class="line">    connect(ui-&gt;dot_line,SIGNAL(triggered(bool)),this,SLOT(set_dot()));</span><br><span class="line">    connect(ui-&gt;fred,SIGNAL(triggered(bool)),this,SLOT(set_fill_red()));</span><br><span class="line">    connect(ui-&gt;fblue,SIGNAL(triggered(bool)),this,SLOT(set_fill_blue()));</span><br><span class="line">    connect(ui-&gt;fblack,SIGNAL(triggered(bool)),this,SLOT(set_fill_black()));</span><br><span class="line">    connect(ui-&gt;fgreen,SIGNAL(triggered(bool)),this,SLOT(set_fill_green()));</span><br><span class="line">    connect(ui-&gt;solid_pattern,SIGNAL(triggered(bool)),this,SLOT(set_solid_pattern()));</span><br><span class="line">    connect(ui-&gt;dense_pattern,SIGNAL(triggered(bool)),this,SLOT(set_dense_pattern()));</span><br><span class="line">    connect(ui-&gt;none,SIGNAL(triggered(bool)),this,SLOT(set_none_pattern()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法：-1"><a href="#遇到的问题和解决方法：-1" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><ul>
+<li>可以获得鼠标事件坐标，但无法绘制，解决方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pix&#x3D;new QPixmap(this-&gt;size()*5);&#x2F;&#x2F;结构函数</span><br><span class="line">QPainter *painter&#x3D;new QPainter(pix);&#x2F;&#x2F;绘制函数</span><br></pre></td></tr></table></figure></li>
+<li>点击menubar中label发出的信号槽函数无法接收到：<br>原connect写法：<br><code>connect(ui-&gt;line,SIGNAL(clicked()),this,SLOT(status_line()));</code><br>将<code>clicked()</code>改为<code>triggered(bool)</code>即可</li>
+</ul>
+<hr>
+<h3 id="五、槽函数："><a href="#五、槽函数：" class="headerlink" title="五、槽函数："></a>五、槽函数：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public slots:</span><br><span class="line">    &#x2F;&#x2F;设置绘制形状</span><br><span class="line">    void status_line();</span><br><span class="line">    void status_rect();</span><br><span class="line">    void status_ellipse();</span><br><span class="line">    void status_free();&#x2F;&#x2F;绘制鼠标轨迹</span><br><span class="line">    &#x2F;&#x2F;设置线条颜色</span><br><span class="line">    void change_color_blue();</span><br><span class="line">    void change_color_red();</span><br><span class="line">    void change_color_green();</span><br><span class="line">    void change_color_black();</span><br><span class="line">    &#x2F;&#x2F;设置线条宽度</span><br><span class="line">    void penwidth2();</span><br><span class="line">    void penwidth5();</span><br><span class="line">    void penwidth8();</span><br><span class="line">    void penwidth10();</span><br><span class="line">    &#x2F;&#x2F;设置线条样式</span><br><span class="line">    void set_solid();</span><br><span class="line">    void set_dash();</span><br><span class="line">    void set_dot();</span><br><span class="line">    void set_dashdot();</span><br><span class="line">    void set_dashdotdot();</span><br><span class="line">    &#x2F;&#x2F;设置填充颜色</span><br><span class="line">    void set_fill_red();</span><br><span class="line">    void set_fill_blue();</span><br><span class="line">    void set_fill_green();</span><br><span class="line">    void set_fill_black();</span><br><span class="line">    &#x2F;&#x2F;设置填充样式</span><br><span class="line">    void set_solid_pattern();</span><br><span class="line">    void set_dense_pattern();</span><br><span class="line">    void set_none_pattern();</span><br></pre></td></tr></table></figure>
+<h4 id="槽函数定义示例："><a href="#槽函数定义示例：" class="headerlink" title="槽函数定义示例："></a>槽函数定义示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::status_line()</span><br><span class="line">&#123;</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::change_color_red()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setColor(Qt::red);</span><br><span class="line">    &#x2F;&#x2F;注意书写格式，不可以写为pen.setColor(&quot;red&quot;);否则无法传入颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::penwidth5()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setWidth(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dash()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setStyle(Qt::DashLine);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_fill_blue()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setColor(Qt::blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dense_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::Dense7Pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_none_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::NoBrush);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法"><a href="#遇到的问题和解决方法" class="headerlink" title="遇到的问题和解决方法"></a>遇到的问题和解决方法</h4><ul>
+<li>信号和槽函数无法连接：<ul>
+<li>检查信号和发送信号的来源是否对应</li>
+<li>检查信号和槽的拼写是否准确</li>
+<li>利用qDebug()进行调试</li>
+</ul>
+</li>
+<li>brush必须设置填充样式，否则无法填充</li>
+</ul>
+<hr>
+<h3 id="六、成果展示"><a href="#六、成果展示" class="headerlink" title="六、成果展示"></a>六、成果展示</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/v86upj0wwx905xyzftjgvh3j/image_1df8akslg1oo5li7b5jp314rb16.png"  alt="image_1df8akslg1oo5li7b5jp314rb16.png-79.6kB"></p>
+]]></content>
+      <categories>
+        <category>作业</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
       </tags>
   </entry>
   <entry>
