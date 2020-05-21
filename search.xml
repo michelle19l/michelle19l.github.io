@@ -1,6 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>虚拟机复制后无法连网</title>
+    <url>/2020/05/20/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%8D%E5%88%B6%E5%90%8E%E6%97%A0%E6%B3%95%E8%BF%9E%E7%BD%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>虚拟机设置-&gt;移除网络适配器-&gt;添加网络适配器</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/虚拟机复制后无法连网.assets/image-20200520183137820.png"  alt="image-20200520183137820" style="zoom: 33%;">]]></content>
+      <categories>
+        <category>问题解决</category>
+      </categories>
+      <tags>
+        <tag>虚拟机</tag>
+        <tag>kali linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kali 基础命令</title>
+    <url>/2020/05/19/KaliLinux%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><table>
+<thead>
+<tr>
+<th>Kali 基础命令</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ls</td>
+<td>显示文件或目录</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td>touch</td>
+<td>创建空目录</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>查看空文件</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>拷贝</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>移动或重命名</td>
+</tr>
+<tr>
+<td>find</td>
+<td>在文件系统中搜索某文件</td>
+</tr>
+<tr>
+<td>stat</td>
+<td>显示指定文件的详细信息<br>比ls更详细</td>
+</tr>
+<tr>
+<td>who</td>
+<td>显示在线登录用户</td>
+</tr>
+<tr>
+<td>whoami</td>
+<td>显示当前操作用户</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>显示主机名</td>
+</tr>
+<tr>
+<td>unanme</td>
+<td>显示系统信息</td>
+</tr>
+<tr>
+<td>top</td>
+<td>动态显示当前耗费资源最多进程信息</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>显示瞬间进程状态<code>ps -aux</code></td>
+</tr>
+<tr>
+<td>du</td>
+<td>查看目录大小 <code>du -h /home</code>带有单位显示目录信息</td>
+</tr>
+<tr>
+<td>df</td>
+<td>查看磁盘大小<code>df -h</code>带有单位显示磁盘信息</td>
+</tr>
+<tr>
+<td>ifconfig</td>
+<td>查看网络情况</td>
+</tr>
+<tr>
+<td>ping</td>
+<td>测试网络连通</td>
+</tr>
+<tr>
+<td>netstat</td>
+<td>显示网络状态信息</td>
+</tr>
+<tr>
+<td>man</td>
+<td>查看命令使用方法,如<code>man ls</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>清屏</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>杀死进程,可以先用<code>ps</code>或<code>top</code>命令查看进程的id,然后再用kill命令杀死进程</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>信安</category>
+      </categories>
+      <tags>
+        <tag>漏洞测试</tag>
+        <tag>Kali Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业七</title>
+    <url>/2020/05/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>模糊测试和Fuzzer编写</p>
+<h2 id="在CP-VC6生成课本示例6-1的案例（RELEASE模式）"><a href="#在CP-VC6生成课本示例6-1的案例（RELEASE模式）" class="headerlink" title="在CP VC6生成课本示例6-1的案例（RELEASE模式）"></a>在CP VC6生成课本示例6-1的案例（RELEASE模式）</h2><p>注意修改char des[5]为char des[20]: </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//课本示例6-1</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeoverflow</span><span class="params">(<span class="keyword">char</span>* b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> des[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(des,b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strstr</span>(argv[<span class="number">1</span>],<span class="string">"overflow"</span>)!=<span class="number">0</span>)<span class="comment">// strstr(str1,str2) 函数用于判断字符串str2是否是str1的子串。</span></span><br><span class="line">        	makeoverflow(argv[<span class="number">2</span>]);    <span class="comment">// 在cmd中运行，arg[0]为可执行文件名 </span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">        	<span class="built_in">printf</span>(<span class="string">"usage:findoverflow XXXX\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成程序的Release版本</p>
+ <img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业七/image-20200504180709347.png"  alt="image-20200504180709347" style="zoom:50%;">
+
+<h2 id="1-通过IDA此法分析的手段来实现漏洞挖掘"><a href="#1-通过IDA此法分析的手段来实现漏洞挖掘" class="headerlink" title="(1)通过IDA此法分析的手段来实现漏洞挖掘"></a>(1)通过IDA此法分析的手段来实现漏洞挖掘</h2><h3 id="1-使用逆向分析工具IDA，得到反汇编后的执行代码"><a href="#1-使用逆向分析工具IDA，得到反汇编后的执行代码" class="headerlink" title="1. 使用逆向分析工具IDA，得到反汇编后的执行代码"></a>1. 使用逆向分析工具IDA，得到反汇编后的执行代码</h3><h4 id="1-利用IDA打开所生成的EXE文件，view-gt-subviews-gt-proximity-browser"><a href="#1-利用IDA打开所生成的EXE文件，view-gt-subviews-gt-proximity-browser" class="headerlink" title="1)  利用IDA打开所生成的EXE文件，view-&gt;subviews-&gt;proximity browser"></a>1)  利用IDA打开所生成的EXE文件，<code>view</code>-&gt;<code>subviews</code>-&gt;<code>proximity browser</code></h4><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/image-20200507010506796.png"  alt="image-20200507010506796"></p>
+<p>   通过该视图，可见主要有一个<code>main</code>函数，在该函数中可能有跳转，调用<code>sub_401000</code>函数、<code>_strstr</code>函数和<code>printf</code>函数，此外还定义了两个字符串常量<code>aUsageFindoverf</code>、<code>aOverflow</code></p>
+<h4 id="2-右键点击aUsageFindoverflow-gt-text-view，可以看到如下代码"><a href="#2-右键点击aUsageFindoverflow-gt-text-view，可以看到如下代码" class="headerlink" title="2) 右键点击aUsageFindoverflow-&gt;text view，可以看到如下代码"></a>2) 右键点击<code>aUsageFindoverflow</code>-&gt;text view，可以看到如下代码</h4>   <img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业七/image-20200504174255233.png"  alt="image-20200504174255233" style="zoom:80%;">
+
+<h4 id="3-右键点击-main-gt-graph-view-查看main函数的汇编代码块"><a href="#3-右键点击-main-gt-graph-view-查看main函数的汇编代码块" class="headerlink" title="3) 右键点击_main-&gt;graph view,查看main函数的汇编代码块"></a>3) 右键点击<code>_main</code>-&gt;<code>graph view</code>,查看<code>main</code>函数的汇编代码块</h4>   <img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业七/image-20200507010605173.png"  alt="image-20200507010605173" style="zoom:80%;">
+
+<h3 id="2-定位敏感函数，也就是容易出现溢出的函数"><a href="#2-定位敏感函数，也就是容易出现溢出的函数" class="headerlink" title="2. 定位敏感函数，也就是容易出现溢出的函数"></a>2. 定位敏感函数，也就是容易出现溢出的函数</h3><blockquote>
+<p>==arg_x表示函数参数x的位置，var_8表示局部变量的位置==<br>==[]是内存寻址，[x+arg_x]表示arg_x的值==</p>
+<p>==realease版本简洁、执行效率先==<br>==debug版本严格按照语法结构，增加了很多方便调试的附加信息==</p>
+</blockquote>
+<ul>
+<li><p>在主函数中，<code>printf</code>函数可能与==字符串格式化漏洞==有关，但通过分析主函数的汇编代码，可以看出该函数并无任何格式化参数存在</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业七/image-20200504181201589.png"  alt="image-20200504181201589" style="zoom:80%;">
+
+<p>有格式化字符串的<code>printf</code>函数：<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业七/image-20200504182759080.png"  alt="image-20200504182759080" style="zoom:80%;"></p>
+</li>
+<li><p>敏感函数可能存在于<code>sub_401000</code>函数中</p>
+<p>==为什么var_14是14？，和char des[20]是否有关？？？==</p>
+</li>
+</ul>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业七/image-20200507000054484.png"  alt="image-20200507000054484" style="zoom: 67%;">
+
+<p>  sub40100函数的代码大致结构如下</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">sub_40100(arg_0)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">char</span> var_14[<span class="number">14</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(var_14,arg_0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-判断是否存在溢出"><a href="#3-判断是否存在溢出" class="headerlink" title="3. 判断是否存在溢出"></a>3. 判断是否存在溢出</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 为方便观察，在程序中加入标志性符号</span></span><br><span class="line"><span class="comment">//课本示例6-1</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeoverflow</span><span class="params">(<span class="keyword">char</span>* b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> des[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(des,b);</span><br><span class="line">	<span class="built_in">printf</span>(des);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,argc);</span><br><span class="line">		<span class="built_in">printf</span>(argv[<span class="number">0</span>]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		<span class="built_in">printf</span>(argv[<span class="number">1</span>]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		<span class="built_in">printf</span>(argv[<span class="number">2</span>]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n\n"</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strstr</span>(argv[<span class="number">1</span>],<span class="string">"overflow"</span>)!=<span class="number">0</span>)<span class="comment">// strstr(str1,str2) 函数用于判断字符串str2是否是str1的子串。</span></span><br><span class="line">        	makeoverflow(argv[<span class="number">2</span>]);     </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        	<span class="built_in">printf</span>(<span class="string">"usage:findoverflow XXXX\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试程序：</p>
+<ol>
+<li><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/image-20200507002436762.png"  alt="image-20200507002436762"></p>
+</li>
+<li><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业七/image-20200507001833966.png"  alt="image-20200507001833966" style="zoom:100%;">
+</li>
+<li><p>==存在溢出问题==</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/image-20200507003101236.png"  alt="image-20200507003101236"></p>
+</li>
+</ol>
+<h2 id="2-尝试自己写一个Fuzzer程序，实现对此程序的漏洞挖掘，可以在输入构造的时候以overflow为基本输入"><a href="#2-尝试自己写一个Fuzzer程序，实现对此程序的漏洞挖掘，可以在输入构造的时候以overflow为基本输入" class="headerlink" title="(2)尝试自己写一个Fuzzer程序，实现对此程序的漏洞挖掘，可以在输入构造的时候以overflow为基本输入"></a>(2)尝试自己写一个Fuzzer程序，实现对此程序的漏洞挖掘，可以在输入构造的时候以<code>overflow</code>为基本输入</h2><h3 id="1-样例程序学习"><a href="#1-样例程序学习" class="headerlink" title="1. 样例程序学习"></a>1. 样例程序学习</h3><h4 id="1-memset和memcpy"><a href="#1-memset和memcpy" class="headerlink" title="1) memset和memcpy"></a>1) memset和memcpy</h4><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/image-20200507012838037.png"  alt="image-20200507012838037"></p>
+<h4 id="2-样例Fuzzer程序"><a href="#2-样例Fuzzer程序" class="headerlink" title="2) 样例Fuzzer程序"></a>2) 样例Fuzzer程序</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> * testbuf=<span class="string">""</span>;</span><br><span class="line">	<span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">	<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="number">1024</span>);</span><br><span class="line">	<span class="keyword">if</span>(argc&gt;<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&lt;<span class="number">50</span>;i+=<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			testbuf=<span class="keyword">new</span> <span class="keyword">char</span>[i];</span><br><span class="line">			<span class="built_in">memset</span>(testbuf,<span class="number">0</span>,i);</span><br><span class="line">			<span class="built_in">memset</span>(testbuf,<span class="string">'c'</span>,i);</span><br><span class="line">			<span class="built_in">memcpy</span>(buf,testbuf,i);</span><br><span class="line">			<span class="comment">// printf("%s\n",buf);</span></span><br><span class="line">			ShellExecute(<span class="literal">NULL</span>,<span class="string">"open"</span>,argv[<span class="number">1</span>],buf,<span class="literal">NULL</span>,SW_NORMAL);</span><br><span class="line">			<span class="keyword">delete</span> testbuf;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Fuzzing X 1\n其中X为被测试目标程序所在路径，1 表示开始循环递增暴力测试\n"</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Fuzzer程序需求分析"><a href="#2-Fuzzer程序需求分析" class="headerlink" title="2. Fuzzer程序需求分析"></a>2. Fuzzer程序需求分析</h3><ol>
+<li>需要提供被测目标程序所在路径</li>
+<li>argv[1]=”findoverflow “+待生成字符串</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> * testbuf=<span class="string">""</span>;</span><br><span class="line">	<span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">	<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="number">1024</span>);</span><br><span class="line">	<span class="keyword">char</span> a[]=<span class="string">"findoverflow "</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&lt;<span class="number">50</span>;i+=<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			testbuf=<span class="keyword">new</span> <span class="keyword">char</span>[i];</span><br><span class="line">			<span class="built_in">memset</span>(testbuf,<span class="number">0</span>,i);</span><br><span class="line">			<span class="built_in">memset</span>(testbuf,<span class="string">'c'</span>,i);</span><br><span class="line">			<span class="built_in">memcpy</span>(buf,a,<span class="number">13</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i+<span class="number">13</span>;j++)</span><br><span class="line">				buf[j+<span class="number">13</span>]=testbuf[j];</span><br><span class="line">			buf[i+<span class="number">13</span>]=<span class="number">0</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,buf);</span><br><span class="line">			<span class="keyword">delete</span> testbuf;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/image-20200507015547798.png"  alt="image-20200507015547798"></p>
+<h3 id="3-Fuzzer程序"><a href="#3-Fuzzer程序" class="headerlink" title="3. Fuzzer程序"></a>3. Fuzzer程序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> * testbuf=<span class="string">""</span>;</span><br><span class="line">	<span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">	<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="number">1024</span>);</span><br><span class="line">	<span class="keyword">char</span> a[]=<span class="string">"findoverflow "</span>;</span><br><span class="line">	<span class="keyword">if</span>(argc&gt;<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&lt;<span class="number">50</span>;i+=<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			testbuf=<span class="keyword">new</span> <span class="keyword">char</span>[i];</span><br><span class="line">			<span class="built_in">memset</span>(testbuf,<span class="number">0</span>,i);</span><br><span class="line">			<span class="built_in">memset</span>(testbuf,<span class="string">'c'</span>,i);</span><br><span class="line">			<span class="built_in">memcpy</span>(buf,a,<span class="number">13</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i+<span class="number">13</span>;j++)</span><br><span class="line">				buf[j+<span class="number">13</span>]=testbuf[j];</span><br><span class="line">			buf[i+<span class="number">13</span>]=<span class="number">0</span>;</span><br><span class="line">			<span class="comment">//printf("%s\n",buf);</span></span><br><span class="line">			ShellExecute(<span class="literal">NULL</span>,<span class="string">"open"</span>,argv[<span class="number">1</span>],buf,<span class="literal">NULL</span>,SW_NORMAL);</span><br><span class="line">			<span class="keyword">delete</span> testbuf;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Fuzzing X 1\n其中X为被测试目标程序所在路径，1 表示开始循环递增暴力测试\n"</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/image-20200507020421987.png"  alt="image-20200507020421987"></p>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>模糊测试</tag>
+        <tag>漏洞测试</tag>
+        <tag>Fuzzer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业六</title>
+    <url>/2020/05/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Shellcode编写</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请在XP VC6生成课本示例5-1的案例（DEBUG模式），通过修改reg.txt文件，址入shellcode。Shellcode的内容与课本一致。撰写实验报告。</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REGCODE <span class="meta-string">"12345678"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">verify</span><span class="params">(<span class="keyword">char</span>* code)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> flag;</span><br><span class="line">	<span class="keyword">char</span> <span class="built_in">buffer</span>[<span class="number">44</span>];</span><br><span class="line">	flag=<span class="built_in">strcmp</span>(REGCODE,code);	# 若str1=str2，则返回零</span><br><span class="line">	<span class="built_in">strcpy</span>(<span class="built_in">buffer</span>,code);</span><br><span class="line">	<span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> vFlag=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> regcode[<span class="number">1024</span>];</span><br><span class="line">	FILE * fp;</span><br><span class="line">	LoadLibrary(<span class="string">"user32.dll"</span>);</span><br><span class="line">	<span class="keyword">if</span>(!(fp=fopen(<span class="string">"reg.txt"</span>,<span class="string">"rw+"</span>)))</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">fscanf</span>(fp,<span class="string">"%s"</span>,regcode);</span><br><span class="line">	vFlag=verify(regcode);</span><br><span class="line">	<span class="keyword">if</span>(vFlag)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"wrong regcode!\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"passed!\n"</span>);</span><br><span class="line">	fclose(fp);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="一、程序正常运行"><a href="#一、程序正常运行" class="headerlink" title="一、程序正常运行"></a>一、程序正常运行</h3><ol>
+<li><code>regcode=&quot;12341234&quot;</code><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417171458877.png"  alt="image-20200417171458877"></li>
+<li><code>regcode=&quot;12345678&quot;</code><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417171608189.png"  alt="image-20200417171608189"></li>
+</ol>
+<h3 id="二、弹出”passed-”"><a href="#二、弹出”passed-”" class="headerlink" title="二、弹出”passed!”"></a>二、弹出”passed!”</h3><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417154118122.png"  alt="image-20200417154118122" style="zoom: 50%;">
+
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>当<code>vFlag!=1</code>时程序跳转到<code>passed</code>,所以需要使<code>vFlag==0</code>。函数Verify的栈帧中，<code>buffer</code>对应44个字节，所以只需要利用<code>UltraEdit</code>在<code>reg.txt</code>中写入48位数据且后四位全部为<code>0</code>即可覆盖Flag，改变函数<code>verify</code>的返回值，从而改变<code>vFlag</code>的值。</p>
+<h4 id="修改reg-txt"><a href="#修改reg-txt" class="headerlink" title="修改reg.txt"></a>修改reg.txt</h4><h5 id="1-flag-1"><a href="#1-flag-1" class="headerlink" title="1. flag==-1"></a>1. flag==-1</h5><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417171845156.png"  alt="image-20200417171845156"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417175300841.png"  alt="image-20200417175300841" style="zoom:65%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417175357889.png"  alt="image-20200417175357889" style="zoom:65%;"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417171458877.png"  alt="image-20200417171458877">失败</p>
+<h5 id="2-flag-1"><a href="#2-flag-1" class="headerlink" title="2.flag==1"></a>2.flag==1</h5><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417175956785.png"  alt="image-20200417175956785"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417181151684.png"  alt="image-20200417181151684" style="zoom:65%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417181235837.png"  alt="image-20200417181235837" style="zoom:65%;"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417171608189.png"  alt="image-20200417171608189">成功</p>
+<h4 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h4><p>读入字符串时默认遇到0就停下，末尾只能读入一个0，所以需要利用大端存储将<code>flag</code>的后三个字节全部置零，即使<code>flag=1</code>，即<code>REGCODE</code>大于<code>code</code>。</p>
+<h3 id="三、弹出MessageBox"><a href="#三、弹出MessageBox" class="headerlink" title="三、弹出MessageBox"></a>三、弹出MessageBox</h3><h4 id="1-思路"><a href="#1-思路" class="headerlink" title="1.思路"></a>1.思路</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 2.MessageBox函数解析</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;C</span><br><span class="line">int MessageBox(</span><br><span class="line">	HWND	hWnd,		&#x2F;&#x2F;handle to owner window	消息框所属窗口的句柄，如果为NULL，消息框则不属于任何窗口</span><br><span class="line">	LPCTSTR	lpText,		&#x2F;&#x2F;text in message box	字符串指针，所指字符串会在消息框中显示</span><br><span class="line">	LPCTSTR	lpCaption,	&#x2F;&#x2F;message box title	字符串指针，所指字符串将成为消息框的标题</span><br><span class="line">	UNIT	uType		&#x2F;&#x2F;message box style	消息框的风格（单按钮、多按钮等），NULL代表默认风格</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-查看弹出MessageBox所对应的汇编代码"><a href="#3-查看弹出MessageBox所对应的汇编代码" class="headerlink" title="3. 查看弹出MessageBox所对应的汇编代码"></a>3. 查看弹出MessageBox所对应的汇编代码</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MessageBox(<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417185248191.png"  alt="image-20200417185248191" style="zoom:80%;">
+
+<p>==*注：不建议使用PUSH 0，因此采用xor ebx,ebx    push ebx代替==</p>
+<h4 id="4-找到MessageBox函数入口地址"><a href="#4-找到MessageBox函数入口地址" class="headerlink" title="4. 找到MessageBox函数入口地址"></a>4. 找到MessageBox函数入口地址</h4><h5 id="a）调用函数，查看指令地址"><a href="#a）调用函数，查看指令地址" class="headerlink" title="a）调用函数，查看指令地址"></a>a）调用函数，查看指令地址</h5><p><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417185720898.png"  alt="image-20200417185720898" style="zoom:80%;">地址：77D507EA</p>
+<h5 id="b）利用Dependency工具查看地址"><a href="#b）利用Dependency工具查看地址" class="headerlink" title="b）利用Dependency工具查看地址"></a>b）利用Dependency工具查看地址</h5><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417190015031.png"  alt="image-20200417190015031"></p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417190123046.png"  alt="image-20200417190123046" style="zoom:67%;">
+
+<p>随便拖入一个PE文件，就可以看到它所使用的库文件了，在左侧列中选出USER32.DLL，MessageBox显示字符类型为A类（ASCII），因此在汇编语言中调用的应该是MessageBoxA</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417190700431.png"  alt="image-20200417190700431" style="zoom:75%;">
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">所以函数地址为&#96;&#96;&#96;0x77D10000+0x000407EA&#x3D;0x77D504EA</span><br></pre></td></tr></table></figure>
+
+<h5 id="c）编写指令代码"><a href="#c）编写指令代码" class="headerlink" title="c）编写指令代码"></a>c）编写指令代码</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;windows.h&gt;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	LoadLibrary(&quot;user32.dll&quot;);</span><br><span class="line">	_asm</span><br><span class="line">	&#123;</span><br><span class="line">		xor	ebx,ebx&#x2F;&#x2F;使用寄存器代替0</span><br><span class="line">		push	ebx</span><br><span class="line">		push	ebx</span><br><span class="line">		push	ebx</span><br><span class="line">		push	ebx</span><br><span class="line">		mov	eax,77d507eah&#x2F;&#x2F;函数入口地址77d507ea</span><br><span class="line">		call eax</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>嵌入字符串“westwest”，对应16进制<code>w:77</code>,<code>e:65</code>,<code>s:73</code>,<code>t:74</code>,大端存储改为<code>push 74736577</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;windows.h&gt;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	LoadLibrary(&quot;user32.dll&quot;);</span><br><span class="line">	_asm</span><br><span class="line">	&#123;</span><br><span class="line">		xor		ebx,ebx</span><br><span class="line">		push	ebx&#x2F;&#x2F;使用寄存器代替0</span><br><span class="line">		push	74736577h&#x2F;&#x2F;注意标明16进制</span><br><span class="line">		push	74736577h</span><br><span class="line">		mov		eax,esp&#x2F;&#x2F;栈顶即指向字符串的指针</span><br><span class="line">		push	ebx</span><br><span class="line">		push	eax</span><br><span class="line">		push	eax</span><br><span class="line">		push	ebx</span><br><span class="line">		mov		eax,77d507eah&#x2F;&#x2F;函数入口地址77d507ea</span><br><span class="line">		call	eax</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417224545360.png"  alt="image-20200417224545360" style="zoom:80%;">
+
+<p>弹出窗口，测试成功</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417224926327.png"  alt="image-20200417224926327" style="zoom: 50%;">
+
+<p>得到机器代码<code>33 DB 53 68 77 65 73 74 68 77 65 73 74 8B C4 53 50 50 53 B8 EA 07 D5 77 FF D0</code></p>
+<h5 id="d）编写Shellcode代码"><a href="#d）编写Shellcode代码" class="headerlink" title="d）编写Shellcode代码"></a>d）编写Shellcode代码</h5><p>用记事本将空格替换为’\x’</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;windows.h&gt;</span><br><span class="line">char ourshellcode[]&#x3D;&quot;\x33\xDB\x53\x68\x77\x65\x73\x74\x68\x77\x65\x73\x74\x8B\xC4\x53\x50\x50\x53\xB8\xEA\x07\xD5\x77\xFF\xD0&quot;;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	LoadLibrary(&quot;user32.dll&quot;);</span><br><span class="line">	int * ret;</span><br><span class="line">	ret&#x3D;(int*)&amp;ret+2;</span><br><span class="line">	(*ret)&#x3D;(int)ourshellcode;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417193835870.png"  alt="image-20200417193835870" style="zoom:10%;">将EIP内容替换为shellcode内容，执行shellcode代码</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200417225143954.png"  alt="image-20200417225143954" style="zoom: 50%;">测试成功</p>
+<h5 id="将shellcode写入reg-txt"><a href="#将shellcode写入reg-txt" class="headerlink" title="将shellcode写入reg.txt"></a>将shellcode写入reg.txt</h5><p><code>buffer</code>地址<img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200417232517054.png"  alt="image-20200417232517054"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/image-20200418000448906.png"  alt="image-20200418000448906"></p>
+<p>弹出对话框，实验成功</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业六/image-20200418000555901.png"  alt="image-20200418000555901" style="zoom:67%;">]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>漏洞测试</tag>
+        <tag>Shellcode编写</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业五</title>
+    <url>/2020/05/15/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%BA%94/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>整数溢出漏洞</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请在XP VC6生成课本示例4-2的案例（DEBUG模式）。进而，修改input.txt文件，使得程序运行时弹出计算器。<br>提示：input.txt在利用IDE调试时需要放到cpp文件相对目录下；单独运行exe的时候，需要放到exe所在目录中</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><h3 id="课本示例"><a href="#课本示例" class="headerlink" title="课本示例"></a>课本示例</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;shellapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_INFO 32767</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ShellExecute(<span class="literal">NULL</span>,<span class="string">"open"</span>,<span class="string">"notepad"</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,SW_SHOW);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ShellExecute(<span class="literal">NULL</span>,<span class="string">"open"</span>,<span class="string">"calc"</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,SW_SHOW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">void</span> (*fuc_ptr)()=func;</span><br><span class="line">	<span class="keyword">char</span> info[MAX_INFO];</span><br><span class="line">	<span class="keyword">char</span> info1[<span class="number">30000</span>]; <span class="keyword">char</span> info2[<span class="number">30000</span>];</span><br><span class="line"></span><br><span class="line">	freopen(<span class="string">"inputtxt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	<span class="built_in">cin</span>.getline(info1,<span class="number">30000</span>,<span class="string">' '</span>);</span><br><span class="line">	<span class="built_in">cin</span>.getline(info2,<span class="number">30000</span>,<span class="string">' '</span>);</span><br><span class="line"></span><br><span class="line">	short len1=<span class="built_in">strlen</span>(info1);</span><br><span class="line">	short len2=<span class="built_in">strlen</span>(info2);</span><br><span class="line">	short all_len=len1+len2;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(all_len&lt;MAX_INFO)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">strcpy</span>(info,info1);</span><br><span class="line">		<span class="built_in">strcat</span>(info,info2);</span><br><span class="line">	&#125;</span><br><span class="line">	fuc_ptr();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>当<code>len1</code>和<code>len2</code>均较大时,<code>short all_len = len1 + len2;</code> 使<code>all_len</code>发生溢出，进入<code>if</code>代码块，<code>info</code>长度为<code>len1+len2</code>,超过short范围，即<code>MAX_INFO</code>,<code>info</code>覆盖函数指针<code>fuc_ptr</code>的值。将原来<code>fuc_ptr</code>指向<code>func</code>函数改为指向<code>func1</code>函数即可</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>compile，下断点，debug运行，查看<code>func</code>和<code>func1</code>地址</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%94image-20200415173506018.png"  alt="func地址"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%94/image-20200415173554559.png"  alt="func1地址"></p>
+<ul>
+<li><p>正常情况下运行弹出记事本</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业五/image-20200415175701205.png"  alt="image-20200415175701205" style="zoom:40%;">
+</li>
+<li><p>input.txt中应为两段字符串，中间用空格隔开。当栈中info数据超出定义时的限制便会覆盖函数指针的内容，使用ultraedit修改input.txt，将超出部分修改为待调用函数的地址</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业五/image-20200416234435774.png"  alt="image-20200416234435774" style="zoom:50%;">
+</li>
+<li><p>运行，弹出计算器</p>
+</li>
+</ul>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业五/image-20200415191536378.png"  alt="image-20200415191536378" style="zoom:50%;">]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>漏洞测试</tag>
+        <tag>整数溢出漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python virtualenv使用</title>
+    <url>/2020/05/08/virtualenv/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install python-virtualenv</span><br><span class="line">virtualenv env # env为自主设置的虚拟环境名称</span><br><span class="line">cd env\Scripts # 前加路径</span><br><span class="line">activate # 激活</span><br><span class="line"></span><br><span class="line">deactivate # 退出</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>virtualenv</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>及时复习！！！</title>
     <url>/2020/04/30/%E5%86%85%E5%AE%B9%E8%BF%81%E7%A7%BB/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>大一时在“作业部落”上记录学习内容，今天回去翻了一下，发现好多内容都没有印象了，现逐步迁移至本站点，以作复习。内容主要为作业报告和CTF学习，内容较为零散，不建议系统学习参考使用</p>
@@ -10,6 +313,66 @@
 <img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200430142936841.png"  alt="image-20200430142936841" style="zoom:23%;">]]></content>
       <tags>
         <tag>notice</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GET和POST的区别</title>
+    <url>/2020/04/30/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th align="center">GET</th>
+<th align="center">POST</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">书签</td>
+<td align="center">可收藏为书签</td>
+<td align="center">不可收藏为书签</td>
+</tr>
+<tr>
+<td align="center">缓存</td>
+<td align="center">能被缓存</td>
+<td align="center">不能缓存</td>
+</tr>
+<tr>
+<td align="center">编码类型</td>
+<td align="center">application/x-www-form-urlenconded</td>
+<td align="center">application/x-www-form-urlencoded或multipart/form-data,为二进制数据使用多重编码</td>
+</tr>
+<tr>
+<td align="center">历史</td>
+<td align="center">参数保留在浏览器历史中</td>
+<td align="center">参数不会保留在浏览器历史中</td>
+</tr>
+<tr>
+<td align="center">对数据长度的限制</td>
+<td align="center">是的，当发送数据时，GET方法向URL添加数据；URL的长度是受限制的（最大长度是2048个字符）</td>
+<td align="center">无限制</td>
+</tr>
+<tr>
+<td align="center">对数据类型的限制</td>
+<td align="center">只允许ASCII字符</td>
+<td align="center">没有限制，也允许二进制数据</td>
+</tr>
+<tr>
+<td align="center">安全性</td>
+<td align="center">与POST相比，GET的安全性较差，因为发送的数据是URL的一部分。在发送密码或其他敏感信息时绝对不要使用GET！</td>
+<td align="center">POST比GET更安全，因为参数不会保存在浏览器历史或web服务器日志中</td>
+</tr>
+<tr>
+<td align="center">可见性</td>
+<td align="center">数据在URL中对所有人都是可见的</td>
+<td align="center">数据不会显示在URL中</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -181,66 +544,6 @@
         <tag>python</tag>
         <tag>机器学习</tag>
         <tag>Lightgbm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GET和POST的区别</title>
-    <url>/2020/04/30/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><table>
-<thead>
-<tr>
-<th align="center">项目</th>
-<th align="center">GET</th>
-<th align="center">POST</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">书签</td>
-<td align="center">可收藏为书签</td>
-<td align="center">不可收藏为书签</td>
-</tr>
-<tr>
-<td align="center">缓存</td>
-<td align="center">能被缓存</td>
-<td align="center">不能缓存</td>
-</tr>
-<tr>
-<td align="center">编码类型</td>
-<td align="center">application/x-www-form-urlenconded</td>
-<td align="center">application/x-www-form-urlencoded或multipart/form-data,为二进制数据使用多重编码</td>
-</tr>
-<tr>
-<td align="center">历史</td>
-<td align="center">参数保留在浏览器历史中</td>
-<td align="center">参数不会保留在浏览器历史中</td>
-</tr>
-<tr>
-<td align="center">对数据长度的限制</td>
-<td align="center">是的，当发送数据时，GET方法向URL添加数据；URL的长度是受限制的（最大长度是2048个字符）</td>
-<td align="center">无限制</td>
-</tr>
-<tr>
-<td align="center">对数据类型的限制</td>
-<td align="center">只允许ASCII字符</td>
-<td align="center">没有限制，也允许二进制数据</td>
-</tr>
-<tr>
-<td align="center">安全性</td>
-<td align="center">与POST相比，GET的安全性较差，因为发送的数据是URL的一部分。在发送密码或其他敏感信息时绝对不要使用GET！</td>
-<td align="center">POST比GET更安全，因为参数不会保存在浏览器历史或web服务器日志中</td>
-</tr>
-<tr>
-<td align="center">可见性</td>
-<td align="center">数据在URL中对所有人都是可见的</td>
-<td align="center">数据不会显示在URL中</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -463,6 +766,26 @@
       <tags>
         <tag>汇编</tag>
         <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flask学习教程三</title>
+    <url>/2020/04/24/Flask%E6%95%99%E7%A8%8B%E4%B8%89/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="pymysql"><a href="#pymysql" class="headerlink" title="pymysql"></a>pymysql</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install pymysql</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入pymysql模块</span></span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 连接database</span></span><br><span class="line">conn = pymysql.connect(</span><br><span class="line">    host=“你的数据库地址”,</span><br><span class="line">    user=“用户名”,password=“密码”,</span><br><span class="line">    database=“数据库名”,</span><br><span class="line">    charset=“utf8”)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 得到一个可以执行SQL语句的光标对象</span></span><br><span class="line">cursor = conn.cursor()  <span class="comment"># 执行完毕返回的结果集默认以元组显示</span></span><br><span class="line"><span class="comment"># 得到一个可以执行SQL语句并且将结果作为字典返回的游标</span></span><br><span class="line"><span class="comment">#cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 定义要执行的SQL语句</span></span><br><span class="line">sql = <span class="string">"""</span></span><br><span class="line"><span class="string">CREATE TABLE USER1 (</span></span><br><span class="line"><span class="string">id INT auto_increment PRIMARY KEY ,</span></span><br><span class="line"><span class="string">name CHAR(10) NOT NULL UNIQUE,</span></span><br><span class="line"><span class="string">age TINYINT NOT NULL</span></span><br><span class="line"><span class="string">)ENGINE=innodb DEFAULT CHARSET=utf8;  #注意：charset='utf8' 不能写成utf-8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 执行SQL语句</span></span><br><span class="line">cursor.execute(sql)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 关闭光标对象</span></span><br><span class="line">cursor.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bootstrap入门和flask-nav快速导航栏"><a href="#bootstrap入门和flask-nav快速导航栏" class="headerlink" title="bootstrap入门和flask_nav快速导航栏"></a>bootstrap入门和flask_nav快速导航栏</h1><blockquote>
+<p> 转载自：<a href="https://www.cnblogs.com/wongbingming/p/6813221.html" target="_blank" rel="noopener">https://www.cnblogs.com/wongbingming/p/6813221.html</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>自己学的零七八碎</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
@@ -1319,7 +1642,7 @@
 <blockquote>
 <p>#南开大学闭馆音乐</p>
 
-    <div id="aplayer-XflrLZXq" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
+    <div id="aplayer-pLYZDxNX" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
 </blockquote>
 <blockquote>
 <p>参考：</p>
@@ -2561,6 +2884,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
+        <tag>ollydbg使用入门</tag>
       </tags>
   </entry>
   <entry>
@@ -2842,6 +3166,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </categories>
       <tags>
         <tag>漏洞测试</tag>
+        <tag>寄存器</tag>
       </tags>
   </entry>
   <entry>
@@ -3301,6 +3626,79 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </tags>
   </entry>
   <entry>
+    <title>sql语言</title>
+    <url>/2020/03/16/sql/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
+<li>创建数据库</li>
+<li>插入数据存储过程代码</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><p>创建work1.sql文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 创建表</span><br><span class="line">CREATE TABLE &#96;innodb&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;InnoDB;</span><br><span class="line"></span><br><span class="line">CREATE TABLE &#96;myisam&#96;(</span><br><span class="line">	&#96;id&#96; int(11) NULL DEFAULT 0,</span><br><span class="line">	&#96;data&#96; int(11) NULL DEFAULT 0)</span><br><span class="line">	ENGINE&#x3D;myisam;</span><br><span class="line"></span><br><span class="line">create procedure myinsert(a int)</span><br><span class="line">	begin</span><br><span class="line">		declare i int default 1;</span><br><span class="line">		repeat</span><br><span class="line">			insert into &#96;innodb&#96;  VALUES(i,i);</span><br><span class="line">			set i&#x3D;i+1;</span><br><span class="line">		until i&gt;a end repeat;</span><br><span class="line">	end;</span><br><span class="line"></span><br><span class="line">-- 执行存储过程</span><br><span class="line">call myinsert(10000);</span><br><span class="line">-- 删除myinsert函数</span><br><span class="line">drop procedure if exists myinsert;</span><br></pre></td></tr></table></figure>
+<p>可以编写sql文件，也可在命令列界面中分步运行</p>
+<p>运行之后需要刷新</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200316214043980.png"  alt="image-20200316214043980" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/1584365805(1).png"  alt="1584365805(1).png" style="zoom:35%;"></p>
+<h2 id="针对数据库的操作"><a href="#针对数据库的操作" class="headerlink" title="针对数据库的操作"></a>针对数据库的操作</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查看当前数据库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建数据库</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Management_System</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4	</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">Use</span> Flight_Management_System;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 删除数据库</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> [ <span class="keyword">IF</span> <span class="keyword">EXISTS</span> ] &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="针对表的操作"><a href="#针对表的操作" class="headerlink" title="针对表的操作"></a>针对表的操作</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 向表中添加数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="string">`flight`</span> <span class="keyword">values</span>(<span class="string">'CA123'</span>,<span class="string">'TSN'</span>,<span class="string">'TAO'</span>,<span class="string">'CA'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 清空表</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> [表名];</span><br></pre></td></tr></table></figure>
+
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>当输出的属性不为主键时,可能出现重复 </p>
+<h3 id="LIKE-NOT-LIKE匹配"><a href="#LIKE-NOT-LIKE匹配" class="headerlink" title="LIKE/NOT LIKE匹配"></a>LIKE/NOT LIKE匹配</h3><p>% 代表任意字符串</p>
+<p>_ 代表一个字符</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	name</span><br><span class="line">FROM	drinkers</span><br><span class="line">WHERE	phone LIKE &#39;555%&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查找所有李姓员工</span><br><span class="line">SELECT	*</span><br><span class="line">FROM	employee </span><br><span class="line">WHERE	empname LIKE &#39;李%&#39;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="NULL空值"><a href="#NULL空值" class="headerlink" title="NULL空值"></a>NULL空值</h3><p>任意字符串(%)与空值比较的结果是<code>unknown</code>,不会返回unknown结果值</p>
+<p>true=1,false=0,unknown=1/2</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查找所有job非空的元组</span><br><span class="line">SELECT	*</span><br><span class="line">FROM	workson</span><br><span class="line">WHERE	job LIKE &#39;%&#39;;	-- 或者为 job IS NOT NULL</span><br></pre></td></tr></table></figure>
+<h3 id="ORDER-BY-输出排序"><a href="#ORDER-BY-输出排序" class="headerlink" title="ORDER BY 输出排序"></a>ORDER BY 输出排序</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ORDER BY &lt;list of attributes&gt;</span><br><span class="line">ASC(升序,默认),DESC(降序)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	enpname</span><br><span class="line">FROM	employee</span><br><span class="line">WHERE	deptno&#x3D;&#39;d2&#39;</span><br><span class="line">ORDER BY empno DESC;	-- 可以按照不输出的属性排序</span><br></pre></td></tr></table></figure>
+
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><h4 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 使用笛卡尔积连接两个表</span><br><span class="line">-- 两个表中有同名属性,select其中一个时需要标明,不然会出现两列</span><br><span class="line">SELECT	beer</span><br><span class="line">FROM	frequents,likes </span><br><span class="line">WHERE	bar&#x3D;&#39;Joe&quot;s Bar&#39; AND	</span><br><span class="line">		frequents.drinker &#x3D; likes.drinker;</span><br><span class="line">		-- 待查找的内容为&#39;-&gt;&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="natural-join"><a href="#natural-join" class="headerlink" title="natural join"></a>natural join</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	*</span><br><span class="line">FROM	employee natrual join department</span><br><span class="line">WHERE	location&#x3D;&#39;天津&#39;;</span><br><span class="line">-- 相同的两列不重复出现</span><br><span class="line"></span><br><span class="line">-- 等价</span><br><span class="line">SELECT	*</span><br><span class="line">FROM	employee,department</span><br><span class="line">WHERE	department.deptno&#x3D;employee.deptno and</span><br><span class="line">		location&#x3D;&#39;天津&#39;;</span><br><span class="line">-- 使用and&#x2F;or连接多个查询条件</span><br></pre></td></tr></table></figure>
+
+<h4 id="元组变量"><a href="#元组变量" class="headerlink" title="元组变量"></a>元组变量</h4><p>引入一个关系的两个或更多部分</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 返回制造商一致的啤酒对</span><br><span class="line">SELECT	b1.name,b2.name</span><br><span class="line">FROM	beers b1,beers b2</span><br><span class="line">WHERE	b1.manf&#x3D;b2.manf and</span><br><span class="line">		b1.name&lt;b2.name; -- 避免冗余</span><br></pre></td></tr></table></figure>
+
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- find bars that serve Miller at the same price Joe charges for Bud</span><br><span class="line">SELECT	bar</span><br><span class="line">FROM	sells</span><br><span class="line">WHERE	beer&#x3D;&#39;Miller&#39; and price&#x3D;</span><br><span class="line">			(SELECT	price</span><br><span class="line">			FROM	sells</span><br><span class="line">			WHERE	bar&#x3D;&#39;Joe&quot;s Bar&#39; and beer&#x3D;&#39;Bud&#39;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="IN-NOT-IN操作"><a href="#IN-NOT-IN操作" class="headerlink" title="IN/NOT IN操作"></a>IN/NOT IN操作</h4><p>只能用于连接查询结果,而不能是 in+&lt;表&gt;</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	*</span><br><span class="line">FROM	Beers</span><br><span class="line">WHERE	name IN </span><br><span class="line">			(SELECT beer</span><br><span class="line">			FROM likes</span><br><span class="line">			WHERE drinker&#x3D;&#39;Fred&#39;); </span><br><span class="line">			-- 当子查询只有一个查询结果,in可改为&#x3D;</span><br><span class="line">-- 或写成</span><br><span class="line">SELECT	name,manf</span><br><span class="line">FROM	Beers,Likes</span><br><span class="line">WHERE	drinker&#x3D;&#39;Fred&#39; and beer&#x3D;name;</span><br></pre></td></tr></table></figure>
+
+<h4 id="EXITS"><a href="#EXITS" class="headerlink" title="EXITS"></a>EXITS</h4><p>当且仅当关系非空时为真</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 不存在制造商一致的不同啤酒-&gt; 一个manf只有一个beer的beer</span><br><span class="line">SELECT	name</span><br><span class="line">FROM	beers b1</span><br><span class="line">WHERE	NOT EXISTS</span><br><span class="line">			(SELECT *</span><br><span class="line">             FROM	beers</span><br><span class="line">             WHERE	manf &#x3D; b1.manf and</span><br><span class="line">             		name &lt;&gt; b1.name);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查找部门中只有一名员工的员工姓名</span><br><span class="line">SELECT	empname</span><br><span class="line">FROM	empoyee e1</span><br><span class="line">WHERE	not exists</span><br><span class="line">		(SELECT	*</span><br><span class="line">         FROM	employee</span><br><span class="line">         WHERE	deptno&#x3D;e1.deptno and</span><br><span class="line">        		empname&lt;&gt;e1.empname);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT	</span><br><span class="line">FROM	</span><br><span class="line">WHERE</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据库上机L2</title>
     <url>/2020/03/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL2%EF%BC%9A%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
@@ -3672,33 +4070,6 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>Qt的框架</title>
-    <url>/2019/08/31/Qt%E7%9A%84%E6%A1%86%E6%9E%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">&#x2F;&#x2F;QApplication应用程序类</span><br><span class="line">&#x2F;&#x2F;Qt头文件没有.h</span><br><span class="line">&#x2F;&#x2F;头文件和类名一样</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;有且只有一个应用程序类对象</span><br><span class="line">    QApplication a(argc, argv);</span><br><span class="line">    &#x2F;&#x2F;MyWidget继承Qwidget，QWidget是一个窗口类对象</span><br><span class="line">    &#x2F;&#x2F;w是窗口</span><br><span class="line">    Widget w;</span><br><span class="line">    &#x2F;&#x2F;窗口创建默认是隐藏的，需要认为显示</span><br><span class="line">    w.show();</span><br><span class="line">    &#x2F;&#x2F;让程序一直执行，等待人为操作（等待事件的发生）</span><br><span class="line">    return a.exec();&#x2F;&#x2F;a是应用程序对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>##.pro</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#-------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># Project created by QtCreator 2019-06-28T19:37:51</span><br><span class="line">#</span><br><span class="line">#-------------------------------------------------</span><br><span class="line"></span><br><span class="line">#项目文件用“#”注释</span><br><span class="line">#模块</span><br><span class="line">QT       +&#x3D; core gui</span><br><span class="line">#高于4版本添加QT+&#x3D;widgets，为了兼容4</span><br><span class="line">greaterThan(QT_MAJOR_VERSION, 4): QT +&#x3D; widgets</span><br><span class="line">#应用程序的名字</span><br><span class="line">TARGET &#x3D; untitled5</span><br><span class="line">#指定makefile的类型，app&#x2F;lib（库）</span><br><span class="line">TEMPLATE &#x3D; app</span><br><span class="line"></span><br><span class="line"># The following define makes your compiler emit warnings if you use</span><br><span class="line"># any feature of Qt which has been marked as deprecated (the exact warnings</span><br><span class="line"># depend on your compiler). Please consult the documentation of the</span><br><span class="line"># deprecated API in order to know how to port your code away from it.</span><br><span class="line">DEFINES +&#x3D; QT_DEPRECATED_WARNINGS</span><br><span class="line"></span><br><span class="line"># You can also make your code fail to compile if you use deprecated APIs.</span><br><span class="line"># In order to do so, uncomment the following line.</span><br><span class="line"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span><br><span class="line">#DEFINES +&#x3D; QT_DISABLE_DEPRECATED_BEFORE&#x3D;0x060000    # disables all the APIs deprecated before Qt 6.0.0</span><br><span class="line"></span><br><span class="line">CONFIG +&#x3D; c++11</span><br><span class="line">#源文件.cpp</span><br><span class="line">SOURCES +&#x3D; \</span><br><span class="line">        main.cpp \</span><br><span class="line">        widget.cpp</span><br><span class="line">#头文件.h</span><br><span class="line">HEADERS +&#x3D; \</span><br><span class="line">        widget.h</span><br><span class="line"></span><br><span class="line"># Default rules for deployment.</span><br><span class="line">qnx: target.path &#x3D; &#x2F;tmp&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">else: unix:!android: target.path &#x3D; &#x2F;opt&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">!isEmpty(target.path): INSTALLS +&#x3D; target</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>##widget.h</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifndef WIDGET_H</span><br><span class="line">#define WIDGET_H</span><br><span class="line"></span><br><span class="line">#include &lt;QWidget&gt;</span><br><span class="line"></span><br><span class="line">class Widget : public QWidget</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT&#x2F;&#x2F;信号与槽需要</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    Widget(QWidget *parent &#x3D; 0);</span><br><span class="line">    ~Widget();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif &#x2F;&#x2F; WIDGET_H</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>##widget.cpp</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line"></span><br><span class="line">Widget::Widget(QWidget *parent)</span><br><span class="line">    : QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Widget::~Widget()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>大一</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Qt大作业：影音播放器</title>
     <url>/2019/08/31/Qt%E5%A4%A7%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="软件类别：本地视频文件播放器"><a href="#软件类别：本地视频文件播放器" class="headerlink" title="软件类别：本地视频文件播放器"></a>软件类别：本地视频文件播放器</h3><hr>
@@ -3831,6 +4202,33 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
         <tag>大一</tag>
         <tag>作业</tag>
         <tag>大作业</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt的框架</title>
+    <url>/2019/08/31/Qt%E7%9A%84%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">&#x2F;&#x2F;QApplication应用程序类</span><br><span class="line">&#x2F;&#x2F;Qt头文件没有.h</span><br><span class="line">&#x2F;&#x2F;头文件和类名一样</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;有且只有一个应用程序类对象</span><br><span class="line">    QApplication a(argc, argv);</span><br><span class="line">    &#x2F;&#x2F;MyWidget继承Qwidget，QWidget是一个窗口类对象</span><br><span class="line">    &#x2F;&#x2F;w是窗口</span><br><span class="line">    Widget w;</span><br><span class="line">    &#x2F;&#x2F;窗口创建默认是隐藏的，需要认为显示</span><br><span class="line">    w.show();</span><br><span class="line">    &#x2F;&#x2F;让程序一直执行，等待人为操作（等待事件的发生）</span><br><span class="line">    return a.exec();&#x2F;&#x2F;a是应用程序对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>##.pro</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#-------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># Project created by QtCreator 2019-06-28T19:37:51</span><br><span class="line">#</span><br><span class="line">#-------------------------------------------------</span><br><span class="line"></span><br><span class="line">#项目文件用“#”注释</span><br><span class="line">#模块</span><br><span class="line">QT       +&#x3D; core gui</span><br><span class="line">#高于4版本添加QT+&#x3D;widgets，为了兼容4</span><br><span class="line">greaterThan(QT_MAJOR_VERSION, 4): QT +&#x3D; widgets</span><br><span class="line">#应用程序的名字</span><br><span class="line">TARGET &#x3D; untitled5</span><br><span class="line">#指定makefile的类型，app&#x2F;lib（库）</span><br><span class="line">TEMPLATE &#x3D; app</span><br><span class="line"></span><br><span class="line"># The following define makes your compiler emit warnings if you use</span><br><span class="line"># any feature of Qt which has been marked as deprecated (the exact warnings</span><br><span class="line"># depend on your compiler). Please consult the documentation of the</span><br><span class="line"># deprecated API in order to know how to port your code away from it.</span><br><span class="line">DEFINES +&#x3D; QT_DEPRECATED_WARNINGS</span><br><span class="line"></span><br><span class="line"># You can also make your code fail to compile if you use deprecated APIs.</span><br><span class="line"># In order to do so, uncomment the following line.</span><br><span class="line"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span><br><span class="line">#DEFINES +&#x3D; QT_DISABLE_DEPRECATED_BEFORE&#x3D;0x060000    # disables all the APIs deprecated before Qt 6.0.0</span><br><span class="line"></span><br><span class="line">CONFIG +&#x3D; c++11</span><br><span class="line">#源文件.cpp</span><br><span class="line">SOURCES +&#x3D; \</span><br><span class="line">        main.cpp \</span><br><span class="line">        widget.cpp</span><br><span class="line">#头文件.h</span><br><span class="line">HEADERS +&#x3D; \</span><br><span class="line">        widget.h</span><br><span class="line"></span><br><span class="line"># Default rules for deployment.</span><br><span class="line">qnx: target.path &#x3D; &#x2F;tmp&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">else: unix:!android: target.path &#x3D; &#x2F;opt&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">!isEmpty(target.path): INSTALLS +&#x3D; target</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>##widget.h</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifndef WIDGET_H</span><br><span class="line">#define WIDGET_H</span><br><span class="line"></span><br><span class="line">#include &lt;QWidget&gt;</span><br><span class="line"></span><br><span class="line">class Widget : public QWidget</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT&#x2F;&#x2F;信号与槽需要</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    Widget(QWidget *parent &#x3D; 0);</span><br><span class="line">    ~Widget();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif &#x2F;&#x2F; WIDGET_H</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>##widget.cpp</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line"></span><br><span class="line">Widget::Widget(QWidget *parent)</span><br><span class="line">    : QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Widget::~Widget()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>大一</tag>
       </tags>
   </entry>
   <entry>
