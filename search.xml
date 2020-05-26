@@ -1,6 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>信安数基第四章总结</title>
+    <url>/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第四章-原根与指数"><a href="#第四章-原根与指数" class="headerlink" title="第四章 原根与指数"></a>第四章 原根与指数</h1><h2 id="4-1-次数"><a href="#4-1-次数" class="headerlink" title="4.1 次数"></a>4.1 次数</h2><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160537835.png"  alt="image-20200331160537835"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155119753.png"  alt="image-20200331155119753"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155249593.png"  alt="image-20200331155249593"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160616625.png"  alt="image-20200331160616625"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160838992.png"  alt="image-20200331160838992"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160918308.png"  alt="image-20200331160918308"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161812692.png"  alt="image-20200331161812692"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161856893.png"  alt="image-20200331161856893"></p>
+]]></content>
+      <categories>
+        <category>major</category>
+      </categories>
+      <tags>
+        <tag>信安数基</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞测试作业九</title>
+    <url>/2020/06/01/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B9%9D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><div class="note primary no-icon">
+            <ul><li><p>web开发</p></li><li><p>javascript</p></li></ul>
+          </div>
+
+<h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>搭建PHPNOW的开发环境，然后制作一个Html页面，并利用Javascript实现页面元素是否输入的校验，如果没有输入，则将焦点设置在该页面元素上</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><h3 id="PHPNOW环境搭建"><a href="#PHPNOW环境搭建" class="headerlink" title="PHPNOW环境搭建"></a>PHPNOW环境搭建</h3><p>系统：windows xp</p>
+<ol>
+<li>将压缩包解压后，粘贴到虚拟机内，点击<code>setup</code>,选择需要的Apache和MySql版本，我这里选择的是20和50，执行解压</li>
+</ol>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516153854958.png"  alt="image-20200516153854958" style="zoom:80%;">
+
+<ol start="2">
+<li><p>输入y，进行初始化，设置mysql密码，这里设置为<code>123456</code></p>
+</li>
+<li><p>设置完成：</p>
+</li>
+</ol>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516154215571.png"  alt="image-20200516154215571" style="zoom:67%;">
+
+<ol start="4">
+<li>输入密码，点击连接，测试成功</li>
+</ol>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516154255395.png"  alt="image-20200516154255395" style="zoom:80%;">
+
+<ol start="5">
+<li>点击<code>phpMyAdmin</code>,进入数据库管理页面，输入用户名<code>root</code>,密码<code>123456</code></li>
+</ol>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516154607932.png"  alt="image-20200516154607932" style="zoom: 80%;">
+
+<ol start="6">
+<li>安装成功</li>
+</ol>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B9%9D/image-20200516154750901.png"  alt="image-20200516154750901"></p>
+<h3 id="制作Html页面"><a href="#制作Html页面" class="headerlink" title="制作Html页面"></a>制作Html页面</h3><h4 id="内容学习"><a href="#内容学习" class="headerlink" title="内容学习"></a>内容学习</h4><ol>
+<li><p>安装Dreamweaver</p>
+</li>
+<li><p>htdocs文件夹为当前网站工作的根目录，在该目录先新建文件<code>js.htm</code>,并用Dreamweaver打开</p>
+</li>
+</ol>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516155445950.png"  alt="image-20200516155445950" style="zoom:67%;">
+
+
+
+<ol start="3">
+<li><p>一个简单的html：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Javascript example!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">1111</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516160957627.png"  alt="image-20200516160957627" style="zoom: 50%;">
+</li>
+<li><p>document.write()函数</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Javascript简单示例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line">            for(i=1;i&lt;=100;i++)&#123;</span><br><span class="line"><span class="javascript">                num=<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">100</span>);<span class="comment">//0-99之间的随机数</span></span></span><br><span class="line"><span class="javascript">                <span class="built_in">document</span>.write(num,<span class="string">" "</span>);<span class="comment">//向body区域写入内容</span></span></span><br><span class="line">            &#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516161610190.png"  alt="image-20200516161610190" style="zoom:80%;">
+</li>
+<li><p>函数调用</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Javascript简单示例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">            <span class="function"><span class="keyword">function</span> <span class="title">func1</span><span class="params">()</span></span></span></span><br><span class="line"><span class="actionscript">			&#123;alert(<span class="string">"function1 has been called"</span>);&#125;</span></span><br><span class="line"><span class="actionscript">			<span class="function"><span class="keyword">function</span> <span class="title">func2</span><span class="params">()</span></span></span></span><br><span class="line"><span class="actionscript">			&#123;alert(<span class="string">"function2 has been called"</span>);&#125;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"click"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"click"</span> <span class="attr">onclick</span>=<span class="string">"func1(),func2()"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>利用设计界面插入按钮</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516162930762.png"  alt="image-20200516162930762" style="zoom:80%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516163444483.png"  alt="image-20200516163444483" style="zoom: 67%;">
+
+<p>更改按钮名称</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516163159847.png"  alt="image-20200516163159847" style="zoom:67%;">
+
+<p>效果：</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516163457229.png"  alt="image-20200516163457229" style="zoom:67%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516163552676.png"  alt="image-20200516163552676" style="zoom:50%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516163602861.png"  alt="image-20200516163602861" style="zoom:50%;">
+
+<ol start="6">
+<li><p>声明对象</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>Javascript example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">			<span class="function"><span class="keyword">function</span> <span class="title">student</span><span class="params">(name,school,grade)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.name=name;</span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.school=school;</span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.grade=grade;</span></span><br><span class="line">			&#125;</span><br><span class="line"><span class="actionscript">			hui=<span class="keyword">new</span> student(<span class="string">"nothing_gonna"</span>,<span class="string">"xx school"</span>,<span class="string">"seconde grade"</span>);</span></span><br><span class="line"><span class="actionscript">			<span class="keyword">with</span>(hui)</span></span><br><span class="line"><span class="javascript">			&#123;	<span class="built_in">document</span>.write(name+<span class="string">":"</span>+school+<span class="string">","</span>+grade+<span class="string">"&lt;br/&gt;"</span>);&#125;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span>(<span class="built_in">window</span>.hui)&#123;</span></span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.write(<span class="string">"object hui exists"</span>);</span></span><br><span class="line">			&#125;</span><br><span class="line"><span class="actionscript">			<span class="keyword">else</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.write(<span class="string">"object hui doen't exists"</span>);</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516164623481.png"  alt="image-20200516164623481" style="zoom:67%;">
+</li>
+<li><p>验证文本框输入内容</p>
+</li>
+</ol>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516165440563.png"  alt="image-20200516165440563" style="zoom:67%;">
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>Javascript example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">			<span class="function"><span class="keyword">function</span> <span class="title">getLoginMsg</span><span class="params">()</span></span></span></span><br><span class="line">			&#123;</span><br><span class="line"><span class="javascript">				loginMsg=<span class="built_in">document</span>.LoginForm;</span></span><br><span class="line"><span class="actionscript">				alert(<span class="string">"id:"</span>+loginMsg.userID.value+<span class="string">"\n"</span>+<span class="string">"password:"</span>+loginMsg.password.value);</span></span><br><span class="line">			&#125;</span><br><span class="line"><span class="actionscript">			<span class="function"><span class="keyword">function</span> <span class="title">setLoginMsg</span><span class="params">(Object)</span></span>&#123;</span></span><br><span class="line"><span class="javascript">				alert(<span class="built_in">Object</span>.id);</span></span><br><span class="line">				&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"LoginForm"</span> <span class="attr">name</span>=<span class="string">"form1"</span> <span class="attr">action</span>=<span class="string">"1.php"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>userID:</span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userID"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  password:</span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"password"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"login"</span> <span class="attr">onclick</span>=<span class="string">"getLoginMsg()"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    remember me </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"checkbox"</span> <span class="attr">onclick</span>=<span class="string">"setLoginMsg()"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516171645429.png"  alt="image-20200516171645429" style="zoom:67%;">
+
+<h4 id="利用Javascript实现页面元素是否输入的校验，如果没有输入，则将焦点设置在该页面元素上"><a href="#利用Javascript实现页面元素是否输入的校验，如果没有输入，则将焦点设置在该页面元素上" class="headerlink" title="利用Javascript实现页面元素是否输入的校验，如果没有输入，则将焦点设置在该页面元素上"></a>利用Javascript实现页面元素是否输入的校验，如果没有输入，则将焦点设置在该页面元素上</h4><p>==设置焦点的函数：document.getElementById(“文本域的id”).focus();==</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>作业<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="function"><span class="keyword">function</span> <span class="title">judge</span><span class="params">()</span></span></span></span><br><span class="line">	&#123;</span><br><span class="line"><span class="javascript">		Msg=<span class="built_in">document</span>.LoginForm</span></span><br><span class="line"><span class="actionscript">       	<span class="keyword">if</span>(Msg.one.value==<span class="string">""</span>)</span></span><br><span class="line">			&#123;	</span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.getElementById(<span class="string">"i1"</span>).focus(); &#125;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">else</span> <span class="keyword">if</span>(LoginForm.two.value==<span class="string">""</span>)</span></span><br><span class="line">			&#123;	</span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.getElementById(<span class="string">"i2"</span>).focus(); &#125;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">else</span> <span class="keyword">if</span>(LoginForm.thr.value==<span class="string">""</span>)</span></span><br><span class="line">			&#123;	</span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.getElementById(<span class="string">"i3"</span>).focus(); &#125;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">else</span> alert(<span class="string">"1:"</span>+Msg.one.value+<span class="string">"\n2:"</span>+Msg.two.value+<span class="string">"\n3:"</span>+Msg.thr.value);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"LoginForm"</span> <span class="attr">name</span>=<span class="string">"form1"</span>  <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">label</span>&gt;</span>1st</span><br><span class="line">	  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"one"</span> <span class="attr">id</span>=<span class="string">'i1'</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">label</span>&gt;</span>2nd</span><br><span class="line">	    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"two"</span> <span class="attr">id</span>=<span class="string">'i2'</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">label</span>&gt;</span>3rd</span><br><span class="line">	    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"thr"</span> <span class="attr">id</span>=<span class="string">'i3'</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"提交"</span> <span class="attr">onclick</span>=<span class="string">"judge()"</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span>	</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>==提交按钮的type应该使button而不是submit，否则点击后会刷新表单并清空⬇⬇⬇⬇⬇⬇==</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/6ec26fbd2e2ae7b7f51c21fcfbd6976.png"  alt="6ec26fbd2e2ae7b7f51c21fcfbd6976" style="zoom:67%;">
+
+<p>==chrome浏览器无法正常运行该文件，这里使用Microsoft edge可以正常使用==</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516232923713.png"  alt="image-20200516232923713" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516232942148.png"  alt="image-20200516232942148" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516233149210.png"  alt="image-20200516233149210" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516233101809.png"  alt="image-20200516233101809" style="zoom:50%;"></p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业九/image-20200516233224882.png"  alt="image-20200516233224882" style="zoom: 50%;">]]></content>
+      <categories>
+        <category>漏洞测试作业</category>
+      </categories>
+      <tags>
+        <tag>web开发</tag>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php学习一 —— 基本语法</title>
+    <url>/2020/05/26/php/php%E4%B8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第一个php脚本程序"><a href="#第一个php脚本程序" class="headerlink" title="第一个php脚本程序"></a>第一个php脚本程序</h1><p>将.php文件放在web服务器根目录下，访问<code>web服务器URL/xxx.php</code>,本地访问<code>http://localhost/xxx.php</code>.</p>
+<p>调用函数phpinfo()可以看到系统相关信息、预定义变量，以及已经加载的php模块和配置信息</p>
+<h1 id="php语言标记"><a href="#php语言标记" class="headerlink" title="php语言标记"></a>php语言标记</h1><h2 id="将php代码嵌入html中的位置"><a href="#将php代码嵌入html中的位置" class="headerlink" title="将php代码嵌入html中的位置"></a>将php代码嵌入html中的位置</h2><p>可以将php代码段嵌入到html的任意地方</p>
+<p>当php遇到结束符 “?&gt;” 时，简单地将后面的内容原样输出，只到遇到下一个开始标记位置</p>
+<p>在一个文件中的不同位置使用多个php标记时，这些标记之间的语法是<strong>一个整体</strong></p>
+<p>对于输出打断文本而言，脱离php的解析模式，比php的echo和print效率更高</p>
+<h2 id="解读开始和结束标记"><a href="#解读开始和结束标记" class="headerlink" title="解读开始和结束标记"></a>解读开始和结束标记</h2><div class="note info">
+            <p>⭐&lt;?php ?&gt;⭐<br>和&lt;? ?&gt;<br>当在html页面中嵌入纯变量时，也可以使用&lt;?=$variablename ?&gt;</p>
+          </div>
+
+<div class="note info">
+            <p>&lt;script language=”php”&gt;&lt;/script&gt;    (PHP7以前版本支持)<br>&lt;% %&gt;                        (PHP7以前版本支持)</p>
+          </div>
+
+<p>除非有特殊需求，否则使用<code>&lt;?php ?&gt;</code>,对于只包含php代码的文件，结束标识符最好不要存在，防止末尾被意外地注入空白符号</p>
+<h1 id="指令分隔符“分号”"><a href="#指令分隔符“分号”" class="headerlink" title="指令分隔符“分号”"></a>指令分隔符“分号”</h1><p>使用<code>;</code></p>
+<p>程序最后一行，即<code>?&gt;</code>前，可以不用分号</p>
+<h1 id="程序注释"><a href="#程序注释" class="headerlink" title="程序注释"></a>程序注释</h1><p>多行：/* */</p>
+<p>单行：//和#</p>
+<div class="note warning">
+            <p>多行注释无法嵌套多行注释，其它可以嵌套</p>
+          </div>
+
+<div class="note warning">
+            <p>单行注释只对php内容有效，<code>//?&gt;</code>之后的html代码将被显示出来</p>
+          </div>
+
+<h1 id="在程序中使用空白处理"><a href="#在程序中使用空白处理" class="headerlink" title="在程序中使用空白处理"></a>在程序中使用空白处理</h1><p>空格、Tab、换行被php引擎忽略</p>
+<p>代码规范：</p>
+<ol>
+<li>使用两个空行<ul>
+<li>一个源文件的两个代码片段之间</li>
+<li>两个类的声明之间</li>
+</ul>
+</li>
+<li>使用一个空行<ul>
+<li>两个函数声明之间</li>
+<li>函数内的局部变量和函数的第一条语句之间</li>
+<li>块注释或单行注释之前</li>
+</ul>
+</li>
+<li>使用空格增加代码缩进提高可读性<ul>
+<li>关键字与括号之间，注意函数名和左括号之间不能有空格</li>
+<li>函数参数列表的逗号后</li>
+<li>算式的操作符和运算符之间，二进制运算和一元运算除外</li>
+<li>for语句中的逗号后</li>
+<li>强制类型转换语句中的强制类型的右括号与表达式之间应该用逗号隔开，并添加空格</li>
+</ul>
+</li>
+</ol>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>建议所有用到数据的地方，先将数据赋值给一个变量</p>
+<h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$a = <span class="number">100</span>;						</span><br><span class="line">	$b = <span class="string">"string"</span>;</span><br><span class="line">	$c = <span class="keyword">true</span>;</span><br><span class="line">	$d = <span class="number">99.99</span>;</span><br><span class="line"></span><br><span class="line">	$key1 = $a;						<span class="comment">//声明变量$key1,将$a的值赋给$key1</span></span><br><span class="line">	$key2 = $b;		</span><br><span class="line"></span><br><span class="line">	$a = $b = $c = $d = <span class="string">"value"</span>;	<span class="comment">//同时声明多个变量，并附上相同的值</span></span><br></pre></td></tr></table></figure>
+
+<p>变量的作用域：</p>
+<ol>
+<li>大部分不是在函数中声明的变量，可以在一个页面的所有php模式下使用，包含include和require引入的文件</li>
+<li>如果使用了Cookie和Session，可以在多个页面中使用</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $var = <span class="string">''</span>;								<span class="comment">//声明变量$var并赋值空</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">empty</span>($var))&#123;						<span class="comment">//true，因为$var为空值</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$var is either 0 or not set at all"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">isset</span>($var))&#123;						<span class="comment">//false，$var已经设置</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$var is not set at all"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">unset</span>($var);							<span class="comment">//销毁$var，释放内容</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>($var))&#123;						<span class="comment">//false，$var已经销毁</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"this var is set so i will print"</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info">
+            <p>如果empty()的参数是非零或者非空的值，则返回false</p><p>“”、0、“0”、NULL、FALSE、array()、$var及任何没有属性的对象都被认为是空的</p><p>如果参数为空，则返回true</p>
+          </div>
+
+<div class="note info">
+            <p>如果函数isset()的参数存在，则返回TRUE，否则返回FALSE</p><p>若参数是一个被设置成NULL的变量或已使用unset()释放，将返回FALSE</p>
+          </div>
+
+<div class="note warning">
+            <p>NULL字节（”\0”）不等同于PHP的NULL常数，</p><p>推荐使用!empty($var)的方式判断一个变量存在且不为空</p>
+          </div>
+
+<h2 id="变量的命名"><a href="#变量的命名" class="headerlink" title="变量的命名"></a>变量的命名</h2><p>变量名严格区别大小写</p>
+<p>内置结构和关键字及用户自定义的类名不区分大小写，如echo、while、class名称、function名称</p>
+<p>字母或下划线开头</p>
+<table>
+<thead>
+<tr>
+<th>PHP常用关键字</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and</td>
+<td>or</td>
+<td>xor</td>
+<td>if</td>
+<td>else</td>
+<td>for</td>
+</tr>
+<tr>
+<td>foreach</td>
+<td>while</td>
+<td>do</td>
+<td>switch</td>
+<td>case</td>
+<td>break</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>default</td>
+<td>as</td>
+<td>elseif</td>
+<td>declare</td>
+<td>endif</td>
+</tr>
+<tr>
+<td>endfor</td>
+<td>endforeach</td>
+<td>endwhile</td>
+<td>endswitch</td>
+<td>enddeclare</td>
+<td>array</td>
+</tr>
+<tr>
+<td>static</td>
+<td>const</td>
+<td>class</td>
+<td>extends</td>
+<td>new</td>
+<td>exception</td>
+</tr>
+<tr>
+<td>global</td>
+<td>function</td>
+<td>exit</td>
+<td>die</td>
+<td>echo</td>
+<td>print</td>
+</tr>
+<tr>
+<td>eval</td>
+<td>isset</td>
+<td>unset</td>
+<td>return</td>
+<td>defien</td>
+<td>defined</td>
+</tr>
+<tr>
+<td>include</td>
+<td>include_once</td>
+<td>require</td>
+<td>require_once</td>
+<td>cfunction</td>
+<td>use</td>
+</tr>
+<tr>
+<td>var</td>
+<td>Public</td>
+<td>private</td>
+<td>protected</td>
+<td>implements</td>
+<td>interface</td>
+</tr>
+<tr>
+<td>extends</td>
+<td>abstract</td>
+<td>clone</td>
+<td>try</td>
+<td>catch</td>
+<td>throw</td>
+</tr>
+</tbody></table>
+<h2 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $hi = <span class="string">"hello"</span>;	<span class="comment">//声明一个普通变量$hi</span></span><br><span class="line">	$$hi = <span class="string">"world"</span>;	<span class="comment">//声明一个可变变量$$hi,</span></span><br><span class="line">					<span class="comment">//$hi的值是hello,相当于声明$hello的值是“world”</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $hello\n"</span>;	<span class="comment">//输出hello world</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $&#123;$hi&#125;\n"</span>;	<span class="comment">//输出hello world</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $$hi\n"</span>;	<span class="comment">//输出hello $hello</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/26/php/php%E4%B8%80/php一.assets\image-20200526205949977.png"  alt="image-20200526205949977" style="zoom:80%;"></p>
+<h2 id="变量的引用赋值"><a href="#变量的引用赋值" class="headerlink" title="变量的引用赋值"></a>变量的引用赋值</h2><table>
+<thead>
+<tr>
+<th>$a=&amp;$b</th>
+<th>php</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b是a的别名</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>其中一个的值改变会导致另外一个改变</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td></td>
+<td>将$b的引用赋值给$a</td>
+<td>地址指针</td>
+</tr>
+<tr>
+<td>释放其中一个</td>
+<td>解除a、b的值关联关系，只释放一个</td>
+<td>两个都释放</td>
+</tr>
+</tbody></table>
+<h1 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h1><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/26/php/php%E4%B8%80/image-20200526213837647.png"  alt="image-20200526213837647"></p>
+<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>被认为是FALSE的值</p>
+<ul>
+<li>FALSE</li>
+<li>0、0.0</li>
+<li>“\0”、”0”</li>
+<li>没有成员变量的数组</li>
+<li>没有单元的对象（仅限php4）</li>
+<li>特殊类型NULL、尚未设定的变量</li>
+</ul>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python列表随机打乱顺序</title>
     <url>/2020/05/25/list%E6%89%93%E4%B9%B1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">n=eval(input())</span><br><span class="line">m=list(range(<span class="number">1</span>,n+<span class="number">1</span>))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"随机排序列表 : "</span>,  list)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n):</span><br><span class="line">    random.shuffle(m) <span class="comment"># shuffle函数是将原list打乱而不是返回一个新的list</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,n):</span><br><span class="line">        print(m[j],end=<span class="string">' '</span>)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
@@ -53,9 +402,11 @@
 
 <h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><h3 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 使用笛卡尔积连接两个表</span></span><br><span class="line"><span class="comment">-- 两个表中有同名属性,select其中一个时需要标明,不然会出现两列</span></span><br><span class="line"><span class="keyword">SELECT</span>	beer</span><br><span class="line"><span class="keyword">FROM</span>	frequents,likes </span><br><span class="line"><span class="keyword">WHERE</span>	bar=<span class="string">'Joe"s Bar'</span> <span class="keyword">AND</span>	</span><br><span class="line">		frequents.drinker = likes.drinker;</span><br><span class="line">		<span class="comment">-- 待查找的内容为'-&gt;"</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="natural-join"><a href="#natural-join" class="headerlink" title="natural join"></a>natural join</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	employee natrual <span class="keyword">join</span> department</span><br><span class="line"><span class="keyword">WHERE</span>	location=<span class="string">'天津'</span>;</span><br><span class="line"><span class="comment">-- 相同的两列不重复出现</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 等价</span></span><br><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	employee,department</span><br><span class="line"><span class="keyword">WHERE</span>	department.deptno=employee.deptno <span class="keyword">and</span></span><br><span class="line">		location=<span class="string">'天津'</span>;</span><br><span class="line"><span class="comment">-- 使用and/or连接多个查询条件</span></span><br></pre></td></tr></table></figure>
+<h3 id="natural-join"><a href="#natural-join" class="headerlink" title="natural join"></a>natural join</h3><p>只使用于两个表有一列相同属性</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	employee natrual <span class="keyword">join</span> department</span><br><span class="line"><span class="keyword">WHERE</span>	location=<span class="string">'天津'</span>;</span><br><span class="line"><span class="comment">-- 相同的两列不重复出现</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 等价</span></span><br><span class="line"><span class="keyword">SELECT</span>	*</span><br><span class="line"><span class="keyword">FROM</span>	employee,department</span><br><span class="line"><span class="keyword">WHERE</span>	department.deptno=employee.deptno <span class="keyword">and</span></span><br><span class="line">		location=<span class="string">'天津'</span>;</span><br><span class="line"><span class="comment">-- 使用and/or连接多个查询条件</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="left-outer-join-左外连接"><a href="#left-outer-join-左外连接" class="headerlink" title="left outer join 左外连接"></a>left outer join 左外连接</h3><p>(显示count=0的部分-&gt;单元内容为null)</p>
+<h3 id="inner-join"><a href="#inner-join" class="headerlink" title="inner join"></a>inner join</h3><p>作用与natural相同，使用与有多个相同属性，使用on进行约束</p>
+<h3 id="left-right-outer-join-左-右外连接"><a href="#left-right-outer-join-左-右外连接" class="headerlink" title="left/right outer join 左/右外连接"></a>left/right outer join 左/右外连接</h3><p>(显示count=0的部分-&gt;单元内容为null)</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给出每个专业借阅的“c2”类的图书总数，没有借阅的次数显示为0（</span></span><br><span class="line"><span class="keyword">select</span> majorid,majorname,<span class="keyword">count</span>(catid) <span class="keyword">as</span> borrowcount</span><br><span class="line"><span class="keyword">from</span> student <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> borrow <span class="keyword">on</span> student.stuid=borrow.stuid</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> book <span class="keyword">on</span> book.bookid=borrow.bookid</span><br><span class="line"><span class="keyword">and</span> book.catid=<span class="string">'c2'</span></span><br><span class="line"><span class="keyword">natural</span> <span class="keyword">join</span> major</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> majorid;</span><br></pre></td></tr></table></figure>
 
 <h3 id="元组变量"><a href="#元组变量" class="headerlink" title="元组变量"></a>元组变量</h3><p>引入一个关系的两个或更多部分</p>
@@ -127,16 +478,14 @@
   </entry>
   <entry>
     <title>漏洞测试作业八</title>
-    <url>/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/</url>
+    <url>/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><div class="note primary no-icon">
             <ul><li>kali linux</li><li>nessus</li><li>metasploit</li><li>ms08_067利用</li></ul>
           </div>
 
 
-<pre><code>- kali linux
-- nessus
-- metasploit
-- ms08_067</code></pre><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在KALI中安装NESSUS，对目标XP SP3主机进行扫描；根据扫描得到的漏洞结果利用metasploit框架（命令行模式）完成利用，对XP主机（关闭系统的安全防护措施）实施渗透攻击：</p>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在KALI中安装NESSUS，对目标XP SP3主机进行扫描；根据扫描得到的漏洞结果利用metasploit框架（命令行模式）完成利用，对XP主机（关闭系统的安全防护措施）实施渗透攻击：</p>
 <p>（1）熟练掌握metasploit中的常见指令</p>
 <p>（2）攻击效果应该能获取XP主机的屏幕截图（屏幕截图个性化，比如用记事本打开输入个人学号等信息），并将截图作为实验报告的一部分提交</p>
 <p>（3）Armitage工具的渗透过程可以基于命令行的操作基础上自己实践</p>
@@ -279,7 +628,7 @@
 
 <img src="/img/loading.gif" class="lazyload" data-src="/images/漏测作业八/image-20200520214041538.png"  alt="image-20200520214041538" style="zoom:67%;">
 
-<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/blog\hexo\source\_posts\漏测作业八\image-20200521160637123.png"  alt="image-20200521160637123" style="zoom: 50%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/21/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AB/blog\hexo\source\_posts\漏测作业八\image-20200521160637123.png"  alt="image-20200521160637123" style="zoom: 50%;">
 
 ]]></content>
       <categories>
@@ -301,8 +650,8 @@
         <category>vmware</category>
       </categories>
       <tags>
-        <tag>kali linux</tag>
         <tag>虚拟机</tag>
+        <tag>kali linux</tag>
       </tags>
   </entry>
   <entry>
@@ -419,7 +768,7 @@
   </entry>
   <entry>
     <title>漏洞测试作业七</title>
-    <url>/2020/05/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/</url>
+    <url>/2020/05/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%83/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>模糊测试和Fuzzer编写</p>
 <h2 id="在CP-VC6生成课本示例6-1的案例（RELEASE模式）"><a href="#在CP-VC6生成课本示例6-1的案例（RELEASE模式）" class="headerlink" title="在CP VC6生成课本示例6-1的案例（RELEASE模式）"></a>在CP VC6生成课本示例6-1的案例（RELEASE模式）</h2><p>注意修改char des[5]为char des[20]: </p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//课本示例6-1</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeoverflow</span><span class="params">(<span class="keyword">char</span>* b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> des[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(des,b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strstr</span>(argv[<span class="number">1</span>],<span class="string">"overflow"</span>)!=<span class="number">0</span>)<span class="comment">// strstr(str1,str2) 函数用于判断字符串str2是否是str1的子串。</span></span><br><span class="line">        	makeoverflow(argv[<span class="number">2</span>]);    <span class="comment">// 在cmd中运行，arg[0]为可执行文件名 </span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">        	<span class="built_in">printf</span>(<span class="string">"usage:findoverflow XXXX\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -487,7 +836,7 @@
   </entry>
   <entry>
     <title>漏洞测试作业六</title>
-    <url>/2020/05/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/</url>
+    <url>/2020/05/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E5%85%AD/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Shellcode编写</p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请在XP VC6生成课本示例5-1的案例（DEBUG模式），通过修改reg.txt文件，址入shellcode。Shellcode的内容与课本一致。撰写实验报告。</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REGCODE <span class="meta-string">"12345678"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">verify</span><span class="params">(<span class="keyword">char</span>* code)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> flag;</span><br><span class="line">	<span class="keyword">char</span> <span class="built_in">buffer</span>[<span class="number">44</span>];</span><br><span class="line">	flag=<span class="built_in">strcmp</span>(REGCODE,code);	# 若str1=str2，则返回零</span><br><span class="line">	<span class="built_in">strcpy</span>(<span class="built_in">buffer</span>,code);</span><br><span class="line">	<span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> vFlag=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> regcode[<span class="number">1024</span>];</span><br><span class="line">	FILE * fp;</span><br><span class="line">	LoadLibrary(<span class="string">"user32.dll"</span>);</span><br><span class="line">	<span class="keyword">if</span>(!(fp=fopen(<span class="string">"reg.txt"</span>,<span class="string">"rw+"</span>)))</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">fscanf</span>(fp,<span class="string">"%s"</span>,regcode);</span><br><span class="line">	vFlag=verify(regcode);</span><br><span class="line">	<span class="keyword">if</span>(vFlag)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"wrong regcode!\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"passed!\n"</span>);</span><br><span class="line">	fclose(fp);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -551,7 +900,7 @@
   </entry>
   <entry>
     <title>漏洞测试作业五</title>
-    <url>/2020/05/15/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%BA%94/</url>
+    <url>/2020/05/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E4%BA%94/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>整数溢出漏洞</p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请在XP VC6生成课本示例4-2的案例（DEBUG模式）。进而，修改input.txt文件，使得程序运行时弹出计算器。<br>提示：input.txt在利用IDE调试时需要放到cpp文件相对目录下；单独运行exe的时候，需要放到exe所在目录中</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><h3 id="课本示例"><a href="#课本示例" class="headerlink" title="课本示例"></a>课本示例</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;shellapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_INFO 32767</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ShellExecute(<span class="literal">NULL</span>,<span class="string">"open"</span>,<span class="string">"notepad"</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,SW_SHOW);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ShellExecute(<span class="literal">NULL</span>,<span class="string">"open"</span>,<span class="string">"calc"</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,SW_SHOW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">void</span> (*fuc_ptr)()=func;</span><br><span class="line">	<span class="keyword">char</span> info[MAX_INFO];</span><br><span class="line">	<span class="keyword">char</span> info1[<span class="number">30000</span>]; <span class="keyword">char</span> info2[<span class="number">30000</span>];</span><br><span class="line"></span><br><span class="line">	freopen(<span class="string">"inputtxt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	<span class="built_in">cin</span>.getline(info1,<span class="number">30000</span>,<span class="string">' '</span>);</span><br><span class="line">	<span class="built_in">cin</span>.getline(info2,<span class="number">30000</span>,<span class="string">' '</span>);</span><br><span class="line"></span><br><span class="line">	short len1=<span class="built_in">strlen</span>(info1);</span><br><span class="line">	short len2=<span class="built_in">strlen</span>(info2);</span><br><span class="line">	short all_len=len1+len2;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(all_len&lt;MAX_INFO)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">strcpy</span>(info,info1);</span><br><span class="line">		<span class="built_in">strcat</span>(info,info2);</span><br><span class="line">	&#125;</span><br><span class="line">	fuc_ptr();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1934,7 +2283,7 @@
 <blockquote>
 <p>#南开大学闭馆音乐</p>
 
-    <div id="aplayer-zRoiHSTt" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
+    <div id="aplayer-hGPHQVuH" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
 </blockquote>
 <blockquote>
 <p>参考：</p>
@@ -2463,25 +2812,6 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>信安数基第四章总结</title>
-    <url>/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第四章-原根与指数"><a href="#第四章-原根与指数" class="headerlink" title="第四章 原根与指数"></a>第四章 原根与指数</h1><h2 id="4-1-次数"><a href="#4-1-次数" class="headerlink" title="4.1 次数"></a>4.1 次数</h2><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160537835.png"  alt="image-20200331160537835"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155119753.png"  alt="image-20200331155119753"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155249593.png"  alt="image-20200331155249593"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160616625.png"  alt="image-20200331160616625"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160838992.png"  alt="image-20200331160838992"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160918308.png"  alt="image-20200331160918308"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161812692.png"  alt="image-20200331161812692"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/03/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161856893.png"  alt="image-20200331161856893"></p>
-]]></content>
-      <categories>
-        <category>major</category>
-      </categories>
-      <tags>
-        <tag>信安数基</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>power designer入门</title>
     <url>/2020/03/29/power-designer%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
@@ -2615,7 +2945,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
   </entry>
   <entry>
     <title>漏洞测试作业四</title>
-    <url>/2020/03/26/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E5%9B%9B/</url>
+    <url>/2020/03/26/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A%E5%9B%9B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
 <li>IDA查看伪代码</li>
 <li>利用OllyDBG进行准确字符串填充长度判断</li>
@@ -2711,7 +3041,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
   </entry>
   <entry>
     <title>漏洞测试作业三</title>
-    <url>/2020/03/23/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%89/</url>
+    <url>/2020/03/23/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%89/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
 <li>ollydbg使用入门</li>
 </ul>
@@ -3181,7 +3511,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
   </entry>
   <entry>
     <title>漏洞测试作业二</title>
-    <url>/2020/03/20/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%8C/</url>
+    <url>/2020/03/20/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%BA%8C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
 <li>IDE反汇编函数调用实验</li>
 </ul>
@@ -3938,7 +4268,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
   </entry>
   <entry>
     <title>漏洞测试作业一</title>
-    <url>/2020/03/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
+    <url>/2020/03/15/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A/%E6%BC%8F%E6%B5%8B%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
 <li>VMWARE安装</li>
 <li>KALI安装</li>
@@ -4050,20 +4380,20 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
     <title>高中回忆30条</title>
     <url>/2020/02/24/%E4%B8%AD%E5%AD%A6%E5%9B%9E%E5%BF%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>海棠花瓣会随风吹散，但记忆不会🌸</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224230227884.png"  alt="image-20200224230227884" style="zoom:50%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224230227884.png"  alt="image-20200224230227884" style="zoom:50%;">
 
 <a id="more"></a>
 
 <h4 id="1-你为什么选择这个高中"><a href="#1-你为什么选择这个高中" class="headerlink" title="1.你为什么选择这个高中"></a>1.你为什么选择这个高中</h4><p>因为一些原因在nkzx带了六年，没有其它的选择，百年学府、文化底蕴、人文气息，初中三年给我留下了很多美好的回忆，没有过离开的想法。很幸运能在这里度过自己的12岁到18岁，其实不只是和伙伴一起成长，老师见证了我们的青春，我们也是老师人生历程的一部分吧，从第一年教学生，到结婚，再到生子；或者看着某位老师从头发旺盛到emmm，时间真的是个很奇妙的东西</p>
 <h4 id="2-它的地理位置，周围建筑"><a href="#2-它的地理位置，周围建筑" class="headerlink" title="2.它的地理位置，周围建筑"></a>2.它的地理位置，周围建筑</h4><p>南开洼，真的洼，雨下大了水没过膝盖</p>
 <p>周围建筑哈哈哈，那就是学校周围的各种快餐店了哈哈哈，见证了几个711的开张又关张（中学时觉得711还挺好吃的，到了大学，唉）</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231007714.png"  alt="image-20200224231007714" style="zoom: 33%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231007714.png"  alt="image-20200224231007714" style="zoom: 33%;">
 
 <h4 id="3-初见面"><a href="#3-初见面" class="headerlink" title="3.初见面"></a>3.初见面</h4><p>六年级的冬令营，当时班里还有四个和我一天生日的同学</p>
 <h4 id="4-讲一下你的班主任吧"><a href="#4-讲一下你的班主任吧" class="headerlink" title="4.讲一下你的班主任吧"></a>4.讲一下你的班主任吧</h4><p>初中换了几位班主任，都对我很好。高中是充满智慧的宋神嘻嘻，突然想起来某位同学上课看球赛直播发说说感慨忘记屏蔽班主任了哈哈哈</p>
 <h4 id="5-你最好的同学"><a href="#5-你最好的同学" class="headerlink" title="5.你最好的同学"></a>5.你最好的同学</h4><p>大多是六年都在一个班的同学。其实我所处的这个体制有一点弊端就是高中之后大多数同学还是和初中关系好的同学交往，再和其他人建立非常亲密的同学关系稍微有点苦难，有点可惜。但是六年下来还是收获了不少朋友，可以一起躺在床上聊天的xyy，一起约自习的（han pi）lx，闲的没事可以一起闲逛拍片喝咖啡的单身人士hzz，想不到一起上了六年课大学了还能在一个班里上课的hjl，太多了太多了。其实现在想想，我的同学们身上真的带了很多天津人的“贫”，扯起淡是真的好笑。</p>
 <p>还得提一句，远在地球的另一端，抱着一年也就见一次的想法，说起话来脸都不要了的will同学哈哈哈哈哈哈xswl</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224230334989.png"  alt="image-20200224230334989" style="zoom: 25%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224230334989.png"  alt="image-20200224230334989" style="zoom: 25%;">
 
 <p>希望黄神出片质量越来越高</p>
 <h4 id="6-你们班最美的姑娘"><a href="#6-你们班最美的姑娘" class="headerlink" title="6.你们班最美的姑娘"></a>6.你们班最美的姑娘</h4><p>这个发言权还是交给男生吧，反正不是我，有几位真的是好多男生追😏，真正见识了“重色轻友”</p>
@@ -4076,14 +4406,14 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <p>大一一起吃饭聊天的陈老师</p>
 <p>还是各位讲课思路清晰的老师们❤</p>
 <h4 id="8-最喜欢学校的哪个地方"><a href="#8-最喜欢学校的哪个地方" class="headerlink" title="8.最喜欢学校的哪个地方"></a>8.最喜欢学校的哪个地方</h4><p>各种风格的建筑 和 有海棠花的地方</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224230443124.png"  alt="image-20200224230443124" style="zoom:15%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224230506809.png"  alt="image-20200224230506809" style="zoom:15%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231850570.png"  alt="image-20200224231850570" style="zoom:25%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224232545649.png"  alt="image-20200224232545649" style="zoom:25%;"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224230443124.png"  alt="image-20200224230443124" style="zoom:15%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224230506809.png"  alt="image-20200224230506809" style="zoom:15%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231850570.png"  alt="image-20200224231850570" style="zoom:25%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224232545649.png"  alt="image-20200224232545649" style="zoom:25%;"></p>
 <h4 id="9-一次躲跑操-跑操的经历"><a href="#9-一次躲跑操-跑操的经历" class="headerlink" title="9.一次躲跑操/跑操的经历"></a>9.一次躲跑操/跑操的经历</h4><p>我们（6班）跑着跑着就冲散了前面五班的队伍😥</p>
 <h4 id="10-运动会"><a href="#10-运动会" class="headerlink" title="10.运动会"></a>10.运动会</h4><p>高一跳高崴脚曹老师背我宋神开车把我送到医院</p>
 <h4 id="11-值周"><a href="#11-值周" class="headerlink" title="11.值周"></a>11.值周</h4><p>偷偷背课文？</p>
 <p>某个臭弟弟查出勤数数被我打乱了</p>
 <h4 id="12-最奇葩的作业-试卷题目"><a href="#12-最奇葩的作业-试卷题目" class="headerlink" title="12.最奇葩的作业/试卷题目"></a>12.最奇葩的作业/试卷题目</h4><p>“国庆大礼包”算是惊喜</p>
 <p>但这个“小农包”可太难听了🤦‍</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224230931136.png"  alt="image-20200224230931136" style="zoom:25%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224230931136.png"  alt="image-20200224230931136" style="zoom:25%;">
 
 <h4 id="13-一次糟糕的天气"><a href="#13-一次糟糕的天气" class="headerlink" title="13.一次糟糕的天气"></a>13.一次糟糕的天气</h4><p>我们是祖国的绿萝花🌳</p>
 <h4 id="14-午休经常做什么"><a href="#14-午休经常做什么" class="headerlink" title="14.午休经常做什么"></a>14.午休经常做什么</h4><p>睡觉写题朝bsb扔橘子皮</p>
@@ -4092,10 +4422,10 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <p>这里提一下和我一起见证凌晨四点洛杉矶的臭弟弟们，还有一位我一定要提一下</p>
 <p>我五年级就认识lxb了他居然没印象？？？？高二才认识我，高三考试的时候经常能见到吧，毕业典礼疯狂偶遇拍照（唯一一位显得我脸色蜡黄的兄弟），穿着西服拿着花站在阳光底下笑着跟我说要给我变个魔术真的可！！！</p>
 <p>还有初三时喜欢的学长？？反正当时觉得挺帅的，后来觉得他女朋友比他好看太多つ﹏⊂</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231129470.png"  alt="image-20200224231129470" style="zoom:25%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231129470.png"  alt="image-20200224231129470" style="zoom:25%;">
 
 <h4 id="16-最怀念的地方"><a href="#16-最怀念的地方" class="headerlink" title="16.最怀念的地方"></a>16.最怀念的地方</h4><p>瑞庭礼堂和满园海棠花</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231238694.png"  alt="image-20200224231238694" style="zoom:25%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224232150165.png"  alt="image-20200224232150165" style="zoom:25%;"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231238694.png"  alt="image-20200224231238694" style="zoom:25%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224232150165.png"  alt="image-20200224232150165" style="zoom:25%;"></p>
 <h4 id="17-伤心的回忆"><a href="#17-伤心的回忆" class="headerlink" title="17.伤心的回忆"></a>17.伤心的回忆</h4><p>辜负了几个人吧，对不起</p>
 <p>本无恶意，但却伤了人</p>
 <h4 id="18-一段不为人知的故事"><a href="#18-一段不为人知的故事" class="headerlink" title="18.一段不为人知的故事"></a>18.一段不为人知的故事</h4><p>我也不知道还有什么事别人都不知道</p>
@@ -4103,12 +4433,12 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <h4 id="20-从来没去过的地方"><a href="#20-从来没去过的地方" class="headerlink" title="20.从来没去过的地方"></a>20.从来没去过的地方</h4><p>翔宇楼天台</p>
 <h4 id="21-别开生面的学校活动"><a href="#21-别开生面的学校活动" class="headerlink" title="21.别开生面的学校活动"></a>21.别开生面的学校活动</h4><p>百团大战？</p>
 <p>在龙哥的带领下趴在地上画坑</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231505526.png"  alt="image-20200224231505526" style="zoom:25%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231505526.png"  alt="image-20200224231505526" style="zoom:25%;">
 
 <p>说起来真的挺可惜的，nk在”追求高考成绩“的大环境下失去了太多</p>
 <p>吹一波书画社</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231307416.png"  alt="image-20200224231307416" style="zoom:25%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231320919.png"  alt="image-20200224231320919" style="zoom: 33%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224231338792.png"  alt="image-20200224231338792" style="zoom:33%;"></p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200225095719714.png"  alt="image-20200225095719714" style="zoom:25%;">
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231307416.png"  alt="image-20200224231307416" style="zoom:25%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231320919.png"  alt="image-20200224231320919" style="zoom: 33%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231338792.png"  alt="image-20200224231338792" style="zoom:33%;"></p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224231505526.png"  alt="image-20200225095719714" style="zoom:25%;">
 
 <h4 id="22-同学们的奇怪的昵称-绰号"><a href="#22-同学们的奇怪的昵称-绰号" class="headerlink" title="22.同学们的奇怪的昵称/绰号"></a>22.同学们的奇怪的昵称/绰号</h4><p>八卦相关🙂</p>
 <h4 id="23-军训"><a href="#23-军训" class="headerlink" title="23.军训"></a>23.军训</h4><p>坐在第一排看小姐姐们跳舞</p>
@@ -4116,7 +4446,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <p>他真的太有趣了哈哈哈哈</p>
 <h4 id="25-校园传说"><a href="#25-校园传说" class="headerlink" title="25.校园传说"></a>25.校园传说</h4><p>（空）</p>
 <p>但历史悠久</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224232457810.png"  alt="image-20200224232457810" style="zoom:25%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224232457810.png"  alt="image-20200224232457810" style="zoom:25%;">
 
 <h4 id="26-讲讲寝室-走读的事"><a href="#26-讲讲寝室-走读的事" class="headerlink" title="26.讲讲寝室/走读的事"></a>26.讲讲寝室/走读的事</h4><p>上学路上的同学们</p>
 <p>一起在地铁上玩游戏的lx</p>
@@ -4127,12 +4457,12 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <h4 id="28-高考前一周"><a href="#28-高考前一周" class="headerlink" title="28.高考前一周"></a>28.高考前一周</h4><p>不停地做卷子，班里剩的人也不多了，气氛还是比较轻松的</p>
 <h4 id="29-毕业典礼"><a href="#29-毕业典礼" class="headerlink" title="29.毕业典礼"></a>29.毕业典礼</h4><p>六年真的是要结束了啊</p>
 <h4 id="30-如果回到高中开学的前一天你会对当初的自己说什么？"><a href="#30-如果回到高中开学的前一天你会对当初的自己说什么？" class="headerlink" title="30.如果回到高中开学的前一天你会对当初的自己说什么？"></a>30.如果回到高中开学的前一天你会对当初的自己说什么？</h4><p>且行且珍惜，笔芯♥</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224232047764.png"  alt="image-20200224232047764" style="zoom:25%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224232047764.png"  alt="image-20200224232047764" style="zoom:25%;">
 
 
 
 <p>最后</p>
-<img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200224232014063.png"  alt="image-20200224232014063" style="zoom: 33%;">
+<img src="/img/loading.gif" class="lazyload" data-src="/images/高中回忆/image-20200224232014063.png"  alt="image-20200224232014063" style="zoom: 33%;">
 
 ]]></content>
       <categories>
@@ -4193,100 +4523,6 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Qt作业一：计算器</title>
-    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="ui界面对应的ui-h文件的作用："><a href="#ui界面对应的ui-h文件的作用：" class="headerlink" title="ui界面对应的ui_*.h文件的作用："></a>ui界面对应的ui_*.h文件的作用：</h2><p>ui_.h是ui界面的代码化表达，<br>即用非Qt软件打开ui文件时会显示ui_*.h文件，用代码描述ui界面内容</p>
-<hr>
-<h2 id="计算器程序："><a href="#计算器程序：" class="headerlink" title="计算器程序："></a>计算器程序：</h2><h3 id="1-通过Qt-designer设计界面："><a href="#1-通过Qt-designer设计界面：" class="headerlink" title="1.通过Qt designer设计界面："></a>1.通过Qt designer设计界面：</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/exg4t6ijsh7pnvnj0rpwgmm8/image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png"  alt="image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png-236.7kB"></p>
-<h4 id="出现的问题和解决方法："><a href="#出现的问题和解决方法：" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
-<li>窗口对象名（QWidget类）要和对窗口进行操作的父类类名一致，否则会提示“引用了不完整的类型”</li>
-<li>注意修改按钮名称以便下一步</li>
-</ul>
-<h3 id="2-使用QSignalMapper："><a href="#2-使用QSignalMapper：" class="headerlink" title="2.使用QSignalMapper："></a>2.使用QSignalMapper：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">signalmapper&#x3D;new QSignalMapper (this);</span><br><span class="line">QObjectList list &#x3D;this-&gt;children();&#x2F;&#x2F;list为全部按钮</span><br><span class="line">foreach(QObject *oc,list)&#x2F;&#x2F;遍历list中的按钮</span><br><span class="line">&#123;</span><br><span class="line">    if(oc-&gt;objectName()!&#x3D;&quot;gridLayout&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;display&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;&quot;)&#x2F;&#x2F;排除不需要链接槽函数clicked()的多余按钮</span><br><span class="line">    &#123;</span><br><span class="line">        QPushButton *pushbutton&#x3D;qobject_cast&lt;QPushButton *&gt;(oc);&#x2F;&#x2F;利用qobject——cast进行类型转换</span><br><span class="line">        connect(pushbutton,SIGNAL(clicked()),signalmapper,SLOT(map()));&#x2F;&#x2F;将信号链接到signnalmapper上</span><br><span class="line">        signalmapper-&gt;setMapping(pushbutton,pushbutton-&gt;text());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">connect(signalmapper,SIGNAL(mapped(QString)),this,SLOT(clicked(QString)));&#x2F;&#x2F;将signalmapper连接至槽函数clicked（QString）上，即实现将所需按钮链接至一个槽函数</span><br></pre></td></tr></table></figure>
-
-<h4 id="出现的问题和解决方法：-1"><a href="#出现的问题和解决方法：-1" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
-<li>理解QSignalMapper的工作原理和方法：<br>  qsignalmapper:相当于一个信号转发器，将多个按钮信号连接到一个槽函数上（详见代码注释）<br>  引入QSignalMapper头文件<br>  还有一种获取按钮列表的方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QString buttontext &#x3D; &quot;btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10&quot;; </span><br><span class="line">QStringList texts &#x3D; buttontext.split(&quot;,&quot;);</span><br></pre></td></tr></table></figure>
-也可利用按钮名字的共性筛选出所需要的按钮：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(oc-&gt;nbjectName.starswith(&quot;***&quot;)</span><br></pre></td></tr></table></figure></li>
-<li>最初设计ui时将所有按钮放到了gridlayout下，结果到至按钮无法访问，将按钮挪出gridlayout，若需使按钮排列整齐，designer界面上方有辅助排列功能按键。</li>
-</ul>
-<p>###3.计算功能的实现：<br>头文件声明：</p>
-<ul>
-<li>node类</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    class node</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    node();</span><br><span class="line">    double data;&#x2F;&#x2F;字符串转成double后存储在data中</span><br><span class="line">    QString sign;&#x2F;&#x2F;如果时运算符节点，用sign记录运算符</span><br><span class="line">    QString nums;&#x2F;&#x2F;以字符串形式存储double类型的数据</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>widget类：//计算器类</li>
-</ul>
-<p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/0rjzz44tj1tybvzvwublr5p9/image_1den8jsp2cvi120b1183p941e3tm.png"  alt="image_1den8jsp2cvi120b1183p941e3tm.png-194.6kB"></p>
-<ul>
-<li>将按钮上的内容输入到字符串中：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::clicked(QString ch)</span><br><span class="line">&#123;</span><br><span class="line">    if(ch&#x3D;&#x3D;&quot;sqrt&quot;)</span><br><span class="line">        opt.append(&quot;k&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;square&quot;)</span><br><span class="line">        opt.append(&quot;p&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;rev&quot;)</span><br><span class="line">        opt.append(&quot;d&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;neg&quot;)</span><br><span class="line">        opt.append(&quot;f&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;&#x3D;&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        opt.append(&quot;&#x3D;\0&quot;);</span><br><span class="line">        cal();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        opt.append(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    ui-&gt;display-&gt;setPlainText(opt);&#x2F;&#x2F;显示输入内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>将字符串转成链表<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/3bzdgoa177er00batvrsitu8/image_1den9fkk8r1mvuu2cn130g14c21g.png"  alt="image_1den9fkk8r1mvuu2cn130g14c21g.png-198kB"><ul>
-<li>QString 转 double：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t-&gt;data&#x3D;t-&gt;nums.toDouble;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>实现节点与节点的计算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::calculate(node*a,node*b,node*c)</span><br><span class="line">&#123;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;+&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data + c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;-&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data - c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;*&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data * c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;&#x2F;&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data &#x2F; c-&gt;data;</span><br><span class="line">&#x2F;&#x2F;节点合并</span><br><span class="line">    if (tail !&#x3D; c)</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;c-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;nullptr;</span><br><span class="line">        tail&#x3D;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::  calculate(node*a,node*b)</span><br><span class="line">&#123;</span><br><span class="line">   if (b-&gt;sign &#x3D;&#x3D; &#39;k&#39;)</span><br><span class="line">        a-&gt;data &#x3D; sqrt(a-&gt;data);</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;p&#39;)</span><br><span class="line">        a-&gt;data *&#x3D; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;d&#39;)</span><br><span class="line">        a-&gt;data &#x3D; 1 &#x2F; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;f&#39;)</span><br><span class="line">        a-&gt;data &#x3D; -a-&gt;data;</span><br><span class="line">    if(b!&#x3D;tail)</span><br><span class="line">        a-&gt;next &#x3D; b-&gt;next;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next &#x3D; nullptr;</span><br><span class="line">        tail &#x3D; a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>计算样例<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/69dz89gzml1ewgor9s4az111/image_1deo6udbc13io132bduhi37lcs1c.png"  alt="image_1deo6udbc13io132bduhi37lcs1c.png-194.7kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/hzc5rc84go6osgaubhe4hpkk/image_1deo711q21576823lu110ue3l81p.png"  alt="image_1deo711q21576823lu110ue3l81p.png-198.2kB"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>大一</tag>
-        <tag>作业</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt作业二：画图板</title>
-    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%BA%8C%E2%80%94%E2%80%94%E7%94%BB%E5%9B%BE%E6%9D%BF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、界面设计"><a href="#一、界面设计" class="headerlink" title="一、界面设计"></a>一、界面设计</h3><p>利用designer设计menubar和toolbar<br>遇到的问题和解决方法：<br>toolbar和menubar重叠，拖动toolbar部件至屏幕右侧即可。<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/d8i77lp27ad7u5mdfth4ivte/image_1df8880jt10m8g53v041efd6j29.png"  alt="image_1df8880jt10m8g53v041efd6j29.png-246.9kB"><br>menubar中可以添加子选项<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/mbukua86v9pv56obgta3og2o/image_1df88esf0le118bvdh91a0b130d9.png"  alt="image_1df88esf0le118bvdh91a0b130d9.png-256.2kB"></p>
-<hr>
-<h3 id="二、paint类属性"><a href="#二、paint类属性" class="headerlink" title="二、paint类属性"></a>二、paint类属性</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QPixmap *pix;&#x2F;&#x2F;设置画图背景</span><br><span class="line">QPoint start;&#x2F;&#x2F;鼠标按下时的坐标</span><br><span class="line">QPoint end;&#x2F;&#x2F;鼠标抬起时的坐标</span><br><span class="line">int status;&#x2F;&#x2F;画图状态，1：直线，2：矩形，3：椭圆，4：自由绘图</span><br><span class="line">QPen pen;&#x2F;&#x2F;设置线条的属性</span><br><span class="line">QBrush brush;&#x2F;&#x2F;设置填充属性</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="三、paint类protected成员"><a href="#三、paint类protected成员" class="headerlink" title="三、paint类protected成员"></a>三、paint类protected成员</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected:</span><br><span class="line">    void mousePressEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标按下事件</span><br><span class="line">    void mouseMoveEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标移动事件</span><br><span class="line">    void mouseReleaseEvent(QMouseEvent *);&#x2F;&#x2F;鼠标释放事件</span><br><span class="line">    void paintEvent(QPaintEvent*);&#x2F;&#x2F;绘画事件</span><br></pre></td></tr></table></figure>
-<p>函数定义：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::mousePressEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    start&#x3D;event-&gt;pos();&#x2F;&#x2F;获得鼠标点击坐标</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::mouseReleaseEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    end&#x3D;event-&gt;pos();</span><br><span class="line">    qDebug()&lt;&lt;start&lt;&lt;endl&lt;&lt;end&lt;&lt;endl;</span><br><span class="line">    QPainter *painter&#x3D;new QPainter(pix);</span><br><span class="line">    painter-&gt;setPen(pen);&#x2F;&#x2F;设置线条属性</span><br><span class="line">    painter-&gt;setBrush(brush);&#x2F;&#x2F;设置笔刷属性</span><br><span class="line">    switch (status) &#123;</span><br><span class="line">    case 1:&#x2F;&#x2F;画直线</span><br><span class="line">    &#123;</span><br><span class="line">        painter-&gt;drawLine(start,end);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    case 2:&#x2F;&#x2F;画矩形</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawRect(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    case 3:&#x2F;&#x2F;画椭圆</span><br><span class="line">    &#123;</span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawEllipse(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this-&gt;update();</span><br><span class="line">    delete painter;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::paintEvent(QPaintEvent *)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  QPainter painter(this);</span><br><span class="line">  painter.drawPixmap(QPoint(0, 0), *pix);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint:: mouseMoveEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    if(status&#x3D;&#x3D;4)&#x2F;&#x2F;绘制鼠标移动轨迹</span><br><span class="line">    &#123;</span><br><span class="line">        QPainter* painter&#x3D;new QPainter(pix);</span><br><span class="line">        end&#x3D;event-&gt;pos();</span><br><span class="line">        painter-&gt;setPen(pen);</span><br><span class="line">        painter-&gt;drawLine(start,end);&#x2F;&#x2F;每一次移动画直线</span><br><span class="line">        this-&gt;update();</span><br><span class="line">        start&#x3D;end;&#x2F;&#x2F;下一次绘制的开始点是这次的结束点</span><br><span class="line">        delete painter;&#x2F;&#x2F;若无delete则只可以绘制一次</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="遇到的问题和解决方法："><a href="#遇到的问题和解决方法：" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><p>painter在完成每次绘制时需delete，否则无法进行下一次绘制</p>
-<hr>
-<h3 id="四、构造函数"><a href="#四、构造函数" class="headerlink" title="四、构造函数"></a>四、构造函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">paint::paint(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::paint)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置画布</span><br><span class="line">    pix&#x3D;new QPixmap(this-&gt;size()*5);</span><br><span class="line">    pix-&gt;fill(Qt::white);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置初使属性</span><br><span class="line">    brush.setColor(Qt::NoBrush);</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;连接信号和槽</span><br><span class="line">    connect(ui-&gt;line,SIGNAL(triggered(bool)),this,SLOT(status_line()));</span><br><span class="line">    connect(ui-&gt;rect,SIGNAL(triggered(bool)),this,SLOT(status_rect()));</span><br><span class="line">    connect(ui-&gt;ellipse,SIGNAL(triggered(bool)),this,SLOT(status_ellipse()));</span><br><span class="line">    connect(ui-&gt;actionfree,SIGNAL(triggered(bool)),this,SLOT(status_free()));</span><br><span class="line">    connect(ui-&gt;actionred,SIGNAL(triggered(bool)),this,SLOT(change_color_red()));</span><br><span class="line">    connect(ui-&gt;actionblue,SIGNAL(triggered(bool)),this,SLOT(change_color_blue()));</span><br><span class="line">    connect(ui-&gt;actiongreen,SIGNAL(triggered(bool)),this,SLOT(change_color_green()));</span><br><span class="line">    connect(ui-&gt;actionblack,SIGNAL(triggered(bool)),this,SLOT(change_color_black()));</span><br><span class="line">    connect(ui-&gt;action2,SIGNAL(triggered(bool)),this,SLOT(penwidth2()));</span><br><span class="line">    connect(ui-&gt;action5,SIGNAL(triggered(bool)),this,SLOT(penwidth5()));</span><br><span class="line">    connect(ui-&gt;action8,SIGNAL(triggered(bool)),this,SLOT(penwidth8()));</span><br><span class="line">    connect(ui-&gt;action10,SIGNAL(triggered(bool)),this,SLOT(penwidth10()));</span><br><span class="line">    connect(ui-&gt;solid_line,SIGNAL(triggered(bool)),this,SLOT(set_solid()));</span><br><span class="line">    connect(ui-&gt;dash_line,SIGNAL(triggered(bool)),this,SLOT(set_dash()));</span><br><span class="line">    connect(ui-&gt;dash_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdot()));</span><br><span class="line">    connect(ui-&gt;dash_dot_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdotdot()));</span><br><span class="line">    connect(ui-&gt;dot_line,SIGNAL(triggered(bool)),this,SLOT(set_dot()));</span><br><span class="line">    connect(ui-&gt;fred,SIGNAL(triggered(bool)),this,SLOT(set_fill_red()));</span><br><span class="line">    connect(ui-&gt;fblue,SIGNAL(triggered(bool)),this,SLOT(set_fill_blue()));</span><br><span class="line">    connect(ui-&gt;fblack,SIGNAL(triggered(bool)),this,SLOT(set_fill_black()));</span><br><span class="line">    connect(ui-&gt;fgreen,SIGNAL(triggered(bool)),this,SLOT(set_fill_green()));</span><br><span class="line">    connect(ui-&gt;solid_pattern,SIGNAL(triggered(bool)),this,SLOT(set_solid_pattern()));</span><br><span class="line">    connect(ui-&gt;dense_pattern,SIGNAL(triggered(bool)),this,SLOT(set_dense_pattern()));</span><br><span class="line">    connect(ui-&gt;none,SIGNAL(triggered(bool)),this,SLOT(set_none_pattern()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="遇到的问题和解决方法：-1"><a href="#遇到的问题和解决方法：-1" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><ul>
-<li>可以获得鼠标事件坐标，但无法绘制，解决方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pix&#x3D;new QPixmap(this-&gt;size()*5);&#x2F;&#x2F;结构函数</span><br><span class="line">QPainter *painter&#x3D;new QPainter(pix);&#x2F;&#x2F;绘制函数</span><br></pre></td></tr></table></figure></li>
-<li>点击menubar中label发出的信号槽函数无法接收到：<br>原connect写法：<br><code>connect(ui-&gt;line,SIGNAL(clicked()),this,SLOT(status_line()));</code><br>将<code>clicked()</code>改为<code>triggered(bool)</code>即可</li>
-</ul>
-<hr>
-<h3 id="五、槽函数："><a href="#五、槽函数：" class="headerlink" title="五、槽函数："></a>五、槽函数：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public slots:</span><br><span class="line">    &#x2F;&#x2F;设置绘制形状</span><br><span class="line">    void status_line();</span><br><span class="line">    void status_rect();</span><br><span class="line">    void status_ellipse();</span><br><span class="line">    void status_free();&#x2F;&#x2F;绘制鼠标轨迹</span><br><span class="line">    &#x2F;&#x2F;设置线条颜色</span><br><span class="line">    void change_color_blue();</span><br><span class="line">    void change_color_red();</span><br><span class="line">    void change_color_green();</span><br><span class="line">    void change_color_black();</span><br><span class="line">    &#x2F;&#x2F;设置线条宽度</span><br><span class="line">    void penwidth2();</span><br><span class="line">    void penwidth5();</span><br><span class="line">    void penwidth8();</span><br><span class="line">    void penwidth10();</span><br><span class="line">    &#x2F;&#x2F;设置线条样式</span><br><span class="line">    void set_solid();</span><br><span class="line">    void set_dash();</span><br><span class="line">    void set_dot();</span><br><span class="line">    void set_dashdot();</span><br><span class="line">    void set_dashdotdot();</span><br><span class="line">    &#x2F;&#x2F;设置填充颜色</span><br><span class="line">    void set_fill_red();</span><br><span class="line">    void set_fill_blue();</span><br><span class="line">    void set_fill_green();</span><br><span class="line">    void set_fill_black();</span><br><span class="line">    &#x2F;&#x2F;设置填充样式</span><br><span class="line">    void set_solid_pattern();</span><br><span class="line">    void set_dense_pattern();</span><br><span class="line">    void set_none_pattern();</span><br></pre></td></tr></table></figure>
-<h4 id="槽函数定义示例："><a href="#槽函数定义示例：" class="headerlink" title="槽函数定义示例："></a>槽函数定义示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::status_line()</span><br><span class="line">&#123;</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::change_color_red()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setColor(Qt::red);</span><br><span class="line">    &#x2F;&#x2F;注意书写格式，不可以写为pen.setColor(&quot;red&quot;);否则无法传入颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::penwidth5()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setWidth(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dash()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setStyle(Qt::DashLine);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_fill_blue()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setColor(Qt::blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dense_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::Dense7Pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_none_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::NoBrush);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="遇到的问题和解决方法"><a href="#遇到的问题和解决方法" class="headerlink" title="遇到的问题和解决方法"></a>遇到的问题和解决方法</h4><ul>
-<li>信号和槽函数无法连接：<ul>
-<li>检查信号和发送信号的来源是否对应</li>
-<li>检查信号和槽的拼写是否准确</li>
-<li>利用qDebug()进行调试</li>
-</ul>
-</li>
-<li>brush必须设置填充样式，否则无法填充</li>
-</ul>
-<hr>
-<h3 id="六、成果展示"><a href="#六、成果展示" class="headerlink" title="六、成果展示"></a>六、成果展示</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/v86upj0wwx905xyzftjgvh3j/image_1df8akslg1oo5li7b5jp314rb16.png"  alt="image_1df8akslg1oo5li7b5jp314rb16.png-79.6kB"></p>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>大一</tag>
-        <tag>作业</tag>
-      </tags>
   </entry>
   <entry>
     <title>Qt大作业：影音播放器</title>
@@ -4424,23 +4660,41 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>Qt的框架</title>
-    <url>/2019/08/31/Qt%E7%9A%84%E6%A1%86%E6%9E%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">&#x2F;&#x2F;QApplication应用程序类</span><br><span class="line">&#x2F;&#x2F;Qt头文件没有.h</span><br><span class="line">&#x2F;&#x2F;头文件和类名一样</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;有且只有一个应用程序类对象</span><br><span class="line">    QApplication a(argc, argv);</span><br><span class="line">    &#x2F;&#x2F;MyWidget继承Qwidget，QWidget是一个窗口类对象</span><br><span class="line">    &#x2F;&#x2F;w是窗口</span><br><span class="line">    Widget w;</span><br><span class="line">    &#x2F;&#x2F;窗口创建默认是隐藏的，需要认为显示</span><br><span class="line">    w.show();</span><br><span class="line">    &#x2F;&#x2F;让程序一直执行，等待人为操作（等待事件的发生）</span><br><span class="line">    return a.exec();&#x2F;&#x2F;a是应用程序对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+    <title>Qt作业一：计算器</title>
+    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="ui界面对应的ui-h文件的作用："><a href="#ui界面对应的ui-h文件的作用：" class="headerlink" title="ui界面对应的ui_*.h文件的作用："></a>ui界面对应的ui_*.h文件的作用：</h2><p>ui_.h是ui界面的代码化表达，<br>即用非Qt软件打开ui文件时会显示ui_*.h文件，用代码描述ui界面内容</p>
 <hr>
-<p>##.pro</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#-------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># Project created by QtCreator 2019-06-28T19:37:51</span><br><span class="line">#</span><br><span class="line">#-------------------------------------------------</span><br><span class="line"></span><br><span class="line">#项目文件用“#”注释</span><br><span class="line">#模块</span><br><span class="line">QT       +&#x3D; core gui</span><br><span class="line">#高于4版本添加QT+&#x3D;widgets，为了兼容4</span><br><span class="line">greaterThan(QT_MAJOR_VERSION, 4): QT +&#x3D; widgets</span><br><span class="line">#应用程序的名字</span><br><span class="line">TARGET &#x3D; untitled5</span><br><span class="line">#指定makefile的类型，app&#x2F;lib（库）</span><br><span class="line">TEMPLATE &#x3D; app</span><br><span class="line"></span><br><span class="line"># The following define makes your compiler emit warnings if you use</span><br><span class="line"># any feature of Qt which has been marked as deprecated (the exact warnings</span><br><span class="line"># depend on your compiler). Please consult the documentation of the</span><br><span class="line"># deprecated API in order to know how to port your code away from it.</span><br><span class="line">DEFINES +&#x3D; QT_DEPRECATED_WARNINGS</span><br><span class="line"></span><br><span class="line"># You can also make your code fail to compile if you use deprecated APIs.</span><br><span class="line"># In order to do so, uncomment the following line.</span><br><span class="line"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span><br><span class="line">#DEFINES +&#x3D; QT_DISABLE_DEPRECATED_BEFORE&#x3D;0x060000    # disables all the APIs deprecated before Qt 6.0.0</span><br><span class="line"></span><br><span class="line">CONFIG +&#x3D; c++11</span><br><span class="line">#源文件.cpp</span><br><span class="line">SOURCES +&#x3D; \</span><br><span class="line">        main.cpp \</span><br><span class="line">        widget.cpp</span><br><span class="line">#头文件.h</span><br><span class="line">HEADERS +&#x3D; \</span><br><span class="line">        widget.h</span><br><span class="line"></span><br><span class="line"># Default rules for deployment.</span><br><span class="line">qnx: target.path &#x3D; &#x2F;tmp&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">else: unix:!android: target.path &#x3D; &#x2F;opt&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">!isEmpty(target.path): INSTALLS +&#x3D; target</span><br></pre></td></tr></table></figure>
+<h2 id="计算器程序："><a href="#计算器程序：" class="headerlink" title="计算器程序："></a>计算器程序：</h2><h3 id="1-通过Qt-designer设计界面："><a href="#1-通过Qt-designer设计界面：" class="headerlink" title="1.通过Qt designer设计界面："></a>1.通过Qt designer设计界面：</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/exg4t6ijsh7pnvnj0rpwgmm8/image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png"  alt="image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png-236.7kB"></p>
+<h4 id="出现的问题和解决方法："><a href="#出现的问题和解决方法：" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>窗口对象名（QWidget类）要和对窗口进行操作的父类类名一致，否则会提示“引用了不完整的类型”</li>
+<li>注意修改按钮名称以便下一步</li>
+</ul>
+<h3 id="2-使用QSignalMapper："><a href="#2-使用QSignalMapper：" class="headerlink" title="2.使用QSignalMapper："></a>2.使用QSignalMapper：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">signalmapper&#x3D;new QSignalMapper (this);</span><br><span class="line">QObjectList list &#x3D;this-&gt;children();&#x2F;&#x2F;list为全部按钮</span><br><span class="line">foreach(QObject *oc,list)&#x2F;&#x2F;遍历list中的按钮</span><br><span class="line">&#123;</span><br><span class="line">    if(oc-&gt;objectName()!&#x3D;&quot;gridLayout&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;display&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;&quot;)&#x2F;&#x2F;排除不需要链接槽函数clicked()的多余按钮</span><br><span class="line">    &#123;</span><br><span class="line">        QPushButton *pushbutton&#x3D;qobject_cast&lt;QPushButton *&gt;(oc);&#x2F;&#x2F;利用qobject——cast进行类型转换</span><br><span class="line">        connect(pushbutton,SIGNAL(clicked()),signalmapper,SLOT(map()));&#x2F;&#x2F;将信号链接到signnalmapper上</span><br><span class="line">        signalmapper-&gt;setMapping(pushbutton,pushbutton-&gt;text());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">connect(signalmapper,SIGNAL(mapped(QString)),this,SLOT(clicked(QString)));&#x2F;&#x2F;将signalmapper连接至槽函数clicked（QString）上，即实现将所需按钮链接至一个槽函数</span><br></pre></td></tr></table></figure>
 
-<hr>
-<p>##widget.h</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifndef WIDGET_H</span><br><span class="line">#define WIDGET_H</span><br><span class="line"></span><br><span class="line">#include &lt;QWidget&gt;</span><br><span class="line"></span><br><span class="line">class Widget : public QWidget</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT&#x2F;&#x2F;信号与槽需要</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    Widget(QWidget *parent &#x3D; 0);</span><br><span class="line">    ~Widget();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif &#x2F;&#x2F; WIDGET_H</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>##widget.cpp</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line"></span><br><span class="line">Widget::Widget(QWidget *parent)</span><br><span class="line">    : QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Widget::~Widget()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
+<h4 id="出现的问题和解决方法：-1"><a href="#出现的问题和解决方法：-1" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>理解QSignalMapper的工作原理和方法：<br>  qsignalmapper:相当于一个信号转发器，将多个按钮信号连接到一个槽函数上（详见代码注释）<br>  引入QSignalMapper头文件<br>  还有一种获取按钮列表的方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QString buttontext &#x3D; &quot;btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10&quot;; </span><br><span class="line">QStringList texts &#x3D; buttontext.split(&quot;,&quot;);</span><br></pre></td></tr></table></figure>
+也可利用按钮名字的共性筛选出所需要的按钮：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(oc-&gt;nbjectName.starswith(&quot;***&quot;)</span><br></pre></td></tr></table></figure></li>
+<li>最初设计ui时将所有按钮放到了gridlayout下，结果到至按钮无法访问，将按钮挪出gridlayout，若需使按钮排列整齐，designer界面上方有辅助排列功能按键。</li>
+</ul>
+<p>###3.计算功能的实现：<br>头文件声明：</p>
+<ul>
+<li>node类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    class node</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    node();</span><br><span class="line">    double data;&#x2F;&#x2F;字符串转成double后存储在data中</span><br><span class="line">    QString sign;&#x2F;&#x2F;如果时运算符节点，用sign记录运算符</span><br><span class="line">    QString nums;&#x2F;&#x2F;以字符串形式存储double类型的数据</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>widget类：//计算器类</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/0rjzz44tj1tybvzvwublr5p9/image_1den8jsp2cvi120b1183p941e3tm.png"  alt="image_1den8jsp2cvi120b1183p941e3tm.png-194.6kB"></p>
+<ul>
+<li>将按钮上的内容输入到字符串中：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::clicked(QString ch)</span><br><span class="line">&#123;</span><br><span class="line">    if(ch&#x3D;&#x3D;&quot;sqrt&quot;)</span><br><span class="line">        opt.append(&quot;k&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;square&quot;)</span><br><span class="line">        opt.append(&quot;p&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;rev&quot;)</span><br><span class="line">        opt.append(&quot;d&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;neg&quot;)</span><br><span class="line">        opt.append(&quot;f&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;&#x3D;&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        opt.append(&quot;&#x3D;\0&quot;);</span><br><span class="line">        cal();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        opt.append(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    ui-&gt;display-&gt;setPlainText(opt);&#x2F;&#x2F;显示输入内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将字符串转成链表<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/3bzdgoa177er00batvrsitu8/image_1den9fkk8r1mvuu2cn130g14c21g.png"  alt="image_1den9fkk8r1mvuu2cn130g14c21g.png-198kB"><ul>
+<li>QString 转 double：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t-&gt;data&#x3D;t-&gt;nums.toDouble;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>实现节点与节点的计算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::calculate(node*a,node*b,node*c)</span><br><span class="line">&#123;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;+&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data + c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;-&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data - c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;*&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data * c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;&#x2F;&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data &#x2F; c-&gt;data;</span><br><span class="line">&#x2F;&#x2F;节点合并</span><br><span class="line">    if (tail !&#x3D; c)</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;c-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;nullptr;</span><br><span class="line">        tail&#x3D;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::  calculate(node*a,node*b)</span><br><span class="line">&#123;</span><br><span class="line">   if (b-&gt;sign &#x3D;&#x3D; &#39;k&#39;)</span><br><span class="line">        a-&gt;data &#x3D; sqrt(a-&gt;data);</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;p&#39;)</span><br><span class="line">        a-&gt;data *&#x3D; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;d&#39;)</span><br><span class="line">        a-&gt;data &#x3D; 1 &#x2F; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;f&#39;)</span><br><span class="line">        a-&gt;data &#x3D; -a-&gt;data;</span><br><span class="line">    if(b!&#x3D;tail)</span><br><span class="line">        a-&gt;next &#x3D; b-&gt;next;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next &#x3D; nullptr;</span><br><span class="line">        tail &#x3D; a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>计算样例<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/69dz89gzml1ewgor9s4az111/image_1deo6udbc13io132bduhi37lcs1c.png"  alt="image_1deo6udbc13io132bduhi37lcs1c.png-194.7kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/hzc5rc84go6osgaubhe4hpkk/image_1deo711q21576823lu110ue3l81p.png"  alt="image_1deo711q21576823lu110ue3l81p.png-198.2kB"></li>
+</ul>
 ]]></content>
       <categories>
         <category>Qt</category>
@@ -4448,6 +4702,55 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       <tags>
         <tag>Qt</tag>
         <tag>大一</tag>
+        <tag>作业</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt作业二：画图板</title>
+    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%BA%8C%E2%80%94%E2%80%94%E7%94%BB%E5%9B%BE%E6%9D%BF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、界面设计"><a href="#一、界面设计" class="headerlink" title="一、界面设计"></a>一、界面设计</h3><p>利用designer设计menubar和toolbar<br>遇到的问题和解决方法：<br>toolbar和menubar重叠，拖动toolbar部件至屏幕右侧即可。<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/d8i77lp27ad7u5mdfth4ivte/image_1df8880jt10m8g53v041efd6j29.png"  alt="image_1df8880jt10m8g53v041efd6j29.png-246.9kB"><br>menubar中可以添加子选项<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/mbukua86v9pv56obgta3og2o/image_1df88esf0le118bvdh91a0b130d9.png"  alt="image_1df88esf0le118bvdh91a0b130d9.png-256.2kB"></p>
+<hr>
+<h3 id="二、paint类属性"><a href="#二、paint类属性" class="headerlink" title="二、paint类属性"></a>二、paint类属性</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QPixmap *pix;&#x2F;&#x2F;设置画图背景</span><br><span class="line">QPoint start;&#x2F;&#x2F;鼠标按下时的坐标</span><br><span class="line">QPoint end;&#x2F;&#x2F;鼠标抬起时的坐标</span><br><span class="line">int status;&#x2F;&#x2F;画图状态，1：直线，2：矩形，3：椭圆，4：自由绘图</span><br><span class="line">QPen pen;&#x2F;&#x2F;设置线条的属性</span><br><span class="line">QBrush brush;&#x2F;&#x2F;设置填充属性</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="三、paint类protected成员"><a href="#三、paint类protected成员" class="headerlink" title="三、paint类protected成员"></a>三、paint类protected成员</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected:</span><br><span class="line">    void mousePressEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标按下事件</span><br><span class="line">    void mouseMoveEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标移动事件</span><br><span class="line">    void mouseReleaseEvent(QMouseEvent *);&#x2F;&#x2F;鼠标释放事件</span><br><span class="line">    void paintEvent(QPaintEvent*);&#x2F;&#x2F;绘画事件</span><br></pre></td></tr></table></figure>
+<p>函数定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::mousePressEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    start&#x3D;event-&gt;pos();&#x2F;&#x2F;获得鼠标点击坐标</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::mouseReleaseEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    end&#x3D;event-&gt;pos();</span><br><span class="line">    qDebug()&lt;&lt;start&lt;&lt;endl&lt;&lt;end&lt;&lt;endl;</span><br><span class="line">    QPainter *painter&#x3D;new QPainter(pix);</span><br><span class="line">    painter-&gt;setPen(pen);&#x2F;&#x2F;设置线条属性</span><br><span class="line">    painter-&gt;setBrush(brush);&#x2F;&#x2F;设置笔刷属性</span><br><span class="line">    switch (status) &#123;</span><br><span class="line">    case 1:&#x2F;&#x2F;画直线</span><br><span class="line">    &#123;</span><br><span class="line">        painter-&gt;drawLine(start,end);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    case 2:&#x2F;&#x2F;画矩形</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawRect(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    case 3:&#x2F;&#x2F;画椭圆</span><br><span class="line">    &#123;</span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawEllipse(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this-&gt;update();</span><br><span class="line">    delete painter;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::paintEvent(QPaintEvent *)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  QPainter painter(this);</span><br><span class="line">  painter.drawPixmap(QPoint(0, 0), *pix);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint:: mouseMoveEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    if(status&#x3D;&#x3D;4)&#x2F;&#x2F;绘制鼠标移动轨迹</span><br><span class="line">    &#123;</span><br><span class="line">        QPainter* painter&#x3D;new QPainter(pix);</span><br><span class="line">        end&#x3D;event-&gt;pos();</span><br><span class="line">        painter-&gt;setPen(pen);</span><br><span class="line">        painter-&gt;drawLine(start,end);&#x2F;&#x2F;每一次移动画直线</span><br><span class="line">        this-&gt;update();</span><br><span class="line">        start&#x3D;end;&#x2F;&#x2F;下一次绘制的开始点是这次的结束点</span><br><span class="line">        delete painter;&#x2F;&#x2F;若无delete则只可以绘制一次</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法："><a href="#遇到的问题和解决方法：" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><p>painter在完成每次绘制时需delete，否则无法进行下一次绘制</p>
+<hr>
+<h3 id="四、构造函数"><a href="#四、构造函数" class="headerlink" title="四、构造函数"></a>四、构造函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">paint::paint(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::paint)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置画布</span><br><span class="line">    pix&#x3D;new QPixmap(this-&gt;size()*5);</span><br><span class="line">    pix-&gt;fill(Qt::white);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置初使属性</span><br><span class="line">    brush.setColor(Qt::NoBrush);</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;连接信号和槽</span><br><span class="line">    connect(ui-&gt;line,SIGNAL(triggered(bool)),this,SLOT(status_line()));</span><br><span class="line">    connect(ui-&gt;rect,SIGNAL(triggered(bool)),this,SLOT(status_rect()));</span><br><span class="line">    connect(ui-&gt;ellipse,SIGNAL(triggered(bool)),this,SLOT(status_ellipse()));</span><br><span class="line">    connect(ui-&gt;actionfree,SIGNAL(triggered(bool)),this,SLOT(status_free()));</span><br><span class="line">    connect(ui-&gt;actionred,SIGNAL(triggered(bool)),this,SLOT(change_color_red()));</span><br><span class="line">    connect(ui-&gt;actionblue,SIGNAL(triggered(bool)),this,SLOT(change_color_blue()));</span><br><span class="line">    connect(ui-&gt;actiongreen,SIGNAL(triggered(bool)),this,SLOT(change_color_green()));</span><br><span class="line">    connect(ui-&gt;actionblack,SIGNAL(triggered(bool)),this,SLOT(change_color_black()));</span><br><span class="line">    connect(ui-&gt;action2,SIGNAL(triggered(bool)),this,SLOT(penwidth2()));</span><br><span class="line">    connect(ui-&gt;action5,SIGNAL(triggered(bool)),this,SLOT(penwidth5()));</span><br><span class="line">    connect(ui-&gt;action8,SIGNAL(triggered(bool)),this,SLOT(penwidth8()));</span><br><span class="line">    connect(ui-&gt;action10,SIGNAL(triggered(bool)),this,SLOT(penwidth10()));</span><br><span class="line">    connect(ui-&gt;solid_line,SIGNAL(triggered(bool)),this,SLOT(set_solid()));</span><br><span class="line">    connect(ui-&gt;dash_line,SIGNAL(triggered(bool)),this,SLOT(set_dash()));</span><br><span class="line">    connect(ui-&gt;dash_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdot()));</span><br><span class="line">    connect(ui-&gt;dash_dot_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdotdot()));</span><br><span class="line">    connect(ui-&gt;dot_line,SIGNAL(triggered(bool)),this,SLOT(set_dot()));</span><br><span class="line">    connect(ui-&gt;fred,SIGNAL(triggered(bool)),this,SLOT(set_fill_red()));</span><br><span class="line">    connect(ui-&gt;fblue,SIGNAL(triggered(bool)),this,SLOT(set_fill_blue()));</span><br><span class="line">    connect(ui-&gt;fblack,SIGNAL(triggered(bool)),this,SLOT(set_fill_black()));</span><br><span class="line">    connect(ui-&gt;fgreen,SIGNAL(triggered(bool)),this,SLOT(set_fill_green()));</span><br><span class="line">    connect(ui-&gt;solid_pattern,SIGNAL(triggered(bool)),this,SLOT(set_solid_pattern()));</span><br><span class="line">    connect(ui-&gt;dense_pattern,SIGNAL(triggered(bool)),this,SLOT(set_dense_pattern()));</span><br><span class="line">    connect(ui-&gt;none,SIGNAL(triggered(bool)),this,SLOT(set_none_pattern()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法：-1"><a href="#遇到的问题和解决方法：-1" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><ul>
+<li>可以获得鼠标事件坐标，但无法绘制，解决方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pix&#x3D;new QPixmap(this-&gt;size()*5);&#x2F;&#x2F;结构函数</span><br><span class="line">QPainter *painter&#x3D;new QPainter(pix);&#x2F;&#x2F;绘制函数</span><br></pre></td></tr></table></figure></li>
+<li>点击menubar中label发出的信号槽函数无法接收到：<br>原connect写法：<br><code>connect(ui-&gt;line,SIGNAL(clicked()),this,SLOT(status_line()));</code><br>将<code>clicked()</code>改为<code>triggered(bool)</code>即可</li>
+</ul>
+<hr>
+<h3 id="五、槽函数："><a href="#五、槽函数：" class="headerlink" title="五、槽函数："></a>五、槽函数：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public slots:</span><br><span class="line">    &#x2F;&#x2F;设置绘制形状</span><br><span class="line">    void status_line();</span><br><span class="line">    void status_rect();</span><br><span class="line">    void status_ellipse();</span><br><span class="line">    void status_free();&#x2F;&#x2F;绘制鼠标轨迹</span><br><span class="line">    &#x2F;&#x2F;设置线条颜色</span><br><span class="line">    void change_color_blue();</span><br><span class="line">    void change_color_red();</span><br><span class="line">    void change_color_green();</span><br><span class="line">    void change_color_black();</span><br><span class="line">    &#x2F;&#x2F;设置线条宽度</span><br><span class="line">    void penwidth2();</span><br><span class="line">    void penwidth5();</span><br><span class="line">    void penwidth8();</span><br><span class="line">    void penwidth10();</span><br><span class="line">    &#x2F;&#x2F;设置线条样式</span><br><span class="line">    void set_solid();</span><br><span class="line">    void set_dash();</span><br><span class="line">    void set_dot();</span><br><span class="line">    void set_dashdot();</span><br><span class="line">    void set_dashdotdot();</span><br><span class="line">    &#x2F;&#x2F;设置填充颜色</span><br><span class="line">    void set_fill_red();</span><br><span class="line">    void set_fill_blue();</span><br><span class="line">    void set_fill_green();</span><br><span class="line">    void set_fill_black();</span><br><span class="line">    &#x2F;&#x2F;设置填充样式</span><br><span class="line">    void set_solid_pattern();</span><br><span class="line">    void set_dense_pattern();</span><br><span class="line">    void set_none_pattern();</span><br></pre></td></tr></table></figure>
+<h4 id="槽函数定义示例："><a href="#槽函数定义示例：" class="headerlink" title="槽函数定义示例："></a>槽函数定义示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::status_line()</span><br><span class="line">&#123;</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::change_color_red()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setColor(Qt::red);</span><br><span class="line">    &#x2F;&#x2F;注意书写格式，不可以写为pen.setColor(&quot;red&quot;);否则无法传入颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::penwidth5()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setWidth(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dash()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setStyle(Qt::DashLine);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_fill_blue()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setColor(Qt::blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dense_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::Dense7Pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_none_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::NoBrush);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法"><a href="#遇到的问题和解决方法" class="headerlink" title="遇到的问题和解决方法"></a>遇到的问题和解决方法</h4><ul>
+<li>信号和槽函数无法连接：<ul>
+<li>检查信号和发送信号的来源是否对应</li>
+<li>检查信号和槽的拼写是否准确</li>
+<li>利用qDebug()进行调试</li>
+</ul>
+</li>
+<li>brush必须设置填充样式，否则无法填充</li>
+</ul>
+<hr>
+<h3 id="六、成果展示"><a href="#六、成果展示" class="headerlink" title="六、成果展示"></a>六、成果展示</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/v86upj0wwx905xyzftjgvh3j/image_1df8akslg1oo5li7b5jp314rb16.png"  alt="image_1df8akslg1oo5li7b5jp314rb16.png-79.6kB"></p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>大一</tag>
+        <tag>作业</tag>
       </tags>
   </entry>
   <entry>
@@ -4471,6 +4774,33 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <ul>
 <li>保存图片<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;mainwindow.h&quot;</span><br><span class="line">#include &quot;ui_mainwindow.h&quot;</span><br><span class="line">#include &lt;QPainter&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    &#x2F;&#x2F;绘图设备，400*300</span><br><span class="line">    QPixmap pixmap(400,300);</span><br><span class="line">    QPainter p(&amp;pixmap);</span><br><span class="line">    &#x2F;&#x2F;填充白色</span><br><span class="line">    p.fillRect(0,0,400,300,QBrush(Qt::white));</span><br><span class="line">    p.drawPixmap(0,0,80,80,QPixmap(&quot;C:&#x2F;Users&#x2F;lxm&#x2F;Pictures&#x2F;3e40d65390723ce873e88385b4d57bff.jpeg&quot;));</span><br><span class="line">    &#x2F;&#x2F;保存图片</span><br><span class="line">    pixmap.save(&quot;..&#x2F;pixmap.png&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    delete ui;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>大一</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt的框架</title>
+    <url>/2019/08/31/Qt%E7%9A%84%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">&#x2F;&#x2F;QApplication应用程序类</span><br><span class="line">&#x2F;&#x2F;Qt头文件没有.h</span><br><span class="line">&#x2F;&#x2F;头文件和类名一样</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;有且只有一个应用程序类对象</span><br><span class="line">    QApplication a(argc, argv);</span><br><span class="line">    &#x2F;&#x2F;MyWidget继承Qwidget，QWidget是一个窗口类对象</span><br><span class="line">    &#x2F;&#x2F;w是窗口</span><br><span class="line">    Widget w;</span><br><span class="line">    &#x2F;&#x2F;窗口创建默认是隐藏的，需要认为显示</span><br><span class="line">    w.show();</span><br><span class="line">    &#x2F;&#x2F;让程序一直执行，等待人为操作（等待事件的发生）</span><br><span class="line">    return a.exec();&#x2F;&#x2F;a是应用程序对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>##.pro</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#-------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># Project created by QtCreator 2019-06-28T19:37:51</span><br><span class="line">#</span><br><span class="line">#-------------------------------------------------</span><br><span class="line"></span><br><span class="line">#项目文件用“#”注释</span><br><span class="line">#模块</span><br><span class="line">QT       +&#x3D; core gui</span><br><span class="line">#高于4版本添加QT+&#x3D;widgets，为了兼容4</span><br><span class="line">greaterThan(QT_MAJOR_VERSION, 4): QT +&#x3D; widgets</span><br><span class="line">#应用程序的名字</span><br><span class="line">TARGET &#x3D; untitled5</span><br><span class="line">#指定makefile的类型，app&#x2F;lib（库）</span><br><span class="line">TEMPLATE &#x3D; app</span><br><span class="line"></span><br><span class="line"># The following define makes your compiler emit warnings if you use</span><br><span class="line"># any feature of Qt which has been marked as deprecated (the exact warnings</span><br><span class="line"># depend on your compiler). Please consult the documentation of the</span><br><span class="line"># deprecated API in order to know how to port your code away from it.</span><br><span class="line">DEFINES +&#x3D; QT_DEPRECATED_WARNINGS</span><br><span class="line"></span><br><span class="line"># You can also make your code fail to compile if you use deprecated APIs.</span><br><span class="line"># In order to do so, uncomment the following line.</span><br><span class="line"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span><br><span class="line">#DEFINES +&#x3D; QT_DISABLE_DEPRECATED_BEFORE&#x3D;0x060000    # disables all the APIs deprecated before Qt 6.0.0</span><br><span class="line"></span><br><span class="line">CONFIG +&#x3D; c++11</span><br><span class="line">#源文件.cpp</span><br><span class="line">SOURCES +&#x3D; \</span><br><span class="line">        main.cpp \</span><br><span class="line">        widget.cpp</span><br><span class="line">#头文件.h</span><br><span class="line">HEADERS +&#x3D; \</span><br><span class="line">        widget.h</span><br><span class="line"></span><br><span class="line"># Default rules for deployment.</span><br><span class="line">qnx: target.path &#x3D; &#x2F;tmp&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">else: unix:!android: target.path &#x3D; &#x2F;opt&#x2F;$$&#123;TARGET&#125;&#x2F;bin</span><br><span class="line">!isEmpty(target.path): INSTALLS +&#x3D; target</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>##widget.h</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifndef WIDGET_H</span><br><span class="line">#define WIDGET_H</span><br><span class="line"></span><br><span class="line">#include &lt;QWidget&gt;</span><br><span class="line"></span><br><span class="line">class Widget : public QWidget</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT&#x2F;&#x2F;信号与槽需要</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    Widget(QWidget *parent &#x3D; 0);</span><br><span class="line">    ~Widget();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif &#x2F;&#x2F; WIDGET_H</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>##widget.cpp</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line"></span><br><span class="line">Widget::Widget(QWidget *parent)</span><br><span class="line">    : QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Widget::~Widget()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
 ]]></content>
       <categories>
         <category>Qt</category>
