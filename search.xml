@@ -131,7 +131,12 @@
   <entry>
     <title>php学习一 —— 基本语法</title>
     <url>/2020/05/26/php/php%E4%B8%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第一个php脚本程序"><a href="#第一个php脚本程序" class="headerlink" title="第一个php脚本程序"></a>第一个php脚本程序</h1><p>将.php文件放在web服务器根目录下，访问<code>web服务器URL/xxx.php</code>,本地访问<code>http://localhost/xxx.php</code>.</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><div class="note info">
+            <p>参考书籍《细说PHP》</p>
+          </div>
+
+
+<h1 id="第一个php脚本程序"><a href="#第一个php脚本程序" class="headerlink" title="第一个php脚本程序"></a>第一个php脚本程序</h1><p>将.php文件放在web服务器根目录下，访问<code>web服务器URL/xxx.php</code>,本地访问<code>http://localhost/xxx.php</code>.</p>
 <p>调用函数phpinfo()可以看到系统相关信息、预定义变量，以及已经加载的php模块和配置信息</p>
 <h1 id="php语言标记"><a href="#php语言标记" class="headerlink" title="php语言标记"></a>php语言标记</h1><h2 id="将php代码嵌入html中的位置"><a href="#将php代码嵌入html中的位置" class="headerlink" title="将php代码嵌入html中的位置"></a>将php代码嵌入html中的位置</h2><p>可以将php代码段嵌入到html的任意地方</p>
 <p>当php遇到结束符 “?&gt;” 时，简单地将后面的内容原样输出，只到遇到下一个开始标记位置</p>
@@ -331,6 +336,10 @@
 </tr>
 </tbody></table>
 <h1 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h1><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/26/php/php%E4%B8%80/image-20200526213837647.png"  alt="image-20200526213837647"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $str=<span class="string">"hello world"</span>;</span><br><span class="line">	var_dump($str);<span class="comment">//直接输出变量的类型和值</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>被认为是FALSE的值</p>
 <ul>
 <li>FALSE</li>
@@ -340,6 +349,126 @@
 <li>没有单元的对象（仅限php4）</li>
 <li>特殊类型NULL、尚未设定的变量</li>
 </ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    var_dump((bool) <span class="string">""</span>);<span class="comment">//false,“”的布尔值是false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $int = <span class="number">1234</span>;</span><br><span class="line">    $int = <span class="number">-123</span>;</span><br><span class="line">    $int = <span class="number">0123</span>;</span><br><span class="line">    $int = <span class="number">0x1A</span>;</span><br><span class="line">    $int = <span class="number">0b1111</span>;<span class="comment">//二进制</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_SIZE;	<span class="comment">//int占四个字节，8</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_MAX;	<span class="comment">//int最大值，9223372036854775807</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_MIN;	<span class="comment">//int最小值，-9223372036854775808</span></span><br></pre></td></tr></table></figure>
+
+
+<p>php没有无符号整数，超出范围后会被解释为float（这点和其它编译器有出入）</p>
+<p>eg.</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">var_dump((int) <span class="number">9223372036854775810</span>);</span><br><span class="line"></span><br><span class="line">输出为int(<span class="number">-9223372036854775808</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $float = <span class="number">1.234</span>;</span><br><span class="line">    $float = <span class="number">1.2e3</span>;</span><br><span class="line">    $float = <span class="number">7E-10</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>php字符串没有长度限制</p>
+<h3 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//这是一个使用单引号引起来的简单字符串</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'this is a simple string'</span>;</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>this is a simple string</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//在单引号中如果需要在包含单引号，需要使用转义字符“\”</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this is a \'simple\' string'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>this is a ‘simple’ string</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//只能将反斜杠转义输出一个反斜杠，其它输出都是无效的</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this \n is \r a \t simple string\\'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>this \n is \r a \t simple string\</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$str = <span class="number">100</span>;</span><br><span class="line">	<span class="comment">//将变量名原样输出，不会在单引号中解析这个变量</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this is a simple $str string'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>this is a simple $str string</p>
+</blockquote>
+<h3 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h3><ul>
+<li>可以使用更多特殊字符的转义序列</li>
+<li>可以解析变量、数值组、或者对象属性的方法</li>
+<li>用花括号括起表达式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜线</td>
+</tr>
+<tr>
+<td>\$</td>
+<td>美元符号</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\[0-7]{1,3}</td>
+<td>正则，匹配一个用八进制符号表示的字符</td>
+</tr>
+<tr>
+<td>\x[0-9A-Fa-f]{1,2}</td>
+<td>正则，匹配一个用十六进制符号表示的字符</td>
+</tr>
+<tr>
+<td>\u{xxxxx}</td>
+<td>声明unicode字符（php7引入）</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $beer = <span class="string">'heineken'</span>;</span><br><span class="line">	<span class="comment">//可以解析，'在变量名中是无效的</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$beer's taste is great"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>heineken’s taste is great</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//不可以解析，s在变量名中有效</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"he drank some $beers"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>he drank some     </p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//使用&#123;&#125;包含，可以将变量分离出来解析</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"He drank some $&#123;beer&#125;s"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>He drank some heinekens    </p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//可以解析，&#123;&#125;的另一种用法</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"he drank some &#123;$beer&#125;s"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>he drank some heinekens    </p>
+</blockquote>
+<h3 id="定界符-lt-lt-lt"><a href="#定界符-lt-lt-lt" class="headerlink" title="定界符&lt;&lt;&lt;"></a>定界符&lt;&lt;&lt;</h3><ul>
+<li><p>定界符的命名规则和变量相同</p>
+</li>
+<li><p>通常用于从文件或者数据库中打断地输出文档</p>
+</li>
+<li><p>转义和变量解析同双引号</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
       <categories>
         <category>web</category>
@@ -1410,6 +1539,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Flask学习教程三</title>
+    <url>/2020/04/24/Flask%E6%95%99%E7%A8%8B%E4%B8%89/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="pymysql"><a href="#pymysql" class="headerlink" title="pymysql"></a>pymysql</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install pymysql</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入pymysql模块</span></span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 连接database</span></span><br><span class="line">conn = pymysql.connect(</span><br><span class="line">    host=“你的数据库地址”,</span><br><span class="line">    user=“用户名”,password=“密码”,</span><br><span class="line">    database=“数据库名”,</span><br><span class="line">    charset=“utf8”)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 得到一个可以执行SQL语句的光标对象</span></span><br><span class="line">cursor = conn.cursor()  <span class="comment"># 执行完毕返回的结果集默认以元组显示</span></span><br><span class="line"><span class="comment"># 得到一个可以执行SQL语句并且将结果作为字典返回的游标</span></span><br><span class="line"><span class="comment">#cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 定义要执行的SQL语句</span></span><br><span class="line">sql = <span class="string">"""</span></span><br><span class="line"><span class="string">CREATE TABLE USER1 (</span></span><br><span class="line"><span class="string">id INT auto_increment PRIMARY KEY ,</span></span><br><span class="line"><span class="string">name CHAR(10) NOT NULL UNIQUE,</span></span><br><span class="line"><span class="string">age TINYINT NOT NULL</span></span><br><span class="line"><span class="string">)ENGINE=innodb DEFAULT CHARSET=utf8;  #注意：charset='utf8' 不能写成utf-8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 执行SQL语句</span></span><br><span class="line">cursor.execute(sql)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 关闭光标对象</span></span><br><span class="line">cursor.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bootstrap入门和flask-nav快速导航栏"><a href="#bootstrap入门和flask-nav快速导航栏" class="headerlink" title="bootstrap入门和flask_nav快速导航栏"></a>bootstrap入门和flask_nav快速导航栏</h1><blockquote>
+<p> 转载自：<a href="https://www.cnblogs.com/wongbingming/p/6813221.html" target="_blank" rel="noopener">https://www.cnblogs.com/wongbingming/p/6813221.html</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flask学习教程二——web表单详解</title>
     <url>/2020/04/24/Flask%E6%95%99%E7%A8%8B%E4%BA%8C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="2-1-应用的基本结构"><a href="#2-1-应用的基本结构" class="headerlink" title="2.1 应用的基本结构"></a>2.1 应用的基本结构</h2><h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h1 id="二、应用的基本结构"><a href="#二、应用的基本结构" class="headerlink" title="二、应用的基本结构"></a>二、应用的基本结构</h1><p>处理URL和函数之间关系的程序成为路由</p>
@@ -1490,26 +1639,6 @@
 <div class="note info">
             <p>部分内容借鉴：</p><ul><li>中国工信出版社集团 人民邮电出版社《Flask Web开发第二版》</li><li></li></ul>
           </div>]]></content>
-      <categories>
-        <category>Flask</category>
-      </categories>
-      <tags>
-        <tag>Flask</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flask学习教程三</title>
-    <url>/2020/04/24/Flask%E6%95%99%E7%A8%8B%E4%B8%89/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="pymysql"><a href="#pymysql" class="headerlink" title="pymysql"></a>pymysql</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install pymysql</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入pymysql模块</span></span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 连接database</span></span><br><span class="line">conn = pymysql.connect(</span><br><span class="line">    host=“你的数据库地址”,</span><br><span class="line">    user=“用户名”,password=“密码”,</span><br><span class="line">    database=“数据库名”,</span><br><span class="line">    charset=“utf8”)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 得到一个可以执行SQL语句的光标对象</span></span><br><span class="line">cursor = conn.cursor()  <span class="comment"># 执行完毕返回的结果集默认以元组显示</span></span><br><span class="line"><span class="comment"># 得到一个可以执行SQL语句并且将结果作为字典返回的游标</span></span><br><span class="line"><span class="comment">#cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 定义要执行的SQL语句</span></span><br><span class="line">sql = <span class="string">"""</span></span><br><span class="line"><span class="string">CREATE TABLE USER1 (</span></span><br><span class="line"><span class="string">id INT auto_increment PRIMARY KEY ,</span></span><br><span class="line"><span class="string">name CHAR(10) NOT NULL UNIQUE,</span></span><br><span class="line"><span class="string">age TINYINT NOT NULL</span></span><br><span class="line"><span class="string">)ENGINE=innodb DEFAULT CHARSET=utf8;  #注意：charset='utf8' 不能写成utf-8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 执行SQL语句</span></span><br><span class="line">cursor.execute(sql)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 关闭光标对象</span></span><br><span class="line">cursor.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="bootstrap入门和flask-nav快速导航栏"><a href="#bootstrap入门和flask-nav快速导航栏" class="headerlink" title="bootstrap入门和flask_nav快速导航栏"></a>bootstrap入门和flask_nav快速导航栏</h1><blockquote>
-<p> 转载自：<a href="https://www.cnblogs.com/wongbingming/p/6813221.html" target="_blank" rel="noopener">https://www.cnblogs.com/wongbingming/p/6813221.html</a></p>
-</blockquote>
-]]></content>
       <categories>
         <category>Flask</category>
       </categories>
@@ -2283,7 +2412,7 @@
 <blockquote>
 <p>#南开大学闭馆音乐</p>
 
-    <div id="aplayer-hGPHQVuH" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
+    <div id="aplayer-GHvOFuUX" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
 </blockquote>
 <blockquote>
 <p>参考：</p>
@@ -4525,6 +4654,52 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 ]]></content>
   </entry>
   <entry>
+    <title>Qt作业一：计算器</title>
+    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="ui界面对应的ui-h文件的作用："><a href="#ui界面对应的ui-h文件的作用：" class="headerlink" title="ui界面对应的ui_*.h文件的作用："></a>ui界面对应的ui_*.h文件的作用：</h2><p>ui_.h是ui界面的代码化表达，<br>即用非Qt软件打开ui文件时会显示ui_*.h文件，用代码描述ui界面内容</p>
+<hr>
+<h2 id="计算器程序："><a href="#计算器程序：" class="headerlink" title="计算器程序："></a>计算器程序：</h2><h3 id="1-通过Qt-designer设计界面："><a href="#1-通过Qt-designer设计界面：" class="headerlink" title="1.通过Qt designer设计界面："></a>1.通过Qt designer设计界面：</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/exg4t6ijsh7pnvnj0rpwgmm8/image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png"  alt="image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png-236.7kB"></p>
+<h4 id="出现的问题和解决方法："><a href="#出现的问题和解决方法：" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>窗口对象名（QWidget类）要和对窗口进行操作的父类类名一致，否则会提示“引用了不完整的类型”</li>
+<li>注意修改按钮名称以便下一步</li>
+</ul>
+<h3 id="2-使用QSignalMapper："><a href="#2-使用QSignalMapper：" class="headerlink" title="2.使用QSignalMapper："></a>2.使用QSignalMapper：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">signalmapper&#x3D;new QSignalMapper (this);</span><br><span class="line">QObjectList list &#x3D;this-&gt;children();&#x2F;&#x2F;list为全部按钮</span><br><span class="line">foreach(QObject *oc,list)&#x2F;&#x2F;遍历list中的按钮</span><br><span class="line">&#123;</span><br><span class="line">    if(oc-&gt;objectName()!&#x3D;&quot;gridLayout&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;display&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;&quot;)&#x2F;&#x2F;排除不需要链接槽函数clicked()的多余按钮</span><br><span class="line">    &#123;</span><br><span class="line">        QPushButton *pushbutton&#x3D;qobject_cast&lt;QPushButton *&gt;(oc);&#x2F;&#x2F;利用qobject——cast进行类型转换</span><br><span class="line">        connect(pushbutton,SIGNAL(clicked()),signalmapper,SLOT(map()));&#x2F;&#x2F;将信号链接到signnalmapper上</span><br><span class="line">        signalmapper-&gt;setMapping(pushbutton,pushbutton-&gt;text());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">connect(signalmapper,SIGNAL(mapped(QString)),this,SLOT(clicked(QString)));&#x2F;&#x2F;将signalmapper连接至槽函数clicked（QString）上，即实现将所需按钮链接至一个槽函数</span><br></pre></td></tr></table></figure>
+
+<h4 id="出现的问题和解决方法：-1"><a href="#出现的问题和解决方法：-1" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>理解QSignalMapper的工作原理和方法：<br>  qsignalmapper:相当于一个信号转发器，将多个按钮信号连接到一个槽函数上（详见代码注释）<br>  引入QSignalMapper头文件<br>  还有一种获取按钮列表的方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QString buttontext &#x3D; &quot;btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10&quot;; </span><br><span class="line">QStringList texts &#x3D; buttontext.split(&quot;,&quot;);</span><br></pre></td></tr></table></figure>
+也可利用按钮名字的共性筛选出所需要的按钮：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(oc-&gt;nbjectName.starswith(&quot;***&quot;)</span><br></pre></td></tr></table></figure></li>
+<li>最初设计ui时将所有按钮放到了gridlayout下，结果到至按钮无法访问，将按钮挪出gridlayout，若需使按钮排列整齐，designer界面上方有辅助排列功能按键。</li>
+</ul>
+<p>###3.计算功能的实现：<br>头文件声明：</p>
+<ul>
+<li>node类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    class node</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    node();</span><br><span class="line">    double data;&#x2F;&#x2F;字符串转成double后存储在data中</span><br><span class="line">    QString sign;&#x2F;&#x2F;如果时运算符节点，用sign记录运算符</span><br><span class="line">    QString nums;&#x2F;&#x2F;以字符串形式存储double类型的数据</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>widget类：//计算器类</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/0rjzz44tj1tybvzvwublr5p9/image_1den8jsp2cvi120b1183p941e3tm.png"  alt="image_1den8jsp2cvi120b1183p941e3tm.png-194.6kB"></p>
+<ul>
+<li>将按钮上的内容输入到字符串中：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::clicked(QString ch)</span><br><span class="line">&#123;</span><br><span class="line">    if(ch&#x3D;&#x3D;&quot;sqrt&quot;)</span><br><span class="line">        opt.append(&quot;k&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;square&quot;)</span><br><span class="line">        opt.append(&quot;p&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;rev&quot;)</span><br><span class="line">        opt.append(&quot;d&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;neg&quot;)</span><br><span class="line">        opt.append(&quot;f&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;&#x3D;&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        opt.append(&quot;&#x3D;\0&quot;);</span><br><span class="line">        cal();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        opt.append(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    ui-&gt;display-&gt;setPlainText(opt);&#x2F;&#x2F;显示输入内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将字符串转成链表<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/3bzdgoa177er00batvrsitu8/image_1den9fkk8r1mvuu2cn130g14c21g.png"  alt="image_1den9fkk8r1mvuu2cn130g14c21g.png-198kB"><ul>
+<li>QString 转 double：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t-&gt;data&#x3D;t-&gt;nums.toDouble;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>实现节点与节点的计算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::calculate(node*a,node*b,node*c)</span><br><span class="line">&#123;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;+&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data + c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;-&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data - c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;*&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data * c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;&#x2F;&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data &#x2F; c-&gt;data;</span><br><span class="line">&#x2F;&#x2F;节点合并</span><br><span class="line">    if (tail !&#x3D; c)</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;c-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;nullptr;</span><br><span class="line">        tail&#x3D;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::  calculate(node*a,node*b)</span><br><span class="line">&#123;</span><br><span class="line">   if (b-&gt;sign &#x3D;&#x3D; &#39;k&#39;)</span><br><span class="line">        a-&gt;data &#x3D; sqrt(a-&gt;data);</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;p&#39;)</span><br><span class="line">        a-&gt;data *&#x3D; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;d&#39;)</span><br><span class="line">        a-&gt;data &#x3D; 1 &#x2F; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;f&#39;)</span><br><span class="line">        a-&gt;data &#x3D; -a-&gt;data;</span><br><span class="line">    if(b!&#x3D;tail)</span><br><span class="line">        a-&gt;next &#x3D; b-&gt;next;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next &#x3D; nullptr;</span><br><span class="line">        tail &#x3D; a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>计算样例<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/69dz89gzml1ewgor9s4az111/image_1deo6udbc13io132bduhi37lcs1c.png"  alt="image_1deo6udbc13io132bduhi37lcs1c.png-194.7kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/hzc5rc84go6osgaubhe4hpkk/image_1deo711q21576823lu110ue3l81p.png"  alt="image_1deo711q21576823lu110ue3l81p.png-198.2kB"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>大一</tag>
+        <tag>作业</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Qt大作业：影音播放器</title>
     <url>/2019/08/31/Qt%E5%A4%A7%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="软件类别：本地视频文件播放器"><a href="#软件类别：本地视频文件播放器" class="headerlink" title="软件类别：本地视频文件播放器"></a>软件类别：本地视频文件播放器</h3><hr>
@@ -4660,52 +4835,6 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>Qt作业一：计算器</title>
-    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="ui界面对应的ui-h文件的作用："><a href="#ui界面对应的ui-h文件的作用：" class="headerlink" title="ui界面对应的ui_*.h文件的作用："></a>ui界面对应的ui_*.h文件的作用：</h2><p>ui_.h是ui界面的代码化表达，<br>即用非Qt软件打开ui文件时会显示ui_*.h文件，用代码描述ui界面内容</p>
-<hr>
-<h2 id="计算器程序："><a href="#计算器程序：" class="headerlink" title="计算器程序："></a>计算器程序：</h2><h3 id="1-通过Qt-designer设计界面："><a href="#1-通过Qt-designer设计界面：" class="headerlink" title="1.通过Qt designer设计界面："></a>1.通过Qt designer设计界面：</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/exg4t6ijsh7pnvnj0rpwgmm8/image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png"  alt="image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png-236.7kB"></p>
-<h4 id="出现的问题和解决方法："><a href="#出现的问题和解决方法：" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
-<li>窗口对象名（QWidget类）要和对窗口进行操作的父类类名一致，否则会提示“引用了不完整的类型”</li>
-<li>注意修改按钮名称以便下一步</li>
-</ul>
-<h3 id="2-使用QSignalMapper："><a href="#2-使用QSignalMapper：" class="headerlink" title="2.使用QSignalMapper："></a>2.使用QSignalMapper：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">signalmapper&#x3D;new QSignalMapper (this);</span><br><span class="line">QObjectList list &#x3D;this-&gt;children();&#x2F;&#x2F;list为全部按钮</span><br><span class="line">foreach(QObject *oc,list)&#x2F;&#x2F;遍历list中的按钮</span><br><span class="line">&#123;</span><br><span class="line">    if(oc-&gt;objectName()!&#x3D;&quot;gridLayout&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;display&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;&quot;)&#x2F;&#x2F;排除不需要链接槽函数clicked()的多余按钮</span><br><span class="line">    &#123;</span><br><span class="line">        QPushButton *pushbutton&#x3D;qobject_cast&lt;QPushButton *&gt;(oc);&#x2F;&#x2F;利用qobject——cast进行类型转换</span><br><span class="line">        connect(pushbutton,SIGNAL(clicked()),signalmapper,SLOT(map()));&#x2F;&#x2F;将信号链接到signnalmapper上</span><br><span class="line">        signalmapper-&gt;setMapping(pushbutton,pushbutton-&gt;text());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">connect(signalmapper,SIGNAL(mapped(QString)),this,SLOT(clicked(QString)));&#x2F;&#x2F;将signalmapper连接至槽函数clicked（QString）上，即实现将所需按钮链接至一个槽函数</span><br></pre></td></tr></table></figure>
-
-<h4 id="出现的问题和解决方法：-1"><a href="#出现的问题和解决方法：-1" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
-<li>理解QSignalMapper的工作原理和方法：<br>  qsignalmapper:相当于一个信号转发器，将多个按钮信号连接到一个槽函数上（详见代码注释）<br>  引入QSignalMapper头文件<br>  还有一种获取按钮列表的方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QString buttontext &#x3D; &quot;btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10&quot;; </span><br><span class="line">QStringList texts &#x3D; buttontext.split(&quot;,&quot;);</span><br></pre></td></tr></table></figure>
-也可利用按钮名字的共性筛选出所需要的按钮：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(oc-&gt;nbjectName.starswith(&quot;***&quot;)</span><br></pre></td></tr></table></figure></li>
-<li>最初设计ui时将所有按钮放到了gridlayout下，结果到至按钮无法访问，将按钮挪出gridlayout，若需使按钮排列整齐，designer界面上方有辅助排列功能按键。</li>
-</ul>
-<p>###3.计算功能的实现：<br>头文件声明：</p>
-<ul>
-<li>node类</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    class node</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    node();</span><br><span class="line">    double data;&#x2F;&#x2F;字符串转成double后存储在data中</span><br><span class="line">    QString sign;&#x2F;&#x2F;如果时运算符节点，用sign记录运算符</span><br><span class="line">    QString nums;&#x2F;&#x2F;以字符串形式存储double类型的数据</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>widget类：//计算器类</li>
-</ul>
-<p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/0rjzz44tj1tybvzvwublr5p9/image_1den8jsp2cvi120b1183p941e3tm.png"  alt="image_1den8jsp2cvi120b1183p941e3tm.png-194.6kB"></p>
-<ul>
-<li>将按钮上的内容输入到字符串中：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::clicked(QString ch)</span><br><span class="line">&#123;</span><br><span class="line">    if(ch&#x3D;&#x3D;&quot;sqrt&quot;)</span><br><span class="line">        opt.append(&quot;k&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;square&quot;)</span><br><span class="line">        opt.append(&quot;p&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;rev&quot;)</span><br><span class="line">        opt.append(&quot;d&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;neg&quot;)</span><br><span class="line">        opt.append(&quot;f&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;&#x3D;&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        opt.append(&quot;&#x3D;\0&quot;);</span><br><span class="line">        cal();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        opt.append(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    ui-&gt;display-&gt;setPlainText(opt);&#x2F;&#x2F;显示输入内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>将字符串转成链表<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/3bzdgoa177er00batvrsitu8/image_1den9fkk8r1mvuu2cn130g14c21g.png"  alt="image_1den9fkk8r1mvuu2cn130g14c21g.png-198kB"><ul>
-<li>QString 转 double：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t-&gt;data&#x3D;t-&gt;nums.toDouble;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>实现节点与节点的计算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::calculate(node*a,node*b,node*c)</span><br><span class="line">&#123;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;+&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data + c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;-&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data - c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;*&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data * c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;&#x2F;&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data &#x2F; c-&gt;data;</span><br><span class="line">&#x2F;&#x2F;节点合并</span><br><span class="line">    if (tail !&#x3D; c)</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;c-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;nullptr;</span><br><span class="line">        tail&#x3D;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::  calculate(node*a,node*b)</span><br><span class="line">&#123;</span><br><span class="line">   if (b-&gt;sign &#x3D;&#x3D; &#39;k&#39;)</span><br><span class="line">        a-&gt;data &#x3D; sqrt(a-&gt;data);</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;p&#39;)</span><br><span class="line">        a-&gt;data *&#x3D; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;d&#39;)</span><br><span class="line">        a-&gt;data &#x3D; 1 &#x2F; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;f&#39;)</span><br><span class="line">        a-&gt;data &#x3D; -a-&gt;data;</span><br><span class="line">    if(b!&#x3D;tail)</span><br><span class="line">        a-&gt;next &#x3D; b-&gt;next;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next &#x3D; nullptr;</span><br><span class="line">        tail &#x3D; a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>计算样例<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/69dz89gzml1ewgor9s4az111/image_1deo6udbc13io132bduhi37lcs1c.png"  alt="image_1deo6udbc13io132bduhi37lcs1c.png-194.7kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/hzc5rc84go6osgaubhe4hpkk/image_1deo711q21576823lu110ue3l81p.png"  alt="image_1deo711q21576823lu110ue3l81p.png-198.2kB"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>大一</tag>
-        <tag>作业</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Qt作业二：画图板</title>
     <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%BA%8C%E2%80%94%E2%80%94%E7%94%BB%E5%9B%BE%E6%9D%BF/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、界面设计"><a href="#一、界面设计" class="headerlink" title="一、界面设计"></a>一、界面设计</h3><p>利用designer设计menubar和toolbar<br>遇到的问题和解决方法：<br>toolbar和menubar重叠，拖动toolbar部件至屏幕右侧即可。<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/d8i77lp27ad7u5mdfth4ivte/image_1df8880jt10m8g53v041efd6j29.png"  alt="image_1df8880jt10m8g53v041efd6j29.png-246.9kB"><br>menubar中可以添加子选项<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/mbukua86v9pv56obgta3og2o/image_1df88esf0le118bvdh91a0b130d9.png"  alt="image_1df88esf0le118bvdh91a0b130d9.png-256.2kB"></p>
@@ -4784,6 +4913,24 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
       </tags>
   </entry>
   <entry>
+    <title>Qt菜单栏和工具栏</title>
+    <url>/2019/08/31/Qt%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%92%8C%E5%B7%A5%E5%85%B7%E6%A0%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
+<li>信号是给槽函数传参的，信号函数只需声明，不需定义<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>  <span class="meta-string">&lt;QmenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Qmenu&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QAction&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;qlabel.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextEdit&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDockWidget&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//菜单栏</span></span><br><span class="line">    QMenuBar *mBar=<span class="keyword">new</span> QMenuBar(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//添加菜单</span></span><br><span class="line">    QMenu *pFile = mBar-&gt;addMenu(<span class="string">"文件"</span>);</span><br><span class="line">    <span class="comment">//添加菜单项，添加动作</span></span><br><span class="line">    QAction *pNew=pFile-&gt;addAction(<span class="string">"新建"</span>);</span><br><span class="line">    <span class="built_in">connect</span>(pNew,&amp;QAction::triggered,</span><br><span class="line">            [=]()</span><br><span class="line">    &#123;</span><br><span class="line">        qDebug(<span class="string">"push"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    pFile-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">    QAction *popen=pFile-&gt;addAction(<span class="string">"打开"</span>);</span><br><span class="line">    <span class="comment">//工具栏，菜单上的快捷方式</span></span><br><span class="line">    QToolBar *toolbar=addToolBar(<span class="string">"toolbar"</span>);</span><br><span class="line">    <span class="comment">//工具栏添加快捷键</span></span><br><span class="line">    toolbar-&gt;addAction(pNew);</span><br><span class="line">    <span class="comment">//添加小控件</span></span><br><span class="line">    QPushButton *b=<span class="keyword">new</span> QPushButton(<span class="keyword">this</span>);</span><br><span class="line">    b-&gt;setText(<span class="string">"123"</span>);</span><br><span class="line">    toolbar-&gt;addWidget(b);</span><br><span class="line">    <span class="built_in">connect</span>(b,&amp;QPushButton::clicked,</span><br><span class="line">            [=]()</span><br><span class="line">    &#123;</span><br><span class="line">        b-&gt;setText(<span class="string">"345"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//状态栏</span></span><br><span class="line">    QStatusBar *sbar=<span class="keyword">new</span> QStatusBar(<span class="keyword">this</span>);</span><br><span class="line">    QLabel *label=<span class="keyword">new</span> QLabel(<span class="keyword">this</span>);</span><br><span class="line">    label-&gt;setText(<span class="string">"Normal text file"</span>);</span><br><span class="line">    sbar-&gt;addWidget(label);</span><br><span class="line">    <span class="comment">//addWidget 从左往右添加</span></span><br><span class="line">    sbar-&gt;addWidget(<span class="keyword">new</span> QLabel(<span class="string">"2"</span>,<span class="keyword">this</span>));</span><br><span class="line">    <span class="comment">//从右往左添加</span></span><br><span class="line">    sbar-&gt;addPermanentWidget(<span class="keyword">new</span> QLabel(<span class="string">"3"</span>,<span class="keyword">this</span>));</span><br><span class="line">    <span class="comment">//核心控件</span></span><br><span class="line">    QTextEdit *textEdit = <span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);</span><br><span class="line">    setCentralWidget(textEdit);</span><br><span class="line">    <span class="comment">//浮动窗口</span></span><br><span class="line">    QDockWidget *dock=<span class="keyword">new</span> QDockWidget(<span class="keyword">this</span>);</span><br><span class="line">    addDockWidget(Qt::RightDockWidgetArea,dock);</span><br><span class="line">    <span class="comment">//给浮动窗口添加控件</span></span><br><span class="line">    QTextEdit *textEdit1 = <span class="keyword">new</span> QTextEdit();</span><br><span class="line">    dock-&gt;setWidget(textEdit1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>大一</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Qt的框架</title>
     <url>/2019/08/31/Qt%E7%9A%84%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">&#x2F;&#x2F;QApplication应用程序类</span><br><span class="line">&#x2F;&#x2F;Qt头文件没有.h</span><br><span class="line">&#x2F;&#x2F;头文件和类名一样</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;有且只有一个应用程序类对象</span><br><span class="line">    QApplication a(argc, argv);</span><br><span class="line">    &#x2F;&#x2F;MyWidget继承Qwidget，QWidget是一个窗口类对象</span><br><span class="line">    &#x2F;&#x2F;w是窗口</span><br><span class="line">    Widget w;</span><br><span class="line">    &#x2F;&#x2F;窗口创建默认是隐藏的，需要认为显示</span><br><span class="line">    w.show();</span><br><span class="line">    &#x2F;&#x2F;让程序一直执行，等待人为操作（等待事件的发生）</span><br><span class="line">    return a.exec();&#x2F;&#x2F;a是应用程序对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -4801,24 +4948,6 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;widget.h&quot;</span><br><span class="line"></span><br><span class="line">Widget::Widget(QWidget *parent)</span><br><span class="line">    : QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Widget::~Widget()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>大一</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt菜单栏和工具栏</title>
-    <url>/2019/08/31/Qt%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%92%8C%E5%B7%A5%E5%85%B7%E6%A0%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
-<li>信号是给槽函数传参的，信号函数只需声明，不需定义<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>  <span class="meta-string">&lt;QmenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Qmenu&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QAction&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;qlabel.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextEdit&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDockWidget&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//菜单栏</span></span><br><span class="line">    QMenuBar *mBar=<span class="keyword">new</span> QMenuBar(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//添加菜单</span></span><br><span class="line">    QMenu *pFile = mBar-&gt;addMenu(<span class="string">"文件"</span>);</span><br><span class="line">    <span class="comment">//添加菜单项，添加动作</span></span><br><span class="line">    QAction *pNew=pFile-&gt;addAction(<span class="string">"新建"</span>);</span><br><span class="line">    <span class="built_in">connect</span>(pNew,&amp;QAction::triggered,</span><br><span class="line">            [=]()</span><br><span class="line">    &#123;</span><br><span class="line">        qDebug(<span class="string">"push"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    pFile-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">    QAction *popen=pFile-&gt;addAction(<span class="string">"打开"</span>);</span><br><span class="line">    <span class="comment">//工具栏，菜单上的快捷方式</span></span><br><span class="line">    QToolBar *toolbar=addToolBar(<span class="string">"toolbar"</span>);</span><br><span class="line">    <span class="comment">//工具栏添加快捷键</span></span><br><span class="line">    toolbar-&gt;addAction(pNew);</span><br><span class="line">    <span class="comment">//添加小控件</span></span><br><span class="line">    QPushButton *b=<span class="keyword">new</span> QPushButton(<span class="keyword">this</span>);</span><br><span class="line">    b-&gt;setText(<span class="string">"123"</span>);</span><br><span class="line">    toolbar-&gt;addWidget(b);</span><br><span class="line">    <span class="built_in">connect</span>(b,&amp;QPushButton::clicked,</span><br><span class="line">            [=]()</span><br><span class="line">    &#123;</span><br><span class="line">        b-&gt;setText(<span class="string">"345"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//状态栏</span></span><br><span class="line">    QStatusBar *sbar=<span class="keyword">new</span> QStatusBar(<span class="keyword">this</span>);</span><br><span class="line">    QLabel *label=<span class="keyword">new</span> QLabel(<span class="keyword">this</span>);</span><br><span class="line">    label-&gt;setText(<span class="string">"Normal text file"</span>);</span><br><span class="line">    sbar-&gt;addWidget(label);</span><br><span class="line">    <span class="comment">//addWidget 从左往右添加</span></span><br><span class="line">    sbar-&gt;addWidget(<span class="keyword">new</span> QLabel(<span class="string">"2"</span>,<span class="keyword">this</span>));</span><br><span class="line">    <span class="comment">//从右往左添加</span></span><br><span class="line">    sbar-&gt;addPermanentWidget(<span class="keyword">new</span> QLabel(<span class="string">"3"</span>,<span class="keyword">this</span>));</span><br><span class="line">    <span class="comment">//核心控件</span></span><br><span class="line">    QTextEdit *textEdit = <span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);</span><br><span class="line">    setCentralWidget(textEdit);</span><br><span class="line">    <span class="comment">//浮动窗口</span></span><br><span class="line">    QDockWidget *dock=<span class="keyword">new</span> QDockWidget(<span class="keyword">this</span>);</span><br><span class="line">    addDockWidget(Qt::RightDockWidgetArea,dock);</span><br><span class="line">    <span class="comment">//给浮动窗口添加控件</span></span><br><span class="line">    QTextEdit *textEdit1 = <span class="keyword">new</span> QTextEdit();</span><br><span class="line">    dock-&gt;setWidget(textEdit1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>Qt</category>
