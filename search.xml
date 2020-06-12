@@ -1,891 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>php学习一 —— 基本语法</title>
-    <url>/2021/05/26/php/php1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><div class="note info">
-            <p>参考书籍《细说PHP》</p>
-          </div>
-
-
-<h1 id="第一个php脚本程序"><a href="#第一个php脚本程序" class="headerlink" title="第一个php脚本程序"></a>第一个php脚本程序</h1><p>将.php文件放在web服务器根目录下，访问<code>web服务器URL/xxx.php</code>,本地访问<code>http://localhost/xxx.php</code>.</p>
-<p>调用函数phpinfo()可以看到系统相关信息、预定义变量，以及已经加载的php模块和配置信息</p>
-<h1 id="php语言标记"><a href="#php语言标记" class="headerlink" title="php语言标记"></a>php语言标记</h1><h2 id="将php代码嵌入html中的位置"><a href="#将php代码嵌入html中的位置" class="headerlink" title="将php代码嵌入html中的位置"></a>将php代码嵌入html中的位置</h2><p>可以将php代码段嵌入到html的任意地方</p>
-<p>当php遇到结束符 “?&gt;” 时，简单地将后面的内容原样输出，只到遇到下一个开始标记位置</p>
-<p>在一个文件中的不同位置使用多个php标记时，这些标记之间的语法是<strong>一个整体</strong></p>
-<p>对于输出打断文本而言，脱离php的解析模式，比php的echo和print效率更高</p>
-<h2 id="解读开始和结束标记"><a href="#解读开始和结束标记" class="headerlink" title="解读开始和结束标记"></a>解读开始和结束标记</h2><div class="note info">
-            <p>⭐&lt;?php ?&gt;⭐<br>和&lt;? ?&gt;<br>当在html页面中嵌入纯变量时，也可以使用&lt;?=$variablename ?&gt;</p>
-          </div>
-
-<div class="note info">
-            <p>&lt;script language=”php”&gt;&lt;/script&gt;    (PHP7以前版本支持)<br>&lt;% %&gt;                        (PHP7以前版本支持)</p>
-          </div>
-
-<p>除非有特殊需求，否则使用<code>&lt;?php ?&gt;</code>,对于只包含php代码的文件，结束标识符最好不要存在，防止末尾被意外地注入空白符号</p>
-<h1 id="指令分隔符“分号”"><a href="#指令分隔符“分号”" class="headerlink" title="指令分隔符“分号”"></a>指令分隔符“分号”</h1><p>使用<code>;</code></p>
-<p>程序最后一行，即<code>?&gt;</code>前，可以不用分号</p>
-<h1 id="程序注释"><a href="#程序注释" class="headerlink" title="程序注释"></a>程序注释</h1><p>多行：/* */</p>
-<p>单行：//和#</p>
-<div class="note warning">
-            <p>多行注释无法嵌套多行注释，其它可以嵌套</p>
-          </div>
-
-<div class="note warning">
-            <p>单行注释只对php内容有效，<code>//?&gt;</code>之后的html代码将被显示出来</p>
-          </div>
-
-<h1 id="在程序中使用空白处理"><a href="#在程序中使用空白处理" class="headerlink" title="在程序中使用空白处理"></a>在程序中使用空白处理</h1><p>空格、Tab、换行被php引擎忽略</p>
-<p>代码规范：</p>
-<ol>
-<li>使用两个空行<ul>
-<li>一个源文件的两个代码片段之间</li>
-<li>两个类的声明之间</li>
-</ul>
-</li>
-<li>使用一个空行<ul>
-<li>两个函数声明之间</li>
-<li>函数内的局部变量和函数的第一条语句之间</li>
-<li>块注释或单行注释之前</li>
-</ul>
-</li>
-<li>使用空格增加代码缩进提高可读性<ul>
-<li>关键字与括号之间，注意函数名和左括号之间不能有空格</li>
-<li>函数参数列表的逗号后</li>
-<li>算式的操作符和运算符之间，二进制运算和一元运算除外</li>
-<li>for语句中的逗号后</li>
-<li>强制类型转换语句中的强制类型的右括号与表达式之间应该用逗号隔开，并添加空格</li>
-</ul>
-</li>
-</ol>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>建议所有用到数据的地方，先将数据赋值给一个变量</p>
-<h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$a = <span class="number">100</span>;						</span><br><span class="line">	$b = <span class="string">"string"</span>;</span><br><span class="line">	$c = <span class="keyword">true</span>;</span><br><span class="line">	$d = <span class="number">99.99</span>;</span><br><span class="line"></span><br><span class="line">	$key1 = $a;						<span class="comment">//声明变量$key1,将$a的值赋给$key1</span></span><br><span class="line">	$key2 = $b;		</span><br><span class="line"></span><br><span class="line">	$a = $b = $c = $d = <span class="string">"value"</span>;	<span class="comment">//同时声明多个变量，并附上相同的值</span></span><br></pre></td></tr></table></figure>
-
-<p>变量的作用域：</p>
-<ol>
-<li>大部分不是在函数中声明的变量，可以在一个页面的所有php模式下使用，包含include和require引入的文件</li>
-<li>如果使用了Cookie和Session，可以在多个页面中使用</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $var = <span class="string">''</span>;								<span class="comment">//声明变量$var并赋值空</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">empty</span>($var))&#123;						<span class="comment">//true，因为$var为空值</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$var is either 0 or not set at all"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">isset</span>($var))&#123;						<span class="comment">//false，$var已经设置</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$var is not set at all"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">unset</span>($var);							<span class="comment">//销毁$var，释放内容</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>($var))&#123;						<span class="comment">//false，$var已经销毁</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"this var is set so i will print"</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<div class="note info">
-            <p>如果empty()的参数是非零或者非空的值，则返回false</p><p>“”、0、“0”、NULL、FALSE、array()、$var及任何没有属性的对象都被认为是空的</p><p>如果参数为空，则返回true</p>
-          </div>
-
-<div class="note info">
-            <p>如果函数isset()的参数存在，则返回TRUE，否则返回FALSE</p><p>若参数是一个被设置成NULL的变量或已使用unset()释放，将返回FALSE</p>
-          </div>
-
-<div class="note warning">
-            <p>NULL字节（”\0”）不等同于PHP的NULL常数，</p><p>推荐使用!empty($var)的方式判断一个变量存在且不为空</p>
-          </div>
-
-<h2 id="变量的命名"><a href="#变量的命名" class="headerlink" title="变量的命名"></a>变量的命名</h2><p>变量名严格区别大小写</p>
-<p>内置结构和关键字及用户自定义的类名不区分大小写，如echo、while、class名称、function名称</p>
-<p>字母或下划线开头</p>
-<table>
-<thead>
-<tr>
-<th>PHP常用关键字</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>and</td>
-<td>or</td>
-<td>xor</td>
-<td>if</td>
-<td>else</td>
-<td>for</td>
-</tr>
-<tr>
-<td>foreach</td>
-<td>while</td>
-<td>do</td>
-<td>switch</td>
-<td>case</td>
-<td>break</td>
-</tr>
-<tr>
-<td>continue</td>
-<td>default</td>
-<td>as</td>
-<td>elseif</td>
-<td>declare</td>
-<td>endif</td>
-</tr>
-<tr>
-<td>endfor</td>
-<td>endforeach</td>
-<td>endwhile</td>
-<td>endswitch</td>
-<td>enddeclare</td>
-<td>array</td>
-</tr>
-<tr>
-<td>static</td>
-<td>const</td>
-<td>class</td>
-<td>extends</td>
-<td>new</td>
-<td>exception</td>
-</tr>
-<tr>
-<td>global</td>
-<td>function</td>
-<td>exit</td>
-<td>die</td>
-<td>echo</td>
-<td>print</td>
-</tr>
-<tr>
-<td>eval</td>
-<td>isset</td>
-<td>unset</td>
-<td>return</td>
-<td>defien</td>
-<td>defined</td>
-</tr>
-<tr>
-<td>include</td>
-<td>include_once</td>
-<td>require</td>
-<td>require_once</td>
-<td>cfunction</td>
-<td>use</td>
-</tr>
-<tr>
-<td>var</td>
-<td>Public</td>
-<td>private</td>
-<td>protected</td>
-<td>implements</td>
-<td>interface</td>
-</tr>
-<tr>
-<td>extends</td>
-<td>abstract</td>
-<td>clone</td>
-<td>try</td>
-<td>catch</td>
-<td>throw</td>
-</tr>
-</tbody></table>
-<h2 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $hi = <span class="string">"hello"</span>;	<span class="comment">//声明一个普通变量$hi</span></span><br><span class="line">	$$hi = <span class="string">"world"</span>;	<span class="comment">//声明一个可变变量$$hi,</span></span><br><span class="line">					<span class="comment">//$hi的值是hello,相当于声明$hello的值是“world”</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $hello\n"</span>;	<span class="comment">//输出hello world</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $&#123;$hi&#125;\n"</span>;	<span class="comment">//输出hello world</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $$hi\n"</span>;	<span class="comment">//输出hello $hello</span></span><br></pre></td></tr></table></figure>
-
-<p>运行结果<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2021/05/26/php/php1/php一.assets\image-20200526205949977.png"  alt="image-20200526205949977" style="zoom:80%;"></p>
-<h2 id="变量的引用赋值"><a href="#变量的引用赋值" class="headerlink" title="变量的引用赋值"></a>变量的引用赋值</h2><table>
-<thead>
-<tr>
-<th>$a=&amp;$b</th>
-<th>php</th>
-<th>C++</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>b是a的别名</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>其中一个的值改变会导致另外一个改变</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td></td>
-<td>将$b的引用赋值给$a</td>
-<td>地址指针</td>
-</tr>
-<tr>
-<td>释放其中一个</td>
-<td>解除a、b的值关联关系，只释放一个</td>
-<td>两个都释放</td>
-</tr>
-</tbody></table>
-<h1 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h1><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2021/05/26/php/php1/image-20200526213837647.png"  alt="image-20200526213837647"></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $str=<span class="string">"hello world"</span>;</span><br><span class="line">	var_dump($str);<span class="comment">//直接输出变量的类型和值</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>被认为是FALSE的值</p>
-<ul>
-<li>FALSE</li>
-<li>0、0.0</li>
-<li>“\0”、”0”</li>
-<li>没有成员变量的数组</li>
-<li>没有单元的对象（仅限php4）</li>
-<li>特殊类型NULL、尚未设定的变量</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    var_dump((bool) <span class="string">""</span>);<span class="comment">//false,“”的布尔值是false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $int = <span class="number">1234</span>;</span><br><span class="line">    $int = <span class="number">-123</span>;</span><br><span class="line">    $int = <span class="number">0123</span>;</span><br><span class="line">    $int = <span class="number">0x1A</span>;</span><br><span class="line">    $int = <span class="number">0b1111</span>;<span class="comment">//二进制</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_SIZE;	<span class="comment">//int占四个字节，8</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_MAX;	<span class="comment">//int最大值，9223372036854775807</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_MIN;	<span class="comment">//int最小值，-9223372036854775808</span></span><br></pre></td></tr></table></figure>
-
-
-<p>php没有无符号整数，超出范围后会被解释为float（这点和其它编译器有出入）</p>
-<p>eg.</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">var_dump((int) <span class="number">9223372036854775810</span>);</span><br><span class="line"></span><br><span class="line">输出为int(<span class="number">-9223372036854775808</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $float = <span class="number">1.234</span>;</span><br><span class="line">    $float = <span class="number">1.2e3</span>;</span><br><span class="line">    $float = <span class="number">7E-10</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>php字符串没有长度限制</p>
-<h3 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//这是一个使用单引号引起来的简单字符串</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'this is a simple string'</span>;</span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>this is a simple string</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//在单引号中如果需要在包含单引号，需要使用转义字符“\”</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this is a \'simple\' string'</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>this is a ‘simple’ string</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//只能将反斜杠转义输出一个反斜杠，其它输出都是无效的</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this \n is \r a \t simple string\\'</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>this \n is \r a \t simple string\</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$str = <span class="number">100</span>;</span><br><span class="line">	<span class="comment">//将变量名原样输出，不会在单引号中解析这个变量</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this is a simple $str string'</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>this is a simple $str string</p>
-</blockquote>
-<h3 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h3><ul>
-<li>可以使用更多特殊字符的转义序列</li>
-<li>可以解析变量、数值组、或者对象属性的方法</li>
-<li>用花括号括起表达式</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>转义字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>\n</td>
-<td>换行符</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>回车符</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>水平制表符</td>
-</tr>
-<tr>
-<td>\\</td>
-<td>反斜线</td>
-</tr>
-<tr>
-<td>\$</td>
-<td>美元符号</td>
-</tr>
-<tr>
-<td>\“</td>
-<td>双引号</td>
-</tr>
-<tr>
-<td>\[0-7]{1,3}</td>
-<td>正则，匹配一个用八进制符号表示的字符</td>
-</tr>
-<tr>
-<td>\x[0-9A-Fa-f]{1,2}</td>
-<td>正则，匹配一个用十六进制符号表示的字符</td>
-</tr>
-<tr>
-<td>\u{xxxxx}</td>
-<td>声明unicode字符（php7引入）</td>
-</tr>
-</tbody></table>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $beer = <span class="string">'heineken'</span>;</span><br><span class="line">	<span class="comment">//可以解析，'在变量名中是无效的</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$beer's taste is great"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>heineken’s taste is great</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//不可以解析，s在变量名中有效</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"he drank some $beers"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>he drank some     </p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//使用&#123;&#125;包含，可以将变量分离出来解析</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"He drank some $&#123;beer&#125;s"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>He drank some heinekens    </p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//可以解析，&#123;&#125;的另一种用法</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"he drank some &#123;$beer&#125;s"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>he drank some heinekens    </p>
-</blockquote>
-<p>解析unicode，php7开始支持</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"u\&#123;4f5c&#125; u\&#123;8005&#125; u\&#123;5f88&#125; u\&#123;5e05&#125;"</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="定界符-lt-lt-lt"><a href="#定界符-lt-lt-lt" class="headerlink" title="定界符&lt;&lt;&lt;"></a>定界符&lt;&lt;&lt;</h3><ul>
-<li><p>定界符的命名规则和变量相同</p>
-</li>
-<li><p>通常用于从文件或者数据库中打断地输出文档</p>
-</li>
-<li><p>转义和变量解析同双引号</p>
-</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    \$string = <span class="string">&lt;&lt;&lt;EOT</span></span><br><span class="line"><span class="string">    xxxxxxxxxxxxxxxxxxxx</span></span><br><span class="line"><span class="string">    xxxxxxxxxxxxxxxxxxxxxxxxx</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line"><span class="comment">//结束标识必须从行的第一列开始，且后面不能有除分号外的其它字符</span></span><br><span class="line"><span class="comment">//EOT也课换为其它命名</span></span><br><span class="line">	<span class="keyword">echo</span> \$string;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//解析变量、字符转义</span></span><br><span class="line">	$name = <span class="string">'MNname'</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&lt;&lt;&lt;EOT</span></span><br><span class="line"><span class="string">	my name is <span class="subst">$name</span>. I am printing a "string" \n.</span></span><br><span class="line"><span class="string">	\tNow, i am printing some new line \n\r.</span></span><br><span class="line"><span class="string">	\tthis should print a capital 'A'</span></span><br><span class="line"><span class="string">EOT;</span></span><br></pre></td></tr></table></figure>
-
-<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2021/05/26/php/php1/image-20200528171648075.png"  alt="image-20200528171648075" style="zoom:67%;">
-
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="comment">//定界符不能用来初始化类成员</span></span><br><span class="line">    <span class="comment">//不可以这么写！！！！！！！</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $bar = <span class="string">&lt;&lt;&lt;EOT</span></span><br><span class="line"><span class="string">    bar</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<strong>开始</strong>边界符字符串名称两边加上单引号和双引号（”EOT”），作用类似于单引号\双引号字符串</p>
-<p>不加双引号时，作用同双引号</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">&lt;&lt;&lt;"EOT"</span></span><br><span class="line"><span class="string">	xxxxxxxxxx \x41</span></span><br><span class="line"><span class="string">EOT;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>PHP的数组实际上是一张有序图</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    	array(</span></span><br><span class="line"><span class="comment">            key1 =&gt; value1,</span></span><br><span class="line"><span class="comment">            key2 =&gt; value2</span></span><br><span class="line"><span class="comment">            ....</span></span><br><span class="line"><span class="comment">    	)</span></span><br><span class="line"><span class="comment">    	key可以是integer或者string</span></span><br><span class="line"><span class="comment">    	value可以是任意值</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    $arr = <span class="keyword">array</span>(<span class="string">"foo"</span> =&gt; <span class="string">"bar"</span>,<span class="number">12</span> =&gt; <span class="keyword">true</span>);</span><br><span class="line">	print_r($arr);		<span class="comment">//print_r()函数检查数组内的全部内容</span></span><br><span class="line">	<span class="keyword">echo</span> $arr[<span class="string">"foo"</span>];	<span class="comment">//通过数组下标访问单个数据</span></span><br><span class="line">	<span class="keyword">echo</span> $arr[<span class="number">12</span>];</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>print_r()输出：</p>
-<p>Array<br>(<br>    [foo] =&gt; bar<br>    [12] =&gt; 1<br>)</p>
-</blockquote>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Doing foo."</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	$p = <span class="keyword">new</span> Person;<span class="comment">//用new语句实例化类Person的对象放在变量$p中</span></span><br><span class="line">	</span><br><span class="line">	$p-&gt;name=<span class="string">"TOM"</span>;</span><br><span class="line">	$p-&gt;say();</span><br></pre></td></tr></table></figure>
-
-<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>资源类型的变量保存了到外部资源的一个引用</p>
-<p>资源是通过专门的函数来建立和使用的</p>
-<p>使用类型变量包含：打开的文件、数据库连接、图形画布区域等的特殊句柄，并由程序员创建使用和释放</p>
-<p>在下面的实例中，使用相应的函数创建不同的资源变量，如果创建成功，则返回资源引用赋给变量；如果创建失败，则返回布尔型false </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//使用fopen()函数以写的方式打开本目录下的info.txt文件，返回文件资源赋给变量$file_handle</span></span><br><span class="line">    $file_handle = fopen(<span class="string">"info.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">	var_dump($file_handle);<span class="comment">//输出$resource(3) of type (stream)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用opendir()函数打开目录，返回目录资源</span></span><br><span class="line">	$dir_hanle = opendir(<span class="string">"C:\\WINDOWS\\Fonts"</span>);</span><br><span class="line">	var_dump($dir_handle);<span class="comment">//输出$resource(4) of type (stream)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用mysql_connect()连接本地的MySql，返回连接资源</span></span><br><span class="line">	$link_mysql = mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"123456"</span>);</span><br><span class="line">	var_dump($link_mysql);<span class="comment">//输出$resource(5) of type (mysql link)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用imagecreate()创建一个100*50像素的画板，返回图像资源</span></span><br><span class="line">	$im_handle = imagecreate(<span class="number">100</span>,<span class="number">50</span>);</span><br><span class="line">	var_dump($im_handle);<span class="comment">//输出$resource(6) of type (gd)</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//使用xml_parser_create()创建XML解析器资源</span></span><br><span class="line">	$xml_parser = xml_parser_create();</span><br><span class="line">	var_dump($xml_parser);<span class="comment">//输出$resource(7) of type (xml)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><p>NULL不区分大小写</p>
-<p>以下被认为是NULL</p>
-<ul>
-<li>直接赋值为NULL</li>
-<li>声明的变量未赋值</li>
-<li>被unset()函数销毁的变量</li>
-</ul>
-<h2 id="伪类型"><a href="#伪类型" class="headerlink" title="伪类型"></a>伪类型</h2><ul>
-<li>mixed：说明一个参数可以接受多种不同的类型</li>
-<li>number：说明一个参数可以是integer或float</li>
-<li>callback</li>
-</ul>
-<h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><p>自动转换&amp;强制转换</p>
-<h2 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h2><p>向长度增加方向进行</p>
-<p>bool&amp;null&amp;string -&gt; integer/float</p>
-<p>int -&gt; float</p>
-<p>string转化字符串的数字部分,”123abc”-&gt; （int）123，“123.45abc” -&gt; (float) 123.45</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">    $foo = <span class="string">"100page"</span>;					<span class="comment">//string</span></span><br><span class="line">	$foo += <span class="number">2</span>;							<span class="comment">//int,102</span></span><br><span class="line">	$foo = $foo + <span class="number">1.3</span>;					<span class="comment">//float,103.3</span></span><br><span class="line">    $foo = <span class="keyword">null</span> + <span class="string">"10 little piggies"</span>;	<span class="comment">//int,10</span></span><br><span class="line">	$foo = <span class="number">5</span> + <span class="string">"10.05 yuan"</span>				<span class="comment">//float,15.05</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p>类似于C++，</p>
-<ul>
-<li><p>(int),(bool),(float),(string),(array),(object)，没有改变变量本身的类型</p>
-</li>
-<li><pre><code class="php"><span class="meta">&lt;?php</span>
-    <span class="comment">//没有改变变量本身的类型</span>
-    $str = <span class="string">"123.45abc"</span>;
-    $int = intval($str);
-    $flo = floatval($str);
-    $str = strval(<span class="number">123.45</span>);<span class="comment">//“123.45”</span>
-&lt;!--￼<span class="number">25</span>--&gt;</code></pre>
-</li>
-<li><p>PHP7废除16进制字符串，原先“0xA”被识别为10，而新版被识别为0</p>
-</li>
-</ul>
-<h2 id="变量类型的测试函数"><a href="#变量类型的测试函数" class="headerlink" title="变量类型的测试函数"></a>变量类型的测试函数</h2><ul>
-<li>is_bool($var)</li>
-<li>is_int(), is_integer(), is_long()</li>
-<li>is_float(), is_double(), is_real()</li>
-<li>is_string()</li>
-<li>is_array() 判断是否为数组</li>
-<li>is_object()</li>
-<li>is_resource</li>
-<li>is_null()</li>
-<li>is_scalar()判断是否是标量——整数、浮点数、布尔型、字符串</li>
-<li>is_numeric() 判断是否有任何类型的数字或数字字符串</li>
-<li>is_callable() 判断是否是有效的函数名</li>
-</ul>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>只能是标量数据</p>
-<p>常量名前不要加$</p>
-<p>常量一旦定义后就不能重新定义或者取消定义，直到脚本运行结束自动释放</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    define(<span class="string">"CON_INT"</span>,<span class="number">100</span>);</span><br><span class="line">	<span class="keyword">echo</span> CON_INT;<span class="comment">//获取常量值</span></span><br><span class="line">	constant(CON_INT);<span class="comment">//动态获得常量值</span></span><br><span class="line">	get_defined_constants();<span class="comment">//获得所有已定义的常量列表</span></span><br><span class="line"><span class="comment">//const和define定义数组</span></span><br><span class="line">	<span class="keyword">const</span> ARR=[<span class="string">'a'</span>,<span class="string">'b'</span>];</span><br><span class="line">	define(<span class="string">"BRR"</span>,[<span class="string">'a'</span>,<span class="string">'b'</span>]);</span><br></pre></td></tr></table></figure>
-
-<h3 id="define-和-const-比较"><a href="#define-和-const-比较" class="headerlink" title="define 和 const 比较"></a>define 和 const 比较</h3><p>const用于类成员常量和全局常量，但是不能在条件语句中定义常量</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="comment">//const编译时更快</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">true</span>)</span><br><span class="line">        <span class="keyword">const</span> FOO=<span class="string">'BAR'</span>;<span class="comment">//无效，cosnt不可以在条件语句中使用</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">true</span>)</span><br><span class="line">        define(<span class="string">"FOO"</span>,<span class="string">'CAR'</span>)<span class="comment">//可以</span></span><br></pre></td></tr></table></figure>
-
-<p>const只能用于普通变量名</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">const</span> FOO=<span class="string">'BAR'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> ($i = <span class="number">0</span>;$i&lt;<span class="number">32</span>;++$i)</span><br><span class="line">        define(<span class="string">'YDMA_'</span>.$i,<span class="number">1</span>+$i);</span><br><span class="line">	<span class="keyword">echo</span> YDMA_</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="系统中的预定义常量"><a href="#系统中的预定义常量" class="headerlink" title="系统中的预定义常量"></a>系统中的预定义常量</h2><table>
-<thead>
-<tr>
-<th>常量名</th>
-<th>常量值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PHP_OS</td>
-<td>UNIX或WINNT等</td>
-<td>执行PHP解析的操作系统名称</td>
-</tr>
-<tr>
-<td>PHP_VERSION</td>
-<td>7.1.9等</td>
-<td>当前PHP服务器的版本</td>
-</tr>
-<tr>
-<td>TRUE</td>
-<td>TRUE</td>
-<td></td>
-</tr>
-<tr>
-<td>FALSE</td>
-<td>FALSE</td>
-<td></td>
-</tr>
-<tr>
-<td>NULL</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>DIRECTORY_SEPARATOR</td>
-<td>\或/</td>
-<td></td>
-</tr>
-<tr>
-<td>PATH_SEPARATOR</td>
-<td>;或:</td>
-<td>更具操作系统决定环境变量的目录列表分割符</td>
-</tr>
-<tr>
-<td>E_ERROR</td>
-<td>1</td>
-<td>错误</td>
-</tr>
-<tr>
-<td>E_WARNING</td>
-<td>2</td>
-<td>警告</td>
-</tr>
-<tr>
-<td>E_PARSE</td>
-<td>3</td>
-<td>解析错误，由程序解析器报告</td>
-</tr>
-<tr>
-<td>E_NOTICE</td>
-<td>4</td>
-<td>非关键的错误，例如变量未初始化</td>
-</tr>
-<tr>
-<td>M_PI</td>
-<td>3.1415926535898</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="魔术常量"><a href="#魔术常量" class="headerlink" title="魔术常量"></a>魔术常量</h2><table>
-<thead>
-<tr>
-<th>常量名</th>
-<th>常量值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>_<em>FILE_</em></td>
-<td>当前的文件名</td>
-<td></td>
-</tr>
-<tr>
-<td>_<em>LINE_</em></td>
-<td>当前行数</td>
-<td></td>
-</tr>
-<tr>
-<td>_<em>FUNCTION_</em></td>
-<td>当前函数名</td>
-<td></td>
-</tr>
-<tr>
-<td>_<em>CLASS_</em></td>
-<td>当前类名</td>
-<td>在哪个类中使用就代表哪个类的类名</td>
-</tr>
-<tr>
-<td>_<em>METHOD_</em></td>
-<td>当前对象的方法名</td>
-<td>在哪个对象的方法中使用就代表这个方法名</td>
-</tr>
-</tbody></table>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> PHP_OS.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> PHP_VERSION.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="keyword">__FILE__</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="keyword">__LINE__</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="keyword">__line__</span>.<span class="string">"&lt;br&gt;"</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2021/05/26/php/php1/image-20200603174636486.png"  alt="image-20200603174636486"></p>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>+、-、<em>、/、++、–、*</em></p>
-<p>==和C不同的地方==</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $i = <span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">for</span>($n = <span class="number">0</span>;$n &lt; <span class="number">52</span>;$n++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> ++$i.<span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：b c d e f g h i j k l m n o p q r s t u v w x y z aa ab ac ad ae af ag ah ai aj ak al am an ao ap aq ar as at au av aw ax ay az ba </p>
-<h2 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h2><p>连接：“.”</p>
-<h2 id="赋值运算"><a href="#赋值运算" class="headerlink" title="赋值运算"></a>赋值运算</h2><p>$x.=”3”</p>
-<p>代表$x=​$x.”3”</p>
-<p>其余同其他语言</p>
-<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>===</td>
-<td>全等于</td>
-<td>在==的基础上添加“类型相同”</td>
-<td>$a===$b</td>
-</tr>
-<tr>
-<td>!==</td>
-<td>非全等于</td>
-<td>操作数不相等或类型不同</td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;&gt;  /  !=</td>
-<td>不等于</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;=&gt;</td>
-<td>太空船运算符/组合比较运算符</td>
-<td>当左边小于、等于、大于右边时，<br>分别返回-1，0，1（==可用于字符串比较==）</td>
-<td>$a&lt;=&gt;$b</td>
-</tr>
-<tr>
-<td>??</td>
-<td>NULL合并操作符</td>
-<td>从左往右第一个存在切不为NULL的操作数<br>如果都没有定义切不为NULL则返回NULL</td>
-<td>$a ?? $b ?? $c</td>
-</tr>
-</tbody></table>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//下面两条语句等价</span></span><br><span class="line">    $username = $_GET[<span class="string">'user'</span>] ?? <span class="string">'nobody'</span>;</span><br><span class="line">	$username = <span class="keyword">isset</span>($_GET[<span class="string">'user'</span>]) ? $_GET[<span class="string">'user'</span>] : <span class="string">'nobody'</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>短路</p>
-<p>and、&amp;&amp;</p>
-<p>or、||</p>
-<p>not、！</p>
-<p>xor</p>
-<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>同C++</p>
-<p>$a &amp;= $b 等价于 $a = $a &amp; $b</p>
-<p>$a &gt;&gt;=$b 等价于 $a = $a&gt;&gt;$b</p>
-<h2 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>?:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td>执行运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>@</td>
-<td>错误空值运算符，忽略表达式产生的错误信息</td>
-<td>@表达式</td>
-</tr>
-<tr>
-<td>=&gt;</td>
-<td>数组加标指定符</td>
-<td>键=&gt;值</td>
-</tr>
-<tr>
-<td>-&gt;</td>
-<td>对象成员访问</td>
-<td></td>
-</tr>
-<tr>
-<td>instanceof</td>
-<td>类型运算符，用来测定一个给定的对象是否来自指定的对象类</td>
-<td>对象instanceof类名</td>
-</tr>
-</tbody></table>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $output = <span class="string">'ls-la'</span>;<span class="comment">//使用``执行服务器操作系统的命令，讲结果赋值给$output</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;pre&gt; $output &lt;/pre&gt;"</span>;</span><br><span class="line"></span><br><span class="line">	$my_file = @file(<span class="string">"non_existent_file"</span>);</span><br><span class="line">	@$num = <span class="number">100</span>/<span class="number">0</span>;</span><br><span class="line">	<span class="comment">//使用头发送函数前面不能有任何输出，空格、空行都不行，否则会产生警告</span></span><br><span class="line">	@header(<span class="string">"Location: http://www.brophp.com"</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><table>
-<thead>
-<tr>
-<th>级别（从高到低）</th>
-<th>运算符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2</td>
-<td>[</td>
-</tr>
-<tr>
-<td>3</td>
-<td>++，–</td>
-</tr>
-<tr>
-<td>4</td>
-<td>！，~，-，(int)，(float)，(string)，(array)，(object)，@</td>
-</tr>
-<tr>
-<td>5</td>
-<td>*，/，%</td>
-</tr>
-<tr>
-<td>6</td>
-<td>+，-</td>
-</tr>
-<tr>
-<td>7</td>
-<td>&lt;&lt;，&gt;&gt;</td>
-</tr>
-<tr>
-<td>8</td>
-<td>&lt;，&lt;=，&gt;，&gt;=</td>
-</tr>
-<tr>
-<td>9</td>
-<td>==，!=，===，!==，&lt;&gt;，&lt;=&gt;</td>
-</tr>
-<tr>
-<td>10</td>
-<td>&amp;</td>
-</tr>
-<tr>
-<td>11</td>
-<td>^</td>
-</tr>
-<tr>
-<td>12</td>
-<td>|</td>
-</tr>
-<tr>
-<td>13</td>
-<td>&amp;&amp;</td>
-</tr>
-<tr>
-<td>14</td>
-<td>||</td>
-</tr>
-<tr>
-<td>15</td>
-<td>??</td>
-</tr>
-<tr>
-<td>16</td>
-<td>?:</td>
-</tr>
-<tr>
-<td>17</td>
-<td>=，+=，-=，*=，/=，.=，%=，&amp;=，|=，^=，&lt;&lt;=，&gt;&gt;= （结合方向：从右到左）</td>
-</tr>
-<tr>
-<td>18</td>
-<td>and</td>
-</tr>
-<tr>
-<td>19</td>
-<td>xor</td>
-</tr>
-<tr>
-<td>20</td>
-<td>or</td>
-</tr>
-<tr>
-<td>21</td>
-<td>,</td>
-</tr>
-</tbody></table>
-<h2 id="容易混淆的特殊值"><a href="#容易混淆的特殊值" class="headerlink" title="容易混淆的特殊值"></a>容易混淆的特殊值</h2><p>1代表true</p>
-<p>0代表false</p>
-<table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>gettype()</th>
-<th>empty()</th>
-<th>is_null()</th>
-<th>isset()</th>
-<th>boolean():if($x)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>$x=””</td>
-<td>string</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>$x=null</td>
-<td>null</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>$x is undefined</td>
-<td>null</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>var $x</td>
-<td>null</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>$x=array()</td>
-<td>array</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>$x=false</td>
-<td>boolean</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>$x=true</td>
-<td>boolean</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=1</td>
-<td>integer</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=42</td>
-<td>integer</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=0</td>
-<td>integer</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>$x=-1</td>
-<td>integer</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=”1”</td>
-<td>string</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=”0”</td>
-<td>string</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>$x=”-1”</td>
-<td>string</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=”php”</td>
-<td>string</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=”true”</td>
-<td>string</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>$x=”false”</td>
-<td>string</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>信安数基第四章总结</title>
     <url>/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第四章-原根与指数"><a href="#第四章-原根与指数" class="headerlink" title="第四章 原根与指数"></a>第四章 原根与指数</h1><h2 id="4-1-次数"><a href="#4-1-次数" class="headerlink" title="4.1 次数"></a>4.1 次数</h2><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160537835.png"  alt="image-20200331160537835"></p>
@@ -1597,6 +712,891 @@
       <tags>
         <tag>web开发</tag>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php学习一 —— 基本语法</title>
+    <url>/2020/05/26/php/php1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><div class="note info">
+            <p>参考书籍《细说PHP》</p>
+          </div>
+
+
+<h1 id="第一个php脚本程序"><a href="#第一个php脚本程序" class="headerlink" title="第一个php脚本程序"></a>第一个php脚本程序</h1><p>将.php文件放在web服务器根目录下，访问<code>web服务器URL/xxx.php</code>,本地访问<code>http://localhost/xxx.php</code>.</p>
+<p>调用函数phpinfo()可以看到系统相关信息、预定义变量，以及已经加载的php模块和配置信息</p>
+<h1 id="php语言标记"><a href="#php语言标记" class="headerlink" title="php语言标记"></a>php语言标记</h1><h2 id="将php代码嵌入html中的位置"><a href="#将php代码嵌入html中的位置" class="headerlink" title="将php代码嵌入html中的位置"></a>将php代码嵌入html中的位置</h2><p>可以将php代码段嵌入到html的任意地方</p>
+<p>当php遇到结束符 “?&gt;” 时，简单地将后面的内容原样输出，只到遇到下一个开始标记位置</p>
+<p>在一个文件中的不同位置使用多个php标记时，这些标记之间的语法是<strong>一个整体</strong></p>
+<p>对于输出打断文本而言，脱离php的解析模式，比php的echo和print效率更高</p>
+<h2 id="解读开始和结束标记"><a href="#解读开始和结束标记" class="headerlink" title="解读开始和结束标记"></a>解读开始和结束标记</h2><div class="note info">
+            <p>⭐&lt;?php ?&gt;⭐<br>和&lt;? ?&gt;<br>当在html页面中嵌入纯变量时，也可以使用&lt;?=$variablename ?&gt;</p>
+          </div>
+
+<div class="note info">
+            <p>&lt;script language=”php”&gt;&lt;/script&gt;    (PHP7以前版本支持)<br>&lt;% %&gt;                        (PHP7以前版本支持)</p>
+          </div>
+
+<p>除非有特殊需求，否则使用<code>&lt;?php ?&gt;</code>,对于只包含php代码的文件，结束标识符最好不要存在，防止末尾被意外地注入空白符号</p>
+<h1 id="指令分隔符“分号”"><a href="#指令分隔符“分号”" class="headerlink" title="指令分隔符“分号”"></a>指令分隔符“分号”</h1><p>使用<code>;</code></p>
+<p>程序最后一行，即<code>?&gt;</code>前，可以不用分号</p>
+<h1 id="程序注释"><a href="#程序注释" class="headerlink" title="程序注释"></a>程序注释</h1><p>多行：/* */</p>
+<p>单行：//和#</p>
+<div class="note warning">
+            <p>多行注释无法嵌套多行注释，其它可以嵌套</p>
+          </div>
+
+<div class="note warning">
+            <p>单行注释只对php内容有效，<code>//?&gt;</code>之后的html代码将被显示出来</p>
+          </div>
+
+<h1 id="在程序中使用空白处理"><a href="#在程序中使用空白处理" class="headerlink" title="在程序中使用空白处理"></a>在程序中使用空白处理</h1><p>空格、Tab、换行被php引擎忽略</p>
+<p>代码规范：</p>
+<ol>
+<li>使用两个空行<ul>
+<li>一个源文件的两个代码片段之间</li>
+<li>两个类的声明之间</li>
+</ul>
+</li>
+<li>使用一个空行<ul>
+<li>两个函数声明之间</li>
+<li>函数内的局部变量和函数的第一条语句之间</li>
+<li>块注释或单行注释之前</li>
+</ul>
+</li>
+<li>使用空格增加代码缩进提高可读性<ul>
+<li>关键字与括号之间，注意函数名和左括号之间不能有空格</li>
+<li>函数参数列表的逗号后</li>
+<li>算式的操作符和运算符之间，二进制运算和一元运算除外</li>
+<li>for语句中的逗号后</li>
+<li>强制类型转换语句中的强制类型的右括号与表达式之间应该用逗号隔开，并添加空格</li>
+</ul>
+</li>
+</ol>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>建议所有用到数据的地方，先将数据赋值给一个变量</p>
+<h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$a = <span class="number">100</span>;						</span><br><span class="line">	$b = <span class="string">"string"</span>;</span><br><span class="line">	$c = <span class="keyword">true</span>;</span><br><span class="line">	$d = <span class="number">99.99</span>;</span><br><span class="line"></span><br><span class="line">	$key1 = $a;						<span class="comment">//声明变量$key1,将$a的值赋给$key1</span></span><br><span class="line">	$key2 = $b;		</span><br><span class="line"></span><br><span class="line">	$a = $b = $c = $d = <span class="string">"value"</span>;	<span class="comment">//同时声明多个变量，并附上相同的值</span></span><br></pre></td></tr></table></figure>
+
+<p>变量的作用域：</p>
+<ol>
+<li>大部分不是在函数中声明的变量，可以在一个页面的所有php模式下使用，包含include和require引入的文件</li>
+<li>如果使用了Cookie和Session，可以在多个页面中使用</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $var = <span class="string">''</span>;								<span class="comment">//声明变量$var并赋值空</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">empty</span>($var))&#123;						<span class="comment">//true，因为$var为空值</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$var is either 0 or not set at all"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">isset</span>($var))&#123;						<span class="comment">//false，$var已经设置</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$var is not set at all"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">unset</span>($var);							<span class="comment">//销毁$var，释放内容</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>($var))&#123;						<span class="comment">//false，$var已经销毁</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"this var is set so i will print"</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info">
+            <p>如果empty()的参数是非零或者非空的值，则返回false</p><p>“”、0、“0”、NULL、FALSE、array()、$var及任何没有属性的对象都被认为是空的</p><p>如果参数为空，则返回true</p>
+          </div>
+
+<div class="note info">
+            <p>如果函数isset()的参数存在，则返回TRUE，否则返回FALSE</p><p>若参数是一个被设置成NULL的变量或已使用unset()释放，将返回FALSE</p>
+          </div>
+
+<div class="note warning">
+            <p>NULL字节（”\0”）不等同于PHP的NULL常数，</p><p>推荐使用!empty($var)的方式判断一个变量存在且不为空</p>
+          </div>
+
+<h2 id="变量的命名"><a href="#变量的命名" class="headerlink" title="变量的命名"></a>变量的命名</h2><p>变量名严格区别大小写</p>
+<p>内置结构和关键字及用户自定义的类名不区分大小写，如echo、while、class名称、function名称</p>
+<p>字母或下划线开头</p>
+<table>
+<thead>
+<tr>
+<th>PHP常用关键字</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and</td>
+<td>or</td>
+<td>xor</td>
+<td>if</td>
+<td>else</td>
+<td>for</td>
+</tr>
+<tr>
+<td>foreach</td>
+<td>while</td>
+<td>do</td>
+<td>switch</td>
+<td>case</td>
+<td>break</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>default</td>
+<td>as</td>
+<td>elseif</td>
+<td>declare</td>
+<td>endif</td>
+</tr>
+<tr>
+<td>endfor</td>
+<td>endforeach</td>
+<td>endwhile</td>
+<td>endswitch</td>
+<td>enddeclare</td>
+<td>array</td>
+</tr>
+<tr>
+<td>static</td>
+<td>const</td>
+<td>class</td>
+<td>extends</td>
+<td>new</td>
+<td>exception</td>
+</tr>
+<tr>
+<td>global</td>
+<td>function</td>
+<td>exit</td>
+<td>die</td>
+<td>echo</td>
+<td>print</td>
+</tr>
+<tr>
+<td>eval</td>
+<td>isset</td>
+<td>unset</td>
+<td>return</td>
+<td>defien</td>
+<td>defined</td>
+</tr>
+<tr>
+<td>include</td>
+<td>include_once</td>
+<td>require</td>
+<td>require_once</td>
+<td>cfunction</td>
+<td>use</td>
+</tr>
+<tr>
+<td>var</td>
+<td>Public</td>
+<td>private</td>
+<td>protected</td>
+<td>implements</td>
+<td>interface</td>
+</tr>
+<tr>
+<td>extends</td>
+<td>abstract</td>
+<td>clone</td>
+<td>try</td>
+<td>catch</td>
+<td>throw</td>
+</tr>
+</tbody></table>
+<h2 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $hi = <span class="string">"hello"</span>;	<span class="comment">//声明一个普通变量$hi</span></span><br><span class="line">	$$hi = <span class="string">"world"</span>;	<span class="comment">//声明一个可变变量$$hi,</span></span><br><span class="line">					<span class="comment">//$hi的值是hello,相当于声明$hello的值是“world”</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $hello\n"</span>;	<span class="comment">//输出hello world</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $&#123;$hi&#125;\n"</span>;	<span class="comment">//输出hello world</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$hi $$hi\n"</span>;	<span class="comment">//输出hello $hello</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/26/php/php1/php一.assets\image-20200526205949977.png"  alt="image-20200526205949977" style="zoom:80%;"></p>
+<h2 id="变量的引用赋值"><a href="#变量的引用赋值" class="headerlink" title="变量的引用赋值"></a>变量的引用赋值</h2><table>
+<thead>
+<tr>
+<th>$a=&amp;$b</th>
+<th>php</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b是a的别名</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>其中一个的值改变会导致另外一个改变</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td></td>
+<td>将$b的引用赋值给$a</td>
+<td>地址指针</td>
+</tr>
+<tr>
+<td>释放其中一个</td>
+<td>解除a、b的值关联关系，只释放一个</td>
+<td>两个都释放</td>
+</tr>
+</tbody></table>
+<h1 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h1><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/26/php/php1/image-20200526213837647.png"  alt="image-20200526213837647"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $str=<span class="string">"hello world"</span>;</span><br><span class="line">	var_dump($str);<span class="comment">//直接输出变量的类型和值</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>被认为是FALSE的值</p>
+<ul>
+<li>FALSE</li>
+<li>0、0.0</li>
+<li>“\0”、”0”</li>
+<li>没有成员变量的数组</li>
+<li>没有单元的对象（仅限php4）</li>
+<li>特殊类型NULL、尚未设定的变量</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    var_dump((bool) <span class="string">""</span>);<span class="comment">//false,“”的布尔值是false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $int = <span class="number">1234</span>;</span><br><span class="line">    $int = <span class="number">-123</span>;</span><br><span class="line">    $int = <span class="number">0123</span>;</span><br><span class="line">    $int = <span class="number">0x1A</span>;</span><br><span class="line">    $int = <span class="number">0b1111</span>;<span class="comment">//二进制</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_SIZE;	<span class="comment">//int占四个字节，8</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_MAX;	<span class="comment">//int最大值，9223372036854775807</span></span><br><span class="line"><span class="keyword">echo</span> PHP_INT_MIN;	<span class="comment">//int最小值，-9223372036854775808</span></span><br></pre></td></tr></table></figure>
+
+
+<p>php没有无符号整数，超出范围后会被解释为float（这点和其它编译器有出入）</p>
+<p>eg.</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">var_dump((int) <span class="number">9223372036854775810</span>);</span><br><span class="line"></span><br><span class="line">输出为int(<span class="number">-9223372036854775808</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $float = <span class="number">1.234</span>;</span><br><span class="line">    $float = <span class="number">1.2e3</span>;</span><br><span class="line">    $float = <span class="number">7E-10</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>php字符串没有长度限制</p>
+<h3 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//这是一个使用单引号引起来的简单字符串</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'this is a simple string'</span>;</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>this is a simple string</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//在单引号中如果需要在包含单引号，需要使用转义字符“\”</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this is a \'simple\' string'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>this is a ‘simple’ string</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//只能将反斜杠转义输出一个反斜杠，其它输出都是无效的</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this \n is \r a \t simple string\\'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>this \n is \r a \t simple string\</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$str = <span class="number">100</span>;</span><br><span class="line">	<span class="comment">//将变量名原样输出，不会在单引号中解析这个变量</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'this is a simple $str string'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>this is a simple $str string</p>
+</blockquote>
+<h3 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h3><ul>
+<li>可以使用更多特殊字符的转义序列</li>
+<li>可以解析变量、数值组、或者对象属性的方法</li>
+<li>用花括号括起表达式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜线</td>
+</tr>
+<tr>
+<td>\$</td>
+<td>美元符号</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\[0-7]{1,3}</td>
+<td>正则，匹配一个用八进制符号表示的字符</td>
+</tr>
+<tr>
+<td>\x[0-9A-Fa-f]{1,2}</td>
+<td>正则，匹配一个用十六进制符号表示的字符</td>
+</tr>
+<tr>
+<td>\u{xxxxx}</td>
+<td>声明unicode字符（php7引入）</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $beer = <span class="string">'heineken'</span>;</span><br><span class="line">	<span class="comment">//可以解析，'在变量名中是无效的</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"$beer's taste is great"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>heineken’s taste is great</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//不可以解析，s在变量名中有效</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"he drank some $beers"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>he drank some     </p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//使用&#123;&#125;包含，可以将变量分离出来解析</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"He drank some $&#123;beer&#125;s"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>He drank some heinekens    </p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//可以解析，&#123;&#125;的另一种用法</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"he drank some &#123;$beer&#125;s"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>he drank some heinekens    </p>
+</blockquote>
+<p>解析unicode，php7开始支持</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"u\&#123;4f5c&#125; u\&#123;8005&#125; u\&#123;5f88&#125; u\&#123;5e05&#125;"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定界符-lt-lt-lt"><a href="#定界符-lt-lt-lt" class="headerlink" title="定界符&lt;&lt;&lt;"></a>定界符&lt;&lt;&lt;</h3><ul>
+<li><p>定界符的命名规则和变量相同</p>
+</li>
+<li><p>通常用于从文件或者数据库中打断地输出文档</p>
+</li>
+<li><p>转义和变量解析同双引号</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    \$string = <span class="string">&lt;&lt;&lt;EOT</span></span><br><span class="line"><span class="string">    xxxxxxxxxxxxxxxxxxxx</span></span><br><span class="line"><span class="string">    xxxxxxxxxxxxxxxxxxxxxxxxx</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line"><span class="comment">//结束标识必须从行的第一列开始，且后面不能有除分号外的其它字符</span></span><br><span class="line"><span class="comment">//EOT也课换为其它命名</span></span><br><span class="line">	<span class="keyword">echo</span> \$string;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//解析变量、字符转义</span></span><br><span class="line">	$name = <span class="string">'MNname'</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&lt;&lt;&lt;EOT</span></span><br><span class="line"><span class="string">	my name is <span class="subst">$name</span>. I am printing a "string" \n.</span></span><br><span class="line"><span class="string">	\tNow, i am printing some new line \n\r.</span></span><br><span class="line"><span class="string">	\tthis should print a capital 'A'</span></span><br><span class="line"><span class="string">EOT;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/26/php/php1/image-20200528171648075.png"  alt="image-20200528171648075" style="zoom:67%;">
+
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="comment">//定界符不能用来初始化类成员</span></span><br><span class="line">    <span class="comment">//不可以这么写！！！！！！！</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $bar = <span class="string">&lt;&lt;&lt;EOT</span></span><br><span class="line"><span class="string">    bar</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<strong>开始</strong>边界符字符串名称两边加上单引号和双引号（”EOT”），作用类似于单引号\双引号字符串</p>
+<p>不加双引号时，作用同双引号</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">&lt;&lt;&lt;"EOT"</span></span><br><span class="line"><span class="string">	xxxxxxxxxx \x41</span></span><br><span class="line"><span class="string">EOT;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>PHP的数组实际上是一张有序图</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    	array(</span></span><br><span class="line"><span class="comment">            key1 =&gt; value1,</span></span><br><span class="line"><span class="comment">            key2 =&gt; value2</span></span><br><span class="line"><span class="comment">            ....</span></span><br><span class="line"><span class="comment">    	)</span></span><br><span class="line"><span class="comment">    	key可以是integer或者string</span></span><br><span class="line"><span class="comment">    	value可以是任意值</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    $arr = <span class="keyword">array</span>(<span class="string">"foo"</span> =&gt; <span class="string">"bar"</span>,<span class="number">12</span> =&gt; <span class="keyword">true</span>);</span><br><span class="line">	print_r($arr);		<span class="comment">//print_r()函数检查数组内的全部内容</span></span><br><span class="line">	<span class="keyword">echo</span> $arr[<span class="string">"foo"</span>];	<span class="comment">//通过数组下标访问单个数据</span></span><br><span class="line">	<span class="keyword">echo</span> $arr[<span class="number">12</span>];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>print_r()输出：</p>
+<p>Array<br>(<br>    [foo] =&gt; bar<br>    [12] =&gt; 1<br>)</p>
+</blockquote>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Doing foo."</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	$p = <span class="keyword">new</span> Person;<span class="comment">//用new语句实例化类Person的对象放在变量$p中</span></span><br><span class="line">	</span><br><span class="line">	$p-&gt;name=<span class="string">"TOM"</span>;</span><br><span class="line">	$p-&gt;say();</span><br></pre></td></tr></table></figure>
+
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>资源类型的变量保存了到外部资源的一个引用</p>
+<p>资源是通过专门的函数来建立和使用的</p>
+<p>使用类型变量包含：打开的文件、数据库连接、图形画布区域等的特殊句柄，并由程序员创建使用和释放</p>
+<p>在下面的实例中，使用相应的函数创建不同的资源变量，如果创建成功，则返回资源引用赋给变量；如果创建失败，则返回布尔型false </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//使用fopen()函数以写的方式打开本目录下的info.txt文件，返回文件资源赋给变量$file_handle</span></span><br><span class="line">    $file_handle = fopen(<span class="string">"info.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">	var_dump($file_handle);<span class="comment">//输出$resource(3) of type (stream)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用opendir()函数打开目录，返回目录资源</span></span><br><span class="line">	$dir_hanle = opendir(<span class="string">"C:\\WINDOWS\\Fonts"</span>);</span><br><span class="line">	var_dump($dir_handle);<span class="comment">//输出$resource(4) of type (stream)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用mysql_connect()连接本地的MySql，返回连接资源</span></span><br><span class="line">	$link_mysql = mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"123456"</span>);</span><br><span class="line">	var_dump($link_mysql);<span class="comment">//输出$resource(5) of type (mysql link)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用imagecreate()创建一个100*50像素的画板，返回图像资源</span></span><br><span class="line">	$im_handle = imagecreate(<span class="number">100</span>,<span class="number">50</span>);</span><br><span class="line">	var_dump($im_handle);<span class="comment">//输出$resource(6) of type (gd)</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//使用xml_parser_create()创建XML解析器资源</span></span><br><span class="line">	$xml_parser = xml_parser_create();</span><br><span class="line">	var_dump($xml_parser);<span class="comment">//输出$resource(7) of type (xml)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><p>NULL不区分大小写</p>
+<p>以下被认为是NULL</p>
+<ul>
+<li>直接赋值为NULL</li>
+<li>声明的变量未赋值</li>
+<li>被unset()函数销毁的变量</li>
+</ul>
+<h2 id="伪类型"><a href="#伪类型" class="headerlink" title="伪类型"></a>伪类型</h2><ul>
+<li>mixed：说明一个参数可以接受多种不同的类型</li>
+<li>number：说明一个参数可以是integer或float</li>
+<li>callback</li>
+</ul>
+<h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><p>自动转换&amp;强制转换</p>
+<h2 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h2><p>向长度增加方向进行</p>
+<p>bool&amp;null&amp;string -&gt; integer/float</p>
+<p>int -&gt; float</p>
+<p>string转化字符串的数字部分,”123abc”-&gt; （int）123，“123.45abc” -&gt; (float) 123.45</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">    $foo = <span class="string">"100page"</span>;					<span class="comment">//string</span></span><br><span class="line">	$foo += <span class="number">2</span>;							<span class="comment">//int,102</span></span><br><span class="line">	$foo = $foo + <span class="number">1.3</span>;					<span class="comment">//float,103.3</span></span><br><span class="line">    $foo = <span class="keyword">null</span> + <span class="string">"10 little piggies"</span>;	<span class="comment">//int,10</span></span><br><span class="line">	$foo = <span class="number">5</span> + <span class="string">"10.05 yuan"</span>				<span class="comment">//float,15.05</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p>类似于C++，</p>
+<ul>
+<li><p>(int),(bool),(float),(string),(array),(object)，没有改变变量本身的类型</p>
+</li>
+<li><pre><code class="php"><span class="meta">&lt;?php</span>
+    <span class="comment">//没有改变变量本身的类型</span>
+    $str = <span class="string">"123.45abc"</span>;
+    $int = intval($str);
+    $flo = floatval($str);
+    $str = strval(<span class="number">123.45</span>);<span class="comment">//“123.45”</span>
+&lt;!--￼<span class="number">25</span>--&gt;</code></pre>
+</li>
+<li><p>PHP7废除16进制字符串，原先“0xA”被识别为10，而新版被识别为0</p>
+</li>
+</ul>
+<h2 id="变量类型的测试函数"><a href="#变量类型的测试函数" class="headerlink" title="变量类型的测试函数"></a>变量类型的测试函数</h2><ul>
+<li>is_bool($var)</li>
+<li>is_int(), is_integer(), is_long()</li>
+<li>is_float(), is_double(), is_real()</li>
+<li>is_string()</li>
+<li>is_array() 判断是否为数组</li>
+<li>is_object()</li>
+<li>is_resource</li>
+<li>is_null()</li>
+<li>is_scalar()判断是否是标量——整数、浮点数、布尔型、字符串</li>
+<li>is_numeric() 判断是否有任何类型的数字或数字字符串</li>
+<li>is_callable() 判断是否是有效的函数名</li>
+</ul>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>只能是标量数据</p>
+<p>常量名前不要加$</p>
+<p>常量一旦定义后就不能重新定义或者取消定义，直到脚本运行结束自动释放</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    define(<span class="string">"CON_INT"</span>,<span class="number">100</span>);</span><br><span class="line">	<span class="keyword">echo</span> CON_INT;<span class="comment">//获取常量值</span></span><br><span class="line">	constant(CON_INT);<span class="comment">//动态获得常量值</span></span><br><span class="line">	get_defined_constants();<span class="comment">//获得所有已定义的常量列表</span></span><br><span class="line"><span class="comment">//const和define定义数组</span></span><br><span class="line">	<span class="keyword">const</span> ARR=[<span class="string">'a'</span>,<span class="string">'b'</span>];</span><br><span class="line">	define(<span class="string">"BRR"</span>,[<span class="string">'a'</span>,<span class="string">'b'</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="define-和-const-比较"><a href="#define-和-const-比较" class="headerlink" title="define 和 const 比较"></a>define 和 const 比较</h3><p>const用于类成员常量和全局常量，但是不能在条件语句中定义常量</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="comment">//const编译时更快</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">true</span>)</span><br><span class="line">        <span class="keyword">const</span> FOO=<span class="string">'BAR'</span>;<span class="comment">//无效，cosnt不可以在条件语句中使用</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">true</span>)</span><br><span class="line">        define(<span class="string">"FOO"</span>,<span class="string">'CAR'</span>)<span class="comment">//可以</span></span><br></pre></td></tr></table></figure>
+
+<p>const只能用于普通变量名</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">const</span> FOO=<span class="string">'BAR'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> ($i = <span class="number">0</span>;$i&lt;<span class="number">32</span>;++$i)</span><br><span class="line">        define(<span class="string">'YDMA_'</span>.$i,<span class="number">1</span>+$i);</span><br><span class="line">	<span class="keyword">echo</span> YDMA_</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="系统中的预定义常量"><a href="#系统中的预定义常量" class="headerlink" title="系统中的预定义常量"></a>系统中的预定义常量</h2><table>
+<thead>
+<tr>
+<th>常量名</th>
+<th>常量值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PHP_OS</td>
+<td>UNIX或WINNT等</td>
+<td>执行PHP解析的操作系统名称</td>
+</tr>
+<tr>
+<td>PHP_VERSION</td>
+<td>7.1.9等</td>
+<td>当前PHP服务器的版本</td>
+</tr>
+<tr>
+<td>TRUE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr>
+<td>FALSE</td>
+<td>FALSE</td>
+<td></td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>DIRECTORY_SEPARATOR</td>
+<td>\或/</td>
+<td></td>
+</tr>
+<tr>
+<td>PATH_SEPARATOR</td>
+<td>;或:</td>
+<td>更具操作系统决定环境变量的目录列表分割符</td>
+</tr>
+<tr>
+<td>E_ERROR</td>
+<td>1</td>
+<td>错误</td>
+</tr>
+<tr>
+<td>E_WARNING</td>
+<td>2</td>
+<td>警告</td>
+</tr>
+<tr>
+<td>E_PARSE</td>
+<td>3</td>
+<td>解析错误，由程序解析器报告</td>
+</tr>
+<tr>
+<td>E_NOTICE</td>
+<td>4</td>
+<td>非关键的错误，例如变量未初始化</td>
+</tr>
+<tr>
+<td>M_PI</td>
+<td>3.1415926535898</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="魔术常量"><a href="#魔术常量" class="headerlink" title="魔术常量"></a>魔术常量</h2><table>
+<thead>
+<tr>
+<th>常量名</th>
+<th>常量值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_<em>FILE_</em></td>
+<td>当前的文件名</td>
+<td></td>
+</tr>
+<tr>
+<td>_<em>LINE_</em></td>
+<td>当前行数</td>
+<td></td>
+</tr>
+<tr>
+<td>_<em>FUNCTION_</em></td>
+<td>当前函数名</td>
+<td></td>
+</tr>
+<tr>
+<td>_<em>CLASS_</em></td>
+<td>当前类名</td>
+<td>在哪个类中使用就代表哪个类的类名</td>
+</tr>
+<tr>
+<td>_<em>METHOD_</em></td>
+<td>当前对象的方法名</td>
+<td>在哪个对象的方法中使用就代表这个方法名</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> PHP_OS.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> PHP_VERSION.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="keyword">__FILE__</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="keyword">__LINE__</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="keyword">__line__</span>.<span class="string">"&lt;br&gt;"</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/05/26/php/php1/image-20200603174636486.png"  alt="image-20200603174636486"></p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>+、-、<em>、/、++、–、*</em></p>
+<p>==和C不同的地方==</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $i = <span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">for</span>($n = <span class="number">0</span>;$n &lt; <span class="number">52</span>;$n++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> ++$i.<span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：b c d e f g h i j k l m n o p q r s t u v w x y z aa ab ac ad ae af ag ah ai aj ak al am an ao ap aq ar as at au av aw ax ay az ba </p>
+<h2 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h2><p>连接：“.”</p>
+<h2 id="赋值运算"><a href="#赋值运算" class="headerlink" title="赋值运算"></a>赋值运算</h2><p>$x.=”3”</p>
+<p>代表$x=​$x.”3”</p>
+<p>其余同其他语言</p>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>===</td>
+<td>全等于</td>
+<td>在==的基础上添加“类型相同”</td>
+<td>$a===$b</td>
+</tr>
+<tr>
+<td>!==</td>
+<td>非全等于</td>
+<td>操作数不相等或类型不同</td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;&gt;  /  !=</td>
+<td>不等于</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;=&gt;</td>
+<td>太空船运算符/组合比较运算符</td>
+<td>当左边小于、等于、大于右边时，<br>分别返回-1，0，1（==可用于字符串比较==）</td>
+<td>$a&lt;=&gt;$b</td>
+</tr>
+<tr>
+<td>??</td>
+<td>NULL合并操作符</td>
+<td>从左往右第一个存在切不为NULL的操作数<br>如果都没有定义切不为NULL则返回NULL</td>
+<td>$a ?? $b ?? $c</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">//下面两条语句等价</span></span><br><span class="line">    $username = $_GET[<span class="string">'user'</span>] ?? <span class="string">'nobody'</span>;</span><br><span class="line">	$username = <span class="keyword">isset</span>($_GET[<span class="string">'user'</span>]) ? $_GET[<span class="string">'user'</span>] : <span class="string">'nobody'</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>短路</p>
+<p>and、&amp;&amp;</p>
+<p>or、||</p>
+<p>not、！</p>
+<p>xor</p>
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>同C++</p>
+<p>$a &amp;= $b 等价于 $a = $a &amp; $b</p>
+<p>$a &gt;&gt;=$b 等价于 $a = $a&gt;&gt;$b</p>
+<h2 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h2><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>``</td>
+<td>执行运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>@</td>
+<td>错误空值运算符，忽略表达式产生的错误信息</td>
+<td>@表达式</td>
+</tr>
+<tr>
+<td>=&gt;</td>
+<td>数组加标指定符</td>
+<td>键=&gt;值</td>
+</tr>
+<tr>
+<td>-&gt;</td>
+<td>对象成员访问</td>
+<td></td>
+</tr>
+<tr>
+<td>instanceof</td>
+<td>类型运算符，用来测定一个给定的对象是否来自指定的对象类</td>
+<td>对象instanceof类名</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $output = <span class="string">'ls-la'</span>;<span class="comment">//使用``执行服务器操作系统的命令，讲结果赋值给$output</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;pre&gt; $output &lt;/pre&gt;"</span>;</span><br><span class="line"></span><br><span class="line">	$my_file = @file(<span class="string">"non_existent_file"</span>);</span><br><span class="line">	@$num = <span class="number">100</span>/<span class="number">0</span>;</span><br><span class="line">	<span class="comment">//使用头发送函数前面不能有任何输出，空格、空行都不行，否则会产生警告</span></span><br><span class="line">	@header(<span class="string">"Location: http://www.brophp.com"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><table>
+<thead>
+<tr>
+<th>级别（从高到低）</th>
+<th>运算符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>[</td>
+</tr>
+<tr>
+<td>3</td>
+<td>++，–</td>
+</tr>
+<tr>
+<td>4</td>
+<td>！，~，-，(int)，(float)，(string)，(array)，(object)，@</td>
+</tr>
+<tr>
+<td>5</td>
+<td>*，/，%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>+，-</td>
+</tr>
+<tr>
+<td>7</td>
+<td>&lt;&lt;，&gt;&gt;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>&lt;，&lt;=，&gt;，&gt;=</td>
+</tr>
+<tr>
+<td>9</td>
+<td>==，!=，===，!==，&lt;&gt;，&lt;=&gt;</td>
+</tr>
+<tr>
+<td>10</td>
+<td>&amp;</td>
+</tr>
+<tr>
+<td>11</td>
+<td>^</td>
+</tr>
+<tr>
+<td>12</td>
+<td>|</td>
+</tr>
+<tr>
+<td>13</td>
+<td>&amp;&amp;</td>
+</tr>
+<tr>
+<td>14</td>
+<td>||</td>
+</tr>
+<tr>
+<td>15</td>
+<td>??</td>
+</tr>
+<tr>
+<td>16</td>
+<td>?:</td>
+</tr>
+<tr>
+<td>17</td>
+<td>=，+=，-=，*=，/=，.=，%=，&amp;=，|=，^=，&lt;&lt;=，&gt;&gt;= （结合方向：从右到左）</td>
+</tr>
+<tr>
+<td>18</td>
+<td>and</td>
+</tr>
+<tr>
+<td>19</td>
+<td>xor</td>
+</tr>
+<tr>
+<td>20</td>
+<td>or</td>
+</tr>
+<tr>
+<td>21</td>
+<td>,</td>
+</tr>
+</tbody></table>
+<h2 id="容易混淆的特殊值"><a href="#容易混淆的特殊值" class="headerlink" title="容易混淆的特殊值"></a>容易混淆的特殊值</h2><p>1代表true</p>
+<p>0代表false</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>gettype()</th>
+<th>empty()</th>
+<th>is_null()</th>
+<th>isset()</th>
+<th>boolean():if($x)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$x=””</td>
+<td>string</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$x=null</td>
+<td>null</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$x is undefined</td>
+<td>null</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>var $x</td>
+<td>null</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$x=array()</td>
+<td>array</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$x=false</td>
+<td>boolean</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$x=true</td>
+<td>boolean</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=1</td>
+<td>integer</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=42</td>
+<td>integer</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=0</td>
+<td>integer</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$x=-1</td>
+<td>integer</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=”1”</td>
+<td>string</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=”0”</td>
+<td>string</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$x=”-1”</td>
+<td>string</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=”php”</td>
+<td>string</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=”true”</td>
+<td>string</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$x=”false”</td>
+<td>string</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
