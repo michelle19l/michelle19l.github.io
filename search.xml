@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>莫烦pythor pytorch学习</title>
+    <title>pytorch中引入mnist数据集</title>
+    <url>/2021/04/16/python/pytorch/mnist%E6%96%87%E4%BB%B6%E5%BC%95%E5%85%A5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>关于数据集FashionMNist，可以选择在代码中下载，也可以手动下载<a href="https://gitee.com/mirrors/Fashion-MNIST/">https://gitee.com/mirrors/Fashion-MNIST/</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mnist_train = torchvision.datasets.FashionMNIST(</span><br><span class="line">              root=<span class="string">'data/fashion/'</span>,</span><br><span class="line">              train=<span class="literal">True</span>, download=<span class="literal">True</span>, transform=torchvision.transforms.ToTensor())</span><br></pre></td></tr></table></figure>
+
+<p>路径结构为</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2021/04/16/python/pytorch/mnist%E6%96%87%E4%BB%B6%E5%BC%95%E5%85%A5/image-20210416154219469.png"  alt="image-20210416154219469" style="zoom:50%;">
+
+<p>如果<code>download=True</code>，则等待下载即可。如果手动下载，注意在变量root路径下<strong>建立<code>FashionMNIST</code>文件夹</strong>（和<code>torchvision.datasets.FashioMNIST</code>中的<code>FashionMNIST</code>相同），将<strong>下载内容放入<code>raw</code>中</strong>（解压不解压均可）</p>
+<p>注意，如果没有processed文件夹中的内容，依然需要设置<code>download=True</code>，<strong>建议直接设置为<code>download=True</code></strong>，代码将自动检测是否需要下载数据集</p>
+<p>如果设置不好将会报错：<code>RuntimeError: Dataset not found.</code></p>
+<p>当然也可以只放入processed文件夹，这时<code>download=False</code>即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train_data_ = torchvision.datasets.MNIST( <span class="comment"># 在root下创建文件夹"MNIST"</span></span><br><span class="line">    root=<span class="string">'./mnist'</span>,</span><br><span class="line">    train=<span class="literal">True</span>,</span><br><span class="line">    transform=torchvision.transforms.ToTensor(),  <span class="comment"># np array(pixel)修改为tensor （0，255）-&gt;（0，1）</span></span><br><span class="line">    download=<span class="literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/michelle19l/michelle19l/2021/04/16/python/pytorch/mnist%E6%96%87%E4%BB%B6%E5%BC%95%E5%85%A5/image-20210416155017835.png"  alt="image-20210416155017835" style="zoom:67%;">
+
+
+
+]]></content>
+      <categories>
+        <category>pytorch</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>机器学习</tag>
+        <tag>pytorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>莫烦python pytorch学习</title>
     <url>/2021/03/31/python/pytorch/morvan/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="pytorch和numpy"><a href="#pytorch和numpy" class="headerlink" title="pytorch和numpy"></a>pytorch和numpy</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># numpy和torch的转换</span></span><br><span class="line">np_data = np.arange(<span class="number">6</span>).reshape((<span class="number">2</span>, <span class="number">3</span>))<span class="comment"># 2行3列</span></span><br><span class="line">torch_data = torch.from_numpy(np_data)</span><br><span class="line">tensor2array = torch_data.numpy()</span><br><span class="line">print(</span><br><span class="line">    <span class="string">'\nnumpy array:'</span>, np_data,          <span class="comment"># [[0 1 2], [3 4 5]]</span></span><br><span class="line">    <span class="string">'\ntorch tensor:'</span>, torch_data,      <span class="comment">#  0  1  2 \n 3  4  5    [torch.LongTensor of size 2x3]</span></span><br><span class="line">    <span class="string">'\ntensor to array:'</span>, tensor2array, <span class="comment"># [[0 1 2], [3 4 5]]</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
