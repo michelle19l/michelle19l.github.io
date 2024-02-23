@@ -1,0 +1,644 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flask学习教程一——基础 | Lxm's Blog</title><meta name="description" content="Flask学习教程一——基础"><meta name="keywords" content="Flask"><meta name="author" content="Lxm"><meta name="copyright" content="Lxm"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/smile.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Flask学习教程一——基础"><meta name="twitter:description" content="Flask学习教程一——基础"><meta name="twitter:image" content="https://gitee.com/michelle19l/michelle19l//images/flask.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Flask学习教程一——基础"><meta property="og:url" content="https://gitee.com/michelle19l/michelle19l/2020/04/22/Flask%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/"><meta property="og:site_name" content="Lxm's Blog"><meta property="og:description" content="Flask学习教程一——基础"><meta property="og:image" content="https://gitee.com/michelle19l/michelle19l//images/flask.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://gitee.com/michelle19l/michelle19l/2020/04/22/Flask%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/"><link rel="prev" title="Flask学习教程二——web表单详解" href="https://gitee.com/michelle19l/michelle19l/2020/04/24/Flask%E6%95%99%E7%A8%8B%E4%BA%8C/"><link rel="next" title="c语言参数学习" href="https://gitee.com/michelle19l/michelle19l/2020/04/13/c%E8%AF%AD%E8%A8%80%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: true,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">90</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">70</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">24</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/guide/"><i class="fa-fw fa fa-connectdevelop"></i><span> Guide</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-概述"><span class="toc-number">1.</span> <span class="toc-text">Flask 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是Web-Framework？"><span class="toc-number">1.1.</span> <span class="toc-text">什么是Web Framework？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是Flask？"><span class="toc-number">1.2.</span> <span class="toc-text">什么是Flask？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WSGI"><span class="toc-number">1.3.</span> <span class="toc-text">WSGI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Werkzeug"><span class="toc-number">1.4.</span> <span class="toc-text">Werkzeug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jinja2"><span class="toc-number">1.5.</span> <span class="toc-text">jinja2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-number">2.</span> <span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#virtualenv"><span class="toc-number">2.1.</span> <span class="toc-text">virtualenv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flask"><span class="toc-number">2.2.</span> <span class="toc-text">Flask</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask应用"><span class="toc-number">3.</span> <span class="toc-text">Flask应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-world"><span class="toc-number">3.1.</span> <span class="toc-text">Hello world</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数解释"><span class="toc-number">3.2.</span> <span class="toc-text">函数解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#app-Flask-name"><span class="toc-number">3.2.1.</span> <span class="toc-text">app &#x3D; Flask(_name_)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#app-run"><span class="toc-number">3.2.2.</span> <span class="toc-text">app.run()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调试模式"><span class="toc-number">3.3.</span> <span class="toc-text">调试模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask路由"><span class="toc-number">4.</span> <span class="toc-text">Flask路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#app-route-‘-‘"><span class="toc-number">4.1.</span> <span class="toc-text">@app.route(‘&#x2F;‘)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#app-route-‘-hello’"><span class="toc-number">4.2.</span> <span class="toc-text">@app.route(‘&#x2F;hello’)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flask变量规则"><span class="toc-number">4.3.</span> <span class="toc-text">Flask变量规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义规则"><span class="toc-number">4.4.</span> <span class="toc-text">定义规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flask-URL构建"><span class="toc-number">4.5.</span> <span class="toc-text">Flask URL构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-HTTP方法"><span class="toc-number">5.</span> <span class="toc-text">Flask HTTP方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask模板"><span class="toc-number">6.</span> <span class="toc-text">Flask模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">6.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转义符"><span class="toc-number">6.2.</span> <span class="toc-text">转义符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例1——占位符"><span class="toc-number">6.3.</span> <span class="toc-text">样例1——占位符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例2——条件语句"><span class="toc-number">6.4.</span> <span class="toc-text">样例2——条件语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例三——表格"><span class="toc-number">6.5.</span> <span class="toc-text">样例三——表格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask静态文件"><span class="toc-number">7.</span> <span class="toc-text">Flask静态文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-Request对象"><span class="toc-number">8.</span> <span class="toc-text">Flask Request对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-将表单数据发送到模板"><span class="toc-number">9.</span> <span class="toc-text">Flask 将表单数据发送到模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-Cookies"><span class="toc-number">10.</span> <span class="toc-text">Flask Cookies</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#make-response"><span class="toc-number">10.1.</span> <span class="toc-text">make_response()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例一"><span class="toc-number">10.2.</span> <span class="toc-text">样例一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例二"><span class="toc-number">10.3.</span> <span class="toc-text">样例二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-会话"><span class="toc-number">11.</span> <span class="toc-text">Flask 会话</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flask中如何操作session"><span class="toc-number">11.1.</span> <span class="toc-text">flask中如何操作session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取session值"><span class="toc-number">11.2.</span> <span class="toc-text">获取session值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除清空session"><span class="toc-number">11.3.</span> <span class="toc-text">删除清空session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置session的过期时间"><span class="toc-number">11.4.</span> <span class="toc-text">设置session的过期时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-number">11.5.</span> <span class="toc-text">完整代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-重定向和错误"><span class="toc-number">12.</span> <span class="toc-text">Flask 重定向和错误</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redirect-函数"><span class="toc-number">12.1.</span> <span class="toc-text">redirect()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#状态码"><span class="toc-number">12.1.1.</span> <span class="toc-text">状态码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#样例一-1"><span class="toc-number">12.1.2.</span> <span class="toc-text">样例一</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#abort-函数"><span class="toc-number">12.2.</span> <span class="toc-text">abort()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#样例二-1"><span class="toc-number">12.2.1.</span> <span class="toc-text">样例二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#演示"><span class="toc-number">12.3.</span> <span class="toc-text">演示</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#login-html"><span class="toc-number">12.3.0.1.</span> <span class="toc-text">login.html</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#结果"><span class="toc-number">12.3.0.2.</span> <span class="toc-text">结果</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-消息闪现"><span class="toc-number">13.</span> <span class="toc-text">Flask 消息闪现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例"><span class="toc-number">13.1.</span> <span class="toc-text">样例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-文件上传"><span class="toc-number">14.</span> <span class="toc-text">Flask 文件上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask扩展"><span class="toc-number">15.</span> <span class="toc-text">Flask扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-邮件"><span class="toc-number">16.</span> <span class="toc-text">Flask 邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mail类"><span class="toc-number">16.1.</span> <span class="toc-text">Mail类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mail类的方法"><span class="toc-number">16.2.</span> <span class="toc-text">Mail类的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message类"><span class="toc-number">16.3.</span> <span class="toc-text">Message类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message类方法"><span class="toc-number">16.4.</span> <span class="toc-text">Message类方法</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(\images\flask2.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Lxm's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/guide/"><i class="fa-fw fa fa-connectdevelop"></i><span> Guide</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Flask学习教程一——基础</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-04-22 00:24:21"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2020-04-22</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-05-21 15:41:40"><i class="fa fa-history" aria-hidden="true"></i> Updated 2020-05-21</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Flask/">Flask</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>Word count:</span><span class="word-count">7k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>Reading time: 28 min</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><blockquote>
+<p>本文主要参考<a href="https://www.w3cschool.cn/flask/Flask-3ask1yho.html" target="_blank" rel="noopener">https://www.w3cschool.cn/flask/Flask-3ask1yho.html</a><br>本文大致按照参考资料架构书写，对代码错误或版本不兼容进行了修正<br>如果需要更严谨的教程请参考<a href="https://dormousehole.readthedocs.io/en/latest/" target="_blank" rel="noopener">官方文档</a></p>
+</blockquote>
+<ul>
+<li>本文由于python2和python3共存，且使用python3环境运行，用pip3代替pip</li>
+<li>windows10</li>
+<li>Pycharm专业版和Jupyter Notebook</li>
+<li>Python 3.7.2<br>Flask 1.1.1<br>Werkzeug 0.16.0</li>
+<li>要求有python和html基础</li>
+</ul>
+<h2 id="Flask-概述"><a href="#Flask-概述" class="headerlink" title="Flask 概述"></a>Flask 概述</h2><h3 id="什么是Web-Framework？"><a href="#什么是Web-Framework？" class="headerlink" title="什么是Web Framework？"></a>什么是Web Framework？</h3><p>Web Application Framework（Web应用程序框架）或简单的Web Framework（Web框架）表示一个库和模块的集合，使Web应用程序开发人员能够编写应用程序，而不必担心协议，线程管理等低级细节。</p>
+<h3 id="什么是Flask？"><a href="#什么是Flask？" class="headerlink" title="什么是Flask？"></a>什么是Flask？</h3><p>Flask是一个用Python编写的Web应用程序框架。 它由 <strong>Armin Ronacher</strong> 开发，他领导一个名为Pocco的国际Python爱好者团队。 Flask基于Werkzeug WSGI工具包和Jinja2模板引擎。两者都是Pocco项目。</p>
+<h3 id="WSGI"><a href="#WSGI" class="headerlink" title="WSGI"></a>WSGI</h3><p>Web Server Gateway Interface（Web服务器网关接口，WSGI）已被用作Python Web应用程序开发的标准。WSGI是Web服务器和Web应用程序之间通用接口的规范。</p>
+<h3 id="Werkzeug"><a href="#Werkzeug" class="headerlink" title="Werkzeug"></a>Werkzeug</h3><p>它是一个WSGI工具包，它实现了请求，响应对象和实用函数。 这使得能够在其上构建web框架。 Flask框架使用Werkzeug作为其基础之一。</p>
+<h3 id="jinja2"><a href="#jinja2" class="headerlink" title="jinja2"></a>jinja2</h3><p>jinja2是Python的一个流行的模板引擎。Web模板系统将模板与特定数据源组合以呈现动态网页。</p>
+<p>Flask通常被称为微框架。 它旨在保持应用程序的核心简单且可扩展。Flask没有用于数据库处理的内置抽象层，也没有形成验证支持。相反，Flask支持扩展以向应用程序添加此类功能。一些受欢迎的Flask扩展将在本教程后续章节进行讨论。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install virutalenv</span><br><span class="line">mkdir newproj</span><br><span class="line">cd newproj</span><br><span class="line">virtualenv venv</span><br><span class="line">venv\scripts\activate</span><br></pre></td></tr></table></figure>
+
+<p>或者在新建项目时在“环境中”选择<code>virtualenv</code></p>
+<h3 id="Flask"><a href="#Flask" class="headerlink" title="Flask"></a>Flask</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install Flask</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>注：pycharm专业版对flask有特殊支持，博主使用的是学生账号</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/Flask%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.assets/6375263-8711d7ef517770d0.webp"  alt="img"></p>
+</li>
+</ul>
+<h2 id="Flask应用"><a href="#Flask应用" class="headerlink" title="Flask应用"></a>Flask应用</h2><h3 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Hello World'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行：<br>注意不要使用idle<br><img src="/img/loading.gif" class="lazyload" data-src="/images/Flask%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.assets/image-20200422152732766.png"  alt="Hello world"></li>
+<li>打开<a href="http://127.0.0.1:5000/" target="_blank" rel="noopener">http://127.0.0.1:5000/</a> 或 localhost:5000<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200422152822853.png"  alt="image-20200422152822853" style="zoom: 50%;"></li>
+</ul>
+<h3 id="函数解释"><a href="#函数解释" class="headerlink" title="函数解释"></a>函数解释</h3><h4 id="app-Flask-name"><a href="#app-Flask-name" class="headerlink" title="app = Flask(_name_)"></a>app = Flask(_<em>name_</em>)</h4><p>Flask构造函数使用<strong>当前模块（__name __）</strong>的名称作为参数。</p>
+<h4 id="app-run"><a href="#app-run" class="headerlink" title="app.run()"></a>app.run()</h4><p>Flask类的<strong>run()</strong>方法在本地开发服务器上运行应用程序。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">app.run(host, port, debug, options)</span><br></pre></td></tr></table></figure>
+
+<p>所有参数都是可选的</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数与描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>host</strong> 要监听的主机名。 默认为127.0.0.1（localhost）。设置为“0.0.0.0”以使服务器在外部可用</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>port</strong> 默认值为5000</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>debug</strong> 默认为false。 如果设置为true，则提供调试信息</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>options</strong> 要转发到底层的Werkzeug服务器。</td>
+</tr>
+</tbody></table>
+<h3 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h3><p>通过调用run()方法启动Flask应用程序。但是，当应用程序正在开发中时，应该为代码中的每个更改手动重新启动它。为避免这种不便，请启用调试支持。如果代码更改，服务器将自行重新加载。它还将提供一个有用的调试器来跟踪应用程序中的错误（如果有的话）。</p>
+<p>在运行或将调试参数传递给run()方法之前，通过将application对象的debug属性设置为True来启用Debug模式。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.debug = <span class="literal">True</span></span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Flask路由"><a href="#Flask路由" class="headerlink" title="Flask路由"></a>Flask路由</h2><p>Flask中的route()装饰器用于将URL绑定到函数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.route(rule, options)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>rule</strong> 参数表示与该函数的URL绑定。</li>
+<li><strong>options</strong> 是要转发给基础Rule对象的参数列表。<h3 id="app-route-‘-‘"><a href="#app-route-‘-‘" class="headerlink" title="@app.route(‘/‘)"></a>@app.route(‘/‘)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure>
+在上面的示例中，’/ ‘ URL与<strong>hello_world()</strong>函数绑定。因此，当在浏览器中打开web服务器的主页时，将呈现该函数的输出。</li>
+</ul>
+<h3 id="app-route-‘-hello’"><a href="#app-route-‘-hello’" class="headerlink" title="@app.route(‘/hello’)"></a>@app.route(‘/hello’)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@app.route(&#39;&#x2F;hello&#39;)</span><br><span class="line">def hello_world():</span><br><span class="line">   return &#39;hello world&#39;</span><br></pre></td></tr></table></figure>
+
+<p>访问<strong>http：// localhost:5000/hello</strong> URL，<strong>hello_world()</strong>函数的输出将在浏览器中呈现。<br>此时localhost:5000将返回404</p>
+<h3 id="Flask变量规则"><a href="#Flask变量规则" class="headerlink" title="Flask变量规则"></a>Flask变量规则</h3><p>构建动态URL，变量部分标记为<strong>&lt;variable-name&gt;</strong>。它作为关键字参数传递给与规则相关联的函数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>转换器和描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>接受字符串 %s</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>int</strong>接受整数 %d</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>float</strong>对于浮点值 %f</td>
+</tr>
+<tr>
+<td>3</td>
+<td>*<em>path *</em>接受用作目录分隔符的斜杠</td>
+</tr>
+</tbody></table>
+<p>在下面的代码中，使用了所有这些构造函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/hello/&lt;name&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_name</span><span class="params">(name)</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Hello %s!'</span> % name</span><br><span class="line"><span class="comment"># 或者写为 return '&lt;h1&gt;hello &#123;&#125;&lt;/h1&gt;'.format(name)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/blog/&lt;int:postID&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_blog</span><span class="params">(postID)</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Blog Number %d'</span> % postID</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/rev/&lt;float:revNo&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">revision</span><span class="params">(revNo)</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Revision Number %f'</span> % revNo</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run()</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中输入<strong><a href="http://localhost:5000/hello/w3cschool" target="_blank" rel="noopener">http://localhost:5000/hello/w3cschool</a></strong>作为<strong>URL</strong> , 则<strong>‘w3cschool’</strong>将作为参数提供给<strong>hello()</strong>函数。该页面讲显示<code>Hello w3cschool!</code></p>
+<p>访问浏览器中的URL <strong><a href="http://localhost:5000/blog/11" target="_blank" rel="noopener">http://localhost:5000/blog/11</a></strong> 。给定的数字用作<strong>show_blog()</strong>函数的参数。浏览器显示以下输出：</p>
+<blockquote>
+<p>Blog Number 11</p>
+</blockquote>
+<p>在浏览器中输入此URL - <strong><a href="http://localhost:5000/rev/1.1" target="_blank" rel="noopener">http://localhost:5000/rev/1.1</a></strong></p>
+<p><strong>revision()</strong>函数将浮点数作为参数。以下结果显示在浏览器窗口中：</p>
+<blockquote>
+<p>Revision Number 1.100000</p>
+</blockquote>
+<h3 id="定义规则"><a href="#定义规则" class="headerlink" title="定义规则"></a>定义规则</h3><p>Flask的URL规则基于Werkzeug的路由模块。这确保形成的URL是唯一的，并且基于Apache规定的先例。</p>
+<p>考虑以下脚本中定义的规则：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/flask')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_flask</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Hello Flask'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/python/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_python</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Hello Python'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run()</span><br></pre></td></tr></table></figure>
+
+<p>这两个规则看起来类似，但在第二个规则中，使用斜杠<strong>（/）</strong>。因此，它成为一个规范的URL。因此，使用<strong>/python</strong> 或 <strong>/python/</strong>返回相同的输出。但是，如果是第一个规则，/flask/ URL会产生“404 Not Found”页面。</p>
+<h3 id="Flask-URL构建"><a href="#Flask-URL构建" class="headerlink" title="Flask URL构建"></a>Flask URL构建</h3><p>url_for()用于动态构建特定函数url</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, redirect, url_for</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="meta">@app.route('/admin')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_admin</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Hello Admin'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/guest/&lt;guest&gt;')</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_guest</span><span class="params">(guest)</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'Hello %s as Guest'</span> % guest</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/user/&lt;name&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_user</span><span class="params">(name)</span>:</span></span><br><span class="line">   <span class="keyword">if</span> name ==<span class="string">'admin'</span>:</span><br><span class="line">      <span class="keyword">return</span> redirect(url_for(<span class="string">'hello_admin'</span>))</span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">return</span> redirect(url_for(<span class="string">'hello_guest'</span>,guest = name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果访问<code>/user/admin</code>将调用<code>hello_admin</code>并跳转至<code>/admin</code>，如果访问的是<code>/user/abc</code>将调用<code>hello_guest</code>并跳转至<code>/guest/abc</code></p>
+<h2 id="Flask-HTTP方法"><a href="#Flask-HTTP方法" class="headerlink" title="Flask HTTP方法"></a>Flask HTTP方法</h2><table>
+<thead>
+<tr>
+<th>http方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>以未加密的形式将数据发送到服务器。最常见的方法。</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>用于将HTML表单数据发送到服务器。POST方法接收的数据不由服务器缓存。</td>
+</tr>
+</tbody></table>
+<p>默认情况下，Flask路由响应<strong>GET</strong>请求，下面演示如何使用<strong>POST</strong>方法</p>
+<p>login.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">      <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span> = <span class="string">"http://localhost:5000/login"</span> <span class="attr">method</span> = <span class="string">"post"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span>Enter Name:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"text"</span> <span class="attr">name</span> = <span class="string">"nm"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"submit"</span> <span class="attr">value</span> = <span class="string">"submit"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, redirect, url_for, request</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/success/&lt;name&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">success</span><span class="params">(name)</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'welcome %s'</span> % name</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/login',methods = ['POST', 'GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">      user = request.form[<span class="string">'nm'</span>]</span><br><span class="line">      <span class="keyword">return</span> redirect(url_for(<span class="string">'success'</span>,name = user))</span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      user = request.args.get(<span class="string">'nm'</span>)</span><br><span class="line">      <span class="keyword">return</span> redirect(url_for(<span class="string">'success'</span>,name = user))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中以绝对路径打开login.html，输入Name</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200422231406177.png"  alt="image-20200422231406177" style="zoom:50%;">
+
+<p>点击<code>submit</code>，表单数据将POST到表单标签的action子句中的URL：<strong><a href="http://localhost:5000/login" target="_blank" rel="noopener">http://localhost:5000/login</a></strong>映射到<strong>login()</strong>函数。由于服务器通过<strong>POST</strong>方法接收数据，因此通过以下步骤获得从表单数据获得的“nm”参数的值：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user = request.form[<span class="string">'nm'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>它作为变量部分传递给<strong>‘/ success’</strong> URL。浏览器在窗口中显示<strong>welcome</strong>消息。</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200422231453521.png"  alt="image-20200422231453521" style="zoom:50%;">
+
+<p>在<strong>login.html</strong>中将方法参数更改为<strong>‘GET’</strong>，然后在浏览器中再次打开它。服务器上接收的数据是通过<strong>GET</strong>方法获得的。通过以下的步骤获得’nm’参数的值：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user = request.args.get(‘nm’)</span><br></pre></td></tr></table></figure>
+
+<p>这里，<strong>args</strong>是包含表单参数对及其对应值对的列表的字典对象。与’nm’参数对应的值将像之前一样传递到<code>/success</code>。</p>
+<h2 id="Flask模板"><a href="#Flask模板" class="headerlink" title="Flask模板"></a>Flask模板</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>web模板系统：设计html，可以动态插入数据</p>
+<h3 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h3><p><strong>Jinja2</strong>模板引擎使用以下分隔符从HTML转义。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;% ... %&#125;用于语句</span><br><span class="line">&#123;&#123; ... &#125;&#125;用于表达式可以打印到模板输出</span><br><span class="line">&#123;# ... #&#125;用于未包含在模板输出中的注释</span><br><span class="line">\# ... ##用于行语句</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例1——占位符"><a href="#样例1——占位符" class="headerlink" title="样例1——占位符"></a>样例1——占位符</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/hello/&lt;user&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_name</span><span class="params">(user)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, name=user)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.debug=<span class="literal">True</span></span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<p>在templates文件夹中创建hello.html:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello &#123;&#123; name &#125;&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423000839414.png"  alt="image-20200423000839414" style="zoom:50%;">
+
+<p>URL的<strong>变量</strong>部分插入<strong></strong>占位符。<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423000811200.png"  alt="image-20200423000811200" style="zoom:50%;"></p>
+<h3 id="样例2——条件语句"><a href="#样例2——条件语句" class="headerlink" title="样例2——条件语句"></a>样例2——条件语句</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route('/hello/&lt;int:score&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_name</span><span class="params">(score)</span>:</span></span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, marks = score)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">  &#123;% if marks&gt;50 %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span> Your result is pass!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  &#123;% else %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Your result is fail<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  &#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423001839968.png"  alt="image-20200423001839968" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423001901327.png"  alt="image-20200423001901327" style="zoom:50%;"></p>
+<h3 id="样例三——表格"><a href="#样例三——表格" class="headerlink" title="样例三——表格"></a>样例三——表格</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">result</span><span class="params">()</span>:</span></span><br><span class="line">   dict = &#123;<span class="string">'phy'</span>:<span class="number">50</span>,<span class="string">'che'</span>:<span class="number">60</span>,<span class="string">'maths'</span>:<span class="number">70</span>&#125;</span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">'result.html'</span>, result = dict)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"8"</span>&gt;</span></span><br><span class="line">    &#123;% for key, value in result.items() %&#125;</span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">th</span>&gt;</span>&#123;&#123; key &#125;&#125; <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; value &#125;&#125; <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line"> <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423115824810.png"  alt="image-20200423115824810" style="zoom:50%;">
+
+<ul>
+<li>注：参考资料里的<code>&lt;tr&gt;</code>使用了转义字符，不要直接复制</li>
+</ul>
+<h2 id="Flask静态文件"><a href="#Flask静态文件" class="headerlink" title="Flask静态文件"></a>Flask静态文件</h2><p>特殊端点’static’用于生成静态文件的URL。</p>
+<p><strong>/app.py</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">"hello.html"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>/templates/hello.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span> = <span class="string">"text/javascript"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">src</span> = <span class="string">"&#123;&#123; url_for('static', filename = 'hello.js') &#125;&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"button"</span> <span class="attr">onclick</span> = <span class="string">"sayHello()"</span> <span class="attr">value</span> = <span class="string">"Say Hello"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>/static/hello.js</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   alert(<span class="string">"Hello World"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>hello.html</strong>中的HTML按钮的<strong>OnClick</strong>事件上调用<strong>hello.js</strong>中定义的<strong>javascript</strong>函数，该函数在Flask应用程序的<strong>“/”</strong>URL上呈现。</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423121323813.png"  alt="image-20200423121323813" style="zoom:50%;">
+
+<p>点击按钮后：</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423121351647.png"  alt="image-20200423121351647" style="zoom: 50%;">
+
+
+
+<h2 id="Flask-Request对象"><a href="#Flask-Request对象" class="headerlink" title="Flask Request对象"></a>Flask Request对象</h2><p>来自客户端网页的数据作为全局请求对象发送到服务器。为了处理请求数据，应该从Flask模块导入。</p>
+<p>Request对象的重要属性如下所列：</p>
+<ul>
+<li><strong>Form</strong> - 它是一个字典对象，包含表单参数及其值的键和值对。</li>
+<li><strong>args</strong> - 解析查询字符串的内容，它是问号（？）之后的URL的一部分。</li>
+<li><strong>Cookies</strong> - 保存Cookie名称和值的字典对象。</li>
+<li><strong>files</strong> - 与上传文件有关的数据。</li>
+<li><strong>method</strong> - 当前请求方法。</li>
+</ul>
+<h2 id="Flask-将表单数据发送到模板"><a href="#Flask-将表单数据发送到模板" class="headerlink" title="Flask 将表单数据发送到模板"></a>Flask 将表单数据发送到模板</h2><p>在以下示例中，<strong>‘/‘ URL</strong>会呈现具有表单的网页（student.html）。填入的数据会发布到触发 <strong>result()</strong>函数的<strong>‘/result’ URL</strong>。</p>
+<p><strong>results()</strong>函数收集字典对象中的<strong>request.form</strong>中存在的表单数据，并将其发送给<strong>result.html</strong>。</p>
+<p>该模板动态呈现<strong>表单</strong>数据的HTML表格。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">student</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">'student.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/result',methods = ['POST', 'GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">result</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">      result = request.form</span><br><span class="line">      <span class="keyword">return</span> render_template(<span class="string">"result.html"</span>,result = result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>student.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span> = <span class="string">"http://localhost:5000/result"</span> <span class="attr">method</span> = <span class="string">"POST"</span> &gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span>Name <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"text"</span> <span class="attr">name</span> = <span class="string">"Name"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span>Physics <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"text"</span> <span class="attr">name</span> = <span class="string">"Physics"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span>Chemistry <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"text"</span> <span class="attr">name</span> = <span class="string">"chemistry"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span>Maths <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> =<span class="string">"text"</span> <span class="attr">name</span> = <span class="string">"Mathematics"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"submit"</span> <span class="attr">value</span> = <span class="string">"submit"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>result.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span> = <span class="string">1</span>&gt;</span></span><br><span class="line">         &#123;% for key, value in result.items() %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">th</span>&gt;</span> &#123;&#123; key &#125;&#125; <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">td</span>&gt;</span> &#123;&#123; value &#125;&#125; <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">         &#123;% endfor %&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423133927822.png"  alt="image-20200423133927822" style="zoom:50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423133942432.png"  alt="image-20200423133942432" style="zoom:50%;"></p>
+<p>当点击<strong>提交</strong>按钮时，表单数据以HTML表格的形式呈现在<strong>result.html</strong>上<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423134025212.png"  alt="image-20200423134025212" style="zoom:50%;"></p>
+<h2 id="Flask-Cookies"><a href="#Flask-Cookies" class="headerlink" title="Flask Cookies"></a>Flask Cookies</h2><p>Cookie以文本文件的形式存储在<strong>客户端的计算机</strong>上，其目的是记住和跟踪与客户使用相关的数据，以获得更好的访问者体验和网站统计信息。</p>
+<p><strong>Request对象</strong>包含Cookie的属性。它是所有cookie变量及其对应值的字典对象，客户端已传输。除此之外，cookie还存储其网站的到期时间，路径和域名。</p>
+<p>在Flask中，对响应对象设置cookie。使用<strong>make_response()</strong>函数从视图函数的返回值获取响应对象。之后，使用响应对象的<strong>set_cookie()</strong>函数来存储cookie。</p>
+<p>读回cookie很容易。request.cookies属性的<strong>get()</strong>方法用于读取cookie。</p>
+<h3 id="make-response"><a href="#make-response" class="headerlink" title="make_response()"></a>make_response()</h3><blockquote>
+<p>该点转载自：<a href="https://www.jianshu.com/p/44d88abb9515" target="_blank" rel="noopener">https://www.jianshu.com/p/44d88abb9515</a></p>
+</blockquote>
+<p>make_response()，相当于DJango中的HttpResponse。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,make_response,render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.返回内容</span></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_response_function</span><span class="params">()</span>:</span></span><br><span class="line">    response = make_response(<span class="string">'&lt;h2&gt;羞羞哒&lt;/h2&gt;'</span>)</span><br><span class="line">    <span class="keyword">return</span> response, <span class="number">404</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.返回页面</span></span><br><span class="line"><span class="meta">@app.route('/makeresponse/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_response_function</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="note info">
+            <p>注意：make_response 想要返回页面，不能直接写做：make_response(‘hello.html’)，必须用render_template(‘hello.html’)形式。</p>
+          </div>
+
+
+
+<h3 id="样例一"><a href="#样例一" class="headerlink" title="样例一"></a>样例一</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 转载自：https://blog.csdn.net/wei18791957243/article/details/85172653</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, make_response, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/set_cookie")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_cookie</span><span class="params">()</span>:</span></span><br><span class="line">    resp = make_response(<span class="string">"success"</span>)</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">        设置cookie,默认有效期是临时cookie,浏览器关闭就失效</span></span><br><span class="line"><span class="string">        可以通过 max_age 设置有效期， 单位是秒</span></span><br><span class="line"><span class="string">    '''</span><span class="string">''</span></span><br><span class="line">    resp.set_cookie(<span class="string">"Itcast_1"</span>, <span class="string">"python_1"</span>)</span><br><span class="line">    resp.set_cookie(<span class="string">"Itcast_2"</span>, <span class="string">"python_2"</span>)</span><br><span class="line">    resp.set_cookie(<span class="string">"Itcast_3"</span>, <span class="string">"python_3"</span>, max_age=<span class="number">3600</span>)</span><br><span class="line">    <span class="keyword">return</span> resp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/get_cookie")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cookie</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">        获取cookie，通过reques.cookies的方式，</span></span><br><span class="line"><span class="string">        返回的是一个字典，可以用get的方式</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    cookie_1 = request.cookies.get(<span class="string">"Itcast_1"</span>)  <span class="comment"># 获取名字为Itcast_1对应cookie的值</span></span><br><span class="line">    <span class="keyword">return</span> cookie_1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/delete_cookie")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_cookie</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">        删除cookie，通过delete_cookie()的方式，</span></span><br><span class="line"><span class="string">        里面是cookie的名字</span></span><br><span class="line"><span class="string">        这里的删除只是让cookie过期，并不是直接删除cookie</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    resp = make_response(<span class="string">"del success"</span>)</span><br><span class="line">    resp.delete_cookie(<span class="string">"Itcast1"</span>)</span><br><span class="line">    <span class="keyword">return</span> resp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="样例二"><a href="#样例二" class="headerlink" title="样例二"></a>样例二</h3><blockquote>
+<p>参考：<a href="https://blog.csdn.net/weixin_41287692/article/details/88951735" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41287692/article/details/88951735</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, make_response, request,render_template</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/setcookie', methods=['POST', 'GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setcookie</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        user = request.form[<span class="string">'nm'</span>]</span><br><span class="line">        resp = make_response(render_template(<span class="string">'readcookie.html'</span>))</span><br><span class="line">        resp.set_cookie(<span class="string">'userID'</span>, user)</span><br><span class="line">        <span class="keyword">return</span> resp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/getcookie')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getcookie</span><span class="params">()</span>:</span></span><br><span class="line">    name = request.cookies.get(<span class="string">'userID'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'&lt;h1&gt;welcome '</span>+name+<span class="string">'&lt;/h1&gt;'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>readcookie.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/getcookie"</span>&gt;</span>getcookie<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>index.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span> = <span class="string">"/setcookie"</span> <span class="attr">method</span> = <span class="string">"POST"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">h3</span>&gt;</span>Enter userID<span class="tag">&lt;/<span class="name">h3</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">'text'</span> <span class="attr">name</span> = <span class="string">'nm'</span>/&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">'submit'</span> <span class="attr">value</span> = <span class="string">'Login'</span>/&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423151849332.png"  alt="image-20200423151849332" style="zoom:50%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423151859486.png"  alt="image-20200423151859486" style="zoom:50%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423151907928.png"  alt="image-20200423151907928" style="zoom:50%;">
+
+
+
+
+
+<h2 id="Flask-会话"><a href="#Flask-会话" class="headerlink" title="Flask 会话"></a>Flask 会话</h2><p>与Cookie不同，<strong>Session（会话）</strong>数据存储在服务器上。会话是客户端登录到服务器并注销服务器的时间间隔。需要在该会话中保存的数据会存储在服务器上的临时目录中。</p>
+<p>为每个客户端的会话分配<strong>会话ID</strong>。会话数据存储在cookie的顶部，服务器以<strong>加密</strong>方式对其进行签名。对于此加密，Flask应用程序需要一个定义的<strong>SECRET_KEY</strong>。</p>
+<p>Session对象也是一个字典对象，包含会话变量和关联值的键值对。</p>
+<blockquote>
+<p>以下内容参考：<a href="https://www.jianshu.com/p/dd0aa75f3f0e" target="_blank" rel="noopener">https://www.jianshu.com/p/dd0aa75f3f0e</a></p>
+</blockquote>
+<h3 id="flask中如何操作session"><a href="#flask中如何操作session" class="headerlink" title="flask中如何操作session"></a>flask中如何操作session</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,session</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">'SECRET_KEY'</span>] = os.urandom(<span class="number">24</span>)</span><br><span class="line"><span class="comment"># 添加数据到session中</span></span><br><span class="line"><span class="comment"># 操作session的时候 跟操作字典是一样的。</span></span><br><span class="line"><span class="comment"># SECRET_KEY</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">    session[<span class="string">'username'</span>] = <span class="string">'zhangsan'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello World!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在python中操作session的方式和操作字典的方式非常类似，<code>session[&#39;username&#39;] = &#39;zhangsan&#39;</code> 就是给session中的变量username赋值。在flask中操作session有一点需要注意，就是需要设置一个’SECRET_KEY’。可以单独在配置文件中写SECRET_KEY。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">SECRET_KEY = <span class="string">'abc'</span></span><br></pre></td></tr></table></figure>
+
+<p>或者直接写</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.config[<span class="string">'SECRET_KEY'</span>] = <span class="string">'abc'</span></span><br></pre></td></tr></table></figure>
+
+<p>都是可以的，我这里用了一个随机的变量，而且是24位的。 <code>os.urandom(24)</code> 会从 0-9，a-z A-Z中随机选中24个字符串用做加密session的秘钥。或者称之为 “盐”。设置好之后执行下代码，然后在谷歌浏览器中找找这个session。在谷歌浏览器中找到<code>设置</code>，然后在最下面找到<code>高级</code>。<br> 找到<code>内容设置</code>。找到<code>Cookie</code>。<br> 然后找到<code>查看所有Cookie和网站数据</code> 搜索127.0.0.1<br> 到这个里就可以看到咱们添加的session值了，但是这个内容是加密后的。</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423200644076.png"  alt="image-20200423200644076" style="zoom: 50%;">
+
+<h3 id="获取session值"><a href="#获取session值" class="headerlink" title="获取session值"></a>获取session值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route('/get/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># session['username']   如果username不存在则会抛出异常</span></span><br><span class="line">    <span class="comment"># session.get('username')   如果username不存在会得到 none 不会报错 推荐使用</span></span><br><span class="line">    <span class="keyword">return</span> session.get(<span class="string">'username'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这里咱们获取值一般是用<code>session.get(&#39;username&#39;)</code>这样即使session值不存在也不会抛出异常。</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423205217176.png"  alt="image-20200423205217176" style="zoom:50%;">
+
+<h3 id="删除清空session"><a href="#删除清空session" class="headerlink" title="删除清空session"></a>删除清空session</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route('/delete/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">()</span>:</span></span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    session.pop(<span class="string">'username'</span>)</span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/clear/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">()</span>:</span></span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    <span class="comment"># 删除session中的所有数据</span></span><br><span class="line">    session.clear()</span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置session的过期时间"><a href="#设置session的过期时间" class="headerlink" title="设置session的过期时间"></a>设置session的过期时间</h3><p>一般session都是有一个过期时间的，</p>
+<blockquote>
+<p>如果没有指定session的过期时间，那么默认是浏览器关闭就自动结束，<br>如果设置了session的permanent属性为True，那么过期时间是31天。</p>
+</blockquote>
+<p>默认<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423205342123.png"  alt="image-20200423205342123" style="zoom:60%;"></p>
+<p>设置session的过期时间：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta</span><br><span class="line">app.config[<span class="string">'PERMANENT_SESSION_LIFETIME'</span>] = timedelta(days=<span class="number">7</span>)</span><br><span class="line">session.permanent = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>当只设置了<code>session.permanent = True</code>时，可以看到浏览器中127.0.0.1中的session过期时间为31天。</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423205539390.png"  alt="image-20200423205539390" style="zoom:50%;">
+ 当设置 `app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)`时，可以看到session的过期时间变成7天了。
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200423205547594.png"  alt="image-20200423205547594" style="zoom:50%;">
+
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,session</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">'SECRET_KEY'</span>] = os.urandom(<span class="number">24</span>)</span><br><span class="line">app.config[<span class="string">'PERMANENT_SESSION_LIFETIME'</span>] = timedelta(days=<span class="number">7</span>)</span><br><span class="line"><span class="comment"># 添加数据到session中</span></span><br><span class="line"><span class="comment"># 操作session的时候 跟操作字典是一样的。</span></span><br><span class="line"><span class="comment"># SECRET_KEY</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">    session[<span class="string">'username'</span>] = <span class="string">'zhangsan'</span></span><br><span class="line">    <span class="comment"># 如果没有指定session的过期时间，那么默认是浏览器关闭就自动结束</span></span><br><span class="line">    <span class="comment"># 如果设置了session的permanent属性为True，那么过期时间是31天。</span></span><br><span class="line">    session.permanent = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello World!'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/get/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># session['username']   如果username不存在则会抛出异常</span></span><br><span class="line">    <span class="comment"># session.get('username')   如果username不存在会得到 none 不会报错 推荐使用</span></span><br><span class="line">    <span class="keyword">return</span> session.get(<span class="string">'username'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/delete/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">()</span>:</span></span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    session.pop(<span class="string">'username'</span>)</span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/clear/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">()</span>:</span></span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    <span class="comment"># 删除session中的所有数据</span></span><br><span class="line">    session.clear()</span><br><span class="line">    print(session.get(<span class="string">'username'</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Flask-重定向和错误"><a href="#Flask-重定向和错误" class="headerlink" title="Flask 重定向和错误"></a>Flask 重定向和错误</h2><h3 id="redirect-函数"><a href="#redirect-函数" class="headerlink" title="redirect()函数"></a>redirect()函数</h3><p>Flask类有一个<strong>redirect()</strong>函数。调用时，它返回一个响应对象，并将用户重定向到具有指定状态代码的另一个目标位置。</p>
+<p><strong>redirect()</strong>函数的原型如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Flask.redirect(location, statuscode, response)</span><br></pre></td></tr></table></figure>
+
+<p>在上述函数中：</p>
+<ul>
+<li><strong>location</strong>参数是应该重定向响应的URL。</li>
+<li><strong>statuscode</strong>发送到浏览器标头，默认为302。</li>
+<li><strong>response</strong>参数用于实例化响应。</li>
+</ul>
+<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><p>以下状态代码已标准化：</p>
+<ul>
+<li>HTTP_300_MULTIPLE_CHOICES</li>
+<li>HTTP_301_MOVED_PERMANENTLY</li>
+<li>HTTP_302_FOUND</li>
+<li>HTTP_303_SEE_OTHER</li>
+<li>HTTP_304_NOT_MODIFIED</li>
+<li>HTTP_305_USE_PROXY</li>
+<li>HTTP_306_RESERVED</li>
+<li>HTTP_307_TEMPORARY_REDIRECT</li>
+</ul>
+<p><strong>默认状态</strong>代码为<strong>302</strong>，表示<strong>‘found’</strong>。</p>
+<h4 id="样例一-1"><a href="#样例一-1" class="headerlink" title="样例一"></a>样例一</h4><p>在以下示例中，<strong>redirect()</strong>函数用于在登录尝试失败时再次显示登录页面。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, redirect, url_for, render_template, request</span><br><span class="line"><span class="comment"># Initialize the Flask application</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">'login.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/login',methods = ['POST', 'GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">if</span> request.method == <span class="string">'POST'</span> <span class="keyword">and</span></span><br><span class="line">   request.form[<span class="string">'username'</span>] == <span class="string">'admin'</span> :</span><br><span class="line">   <span class="keyword">return</span> redirect(url_for(<span class="string">'success'</span>))</span><br><span class="line">   <span class="keyword">return</span> redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/success')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">success</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'logged in successfully'</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="abort-函数"><a href="#abort-函数" class="headerlink" title="abort()函数"></a>abort()函数</h3><p>Flask类具有带有错误代码的<strong>abort()</strong>函数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Flask.abort(code)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Code</strong>参数采用以下值之一：</p>
+<ul>
+<li><strong>400</strong> - 用于错误请求</li>
+<li><strong>401</strong> - 用于未身份验证的</li>
+<li><strong>403</strong> - Forbidden</li>
+<li><strong>404</strong> - 未不到</li>
+<li><strong>406</strong> - 表示不接受</li>
+<li><strong>415</strong> - 用于不支持的媒体类型</li>
+<li><strong>429</strong> - 请求过多</li>
+</ul>
+<h4 id="样例二-1"><a href="#样例二-1" class="headerlink" title="样例二"></a>样例二</h4><p>让我们对上述代码中的<strong>login()</strong>函数稍作更改。如果要显示<strong>‘Unauthurized’</strong>页面，请将其替换为调用<strong>abort(401)</strong>，而不是重新显示登录页面。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, redirect, url_for, render_template, request, abort</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">'login.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/login',methods = ['POST', 'GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">      <span class="keyword">if</span> request.form[<span class="string">'username'</span>] == <span class="string">'admin'</span> :</span><br><span class="line">         <span class="keyword">return</span> redirect(url_for(<span class="string">'success'</span>))</span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">         abort(<span class="number">401</span>)</span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">return</span> redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/success')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">success</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">'logged in successfully'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><h5 id="login-html"><a href="#login-html" class="headerlink" title="login.html"></a>login.html</h5><p>注意表明post</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span> = <span class="string">"http://localhost:5000/login"</span> <span class="attr">method</span> = <span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">'text'</span> <span class="attr">name</span> = <span class="string">username</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">'submit'</span> <span class="attr">value</span> = <span class="string">Login</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><ul>
+<li><p>输入admin <img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424113759201.png"  alt="image-20200424113759201" style="zoom:50%;"></p>
+</li>
+<li><p>输入其它内容，触发abort（401）</p>
+</li>
+</ul>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424113704823.png"  alt="image-20200424113704823" style="zoom:50%;">
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/Flask%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.assets/image-20200424113725315.png"  alt="image-20200424113725315"></p>
+<h2 id="Flask-消息闪现"><a href="#Flask-消息闪现" class="headerlink" title="Flask 消息闪现"></a>Flask 消息闪现</h2><p>一个好的基于GUI的应用程序会向用户提供有关交互的反馈。例如，桌面应用程序使用对话框或消息框，JavaScript使用警报用于类似目的。</p>
+<p>在Flask Web应用程序中生成这样的信息性消息很容易。Flask框架的闪现系统可以在一个视图中创建消息，并在名为<strong>next</strong>的视图函数中呈现它。</p>
+<p>Flask模块包含<strong>flash()</strong>方法。它将消息传递给下一个请求，该请求通常是一个模板。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">flash(message, category)</span><br></pre></td></tr></table></figure>
+
+<p>其中，</p>
+<ul>
+<li><strong>message</strong>参数是要闪现的实际消息。</li>
+<li><strong>category</strong>参数是可选的。它可以是“error”，“info”或“warning”。</li>
+</ul>
+<p>为了从会话中删除消息，模板调用<strong>get_flashed_messages()</strong>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">get_flashed_messages(with_categories, category_filter)</span><br></pre></td></tr></table></figure>
+
+<p>两个参数都是可选的。如果接收到的消息具有类别，则第一个参数是元组。第二个参数仅用于显示特定消息。</p>
+<p>以下闪现在模板中接收消息。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">with</span> messages = get_flashed_messages() %&#125;</span><br><span class="line">   &#123;% <span class="keyword">if</span> messages %&#125;</span><br><span class="line">      &#123;% <span class="keyword">for</span> message <span class="keyword">in</span> messages %&#125;</span><br><span class="line">         &#123;&#123; message &#125;&#125;</span><br><span class="line">      &#123;% endfor %&#125;</span><br><span class="line">   &#123;% endif %&#125;</span><br><span class="line">&#123;% endwith %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><p>app.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, redirect, url_for, render_template, request, flash</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">'SECRET_KEY'</span>] = os.urandom(<span class="number">24</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/login', methods=['GET', 'POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    error = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        <span class="keyword">if</span> request.form[<span class="string">'username'</span>] != <span class="string">'admin'</span> <span class="keyword">or</span> \</span><br><span class="line">                request.form[<span class="string">'password'</span>] != <span class="string">'admin'</span>:</span><br><span class="line">            error = <span class="string">'Invalid username or password. Please try again!'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            flash(<span class="string">'You were successfully logged in'</span>)</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'login.html'</span>, error=error)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>login.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  &#123;% if error %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>Error:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> &#123;&#123; error &#125;&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span> = <span class="string">"http://localhost:5000/login"</span> <span class="attr">method</span> = <span class="string">"post"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Username:<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">text</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; request.form.username &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Pssword:<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Login"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>index.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">  &#123;% with messages = get_flashed_messages() %&#125;</span><br><span class="line">     &#123;% if messages %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">           &#123;% for message in messages %&#125;</span><br><span class="line">           <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">           &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">     &#123;% endif %&#125;</span><br><span class="line">  &#123;% endwith %&#125;</span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Flask Message Flashing Example<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Do you want to <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"&#123;&#123; url_for('login') &#125;&#125;"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">b</span>&gt;</span>log in?<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424134357446.png"  alt="image-20200424134357446" style="zoom:50%;">
+
+
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424134512696.png"  alt="image-20200424134512696" style="zoom:50%;">
+
+
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424134521156.png"  alt="image-20200424134521156" style="zoom:50%;">
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424134528432.png"  alt="image-20200424134528432" style="zoom:50%;">
+
+
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424134535905.png"  alt="image-20200424134535905" style="zoom:40%;">
+
+
+
+<h2 id="Flask-文件上传"><a href="#Flask-文件上传" class="headerlink" title="Flask 文件上传"></a>Flask 文件上传</h2><p>在Flask中处理文件上传非常简单。它需要一个HTML表单，其enctype属性设置为“multipart / form-data”，将文件发布到URL。URL处理程序从<strong>request.files[]</strong>对象中提取文件，并将其保存到所需的位置。</p>
+<p>每个上传的文件首先会保存在服务器上的临时位置，然后将其实际保存到它的最终位置。目标文件的名称可以是硬编码的，也可以从<strong>request.files[file]</strong>对象的filename属性中获取。但是，建议使用<strong>secure_filename()</strong>函数获取它的安全版本。</p>
+<p>可以在Flask对象的配置设置中定义默认上传文件夹的路径和上传文件的最大大小。</p>
+<table>
+<thead>
+<tr>
+<th>app.config[‘UPLOAD_FOLDER’]</th>
+<th>定义上传文件夹的路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>app.config[‘MAX_CONTENT_PATH’]</td>
+<td>指定要上传的文件的最大大小（以字节为单位）</td>
+</tr>
+</tbody></table>
+<p>以下代码具有’<strong>/ upload’</strong> URL规则，该规则在templates文件夹中显示’<strong>upload.html’</strong>，以及<strong>‘/ upload-file’</strong> URL规则，用于调用<strong>uploader()</strong>函数处理上传过程。</p>
+<p><strong>‘upload.html’</strong>有一个文件选择器按钮和一个提交按钮。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">      <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span> = <span class="string">"http://localhost:5000/uploader"</span> <span class="attr">method</span> = <span class="string">"POST"</span> </span></span><br><span class="line"><span class="tag">         <span class="attr">enctype</span> = <span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"file"</span> <span class="attr">name</span> = <span class="string">"file"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> = <span class="string">"submit"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>您将看到如下所示的界面。</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424135529049.png"  alt="image-20200424135529049" style="zoom:50%;">
+
+
+
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424135612781.png"  alt="image-20200424135612781" style="zoom:50%;">
+
+<p>选择文件后，单击<strong>提交</strong>。表单的post方法调用<strong>‘/ upload_file’ URL</strong>。底层函数<strong>uploader()</strong>执行保存操作。</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/Flask学习教程.assets/image-20200424135621372.png"  alt="image-20200424135621372" style="zoom:50%;">
+
+<p>以下是Flask应用程序的Python代码。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request</span><br><span class="line"><span class="keyword">from</span> werkzeug <span class="keyword">import</span> secure_filename</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upload_file</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">return</span> render_template(<span class="string">'upload.html'</span>)</span><br><span class="line">	</span><br><span class="line"><span class="meta">@app.route('/uploader', methods = ['GET', 'POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upload_file</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">      f = request.files[<span class="string">'file'</span>] <span class="comment"># URL处理程序从request.files[]对象中提取文件，并将其保存到所需的位置。</span></span><br><span class="line">      f.save(secure_filename(f.filename)) <span class="comment"># 获取目标文件的名称</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">'file uploaded successfully'</span></span><br><span class="line">		</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Flask扩展"><a href="#Flask扩展" class="headerlink" title="Flask扩展"></a>Flask扩展</h2><p>Flask通常被称为微框架，因为核心功能包括基于<strong>Werkzeug</strong>的WSGI和路由以及基于<strong>Jinja2</strong>的模板引擎。此外，Flask框架还支持cookie和会话，以及<strong>JSON</strong>，静态文件等Web帮助程序。显然，这不足以开发完整的Web应用程序。而Flask扩展就具备这样的功能<strong>。</strong>Flask扩展为Flask框架提供了可扩展性。</p>
+<p>有大量的Flask扩展可用。Flask扩展是一个Python模块，它向Flask应用程序添加了特定类型的支持。Flask Extension Registry（Flask扩展注册表）是一个可用的扩展目录。可以通过<strong>pip</strong>实用程序下载所需的扩展名。</p>
+<p>在本教程中，我们将讨论以下重要的Flask扩展：</p>
+<ul>
+<li><strong>Flask Mail</strong> - 为Flask应用程序提供SMTP接口</li>
+<li><strong>Flask WTF</strong> - 添加WTForms的渲染和验证</li>
+<li><strong>Flask SQLAlchemy</strong> - 为Flask应用程序添加SQLAlchemy支持</li>
+<li><strong>Flask Sijax</strong> - Sijax的接口 - Python/jQuery库，使AJAX易于在Web应用程序中使用</li>
+</ul>
+<p>每种类型的扩展通常提供有关其用法的大量文档。由于扩展是一个Python模块，因此需要导入它才能使用它。Flask扩展名通常命名为flask-foo。导入的操作如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">from flask_foo import [class, function]</span><br></pre></td></tr></table></figure>
+
+<p>对于0.7以后的Flask版本，您还可以使用语法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask.ext <span class="keyword">import</span> foo</span><br></pre></td></tr></table></figure>
+
+<p>对于此用法，需要激活兼容性模块。它可以通过运行flaskext_compat.py来安装：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> flaskext_compat</span><br><span class="line">flaskext_compat.activate()</span><br><span class="line"><span class="keyword">from</span> flask.ext <span class="keyword">import</span> foo</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Flask-邮件"><a href="#Flask-邮件" class="headerlink" title="Flask 邮件"></a>Flask 邮件</h2><p>基于web的应用程序通常需要具有向用户/客户端发送邮件的功能。<strong>Flask-Mail</strong>扩展使得与任何电子邮件服务器建立简单的接口变得非常容易。</p>
+<p>首先，应该在pip实用程序的帮助下安装Flask-Mail扩展。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install Flask-Mail</span><br></pre></td></tr></table></figure>
+
+<p>然后需要通过设置以下应用程序参数的值来配置Flask-Mail。</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数与描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>MAIL_SERVER</strong>电子邮件服务器的名称/IP地址</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>MAIL_PORT</strong>使用的服务器的端口号</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>MAIL_USE_TLS</strong>启用/禁用传输安全层加密</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>MAIL_USE_SSL</strong>启用/禁用安全套接字层加密</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>MAIL_DEBUG</strong>调试支持。默认值是Flask应用程序的调试状态</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>MAIL_USERNAME</strong>发件人的用户名</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>MAIL_PASSWORD</strong>发件人的密码</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>MAIL_DEFAULT_SENDER</strong>设置默认发件人</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>MAIL_MAX_EMAILS</strong>设置要发送的最大邮件数</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>MAIL_SUPPRESS_SEND</strong>如果app.testing设置为true，则发送被抑制</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>MAIL_ASCII_ATTACHMENTS</strong>如果设置为true，则附加的文件名将转换为ASCII</td>
+</tr>
+</tbody></table>
+<p>flask-mail模块包含以下重要类的定义。</p>
+<h3 id="Mail类"><a href="#Mail类" class="headerlink" title="Mail类"></a>Mail类</h3><p>它管理电子邮件消息传递需求。类构造函数采用以下形式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flask-mail.Mail(app &#x3D; None)</span><br></pre></td></tr></table></figure>
+
+<p>构造函数将Flask应用程序对象作为参数。</p>
+<h3 id="Mail类的方法"><a href="#Mail类的方法" class="headerlink" title="Mail类的方法"></a>Mail类的方法</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法与描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>send()</strong>发送Message类对象的内容</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>connect()</strong>打开与邮件主机的连接</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>send_message()</strong>发送消息对象</td>
+</tr>
+</tbody></table>
+<h3 id="Message类"><a href="#Message类" class="headerlink" title="Message类"></a>Message类</h3><p>它封装了一封电子邮件。Message类构造函数有几个参数:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flask-mail.Message(subject, recipients, body, html, sender, cc, bcc, </span><br><span class="line">   reply-to, date, charset, extra_headers, mail_options, rcpt_options)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Message类方法"><a href="#Message类方法" class="headerlink" title="Message类方法"></a>Message类方法</h3><p><strong>attach()</strong> - 为邮件添加附件。此方法采用以下参数：</p>
+<ul>
+<li><strong>filename</strong> - 要附加的文件的名称</li>
+<li><strong>content_type</strong> - MIME类型的文件</li>
+<li><strong>data</strong> - 原始文件数据</li>
+<li><strong>处置</strong> - 内容处置（如果有的话）。</li>
+</ul>
+<p><strong>add_recipient()</strong> - 向邮件添加另一个收件人</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="comment"># 步骤一:在代码中从flask-mail模块导入Mail和Message类。</span></span><br><span class="line"><span class="keyword">from</span> flask_mail <span class="keyword">import</span> Mail, Message </span><br><span class="line"></span><br><span class="line">app =Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 步骤二：然后按照以下设置配置Flask-Mail</span></span><br><span class="line">app.config[<span class="string">'MAIL_SERVER'</span>]=<span class="string">'smtp.gmail.com'</span></span><br><span class="line">app.config[<span class="string">'MAIL_PORT'</span>] = <span class="number">465</span></span><br><span class="line">app.config[<span class="string">'MAIL_USERNAME'</span>] = <span class="string">'yourId@gmail.com'</span></span><br><span class="line">app.config[<span class="string">'MAIL_PASSWORD'</span>] = <span class="string">'*****'</span> <span class="comment"># 发件放邮箱需要开启POP3/SMTP服务，获取客户端授权码，填入app.config['MAIL_PASSWORD']</span></span><br><span class="line">app.config[<span class="string">'MAIL_USE_TLS'</span>] = <span class="literal">False</span></span><br><span class="line">app.config[<span class="string">'MAIL_USE_SSL'</span>] = <span class="literal">True</span></span><br><span class="line"><span class="comment"># 步骤三：创建Mail类的实例</span></span><br><span class="line">mail = Mail(app)</span><br><span class="line"><span class="comment"># 步骤四：在由URL规则（‘/’）映射的Python函数中设置Message对象。</span></span><br><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">   msg = Message(<span class="string">'Hello'</span>, sender = <span class="string">'yourId@gmail.com'</span>, recipients = [<span class="string">'id1@gmail.com'</span>])</span><br><span class="line">   msg.body = <span class="string">"Hello Flask message sent from Flask-Mail"</span></span><br><span class="line">   mail.send(msg)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">"Sent"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在发送至163邮箱时出现了被当成垃圾邮件被拒收的情况（TAT），发送到qq邮箱是可以的</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Lxm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://gitee.com/michelle19l/michelle19l/2020/04/22/Flask%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/">https://gitee.com/michelle19l/michelle19l/2020/04/22/Flask学习教程/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Flask/">Flask</a></div><div class="post_share"><div class="social-share" data-image="/img/timg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/24/Flask%E6%95%99%E7%A8%8B%E4%BA%8C/"><img class="prev_cover lazyload" data-src="\images\flask.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Flask学习教程二——web表单详解</div></div></a></div><div class="next-post pull_right"><a href="/2020/04/13/c%E8%AF%AD%E8%A8%80%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0/"><img class="next_cover lazyload" data-src="/img/timg.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">c语言参数学习</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> Recommend</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/24/Flask教程三/" title="Flask学习教程三"><img class="relatedPosts_cover lazyload"data-src="\images\flask.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-24</div><div class="relatedPosts_title">Flask学习教程三</div></div></a></div><div class="relatedPosts_item"><a href="/2020/04/24/Flask教程二/" title="Flask学习教程二——web表单详解"><img class="relatedPosts_cover lazyload"data-src="\images\flask.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-24</div><div class="relatedPosts_title">Flask学习教程二——web表单详解</div></div></a></div></div><div class="clear_both"></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lxm</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://michelle19l.gitee.io/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="87,250,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script></body></html>

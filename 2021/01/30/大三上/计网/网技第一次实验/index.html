@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网络技术与应用作业一 PacketTracer的基本使用 | Lxm's Blog</title><meta name="description" content="网络技术与应用作业一 PacketTracer的基本使用"><meta name="keywords" content="web,wpcap,packettracer,大三上学期课程内容,网络技术与应用"><meta name="author" content="Lxm"><meta name="copyright" content="Lxm"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/smile.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="网络技术与应用作业一 PacketTracer的基本使用"><meta name="twitter:description" content="网络技术与应用作业一 PacketTracer的基本使用"><meta name="twitter:image" content="https://gitee.com/michelle19l/michelle19l/images/web.jpg"><meta property="og:type" content="article"><meta property="og:title" content="网络技术与应用作业一 PacketTracer的基本使用"><meta property="og:url" content="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><meta property="og:site_name" content="Lxm's Blog"><meta property="og:description" content="网络技术与应用作业一 PacketTracer的基本使用"><meta property="og:image" content="https://gitee.com/michelle19l/michelle19l/images/web.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><link rel="prev" title="网络技术与应用作业二 WPcap的安装与基本使用" href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><link rel="next" title="网络技术与应用作业六 IPv6组网与配置" href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E5%85%AD%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: true,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">90</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">70</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">24</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/guide/"><i class="fa-fw fa fa-connectdevelop"></i><span> Guide</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验一"><span class="toc-number">1.</span> <span class="toc-text">实验一</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第1节-实验内容说明"><span class="toc-number">1.0.1.</span> <span class="toc-text">第1节 实验内容说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第2节-实验准备"><span class="toc-number">1.0.2.</span> <span class="toc-text">第2节 实验准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第3节-实验步骤"><span class="toc-number">1.0.3.</span> <span class="toc-text">第3节 实验步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验二"><span class="toc-number">2.</span> <span class="toc-text">实验二</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第1节-实验内容说明-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">第1节 实验内容说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第2节-实验准备-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">第2节 实验准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第3节-实验步骤-1"><span class="toc-number">2.0.3.</span> <span class="toc-text">第3节 实验步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第4节-实验结果"><span class="toc-number">2.0.4.</span> <span class="toc-text">第4节 实验结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验三"><span class="toc-number">3.</span> <span class="toc-text">实验三</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第1节-实验内容说明-2"><span class="toc-number">3.0.1.</span> <span class="toc-text">第1节 实验内容说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第2节-实验准备-2"><span class="toc-number">3.0.2.</span> <span class="toc-text">第2节 实验准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第3节-实验步骤-2"><span class="toc-number">3.0.3.</span> <span class="toc-text">第3节 实验步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第4节-实验结果-1"><span class="toc-number">3.0.4.</span> <span class="toc-text">第4节 实验结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验四"><span class="toc-number">4.</span> <span class="toc-text">实验四</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第1节-实验内容说明-3"><span class="toc-number">4.0.1.</span> <span class="toc-text">第1节 实验内容说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第2节-实验准备-3"><span class="toc-number">4.0.2.</span> <span class="toc-text">第2节 实验准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第3节-实验步骤-3"><span class="toc-number">4.0.3.</span> <span class="toc-text">第3节 实验步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第4节-实验结果-2"><span class="toc-number">4.0.4.</span> <span class="toc-text">第4节 实验结果</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/images/web.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Lxm's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/guide/"><i class="fa-fw fa fa-connectdevelop"></i><span> Guide</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">网络技术与应用作业一 PacketTracer的基本使用</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2021-01-30 12:00:01"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2021-01-30</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2021-02-22 22:39:29"><i class="fa fa-history" aria-hidden="true"></i> Updated 2021-02-22</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/web/">web</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>Word count:</span><span class="word-count">1.3k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>Reading time: 4 min</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>网络技术与应用 第一次实验报告</p>
+<h2 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h2><h4 id="第1节-实验内容说明"><a href="#第1节-实验内容说明" class="headerlink" title="第1节 实验内容说明"></a>第1节 实验内容说明</h4><p>学习虚拟仿真软件的基本使用方法。</p>
+<h4 id="第2节-实验准备"><a href="#第2节-实验准备" class="headerlink" title="第2节 实验准备"></a>第2节 实验准备</h4><p>在CISCO网站报名packet tracer课程，注册学生账号，下载packet tracer，安装</p>
+<h4 id="第3节-实验步骤"><a href="#第3节-实验步骤" class="headerlink" title="第3节 实验步骤"></a>第3节 实验步骤</h4><p>可以在拓扑图中添加部件</p>
+ <img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014152918649.png"  alt="image-20201014152918649" style="zoom: 50%;">
+
+<p>添加连接</p>
+ <img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014153029358.png"  alt="image-20201014153029358" style="zoom: 50%;">
+
+<p>运行仿真实验</p>
+ <img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014153048326.png"  alt="image-20201014153048326" style="zoom:80%;">
+
+
+
+
+
+<h2 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h2><h4 id="第1节-实验内容说明-1"><a href="#第1节-实验内容说明-1" class="headerlink" title="第1节 实验内容说明"></a>第1节 实验内容说明</h4><p>在仿真环境下进行==单集线器共享式==以太网组网，测试网络的连通性。</p>
+<h4 id="第2节-实验准备-1"><a href="#第2节-实验准备-1" class="headerlink" title="第2节 实验准备"></a>第2节 实验准备</h4><p>说明：本节要包含自己要搭建的拓扑图以及拓扑图中各设备的IP与端口分配情况， 或者包含其他的实验前准备事项，如果没有可以省略本节。</p>
+<h4 id="第3节-实验步骤-1"><a href="#第3节-实验步骤-1" class="headerlink" title="第3节 实验步骤"></a>第3节 实验步骤</h4><ul>
+<li><p>添加组件</p>
+<ul>
+<li><p>添加集线器（Hub）和终端（end devices）</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201012190712421.png"  alt="image-20201012190712421" style="zoom: 50%;">
+</li>
+<li><p>连线</p>
+<ul>
+<li><p>本次实验使用自动连接，软件自动分配端口和选择合适种类的线，如图可知，软件选择的是直连线（适用于终端和集线器连接）</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201012190937775.png"  alt="image-20201012190937775" style="zoom:50%;">
+
+<ul>
+<li>由线上绿色的三角形可知该图可以成功连通</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>配置终端ip</p>
+<ul>
+<li><p>单击终端，选择<code>Desktop</code>-&gt;<code>IP Configuration</code></p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201012191231937.png"  alt="image-20201012191231937" style="zoom:50%;">
+</li>
+<li><p>在<code>IPv4 Address</code>中填写IP地址，要求在==192.168.0.1到192.168.0.255==之间，点击<code>Subnet Mask</code>，自动生成子网掩码</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201012191435531.png"  alt="image-20201012191435531" style="zoom:50%;">
+</li>
+<li><p>点击右上角的<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201012191459102.png"  alt="image-20201012191459102" style="zoom:50%;">退出配置</p>
+</li>
+<li><p>用相同的方法配置另一个终端的IP地址，注意==IP地址不可以相同==，配置为192.168.0.2</p>
+</li>
+</ul>
+</li>
+<li><p>检测连通性</p>
+<ul>
+<li><p>单击其中的一个终端，选择<code>Desktop</code>-&gt;<code>Command Prompt</code>，输入<code>ping 192.168.0.x</code>(另一台pc的ip地址)</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201012191822260.png"  alt="image-20201012191822260" style="zoom: 50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014095841263.png"  alt="image-20201014095841263" style="zoom:60%;"></p>
+<p>可以ping通</p>
+</li>
+<li><p>点击右下角的<code>simulation</code>进入仿真，在终端输入<code>ping 192.168.0.2</code></p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014101317189.png"  alt="image-20201014101317189" style="zoom: 45%;">
+</li>
+<li><p>点击<code>play controls</code>中的<code>play</code>，可以看到信息的传递过程</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014101545565.png"  alt="image-20201014101545565" style="zoom:50%;">
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="第4节-实验结果"><a href="#第4节-实验结果" class="headerlink" title="第4节 实验结果"></a>第4节 实验结果</h4><ol>
+<li>可以通过集线器连接至其它中终端</li>
+</ol>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014095841263.png"  alt="image-20201014095841263" style="zoom:60%;">
+
+<ol start="2">
+<li><p>消息传递仿真模拟，经过观察发现，消息在两个终端之间来回传送</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014101545565.png"  alt="image-20201014101545565" style="zoom:50%;">
+
+
+
+
+
+
+
+</li>
+</ol>
+<h2 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h2><h4 id="第1节-实验内容说明-2"><a href="#第1节-实验内容说明-2" class="headerlink" title="第1节 实验内容说明"></a>第1节 实验内容说明</h4><p>在仿真环境下进行==多集线器共享式==以太网组网，测试网络的连通性，并在仿真环境的“模拟”方式中观察数据包的传递过程，进行分析。</p>
+<h4 id="第2节-实验准备-2"><a href="#第2节-实验准备-2" class="headerlink" title="第2节 实验准备"></a>第2节 实验准备</h4><p>Packet Tracer</p>
+<h4 id="第3节-实验步骤-2"><a href="#第3节-实验步骤-2" class="headerlink" title="第3节 实验步骤"></a>第3节 实验步骤</h4><ul>
+<li><p>画出网络拓扑图</p>
+<ul>
+<li><p>注意，终端和集线器连接使用的是直通线<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014153856913.png"  alt="image-20201014153856913" style="zoom:50%;">，而集线器之间连接使用的是交叉线<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014153917600.png"  alt="image-20201014153917600" style="zoom:50%;"></p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014153807884.png"  alt="image-20201014153807884" style="zoom: 50%;">
+</li>
+<li><p>用与实验二中相同的方法配置端口</p>
+</li>
+<li><p>在PC9的终端命令行中尝试连接PC10</p>
+<ul>
+<li>使用ping命令</li>
+<li>仿真</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="第4节-实验结果-1"><a href="#第4节-实验结果-1" class="headerlink" title="第4节 实验结果"></a>第4节 实验结果</h4><ul>
+<li><p>能够ping通</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154311950.png"  alt="image-20201014154311950" style="zoom:80%;">
+</li>
+<li><p>仿真结果</p>
+<ol>
+<li><p>PC9发送数据至Hub1</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154733483.png"  alt="image-20201014154733483" style="zoom: 50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154744108.png"  alt="image-20201014154744108" style="zoom: 50%;"></p>
+</li>
+<li><p>消息经过Hub1流向Hub2<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154759364.png"  alt="image-20201014154759364" style="zoom: 50%;"></p>
+</li>
+<li><p>信息经过Hub2流向PC10和PC11，其中PC11与数据报中的目的地址并不匹配<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154834746.png"  alt="image-20201014154834746" style="zoom:50%;"></p>
+</li>
+<li><p>PC10将反应消息发给Hub2<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154846259.png"  alt="image-20201014154846259" style="zoom:50%;"></p>
+</li>
+<li><p>消息从Hub2流向另外连接至Hub2的集线器和终端<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154905358.png"  alt="image-20201014154905358" style="zoom:50%;"></p>
+</li>
+<li><p>通过Hub1消息发至PC9，连接成功<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014154920190.png"  alt="image-20201014154920190" style="zoom:50%;"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="实验四"><a href="#实验四" class="headerlink" title="实验四"></a>实验四</h2><h4 id="第1节-实验内容说明-3"><a href="#第1节-实验内容说明-3" class="headerlink" title="第1节 实验内容说明"></a>第1节 实验内容说明</h4><p>在仿真环境下进行==交换式==以太网组网，并测试连通性</p>
+<h4 id="第2节-实验准备-3"><a href="#第2节-实验准备-3" class="headerlink" title="第2节 实验准备"></a>第2节 实验准备</h4><p>Packet Tracer软件</p>
+<h4 id="第3节-实验步骤-3"><a href="#第3节-实验步骤-3" class="headerlink" title="第3节 实验步骤"></a>第3节 实验步骤</h4><ul>
+<li><p>画出网络拓扑图</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014125418819.png"  alt="image-20201014125418819" style="zoom:50%;">
+
+<ul>
+<li><p>使用自动连接，自动按顺序选择交换机的顺序，途中可以看到端口1-5已经开启</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014125724887.png"  alt="image-20201014125724887" style="zoom:50%;">
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>为PC1-PC6分配IP地址<code>192.168.0.1</code>-<code>192.168.0.2</code></p>
+</li>
+<li><p>配置交换机</p>
+<ul>
+<li><p>利用终端控制台进行配置</p>
+<ul>
+<li><p>添加交换机的控制终端，用<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014125543161.png"  alt="image-20201014125543161" style="zoom:50%;">PC0的RS232端口连接至Switch0的console端口</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014125001719.png"  alt="image-20201014125001719" style="zoom:50%;">
+
+</li>
+</ul>
+<ul>
+<li><p>点击PC0-&gt;<code>Desktop</code>-&gt;<code>Terminal</code>，设置为9600波特、8个数据位、1个停止位</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014161530424.png"  alt="image-20201014161530424" style="zoom:50%;">
+</li>
+<li><p>可以使用命令<code>show mac-address-table</code>，<code>config terminal</code>配置计算机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vlan database ## 进入交换机的VLAN数据库维护模式</span><br><span class="line">Vlan 2 name VLAN2 ## 建立编号位2，名字位VLAN2的VLAN</span><br><span class="line">exit ## 退出VLAN数据库维护模式</span><br><span class="line">config terminal ## 进入配置中终端模式</span><br><span class="line">interface Fa0&#x2F;1 ## 通知交换机配置端口号1</span><br><span class="line">switchport mode access</span><br><span class="line">switchport access vlan 2 #把交换机端口1分配给VLAN2</span><br><span class="line">show vlan</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>利用设备配置界面进行配置</p>
+<ul>
+<li><p>添加虚拟网络</p>
+<ul>
+<li>单击交换机-&gt;<code>config</code>，添加VLAN2和VLAN3</li>
+</ul>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014130104630.png"  alt="image-20201014130104630" style="zoom:50%;">
+
+<ul>
+<li>配置端口与虚拟网络的对应关系<ul>
+<li><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014130248990.png"  alt="image-20201014130248990" style="zoom:40%;"></li>
+<li>配置为PC1、PC2、PC5、PC6连接至VLAN2范围内的端口，PC3、PC4连接至VLAN3范围内的端口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>测试连通性，方法同上个实验，在PC终端使用ping命令</p>
+</li>
+<li><p>打开仿真模式，测试处在相同虚拟网络和不同虚拟网络之间终端的连通性</p>
+</li>
+</ul>
+<h4 id="第4节-实验结果-2"><a href="#第4节-实验结果-2" class="headerlink" title="第4节 实验结果"></a>第4节 实验结果</h4><ul>
+<li><p>PC1连接PC5，连接成功</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014130730333.png"  alt="image-20201014130730333" style="zoom:50%;">
+
+<ol>
+<li><p>PC1发送信息至交换机</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014132313689.png"  alt="image-20201014132313689" style="zoom:40%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014132401107.png"  alt="image-20201014132401107" style="zoom:33%;"></p>
+</li>
+<li><p>交换机向处在同一个VLAN（VLAN2）内的终端发送信息，由终端辨认目的地址是否吻合</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014132527412.png"  alt="image-20201014132527412" style="zoom:33%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014132604425.png"  alt="image-20201014132604425" style="zoom:33%;"></p>
+</li>
+<li><p>消息在同一个VLAN内继续传播</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014132709727.png"  alt="image-20201014132709727" style="zoom:33%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014132741993.png"  alt="image-20201014132741993" style="zoom:33%;"></p>
+</li>
+</ol>
+</li>
+</ul>
+<ol start="4">
+<li>PC1接收到PC5传回来的信息，显示ping通</li>
+</ol>
+<pre><code>&lt;img src=&quot;/images/大三上/网技/第一次实验/image-20201014132840869.png&quot; alt=&quot;image-20201014132840869&quot; style=&quot;zoom:33%;&quot; /&gt;</code></pre><ul>
+<li><p>PC1连接PC3，连接失败</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014131443202.png"  alt="image-20201014131443202" style="zoom:50%;">
+
+<ol>
+<li>PC1发送信息至交换机</li>
+</ol>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014151952875.png"  alt="image-20201014151952875" style="zoom: 33%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014152042751.png"  alt="image-20201014152042751" style="zoom:33%;"></p>
+<ol start="2">
+<li><p>交换机将消息发送给相同VLAN内的终端</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014152325818.png"  alt="image-20201014152325818" style="zoom:33%;">
+</li>
+<li><p>交换机不能向PC3和PC4发送消息</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014152453649.png"  alt="image-20201014152453649" style="zoom:33%;">
+</li>
+<li><p>数据报不断在线路内传递，始终不能传递至正确位置，PC1也不能收到正确的返回数据报</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第一次实验/image-20201014152623214.png"  alt="image-20201014152623214" style="zoom:80%;"></li>
+</ol>
+</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Lxm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/">https://gitee.com/michelle19l/michelle19l/2021/01/30/大三上/计网/网技第一次实验/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/wpcap/">wpcap</a><a class="post-meta__tags" href="/tags/packettracer/">packettracer</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E4%B8%8A%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9/">大三上学期课程内容</a><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/">网络技术与应用</a></div><div class="post_share"><div class="social-share" data-image="/img/timg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><img class="prev_cover lazyload" data-src="/images/web.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">网络技术与应用作业二 WPcap的安装与基本使用</div></div></a></div><div class="next-post pull_right"><a href="/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E5%85%AD%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><img class="next_cover lazyload" data-src="/images/web.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">网络技术与应用作业六 IPv6组网与配置</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> Recommend</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技大作业路由器/" title="网络技术与应用大作业 简单路由器程序的设计"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用大作业 简单路由器程序的设计</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第五次实验/" title="网络技术与应用作业五 互联网组网与路由器配置"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业五 互联网组网与路由器配置</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第四次实验/" title="网络技术与应用作业四 通过编程获取IP地址与MAC地址的对应关系"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业四 通过编程获取IP地址与MAC地址的对应关系</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第三次实验/" title="网络技术与应用作业三 IP地址规划与配置"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业三 IP地址规划与配置</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第二次实验/" title="网络技术与应用作业二 WPcap的安装与基本使用"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业二 WPcap的安装与基本使用</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第六次实验/" title="网络技术与应用作业六 IPv6组网与配置"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业六 IPv6组网与配置</div></div></a></div></div><div class="clear_both"></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lxm</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://michelle19l.gitee.io/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="87,250,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script></body></html>

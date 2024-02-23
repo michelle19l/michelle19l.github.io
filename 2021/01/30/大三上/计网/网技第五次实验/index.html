@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网络技术与应用作业五 互联网组网与路由器配置 | Lxm's Blog</title><meta name="description" content="网络技术与应用作业五 互联网组网与路由器配置"><meta name="keywords" content="web,wpcap,大三上学期课程内容,网络技术与应用"><meta name="author" content="Lxm"><meta name="copyright" content="Lxm"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/smile.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="网络技术与应用作业五 互联网组网与路由器配置"><meta name="twitter:description" content="网络技术与应用作业五 互联网组网与路由器配置"><meta name="twitter:image" content="https://gitee.com/michelle19l/michelle19l/images/web.jpg"><meta property="og:type" content="article"><meta property="og:title" content="网络技术与应用作业五 互联网组网与路由器配置"><meta property="og:url" content="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><meta property="og:site_name" content="Lxm's Blog"><meta property="og:description" content="网络技术与应用作业五 互联网组网与路由器配置"><meta property="og:image" content="https://gitee.com/michelle19l/michelle19l/images/web.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><link rel="prev" title="网络技术与应用大作业 简单路由器程序的设计" href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%B7%AF%E7%94%B1%E5%99%A8/"><link rel="next" title="网络技术与应用作业四 通过编程获取IP地址与MAC地址的对应关系" href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E5%9B%9B%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: true,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">90</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">70</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">24</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/guide/"><i class="fa-fw fa fa-connectdevelop"></i><span> Guide</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#验证性实验（3）互联网组网与路由器配置"><span class="toc-number">1.</span> <span class="toc-text">验证性实验（3）互联网组网与路由器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验内容说明"><span class="toc-number">1.1.</span> <span class="toc-text">实验内容说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验一：-实体环境下互联网组网与路由器配置"><span class="toc-number">1.2.</span> <span class="toc-text">实验一： 实体环境下互联网组网与路由器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验准备"><span class="toc-number">1.2.1.</span> <span class="toc-text">实验准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验过程"><span class="toc-number">1.2.2.</span> <span class="toc-text">实验过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验结果"><span class="toc-number">1.2.3.</span> <span class="toc-text">实验结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验二：-仿真环境下的互联网组网与路由器配置"><span class="toc-number">1.3.</span> <span class="toc-text">实验二： 仿真环境下的互联网组网与路由器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态路由"><span class="toc-number">1.3.1.</span> <span class="toc-text">静态路由</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实验准备-1"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">实验准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验步骤"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">实验步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验结果-1"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">实验结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态路由"><span class="toc-number">1.3.2.</span> <span class="toc-text">动态路由</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实验准备-2"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">实验准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验过程-1"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">实验过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验结果-2"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">实验结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验三"><span class="toc-number">1.4.</span> <span class="toc-text">实验三</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/images/web.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Lxm's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/guide/"><i class="fa-fw fa fa-connectdevelop"></i><span> Guide</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">网络技术与应用作业五 互联网组网与路由器配置</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2021-01-30 12:00:05"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2021-01-30</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2021-02-22 22:42:32"><i class="fa fa-history" aria-hidden="true"></i> Updated 2021-02-22</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/web/">web</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>Word count:</span><span class="word-count">1k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>Reading time: 3 min</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="验证性实验（3）互联网组网与路由器配置"><a href="#验证性实验（3）互联网组网与路由器配置" class="headerlink" title="验证性实验（3）互联网组网与路由器配置"></a>验证性实验（3）互联网组网与路由器配置</h1><h2 id="实验内容说明"><a href="#实验内容说明" class="headerlink" title="实验内容说明"></a>实验内容说明</h2><ol>
+<li>实体环境下互联网组网与路由器配置</li>
+</ol>
+<p>在实体环境下完成互联网组网与路由器配置，要求如下：（1）在机房实验室环境下，通过将局域网划分为不同子网，用多IP主机作为路由器，组建互联网。（2）在命令行方式下，按照静态路由方式，配置路由器和主机，测试互联网的连通性。</p>
+<ol start="2">
+<li>仿真环境下的互联网组网与路由器配置</li>
+</ol>
+<p>在仿真环境下完成互联网组网与路由器配置，要求如下：（1）学习路由器的配置方法和配置命令。（2）参考实体实验，组建由多个路由器组成的互联网。物理网络可以由集线器、交换机构成。（3）按照静态路由方式配置路由器和主机，测试互联网的连通性。（4）利用动态路由方式配置路由器和主机，测试互联网的连通性。（5）在仿真环境的“模拟”方式中观察数据包在互联网中的传递过程，并进行分析。</p>
+<ol start="3">
+<li>在仿真环境下完成下面实验</li>
+</ol>
+<p>校园网用户的主机中安装有两块网卡，一块无线网卡通过带路由功能的AP接入Internet，一块网卡通过交换机直接接入校园网。假设校园网拥有的IP地址为202.118.25.xx，202.118.26.xx，202.118.27.xx，202.118.28.xx，202.118.29.xx，202.118.30.xx。配置用户的主机，使其通过学校交换机和路由器访问校园内的所有联网主机，通过带路由功能的AP访问其他Internet。</p>
+<h2 id="实验一：-实体环境下互联网组网与路由器配置"><a href="#实验一：-实体环境下互联网组网与路由器配置" class="headerlink" title="实验一： 实体环境下互联网组网与路由器配置"></a>实验一： 实体环境下互联网组网与路由器配置</h2><h3 id="实验准备"><a href="#实验准备" class="headerlink" title="实验准备"></a>实验准备</h3><p>在机房使用四台电脑完成实验，其中两台作为路由器，另外两台作为主机</p>
+<p>配置信息：</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第五次实验/image-20201212212922371.png"  alt="image-20201212212922371" style="zoom: 25%;">
+
+<ul>
+<li>使用<code>route PRINT</code>指令可以看到当前路由表信息</li>
+<li>使用<code>route ADD 目标网络 MASK 目标网络掩码 下一跳IP地址</code>添加路由表表项</li>
+<li>使用<code>route CHANGE 目标网络 MASK 目标网络掩码 下一跳IP地址</code>修改路由表表项</li>
+<li>使用<code>route DELETE 目标网络</code>可以删除路由表</li>
+</ul>
+<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><ul>
+<li><p>首先 win+r，输入services.msc打开服务，启动<strong>路由和远程访问</strong></p>
+</li>
+<li><p>为两台电脑<strong>配置IP和默认网关</strong></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第五次实验/image-20201212213728026.png"  alt="image-20201212213728026" style="zoom: 50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第五次实验/image-20201212213834153.png"  alt="image-20201212213834153" style="zoom: 50%;"></p>
+</li>
+<li><p>两台作为路由器的电脑需要配置单网卡多IP（在配置路由界面的<code>高级</code>选项中）</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第五次实验/image-20201212213752661.png"  alt="image-20201212213752661" style="zoom: 50%;"><img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第五次实验/image-20201212213816735.png"  alt="image-20201212213816735" style="zoom:50%;"></p>
+</li>
+<li><p>在路由器上配置对应转发表</p>
+</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212214319089.png"  alt="image-20201212214319089"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212214328695.png"  alt="image-20201212214328695"></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>使用<code>tracert</code>命令，跟踪路由转发过程</p>
+<img src="/img/loading.gif" class="lazyload" data-src="/images/大三上/网技/第五次实验/image-20201212214251423.png"  alt="image-20201212214251423" style="zoom:50%;">
+
+<p>结果与设计图相一致</p>
+<h2 id="实验二：-仿真环境下的互联网组网与路由器配置"><a href="#实验二：-仿真环境下的互联网组网与路由器配置" class="headerlink" title="实验二： 仿真环境下的互联网组网与路由器配置"></a>实验二： 仿真环境下的互联网组网与路由器配置</h2><h3 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h3><h4 id="实验准备-1"><a href="#实验准备-1" class="headerlink" title="实验准备"></a>实验准备</h4><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212222304929.png"  alt="image-20201212222304929"></p>
+<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><ul>
+<li><p>按照如示意图所示配置四个终端的IP和默认网关</p>
+</li>
+<li><p>配置路由器IP</p>
+<ul>
+<li><p>打开路由器的CLI界面，使用下图的指令分别配置两个路由器的接口Gig0/0、Gig0/1</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212220051367.png"  alt="image-20201212220051367"></p>
+</li>
+</ul>
+</li>
+<li><p>配置路由表</p>
+<p>使用指令<code>ip route 目标网络 掩码 下一条IP地址</code>，在路由器的cli中添加表项</p>
+<pre><code>- ip route 10.3.0.0 255.255.0.0 10.1.0.1
+- ip route 10.2.0.0 255.255.0.0 10.1.0.2</code></pre><p>使用指令<code>show ip route</code>查看表项</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212221725169.png"  alt="image-20201212221725169"></p>
+</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212222338110.png"  alt="image-20201212222338110"></p>
+<h4 id="实验结果-1"><a href="#实验结果-1" class="headerlink" title="实验结果"></a>实验结果</h4><p>在其中一个终端的命令行中使用tracert命令追踪数据流</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212223031005.png"  alt="image-20201212223031005"></p>
+<p>结果与设计图一致</p>
+<h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3><h4 id="实验准备-2"><a href="#实验准备-2" class="headerlink" title="实验准备"></a>实验准备</h4><p>使用与静态路由完全相同的拓扑图和IP配置</p>
+<h4 id="实验过程-1"><a href="#实验过程-1" class="headerlink" title="实验过程"></a>实验过程</h4><ul>
+<li><p>配置终端IP和网关（同静态路由配置）</p>
+</li>
+<li><p>配置RIP</p>
+<ul>
+<li><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212224056659.png"  alt="image-20201212224056659"></p>
+</li>
+<li><p>另一台路由器使用相同的方法配置，只是将直接相连的网络修改为10.3.0.0和10.1.0.0</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="实验结果-2"><a href="#实验结果-2" class="headerlink" title="实验结果"></a>实验结果</h4><p><img src="/img/loading.gif" class="lazyload" data-src="/images/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BD%91%E6%8A%80/%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/image-20201212224253930.png"  alt="image-20201212224253930"></p>
+<p>连接成功</p>
+<h2 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h2><p>为了同时使用不同的网卡并在访问不同的物理网络时使用不同的网卡，可以配置主机的路由表以达到效果</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Lxm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://gitee.com/michelle19l/michelle19l/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E4%BA%94%E6%AC%A1%E5%AE%9E%E9%AA%8C/">https://gitee.com/michelle19l/michelle19l/2021/01/30/大三上/计网/网技第五次实验/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/wpcap/">wpcap</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E4%B8%8A%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9/">大三上学期课程内容</a><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/">网络技术与应用</a></div><div class="post_share"><div class="social-share" data-image="/img/timg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%B7%AF%E7%94%B1%E5%99%A8/"><img class="prev_cover lazyload" data-src="/images/web.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">网络技术与应用大作业 简单路由器程序的设计</div></div></a></div><div class="next-post pull_right"><a href="/2021/01/30/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%BD%91/%E7%BD%91%E6%8A%80%E7%AC%AC%E5%9B%9B%E6%AC%A1%E5%AE%9E%E9%AA%8C/"><img class="next_cover lazyload" data-src="/images/web.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">网络技术与应用作业四 通过编程获取IP地址与MAC地址的对应关系</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> Recommend</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技大作业路由器/" title="网络技术与应用大作业 简单路由器程序的设计"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用大作业 简单路由器程序的设计</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第四次实验/" title="网络技术与应用作业四 通过编程获取IP地址与MAC地址的对应关系"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业四 通过编程获取IP地址与MAC地址的对应关系</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第二次实验/" title="网络技术与应用作业二 WPcap的安装与基本使用"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业二 WPcap的安装与基本使用</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第一次实验/" title="网络技术与应用作业一 PacketTracer的基本使用"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业一 PacketTracer的基本使用</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第三次实验/" title="网络技术与应用作业三 IP地址规划与配置"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业三 IP地址规划与配置</div></div></a></div><div class="relatedPosts_item"><a href="/2021/01/30/大三上/计网/网技第六次实验/" title="网络技术与应用作业六 IPv6组网与配置"><img class="relatedPosts_cover lazyload"data-src="/images/web.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-01-30</div><div class="relatedPosts_title">网络技术与应用作业六 IPv6组网与配置</div></div></a></div></div><div class="clear_both"></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lxm</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://michelle19l.gitee.io/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="87,250,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script></body></html>
